@@ -1,13 +1,11 @@
-# This is an exact copy of the example docker-compose.yml here: (PostgreSQL tab)
-# https://docs.strapi.io/dev-docs/installation/docker#optional-docker-compose
-# Committing it as-is so that the subsequent commit trail can be more useful as documentation.
-
 version: "3"
 services:
   strapi:
     container_name: strapi
-    build: .
     image: strapi:latest
+    build:
+      context: ./packages/strapi
+      #dockerfile: Dockerfile.prod
     restart: unless-stopped
     env_file: .env
     environment:
@@ -21,13 +19,6 @@ services:
       ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
       APP_KEYS: ${APP_KEYS}
       NODE_ENV: ${NODE_ENV}
-    volumes:
-      - ./config:/opt/app/config
-      - ./src:/opt/app/src
-      - ./package.json:/opt/package.json
-      - ./yarn.lock:/opt/yarn.lock
-      - ./.env:/opt/app/.env
-      - ./public/uploads:/opt/app/public/uploads
     ports:
       - "1337:1337"
     networks:
@@ -46,8 +37,7 @@ services:
       POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
       POSTGRES_DB: ${DATABASE_NAME}
     volumes:
-      - strapi-data:/var/lib/postgresql/data/ #using a volume
-      #- ./data:/var/lib/postgresql/data/ # if you want to use a bind folder
+      - strapi-data:/var/lib/postgresql/data/
 
     ports:
       - "5432:5432"

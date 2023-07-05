@@ -1,9 +1,7 @@
-# This is an exact copy of the example *development* Dockerfile here:
-# https://docs.strapi.io/dev-docs/installation/docker#development-dockerfile
-# Committing it as-is so that the subsequent commit trail can be more useful as documentation.
+# Development Dockerfile
 
 FROM node:16-alpine
-# Installing libvips-dev for sharp Compatibility
+# Installing libvips-dev for Sharp compatibility
 RUN apk update && apk add --no-cache build-base gcc autoconf automake zlib-dev libpng-dev nasm bash vips-dev
 ARG NODE_ENV=development
 ENV NODE_ENV=${NODE_ENV}
