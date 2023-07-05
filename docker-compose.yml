@@ -7,16 +7,21 @@ services:
       context: ./packages/strapi
       #dockerfile: Dockerfile.prod
     restart: unless-stopped
-    env_file: .env
     environment:
-      DATABASE_CLIENT: ${DATABASE_CLIENT}
+      DATABASE_CLIENT: postgres
       DATABASE_HOST: strapiDB
-      DATABASE_PORT: ${DATABASE_PORT}
-      DATABASE_NAME: ${DATABASE_NAME}
-      DATABASE_USERNAME: ${DATABASE_USERNAME}
+      DATABASE_PORT: 5432
+      DATABASE_NAME: strapi
+      DATABASE_USERNAME: strapi
+      # DATABASE_SSL does not behave the way you expect it to. Ask this committer.
+      # In any case: set to false since we are using the docker network.
+      DATABASE_SSL: "false"
+      # Set these in Portainer, or in a .env for local development; see .env.example.
+      # NB: If they are set in Portainer they don't actually have to be listed here, but let's list them bc documentation.
       DATABASE_PASSWORD: ${DATABASE_PASSWORD}
       JWT_SECRET: ${JWT_SECRET}
       ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
+      API_TOKEN_SALT: ${API_TOKEN_SALT}
       APP_KEYS: ${APP_KEYS}
       NODE_ENV: ${NODE_ENV}
     ports:
@@ -30,7 +35,6 @@ services:
     container_name: strapiDB
     platform: linux/amd64 #for platform error on Apple M1 chips
     restart: unless-stopped
-    env_file: .env
     image: postgres:12.0-alpine
     environment:
       POSTGRES_USER: ${DATABASE_USERNAME}
