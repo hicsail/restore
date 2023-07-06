@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/hicsail/restore/issues"
   },
-  "homepage": "https://github.com/hicsail/restore#readme"
+  "homepage": "https://github.com/hicsail/restore#readme",
+  "workspaces": [
+    "packages/strapi"
+  ]
 }
