@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/hicsail/restore#readme",
   "workspaces": [
-    "packages/strapi"
+    "packages/strapi",
+    "packages/client"
   ]
 }
