@@ -1,5 +1,15 @@
 version: "3"
 services:
+
+  client:
+    container_name: client
+    image: client:latest
+    build:
+      context: ./packages/client
+    restart: unless-stopped
+    ports:
+      - "5173:5173"
+
   strapi:
     container_name: strapi
     image: strapi:latest
