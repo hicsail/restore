@@ -28,7 +28,7 @@ jobs:
         name: Build and push Strapi
         uses: docker/build-push-action@v4
         with:
-          context: ./packages/strapi
+          context: "{{defaultContext}}:packages/strapi"
           file: ./Dockerfile
           #file: ./Dockerfile.prod
           push: true
@@ -37,7 +37,7 @@ jobs:
         name: Build and push Client
         uses: docker/build-push-action@v4
         with:
-          context: ./packages/client
+          context: "{{defaultContext}}:packages/client"
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/restore-client:latest
