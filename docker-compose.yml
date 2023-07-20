@@ -3,7 +3,7 @@ services:
 
   client:
     container_name: client
-    image: client:latest
+    image: hicsail/restore-client:main
     build:
       context: ./packages/client
     restart: unless-stopped
@@ -12,7 +12,7 @@ services:
 
   strapi:
     container_name: strapi
-    image: strapi:latest
+    image: hicsail/restore-strapi:main
     build:
       context: ./packages/strapi
       #dockerfile: Dockerfile.prod
