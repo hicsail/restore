@@ -4,8 +4,6 @@ services:
   client:
     container_name: client
     image: hicsail/restore-client:main
-    build:
-      context: ./packages/client
     restart: unless-stopped
     ports:
       - "5173:5173"
@@ -13,9 +11,6 @@ services:
   strapi:
     container_name: strapi
     image: hicsail/restore-strapi:main
-    build:
-      context: ./packages/strapi
-      #dockerfile: Dockerfile.prod
     restart: unless-stopped
     environment:
       DATABASE_CLIENT: postgres
