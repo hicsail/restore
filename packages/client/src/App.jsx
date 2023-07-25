@@ -5,31 +5,34 @@ import './App.css'
 
 import { useQuery, gql } from '@apollo/client';
 
-const GET_LOCATIONS = gql`
-  query GetLocations {
-    locations {
-      id
-      name
-      description
-      photo
+
+const GET_BLOG_POSTS = gql`
+  query GetBlogPosts {
+    blogPosts {
+      data {
+        id
+        attributes {
+          Title
+          DatetimePublished
+          Body
+        }
+      }
     }
   }
 `;
 
 
-function DisplayLocations() {
-  const { loading, error, data } = useQuery(GET_LOCATIONS);
+function DisplayBlogPosts() {
+  const { loading, error, data } = useQuery(GET_BLOG_POSTS);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error : {error.message}</p>;
 
-  return data.locations.map(({ id, name, description, photo }) => (
+  return data.blogPosts.data.map(({ id, attributes }) => (
     <div key={id}>
-      <h3>{name}</h3>
-      <img width="400" height="250" alt="location-reference" src={`${photo}`} />
-      <br />
-      <b>About this location:</b>
-      <p>{description}</p>
+      <h3>{attributes.Title}</h3>
+      <b>Published at: {attributes.DatetimePublished}</b>
+      <p>{attributes.Body}</p>
       <br />
     </div>
   ));
@@ -57,7 +60,7 @@ function App() {
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
-        <DisplayLocations />
+        <DisplayBlogPosts />
       </div>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
