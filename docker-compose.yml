@@ -4,18 +4,25 @@ services:
   client:
     container_name: client
     image: hicsail/restore-client:main
-    build:
-      context: ./packages/client
     restart: unless-stopped
+    environment:
+      # Note: To prevent accidentally leaking env variables to the client, Vite
+      # only exposes variables prefixed with VITE_ to the code.
+      VITE_STRAPI_URL: ${VITE_STRAPI_URL}
+      # This is a Strapi API token that you create on the Strapi Admin panel.
+      # It should grant access only to content meant to be publicly viewable.
+      # It is NOT a secret - site visitors can see it in their browsers.
+      # Therefore, make sure the token is type 'Custom', and manually check
+      # 'find' and 'findOne' on each Content-Type you want to expose.
+      # It is not appropriate to create a token of type 'Read-only' instead of
+      # 'Custom' - this can be used to query Strapi on (for example) user data.
+      VITE_CONTENT_TOKEN: ${VITE_CONTENT_TOKEN}
     ports:
       - "5173:5173"
 
   strapi:
     container_name: strapi
     image: hicsail/restore-strapi:main
-    build:
-      context: ./packages/strapi
-      #dockerfile: Dockerfile.prod
     restart: unless-stopped
     environment:
       DATABASE_CLIENT: postgres
