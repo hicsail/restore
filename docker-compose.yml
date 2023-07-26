@@ -41,6 +41,9 @@ services:
       API_TOKEN_SALT: ${API_TOKEN_SALT}
       APP_KEYS: ${APP_KEYS}
       NODE_ENV: ${NODE_ENV}
+    volumes:
+      - strapi-models:/opt/app/src
+      - strapi-uploads:/opt/app/public/uploads
     ports:
       - "1337:1337"
     networks:
@@ -59,13 +62,14 @@ services:
       POSTGRES_DB: ${DATABASE_NAME}
     volumes:
       - strapi-data:/var/lib/postgresql/data/
-
     ports:
       - "5432:5432"
     networks:
       - strapi
 
 volumes:
+  strapi-models:
+  strapi-uploads:
   strapi-data:
 
 networks:
