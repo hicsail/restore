@@ -7,7 +7,7 @@ import { useQuery, gql } from '@apollo/client';
 
 import { Box, Card, Tab, Tabs, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
-
+import ReactMarkdown from 'react-markdown';
 
 
 const GET_TEAM_MEMBERS = gql`
@@ -157,9 +157,7 @@ function ResearchAndEvals() {
   if (error) return <p>Error : {error.message}</p>;
 
   return (
-    <div className="research-and-evaluations">
-    <Typography>{data.researchAndEvaluation.data.attributes.Body}</Typography>
-    </div>
+    <ReactMarkdown>{data.researchAndEvaluation.data.attributes.Body}</ReactMarkdown>
   )
 }
 
@@ -175,7 +173,7 @@ function BlogPosts() {
     <div key={id} className="blogpost">
       <h3>{attributes.Title}</h3>
       <b>Published at: {attributes.DatetimePublished}</b>
-      <p>{attributes.Body}</p>
+      <ReactMarkdown>{attributes.Body}</ReactMarkdown>
       <br />
     </div>
   ));
