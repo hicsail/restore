@@ -10,7 +10,7 @@ import { Box, Card, Tab, Tabs, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 import ReactMarkdown from 'react-markdown';
 
-const theme = createTheme({
+let theme = createTheme({
   palette: {
     // Since we have a tricolor palette, and MUI's default palette system is bicolor,
     // let's use named custom colors instead of adding a custom 'tertiary' to the built-in
@@ -26,13 +26,23 @@ const theme = createTheme({
     blue: {
       main: '#78CEE9',
     },
+    gray: {
+      main: '#0009',
+    },
+    black: {
+      main: '#000000',
+    },
   },
+});
+
+// Compose theme in two steps so we can style components using named colors.
+theme = createTheme(theme, {
   components: {
     MuiTabs: {
       styleOverrides: {
         root: {
           '& .MuiTabs-indicator': {
-            backgroundColor: '#000000',
+            backgroundColor: 'purple',
           },
         },
       },
@@ -40,9 +50,9 @@ const theme = createTheme({
     MuiTab: {
       styleOverrides: {
         root: {
-          color: '#000000',
+          color: 'gray',
           '&.Mui-selected': {
-            color: '#000000',
+            color: 'black',
           },
         },
       },
@@ -211,7 +221,7 @@ function BlogPosts() {
   if (error) return <p>Error : {error.message}</p>;
 
   return data.blogPosts.data.map(({ id, attributes }) => (
-    <div key={id} className="blogpost" style={{backgroundColor: theme.palette.purple.main, color: "#000000" }}>
+    <div key={id} className="blogpost" style={{backgroundColor: theme.palette.purple.main, color: theme.palette.black.main }}>
       <h3>{attributes.Title}</h3>
       <b>Published at: {attributes.DatetimePublished}</b>
       <ReactMarkdown>{attributes.Body}</ReactMarkdown>
