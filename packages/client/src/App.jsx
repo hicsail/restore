@@ -5,9 +5,50 @@ import './App.css'
 
 import { useQuery, gql } from '@apollo/client';
 
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Box, Card, Tab, Tabs, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 import ReactMarkdown from 'react-markdown';
+
+const theme = createTheme({
+  palette: {
+    // Since we have a tricolor palette, and MUI's default palette system is bicolor,
+    // let's use named custom colors instead of adding a custom 'tertiary' to the built-in
+    // 'primary'/'secondary'. This will avoid surprises down the line when changing props
+    // on MUI components (for example, a developer might try to change indicatorColor
+    // or textColor on MUI <Tabs> from 'secondary' to 'tertiary', which will not work).
+    purple: {
+      main: '#A888C7',
+    },
+    yellow: {
+      main: '#FFD884',
+    },
+    blue: {
+      main: '#78CEE9',
+    },
+  },
+  components: {
+    MuiTabs: {
+      styleOverrides: {
+        root: {
+          '& .MuiTabs-indicator': {
+            backgroundColor: '#000000',
+          },
+        },
+      },
+    },
+    MuiTab: {
+      styleOverrides: {
+        root: {
+          color: '#000000',
+          '&.Mui-selected': {
+            color: '#000000',
+          },
+        },
+      },
+    },
+  },
+});
 
 
 const GET_TEAM_MEMBERS = gql`
@@ -140,7 +181,7 @@ function TeamMemberCards() {
   if (error) return <p>Error : {error.message}</p>;
 
   return data.teamMembers.data.map(({ id, attributes }) => (
-    <Card key={id} className="teamMemberCard">
+    <Card key={id} className="teamMemberCard" sx={{ backgroundColor: 'blue.main' }}>
       <img src={import.meta.env.VITE_STRAPI_URL + attributes.Photo.data.attributes.url} />
       <Typography variant="h5">{attributes.Name}</Typography>
       <Typography>{attributes.Titles}</Typography>
@@ -170,7 +211,7 @@ function BlogPosts() {
   if (error) return <p>Error : {error.message}</p>;
 
   return data.blogPosts.data.map(({ id, attributes }) => (
-    <div key={id} className="blogpost">
+    <div key={id} className="blogpost" style={{backgroundColor: theme.palette.purple.main, color: "#000000" }}>
       <h3>{attributes.Title}</h3>
       <b>Published at: {attributes.DatetimePublished}</b>
       <ReactMarkdown>{attributes.Body}</ReactMarkdown>
@@ -184,7 +225,7 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <>
+    <><ThemeProvider theme={theme}>
       <NavTabs />
       <BlogPosts />
       <div>
@@ -197,7 +238,7 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
+        <button onClick={() => setCount((count) => count + 1)} style={{backgroundColor: theme.palette.yellow.main}}>
           count is {count}
         </button>
         <p>
@@ -207,7 +248,7 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
-    </>
+    </ThemeProvider></>
   )
 }
 
