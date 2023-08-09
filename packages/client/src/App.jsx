@@ -10,32 +10,41 @@ import { Box, Card, Tab, Tabs, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 import ReactMarkdown from 'react-markdown';
 
-let theme = createTheme({
+// Compose theme in several steps so we can
+//   (1) use augmentColor, and
+//   (2) style components using named colors.
+let theme = createTheme({});
+
+theme = createTheme(theme, {
   palette: {
     // Since we have a tricolor palette, and MUI's default palette system is bicolor,
     // let's use named custom colors instead of adding a custom 'tertiary' to the built-in
     // 'primary'/'secondary'. This will avoid surprises down the line when changing props
     // on MUI components (for example, a developer might try to change indicatorColor
     // or textColor on MUI <Tabs> from 'secondary' to 'tertiary', which will not work).
-    purple: {
-      main: '#A888C7',
-    },
-    yellow: {
-      main: '#FFD884',
-    },
-    blue: {
-      main: '#78CEE9',
-    },
-    gray: {
-      main: '#0009',
-    },
-    black: {
-      main: '#000000',
-    },
+    purple: theme.palette.augmentColor({
+      color: {
+        main: '#A888C7',
+      },
+    }),
+    yellow: theme.palette.augmentColor({
+      color: {
+        main: '#FFD884',
+      },
+    }),
+    blue: theme.palette.augmentColor({
+      color: {
+        main: '#78CEE9',
+      },
+    }),
+    black: theme.palette.augmentColor({
+      color: {
+        main: '#000000',
+      },
+    }),
   },
 });
 
-// Compose theme in two steps so we can style components using named colors.
 theme = createTheme(theme, {
   components: {
     MuiTabs: {
@@ -50,7 +59,7 @@ theme = createTheme(theme, {
     MuiTab: {
       styleOverrides: {
         root: {
-          color: 'gray',
+          color: 'black.light',
           '&.Mui-selected': {
             color: 'black',
           },
@@ -221,7 +230,7 @@ function BlogPosts() {
   if (error) return <p>Error : {error.message}</p>;
 
   return data.blogPosts.data.map(({ id, attributes }) => (
-    <div key={id} className="blogpost" style={{backgroundColor: theme.palette.purple.main, color: theme.palette.black.main }}>
+    <div key={id} className="blogpost" style={{backgroundColor: theme.palette.purple.light, color: theme.palette.purple.contrastText }}>
       <h3>{attributes.Title}</h3>
       <b>Published at: {attributes.DatetimePublished}</b>
       <ReactMarkdown>{attributes.Body}</ReactMarkdown>
