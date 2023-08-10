@@ -70,6 +70,17 @@ theme = createTheme(theme, {
 });
 
 
+const GET_ABOUT_MISSION = gql`
+  query GetAboutMission {
+    aboutMission {
+      data {
+        attributes {
+           Body
+        }
+      }
+    }
+  }
+`;
 const GET_TEAM_MEMBERS = gql`
   query GetTeamMembers {
     teamMembers {
@@ -189,7 +200,7 @@ function NavTabs() {
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
-        <UnderConstruction />
+        <AboutMission />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
         <TeamMemberGrid />
@@ -209,6 +220,19 @@ function NavTabs() {
     </Box>
   );
 }
+
+
+function AboutMission() {
+  const { loading, error, data } = useQuery(GET_ABOUT_MISSION);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error : {error.message}</p>;
+
+  return (
+    <ReactMarkdown>{data.aboutMission.data.attributes.Body}</ReactMarkdown>
+  )
+}
+
 
 function TeamMemberGrid() {
   return <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 1 }}><TeamMemberCards /></Box>
