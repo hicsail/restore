@@ -247,9 +247,18 @@ function BlogPosts() {
   if (error) return <p>Error : {error.message}</p>;
 
   return data.blogPosts.data.map(({ id, attributes }) => (
-    <div key={id} className="blogpost" style={{backgroundColor: theme.palette.purple.light, color: theme.palette.purple.contrastText }}>
+    <div
+      key={id}
+      style={{
+        backgroundColor: theme.palette.purple.light,
+        color: theme.palette.purple.contrastText,
+        padding: '0.5rem 1rem',
+        margin: '1rem auto',
+        borderRadius: '1em' }}
+    >
       <h3>{attributes.Title}</h3>
-      <b>Published at: {attributes.DatetimePublished}</b>
+      <p>Published at: {attributes.DatetimePublished}</p>
+      <hr />
       <ReactMarkdown transformImageUri={processMarkdownImageUri}>{attributes.Body}</ReactMarkdown>
       <br />
     </div>
