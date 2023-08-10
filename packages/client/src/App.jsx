@@ -8,7 +8,7 @@ import { useQuery, gql } from '@apollo/client';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Box, Card, Tab, Tabs, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
-import ReactMarkdown from 'react-markdown';
+import ReactMarkdown, { uriTransformer } from 'react-markdown';
 
 // Compose theme in several steps so we can
 //   (1) use augmentColor, and
@@ -118,6 +118,23 @@ const GET_BLOG_POSTS = gql`
     }
   }
 `;
+
+
+// This function is for taking image URLs from markdown content
+// and prepending the Strapi URL where needed (i.e. in relative paths).
+// It is meant to be composed with react-markdown's default uriTransformer,
+// so it assumes that the url is already cleaned.
+function prependStrapiURL(url) {
+  const first = url.charAt(0)
+  if (first === '/') {
+    return import.meta.env.VITE_STRAPI_URL + url
+  }
+  return url
+}
+function processMarkdownImageUri(url) {
+  return prependStrapiURL(uriTransformer(url))
+}
+
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -233,7 +250,7 @@ function BlogPosts() {
     <div key={id} className="blogpost" style={{backgroundColor: theme.palette.purple.light, color: theme.palette.purple.contrastText }}>
       <h3>{attributes.Title}</h3>
       <b>Published at: {attributes.DatetimePublished}</b>
-      <ReactMarkdown>{attributes.Body}</ReactMarkdown>
+      <ReactMarkdown transformImageUri={processMarkdownImageUri}>{attributes.Body}</ReactMarkdown>
       <br />
     </div>
   ));
