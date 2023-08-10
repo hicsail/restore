@@ -189,19 +189,19 @@ function NavTabs() {
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
-        About
+        <UnderConstruction />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
         <TeamMemberGrid />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
-        Testimonials
+        <UnderConstruction />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={3}>
         <ResearchAndEvals />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={4}>
-        Get Involved
+        <UnderConstruction />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={5}>
         <BlogPosts />
@@ -270,12 +270,11 @@ function BlogPosts() {
 }
 
 
-function App() {
+function UnderConstruction() {
   const [count, setCount] = useState(0)
 
   return (
-    <><ThemeProvider theme={theme}>
-      <NavTabs />
+    <div style={{textAlign: 'center'}}>
       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -284,7 +283,7 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>Vite + React</h1>
+      <h1>Under Construction...</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)} style={{backgroundColor: theme.palette.yellow.main}}>
           count is {count}
@@ -296,7 +295,15 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
-    </ThemeProvider></>
+    </div>
+  )
+}
+
+function App() {
+  return (
+    <ThemeProvider theme={theme}>
+      <NavTabs />
+    </ThemeProvider>
   )
 }
 
