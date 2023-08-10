@@ -185,6 +185,7 @@ function NavTabs() {
           <Tab label="Testimonials" {...a11yProps(2)} />
           <Tab label="Research and Evaluation" {...a11yProps(3)} />
           <Tab label="Get Involved" {...a11yProps(4)} />
+          <Tab label="Blog" {...a11yProps(5)} />
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
@@ -201,6 +202,9 @@ function NavTabs() {
       </CustomTabPanel>
       <CustomTabPanel value={value} index={4}>
         Get Involved
+      </CustomTabPanel>
+      <CustomTabPanel value={value} index={5}>
+        <BlogPosts />
       </CustomTabPanel>
     </Box>
   );
@@ -272,7 +276,6 @@ function App() {
   return (
     <><ThemeProvider theme={theme}>
       <NavTabs />
-      <BlogPosts />
       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
