@@ -12,6 +12,8 @@ theme = createTheme(theme, {
     // 'primary'/'secondary'. This will avoid surprises down the line when changing props
     // on MUI components (for example, a developer might try to change indicatorColor
     // or textColor on MUI <Tabs> from 'secondary' to 'tertiary', which will not work).
+    // ...However, to avoid having to override color on every component, we set
+    // primary and secondary to refer to these named colors (see below).
     purple: theme.palette.augmentColor({
       color: {
         main: '#A888C7',
@@ -36,6 +38,10 @@ theme = createTheme(theme, {
 });
 
 theme = createTheme(theme, {
+  palette: {
+    primary: theme.palette.purple,
+    secondary: theme.palette.yellow,
+  },
   components: {
     MuiTabs: {
       styleOverrides: {

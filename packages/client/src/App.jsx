@@ -6,7 +6,7 @@ import './App.css'
 import { useQuery } from '@apollo/client';
 
 import { ThemeProvider } from '@mui/material/styles';
-import { Box, Card, Tab, Tabs, Typography } from '@mui/material';
+import { Box, Button, Card, Tab, Tabs, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 import ReactMarkdown, { uriTransformer } from 'react-markdown';
 
@@ -196,9 +196,9 @@ function UnderConstruction() {
       </div>
       <h1>Under Construction...</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)} style={{backgroundColor: theme.palette.yellow.main}}>
+        <Button onClick={() => setCount((count) => count + 1)}>
           count is {count}
-        </button>
+        </Button>
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
