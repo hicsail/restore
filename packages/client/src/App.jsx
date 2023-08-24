@@ -5,7 +5,116 @@ import './App.css'
 
 import { useQuery, gql } from '@apollo/client';
 
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Box, Card, Tab, Tabs, Typography } from '@mui/material';
+import PropTypes from 'prop-types';
+import ReactMarkdown, { uriTransformer } from 'react-markdown';
 
+// Compose theme in several steps so we can
+//   (1) use augmentColor, and
+//   (2) style components using named colors.
+let theme = createTheme({});
+
+theme = createTheme(theme, {
+  palette: {
+    // Since we have a tricolor palette, and MUI's default palette system is bicolor,
+    // let's use named custom colors instead of adding a custom 'tertiary' to the built-in
+    // 'primary'/'secondary'. This will avoid surprises down the line when changing props
+    // on MUI components (for example, a developer might try to change indicatorColor
+    // or textColor on MUI <Tabs> from 'secondary' to 'tertiary', which will not work).
+    purple: theme.palette.augmentColor({
+      color: {
+        main: '#A888C7',
+      },
+    }),
+    yellow: theme.palette.augmentColor({
+      color: {
+        main: '#FFD884',
+      },
+    }),
+    blue: theme.palette.augmentColor({
+      color: {
+        main: '#78CEE9',
+      },
+    }),
+    black: theme.palette.augmentColor({
+      color: {
+        main: '#000000',
+      },
+    }),
+  },
+});
+
+theme = createTheme(theme, {
+  components: {
+    MuiTabs: {
+      styleOverrides: {
+        root: {
+          '& .MuiTabs-indicator': {
+            backgroundColor: 'purple',
+          },
+        },
+      },
+    },
+    MuiTab: {
+      styleOverrides: {
+        root: {
+          color: 'black.light',
+          '&.Mui-selected': {
+            color: 'black',
+          },
+        },
+      },
+    },
+  },
+});
+
+
+const GET_ABOUT_MISSION = gql`
+  query GetAboutMission {
+    aboutMission {
+      data {
+        attributes {
+           Body
+        }
+      }
+    }
+  }
+`;
+const GET_TEAM_MEMBERS = gql`
+  query GetTeamMembers {
+    teamMembers {
+      data {
+        id
+        attributes {
+          Name
+          Titles
+          Roles
+          Languages
+          LinkToCV
+          Photo {
+            data {
+              attributes {
+                url
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+const GET_RESEARCH_AND_EVALUATIONS = gql`
+  query GetResearchAndEvaluations {
+    researchAndEvaluation {
+      data {
+        attributes {
+          Body
+        }
+      }
+    }
+}
+`;
 const GET_BLOG_POSTS = gql`
   query GetBlogPosts {
     blogPosts {
@@ -22,28 +131,174 @@ const GET_BLOG_POSTS = gql`
 `;
 
 
-function DisplayBlogPosts() {
+// This function is for taking image URLs from markdown content
+// and prepending the Strapi URL where needed (i.e. in relative paths).
+// It is meant to be composed with react-markdown's default uriTransformer,
+// so it assumes that the url is already cleaned.
+function prependStrapiURL(url) {
+  const first = url.charAt(0)
+  if (first === '/') {
+    return import.meta.env.VITE_STRAPI_URL + url
+  }
+  return url
+}
+function processMarkdownImageUri(url) {
+  return prependStrapiURL(uriTransformer(url))
+}
+
+
+function CustomTabPanel(props) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ p: 3 }}>
+          {children}
+        </Box>
+      )}
+    </div>
+  );
+}
+
+CustomTabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired,
+};
+
+function a11yProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`,
+  };
+}
+
+function NavTabs() {
+  const [value, setValue] = useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
+  return (
+    <Box sx={{ width: '100%' }}>
+      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+        <Tabs value={value} onChange={handleChange} aria-label="navigation tabs">
+          <Tab label="About" {...a11yProps(0)} />
+          <Tab label="Our Team" {...a11yProps(1)} />
+          <Tab label="Testimonials" {...a11yProps(2)} />
+          <Tab label="Research and Evaluation" {...a11yProps(3)} />
+          <Tab label="Get Involved" {...a11yProps(4)} />
+          <Tab label="Blog" {...a11yProps(5)} />
+        </Tabs>
+      </Box>
+      <CustomTabPanel value={value} index={0}>
+        <AboutMission />
+      </CustomTabPanel>
+      <CustomTabPanel value={value} index={1}>
+        <TeamMemberGrid />
+      </CustomTabPanel>
+      <CustomTabPanel value={value} index={2}>
+        <UnderConstruction />
+      </CustomTabPanel>
+      <CustomTabPanel value={value} index={3}>
+        <ResearchAndEvals />
+      </CustomTabPanel>
+      <CustomTabPanel value={value} index={4}>
+        <UnderConstruction />
+      </CustomTabPanel>
+      <CustomTabPanel value={value} index={5}>
+        <BlogPosts />
+      </CustomTabPanel>
+    </Box>
+  );
+}
+
+
+function AboutMission() {
+  const { loading, error, data } = useQuery(GET_ABOUT_MISSION);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error : {error.message}</p>;
+
+  return (
+    <ReactMarkdown>{data.aboutMission.data.attributes.Body}</ReactMarkdown>
+  )
+}
+
+
+function TeamMemberGrid() {
+  return <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 1 }}><TeamMemberCards /></Box>
+}
+
+function TeamMemberCards() {
+  const { loading, error, data } = useQuery(GET_TEAM_MEMBERS);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error : {error.message}</p>;
+
+  return data.teamMembers.data.map(({ id, attributes }) => (
+    <Card key={id} className="teamMemberCard" sx={{ backgroundColor: 'blue.main', padding: '1rem', textAlign: 'center' }}>
+      <img src={import.meta.env.VITE_STRAPI_URL + attributes.Photo.data.attributes.url} />
+      <Typography variant="h5">{attributes.Name}</Typography>
+      <Typography>{attributes.Titles}</Typography>
+      <Typography>{attributes.Roles}</Typography>
+      <Typography>{attributes.Languages}</Typography>
+    </Card>
+  ));
+}
+
+function ResearchAndEvals() {
+  const { loading, error, data } = useQuery(GET_RESEARCH_AND_EVALUATIONS);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error : {error.message}</p>;
+
+  return (
+    <ReactMarkdown>{data.researchAndEvaluation.data.attributes.Body}</ReactMarkdown>
+  )
+}
+
+
+
+function BlogPosts() {
   const { loading, error, data } = useQuery(GET_BLOG_POSTS);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error : {error.message}</p>;
 
   return data.blogPosts.data.map(({ id, attributes }) => (
-    <div key={id}>
+    <div
+      key={id}
+      style={{
+        backgroundColor: theme.palette.purple.light,
+        color: theme.palette.purple.contrastText,
+        padding: '0.5rem 1rem',
+        margin: '1rem auto',
+        borderRadius: '1em' }}
+    >
       <h3>{attributes.Title}</h3>
-      <b>Published at: {attributes.DatetimePublished}</b>
-      <p>{attributes.Body}</p>
+      <p>Published at: {attributes.DatetimePublished}</p>
+      <hr />
+      <ReactMarkdown transformImageUri={processMarkdownImageUri}>{attributes.Body}</ReactMarkdown>
       <br />
     </div>
   ));
 }
 
 
-function App() {
+function UnderConstruction() {
   const [count, setCount] = useState(0)
 
   return (
-    <>
+    <div style={{textAlign: 'center'}}>
       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -52,20 +307,27 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>Vite + React</h1>
+      <h1>Under Construction...</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
+        <button onClick={() => setCount((count) => count + 1)} style={{backgroundColor: theme.palette.yellow.main}}>
           count is {count}
         </button>
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
-        <DisplayBlogPosts />
       </div>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
-    </>
+    </div>
+  )
+}
+
+function App() {
+  return (
+    <ThemeProvider theme={theme}>
+      <NavTabs />
+    </ThemeProvider>
   )
 }
 
