@@ -29,11 +29,6 @@ theme = createTheme(theme, {
         main: '#78CEE9',
       },
     }),
-    black: theme.palette.augmentColor({
-      color: {
-        main: '#000000',
-      },
-    }),
   },
 });
 
@@ -55,7 +50,7 @@ theme = createTheme(theme, {
     MuiTab: {
       styleOverrides: {
         root: {
-          color: 'black.light',
+          color: 'gray',
           '&.Mui-selected': {
             color: 'black',
           },
