@@ -1,10 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
+import App from './components/App.jsx'
 import './index.css'
 
 import { ApolloClient, createHttpLink, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
 
 const httpLink = createHttpLink({
   uri: import.meta.env.VITE_STRAPI_URL + '/graphql',
@@ -27,10 +30,19 @@ const apolloclient = new ApolloClient({
 });
 
 
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+  },
+]);
+
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ApolloProvider client={apolloclient}>
-      <App />
+      <RouterProvider router={router} />
     </ApolloProvider>
   </React.StrictMode>,
 )

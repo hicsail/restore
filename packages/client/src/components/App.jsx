@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import reactLogo from '../assets/react.svg'
 import viteLogo from '/vite.svg'
-import './App.css'
+import '../App.css'
 
 import { useQuery } from '@apollo/client';
 
@@ -10,12 +10,12 @@ import { Box, Button, Card, Tab, Tabs, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 import ReactMarkdown, { uriTransformer } from 'react-markdown';
 
-import { theme } from './theme.jsx'
+import { theme } from '../theme.jsx'
 import { GET_ABOUT_MISSION,
          GET_TEAM_MEMBERS,
          GET_RESEARCH_AND_EVALUATIONS,
          GET_BLOG_POSTS
-       } from './gql.jsx'
+       } from '../gql.jsx'
 
 
 // This function is for taking image URLs from markdown content
