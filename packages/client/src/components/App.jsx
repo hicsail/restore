@@ -17,6 +17,8 @@ function NavTabs() {
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={pathname} aria-label="navigation tabs">
+          // TODO: FIX: when on root/index route, no tab is active.
+          // (On some future routes, this may be desired behavior; nevertheless it throws an error even if it still works)
           <Tab label='About' value='/about' to='about' component={Link} />
           <Tab label='Our Team' value='/our-team' to='our-team' component={Link} />
           <Tab label='Testimonials' value='/testimonials' to='testimonials' component={Link} />
