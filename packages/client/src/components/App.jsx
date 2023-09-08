@@ -13,12 +13,15 @@ import { theme } from '../theme.jsx'
 function NavTabs() {
   const { pathname } = useLocation();
 
+  // If current path is / then set Tabs value prop to /about (since /about is the index route);
+  // Otherwise if current path is not a tab path (a currently hypothetical scenario), set Tabs value prop to false.
+  const tabPaths = ['/about', '/our-team', '/testimonials', '/research-and-evaluation', '/get-involved', '/blog'];
+  const tabsVal = pathname == '/' ? '/about' : tabPaths.includes(pathname) && pathname;
+
   return (
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={pathname} aria-label="navigation tabs">
-          // TODO: FIX: when on root/index route, no tab is active.
-          // (On some future routes, this may be desired behavior; nevertheless it throws an error even if it still works)
+        <Tabs value={tabsVal} aria-label="navigation tabs">
           <Tab label='About' value='/about' to='about' component={Link} />
           <Tab label='Our Team' value='/our-team' to='our-team' component={Link} />
           <Tab label='Testimonials' value='/testimonials' to='testimonials' component={Link} />
