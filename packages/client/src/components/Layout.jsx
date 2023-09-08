@@ -3,6 +3,7 @@ import '../App.css'
 
 import { Link, Outlet, useLocation } from 'react-router-dom';
 
+import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
 import { Box, Tab, Tabs } from '@mui/material';
 import PropTypes from 'prop-types';
@@ -30,18 +31,19 @@ function NavTabs() {
           <Tab label='Blog' value='/blog' to='blog' component={Link} />
         </Tabs>
       </Box>
-      <Outlet />
     </Box>
   );
 }
 
 
-function App() {
+function Layout() {
   return (
     <ThemeProvider theme={theme}>
+      <CssBaseline />
       <NavTabs />
+      <Outlet />
     </ThemeProvider>
   )
 }
 
-export default App
+export default Layout

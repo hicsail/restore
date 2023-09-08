@@ -7,7 +7,7 @@ import { setContext } from '@apollo/client/link/context';
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import App from './components/App.jsx'
+import Layout from './components/Layout.jsx'
 import AboutMission from './components/AboutMission.jsx'
 import TeamMemberGrid from './components/Team.jsx'
 import ResearchAndEvals from './components/Research.jsx'
@@ -39,7 +39,7 @@ const apolloclient = new ApolloClient({
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <Layout />,
     children: [
       {
         index: true,
