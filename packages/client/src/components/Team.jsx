@@ -14,7 +14,7 @@ function TeamMemberCards() {
   if (error) return <p>Error : {error.message}</p>;
 
   return data.teamMembers.data.map(({ id, attributes }) => (
-    <Card key={id} className="teamMemberCard" sx={{ backgroundColor: 'blue.main', padding: '1rem', textAlign: 'center' }}>
+    <Card key={id} sx={{ backgroundColor: 'blue.main', padding: '1rem', textAlign: 'center' }}>
       <img src={import.meta.env.VITE_STRAPI_URL + attributes.Photo.data.attributes.url} />
       <Typography variant="h5">{attributes.Name}</Typography>
       <Typography>{attributes.Titles}</Typography>

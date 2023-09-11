@@ -1,11 +1,10 @@
 import { useState } from 'react'
-import '../App.css'
 
 import { Link, Outlet, useLocation } from 'react-router-dom';
 
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
-import { Box, Tab, Tabs } from '@mui/material';
+import { Box, Container, Tab, Tabs } from '@mui/material';
 import PropTypes from 'prop-types';
 
 import { theme } from '../theme.jsx'
@@ -41,7 +40,9 @@ function Layout() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <NavTabs />
-      <Outlet />
+      <Container sx={{ margin: '1rem auto' }}>
+        <Outlet />
+      </Container>
     </ThemeProvider>
   )
 }
