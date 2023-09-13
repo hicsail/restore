@@ -1,5 +1,22 @@
 import { gql } from '@apollo/client';
 
+export const GET_LOGO_FULL_SVG = gql`
+  query GetLogoFullSVG {
+    logoFullSvg {
+      data {
+        attributes {
+          LogoFullSVG {
+            data {
+              attributes {
+                url
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
 export const GET_ABOUT_MISSION = gql`
   query GetAboutMission {
     aboutMission {

@@ -4,21 +4,32 @@ import { NavLink, Outlet} from 'react-router-dom';
 
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
-import { AppBar, Button, Container, Toolbar, Typography } from '@mui/material';
+import { AppBar, Box, Button, Container, Toolbar } from '@mui/material';
 import PropTypes from 'prop-types';
 
 import { theme } from '../theme.jsx'
 
+import { useQuery } from '@apollo/client';
+import { GET_LOGO_FULL_SVG } from '../gql.jsx'
 
 
 function NavBar() {
+  const { loading, error, data } = useQuery(GET_LOGO_FULL_SVG);
+
+  if (loading) return <p>RESTORE</p>;
+  if (error) return <p>Error : {error.message}</p>;
+
   return (
       // Elevation prop is just there to silence warning
       <AppBar position="static" color="transparent" variant="outlined" elevation={0}>
           <Toolbar>
-              <Typography variant="h6" component={NavLink} to="/" sx={{ flexGrow: 1 }}>
-                  Restore
-              </Typography>
+              <NavLink to="/" style={{lineHeight: 0}}>
+                <img
+                  src={import.meta.env.VITE_STRAPI_URL + data.logoFullSvg.data.attributes.LogoFullSVG.data.attributes.url}
+                  height="48"
+                />
+              </NavLink>
+              <Box sx={{ flexGrow: 1 }} />
               <Button component={NavLink} to="/about" color="inherit">
                   About
               </Button>
