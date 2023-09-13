@@ -1,45 +1,53 @@
 import { useState } from 'react'
 
-import { Link, Outlet, useLocation } from 'react-router-dom';
+import { NavLink, Outlet} from 'react-router-dom';
 
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
-import { Box, Container, Tab, Tabs } from '@mui/material';
+import { AppBar, Button, Container, Toolbar, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 
 import { theme } from '../theme.jsx'
 
 
-function NavTabs() {
-  const { pathname } = useLocation();
 
-  // If current path is / then set Tabs value prop to /about (since /about is the index route);
-  // Otherwise if current path is not a tab path (a currently hypothetical scenario), set Tabs value prop to false.
-  const tabPaths = ['/about', '/our-team', '/testimonials', '/research-and-evaluation', '/get-involved', '/blog'];
-  const tabsVal = pathname == '/' ? '/about' : tabPaths.includes(pathname) && pathname;
-
+function NavBar() {
   return (
-    <Box sx={{ width: '100%' }}>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={tabsVal} aria-label="navigation tabs">
-          <Tab label='About' value='/about' to='about' component={Link} />
-          <Tab label='Our Team' value='/our-team' to='our-team' component={Link} />
-          <Tab label='Testimonials' value='/testimonials' to='testimonials' component={Link} />
-          <Tab label='Research and Evaluation' value='/research-and-evaluation' to='research-and-evaluation' component={Link} />
-          <Tab label='Get Involved' value='/get-involved' to='get-involved' component={Link} />
-          <Tab label='Blog' value='/blog' to='blog' component={Link} />
-        </Tabs>
-      </Box>
-    </Box>
+      // Elevation prop is just there to silence warning
+      <AppBar position="static" color="transparent" variant="outlined" elevation={0}>
+          <Toolbar>
+              <Typography variant="h6" component={NavLink} to="/" sx={{ flexGrow: 1 }}>
+                  Restore
+              </Typography>
+              <Button component={NavLink} to="/about" color="inherit">
+                  About
+              </Button>
+              <Button component={NavLink} to="/our-team" color="inherit">
+                  Our Team
+              </Button>
+              <Button component={NavLink} to="/testimonials" color="inherit">
+                  Testimonials
+              </Button>
+              <Button component={NavLink} to="/research-and-evaluation" color="inherit">
+                  Research and Evaluation
+              </Button>
+              <Button component={NavLink} to="/get-involved" color="inherit">
+                  Get Involved
+              </Button>
+              <Button component={NavLink} to="/blog" color="inherit">
+                  Blog
+              </Button>
+          </Toolbar>
+      </AppBar>
   );
-}
+};
 
 
 function Layout() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <NavTabs />
+      <NavBar />
       <Container sx={{ margin: '1rem auto' }}>
         <Outlet />
       </Container>
