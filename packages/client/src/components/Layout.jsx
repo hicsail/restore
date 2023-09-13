@@ -21,7 +21,7 @@ function NavBar() {
 
   return (
       // Elevation prop is just there to silence warning
-      <AppBar position="static" color="transparent" variant="outlined" elevation={0}>
+      <AppBar position="static" color="transparent" variant="outlined" elevation={0} sx={{ margin: '0 0 4rem'}}>
           <Toolbar>
               <NavLink to="/" style={{lineHeight: 0}}>
                 <img
