@@ -6,6 +6,10 @@ import { setContext } from '@apollo/client/link/context';
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
+import { ThemeProvider } from '@mui/material/styles';
+import { theme } from './theme.jsx'
+import CssBaseline from '@mui/material/CssBaseline';
+
 import Layout from './components/Layout.jsx'
 import AboutMission from './components/AboutMission.jsx'
 import TeamMemberGrid from './components/Team.jsx'
@@ -76,7 +80,10 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ApolloProvider client={apolloclient}>
-      <RouterProvider router={router} />
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <RouterProvider router={router} />
+      </ThemeProvider>
     </ApolloProvider>
   </React.StrictMode>,
 )
