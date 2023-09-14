@@ -38,25 +38,31 @@ theme = createTheme(theme, {
     secondary: theme.palette.yellow,
   },
   components: {
-    MuiTabs: {
+    MuiToolbar: {
       styleOverrides: {
         root: {
-          '& .MuiTabs-indicator': {
-            backgroundColor: 'purple',
+          // Mimicking the style of MUI Tabs.
+          '@media (min-width: 0px)': {
+            // To keep the active tab indicator flush to the toolbar's bottom border,
+            // override the min-height values for all @media min-width rules;
+            // instead let the MuiButtons determine spacing.
+            minHeight: '0px',
+            paddingRight: '0px',
           },
-        },
-      },
-    },
-    MuiTab: {
-      styleOverrides: {
-        root: {
-          color: 'gray',
-          '&.Mui-selected': {
-            color: 'black',
+          alignItems: 'stretch', // Make buttons fill vertical space
+          '& .MuiButton-root': {
+            color: 'gray',
+            borderRadius: '0',
+            padding: '0.7em 1.2em',
+            '&.active': {
+              color: theme.palette.purple.main,
+              borderBottom: 'solid',
+              borderWidth: '0.2em',
+              borderColor: theme.palette.purple.main,
+            },
           },
         },
       },
     },
   },
 });
-

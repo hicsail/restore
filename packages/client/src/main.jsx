@@ -1,13 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import './index.css'
 
 import { ApolloClient, createHttpLink, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import App from './components/App.jsx'
+import Layout from './components/Layout.jsx'
 import AboutMission from './components/AboutMission.jsx'
 import TeamMemberGrid from './components/Team.jsx'
 import ResearchAndEvals from './components/Research.jsx'
@@ -39,7 +38,7 @@ const apolloclient = new ApolloClient({
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <Layout />,
     children: [
       {
         index: true,
