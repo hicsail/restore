@@ -2,12 +2,8 @@ import { useState } from 'react'
 
 import { NavLink, Outlet} from 'react-router-dom';
 
-import CssBaseline from '@mui/material/CssBaseline';
-import { ThemeProvider } from '@mui/material/styles';
 import { AppBar, Box, Button, Container, Toolbar } from '@mui/material';
 import PropTypes from 'prop-types';
-
-import { theme } from '../theme.jsx'
 
 import { useQuery } from '@apollo/client';
 import { GET_LOGO_FULL_SVG } from '../gql.jsx'
@@ -56,13 +52,12 @@ function NavBar() {
 
 function Layout() {
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
+    <>
       <NavBar />
       <Container sx={{ margin: '1rem auto' }}>
         <Outlet />
       </Container>
-    </ThemeProvider>
+    </>
   )
 }
 
