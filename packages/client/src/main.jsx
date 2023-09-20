@@ -12,6 +12,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 
 import Layout from './components/Layout.jsx'
 import AboutMission from './components/AboutMission.jsx'
+import TreatmentsServices from './components/TreatmentsServices.jsx'
 import TeamMemberGrid from './components/Team.jsx'
 import ResearchAndEvals from './components/Research.jsx'
 import BlogPosts from './components/Blog.jsx'
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
       {
         path: "about",
         element: <AboutMission />,
+      },
+      {
+        path: "treatments-and-services",
+        element: <TreatmentsServices />,
       },
       {
         path: "our-team",
