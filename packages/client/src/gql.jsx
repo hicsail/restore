@@ -28,6 +28,17 @@ export const GET_ABOUT_MISSION = gql`
     }
   }
 `;
+export const GET_UPCOMING_ONGOING = gql`
+  query GetUpcomingOngoing {
+    aboutUpcomingOngoing {
+      data {
+        attributes {
+          Body
+        }
+      }
+    }
+  }
+`;
 export const GET_TEAM_MEMBERS = gql`
   query GetTeamMembers {
     teamMembers {
