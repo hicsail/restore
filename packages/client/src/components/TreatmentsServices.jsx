@@ -2,6 +2,12 @@ import { Button } from '@mui/material';
 
 import boardsImg from '../assets/treatments_and_services/boards.gif'
 import implementationScienceFrameworksFullImg from '../assets/treatments_and_services/implementation_science_frameworks_full.png'
+import implementationFrameworkDeterminantsImg from '../assets/treatments_and_services/implementation_framework_determinants_column.png'
+import determinantsVennImg from '../assets/treatments_and_services/determinants_diagram.jpg'
+import implementationFrameworkProcessesImg from '../assets/treatments_and_services/implementation_framework_processes_column.png'
+import coreFacilitationStrategiesImg from '../assets/treatments_and_services/core_facilitation_strategies.gif'
+import implementationFrameworkEvaluationImg from '../assets/treatments_and_services/implementation_framework_evaluation_column.png'
+import proctorsTaxonomyImg from '../assets/treatments_and_services/proctors_taxonomy_of_outcomes.jpg'
 
 export default function Services() {
   return (
@@ -67,10 +73,19 @@ export default function Services() {
 
       <h2 id="determinants"></h2>
       <p>Health Equity Implementation Framework proposes determinants believed to predict successful and equitable implementation.</p>
+      <img src={ implementationFrameworkDeterminantsImg } alt="implementation framework: determinants" />
+      <img src={ determinantsVennImg } alt="determinants diagram" />
 
       <h2 id="processes"></h2>
+      <p>RESTORE provides facilitation—an interactive problem-solving approach that supports organizations in applying evidence-based practices in routine care.</p>
+      <img src={ implementationFrameworkProcessesImg } alt="implementation framework: processes" />
+      <img src={ coreFacilitationStrategiesImg } alt="core facilitation strategies diagram" />
 
       <h2 id="evaluation"></h2>
+      <p>We assess implementation success and health equity through Proctor’s Taxonomy of Outcomes, Expanded for Health Equity.</p>
+      <img src={ implementationFrameworkEvaluationImg } alt="implementation framework: evaluation" />
+      <img src={ proctorsTaxonomyImg } alt="Proctor's Taxonomy of Outcomes diagram" />
+
 
       <a href="#Services-to-our-patients"><h2 id="Services-to-our-patients">Services to our patients</h2></a>
     </>
