@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Box, Button, Popper } from '@mui/material';
 
+import { useLocation } from 'react-router-dom';
+
 import boardsImg from '../assets/treatments_and_services/boards.gif'
 import implementationScienceFrameworksFullImg from '../assets/treatments_and_services/implementation_science_frameworks_full.png'
 import implementationFrameworkDeterminantsImg from '../assets/treatments_and_services/implementation_framework_determinants_column.png'
@@ -14,6 +16,79 @@ import { useQuery } from '@apollo/client';
 import { GET_UPCOMING_ONGOING } from '../gql.jsx'
 import ReactMarkdown from 'react-markdown';
 
+
+function ImplementationFrameworkInteractive () {
+  let { hash } = useLocation();
+  const [tabValue, setTabValue] = useState(hash || "#determinants");
+
+  return (
+    <>
+      <map name="implementation-science-columns">
+        <area
+          shape="rect"
+          coords="0,0,353,599"
+          href="#determinants"
+          target="_self"
+          alt="determinants"
+          onMouseOver={ () => { setTabValue("#determinants") } }
+        />
+        <area
+          shape="rect"
+          coords="354,0,707,599"
+          href="#processes"
+          target="_self"
+          alt="processes"
+          onMouseOver={ () => { setTabValue("#processes") } }
+        />
+        <area
+          shape="rect"
+          coords="708,0,1060,599"
+          href="#evaluation"
+          target="_self"
+          alt="evaluation"
+          onMouseOver={ () => { setTabValue("#evaluation") } }
+        />
+      </map>
+      <img
+        useMap="#implementation-science-columns"
+        src={ implementationScienceFrameworksFullImg }
+        alt="implementation science infographic"
+        height="599"
+        width="1060"
+      />
+
+      <Box>
+      {tabValue === "#determinants" && (
+        <>
+          <h2 id="determinants"></h2>
+          <p>Health Equity Implementation Framework proposes determinants believed to predict successful and equitable implementation.</p>
+          <img src={ implementationFrameworkDeterminantsImg } alt="implementation framework: determinants" />
+          <DeterminantsInteractive />
+        </>
+      )}
+
+      {tabValue === "#processes" && (
+        <>
+          <h2 id="processes"></h2>
+          <p>RESTORE provides facilitation—an interactive problem-solving approach that supports organizations in applying evidence-based practices in routine care.</p>
+          <img src={ implementationFrameworkProcessesImg } alt="implementation framework: processes" />
+          <img src={ coreFacilitationStrategiesImg } alt="core facilitation strategies diagram" />
+        </>
+      )}
+
+      {tabValue === "#evaluation" && (
+        <>
+          <h2 id="evaluation"></h2>
+          <p>We assess implementation success and health equity through Proctor’s Taxonomy of Outcomes, Expanded for Health Equity.</p>
+          <img src={ implementationFrameworkEvaluationImg } alt="implementation framework: evaluation" />
+          <img src={ proctorsTaxonomyImg } alt="Proctor's Taxonomy of Outcomes diagram" />
+        </>
+      )}
+      </Box>
+
+    </>
+  )
+}
 
 function DeterminantsInteractive () {
 
@@ -177,52 +252,7 @@ export default function Services() {
         <li>Evaluate the effect of our strategies in achieving implementation success and health equity</li>
       </ol>
 
-      <map name="implementation-science-columns">
-        <area
-          shape="rect"
-          coords="0,0,353,599"
-          href="#determinants"
-          target="_self"
-          alt="determinants"
-        />
-        <area
-          shape="rect"
-          coords="354,0,707,599"
-          href="#processes"
-          target="_self"
-          alt="processes"
-        />
-        <area
-          shape="rect"
-          coords="708,0,1060,599"
-          href="#evaluation"
-          target="_self"
-          alt="evaluation"
-        />
-      </map>
-      <img
-        useMap="#implementation-science-columns"
-        src={ implementationScienceFrameworksFullImg }
-        alt="implementation science infographic"
-        height="599"
-        width="1060"
-      />
-
-
-      <h2 id="determinants"></h2>
-      <p>Health Equity Implementation Framework proposes determinants believed to predict successful and equitable implementation.</p>
-      <img src={ implementationFrameworkDeterminantsImg } alt="implementation framework: determinants" />
-      <DeterminantsInteractive />
-
-      <h2 id="processes"></h2>
-      <p>RESTORE provides facilitation—an interactive problem-solving approach that supports organizations in applying evidence-based practices in routine care.</p>
-      <img src={ implementationFrameworkProcessesImg } alt="implementation framework: processes" />
-      <img src={ coreFacilitationStrategiesImg } alt="core facilitation strategies diagram" />
-
-      <h2 id="evaluation"></h2>
-      <p>We assess implementation success and health equity through Proctor’s Taxonomy of Outcomes, Expanded for Health Equity.</p>
-      <img src={ implementationFrameworkEvaluationImg } alt="implementation framework: evaluation" />
-      <img src={ proctorsTaxonomyImg } alt="Proctor's Taxonomy of Outcomes diagram" />
+      <ImplementationFrameworkInteractive />
 
       <h2>Scope of services to the system</h2>
       <p>RESTORE provides facilitation—an interactive problem-solving approach that supports organizations in applying evidence-based practices in routine care.</p>
