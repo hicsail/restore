@@ -11,6 +11,7 @@ import implementationFrameworkProcessesImg from '../assets/treatments_and_servic
 import coreFacilitationStrategiesImg from '../assets/treatments_and_services/core_facilitation_strategies.gif'
 import implementationFrameworkEvaluationImg from '../assets/treatments_and_services/implementation_framework_evaluation_column.png'
 import proctorsTaxonomyImg from '../assets/treatments_and_services/proctors_taxonomy_of_outcomes.jpg'
+import recoveryCurveImg from '../assets/treatments_and_services/recovery_curve_graph.png'
 
 import { useQuery } from '@apollo/client';
 import { GET_UPCOMING_ONGOING } from '../gql.jsx'
@@ -217,6 +218,60 @@ function DeterminantsInteractive () {
 }
 
 
+function AllTreatmentsAre () {
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [popperText, setPopperText] = useState(null);
+
+  const handleClick = (ptext) => (event) => {
+    setAnchorEl(event.currentTarget === anchorEl ? null : event.currentTarget);
+    setPopperText(event.currentTarget === anchorEl ? null : ptext);
+  }
+
+  const open = Boolean(anchorEl);
+  const id = open ? 'treatment-characteristics-popper' : undefined;
+
+  const briefText = (
+    <ul>
+      <li>Brief treatments focus on building skills to manage PTSD and trauma- related distress</li>
+      <li>We use a brief treatment model to increase access to care</li>
+      <li>These treatments can normally be completed over 3-6 months</li>
+      <li>Some patients find relief from a single course BRIEF treatment alone and others will find relief from sequencing a series of these treatments from low to high intensity</li>
+    </ul>
+  )
+  const evidenceBasedText = (
+    <ul>
+      <li>Treatments for PTSD that have been researched and shown to be effective</li>
+      <li>Our clinicians are highly trained in a range of evidence-based treatments for PTSD, and receive consultation from lead experts in the field</li>
+      <li>We utilize brief and culturally responsive evidence-based treatments</li>
+    </ul>
+  )
+  const culturallyResponsiveText = (
+    <ul>
+      <li>Culturally responsive care is an approach to fully see and value all aspects of a patients’ identity, background, and experiences.</li>
+      <li>RESTORE treatments have undergone a systematic process of adaptation, to ensure that the treatments meet the needs of our healthcare system and the patients we serve. This includes adaptations to delivery modality, service setting, language, literacy, and cultural</li>
+      <li>Treatment manuals and materials are available in English, Spanish, and Haitian Creole (more coming soon)—and services can be provided in any language through the use of BMC interpreter services</li>
+      <li>RESTORE utilizes a patient advisory board to support the ongoing improvement of our treatments and service delivery strategies to ensure that we are providing the highest quality of culturally responsive PTSD treatment.</li>
+    </ul>
+  )
+
+
+  return (
+    <>
+      <p>All treatments are:</p>
+      <Button onClick={handleClick(briefText)} variant='contained' color='yellow'>Brief</Button>
+      <Button onClick={handleClick(evidenceBasedText)} variant='contained' color='yellow'>Evidence-based</Button>
+      <Button onClick={handleClick(culturallyResponsiveText)} variant='contained' color='yellow'>Culturally Responsive</Button>
+      <Popper id={id} open={open} anchorEl={anchorEl} placement='bottom'>
+        <Box sx={{ border: 1, p: 1, bgcolor: 'background.paper' }}>
+          {popperText}
+        </Box>
+      </Popper>
+    </>
+  )
+}
+
+
+
 
 export default function Services() {
   const upcomingOngoing = useQuery(GET_UPCOMING_ONGOING);
@@ -280,6 +335,11 @@ export default function Services() {
       </div>
 
       <a href="#Services-to-our-patients"><h2 id="Services-to-our-patients">Services to our patients</h2></a>
+
+      <p>Our treatment model uses a variety of service delivery strategies to maximize the reach and effectiveness of our treatments, and to support patient engagement.</p>
+      <p>Services help patients to get back on the natural recovery path following trauma.</p>
+      <img src={recoveryCurveImg} />
+      <AllTreatmentsAre />
     </>
   )
 }
