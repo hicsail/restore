@@ -18,6 +18,54 @@ import { GET_UPCOMING_ONGOING } from '../gql.jsx'
 import ReactMarkdown from 'react-markdown';
 
 
+// Temporary - to demo svgs
+import DPEHandwritten from '../assets/treatments_and_services/DPE_columns_original.handwritten.svg'
+import DPEBlunt from '../assets/treatments_and_services/DPE_columns_bluntstyle.plain.svg'
+import DPERounded from '../assets/treatments_and_services/DPE_columns_roundedstyle.plain.svg'
+function ImplementationFrameworkDemoPlaceholder() {
+  return (
+    <>
+      <h2>Original diagram in SVG form</h2>
+      <img src={ DPEHandwritten }/>
+      <h2>Blunted arrows</h2>
+      <img src={ DPEBlunt }/>
+      <h2>Rounded arrows</h2>
+      <img src={ DPERounded }/>
+    </>
+  )
+}
+
+function SVGExperiment() {
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [popperText, setPopperText] = useState(null);
+
+  const handleClick = (ptext) => (event) => {
+    setAnchorEl(event.currentTarget === anchorEl ? null : event.currentTarget);
+    setPopperText(event.currentTarget === anchorEl ? null : ptext);
+  }
+
+  const open = Boolean(anchorEl);
+  const id = open ? 'svg-exp-popper' : undefined;
+
+  return (
+    <>
+      <svg width="1110" height="300" xmlns="http://www.w3.org/2000/svg">
+          <rect x="30" y="0" width="270" height="140" rx="10" ry="10" fill="#A888C7" onClick={handleClick("You clicked determinants")}/>
+          <text x="50" y="80" textAnchor="start" fontSize="30" fill="black">Determinants</text>
+          <rect x="390" y="0" width="270" height="140" rx="10" ry="10" fill="#FFD884" onClick={handleClick("You clicked processes")}/>
+          <text x="410" y="80" textAnchor="start" fontSize="30" fill="black">Processes</text>
+          <rect x="750" y="0" width="270" height="140" rx="10" ry="10" fill="#78CEE9" onClick={handleClick("You clicked evaluation")}/>
+          <text x="770" y="80" textAnchor="start" fontSize="30" fill="black">Evaluation</text>
+      </svg>
+      <Popper id={id} open={open} anchorEl={anchorEl} placement='bottom'>
+        <Box sx={{ border: 1, p: 1, bgcolor: 'background.paper' }}>
+          {popperText}
+        </Box>
+      </Popper>
+    </>
+  )
+}
+
 function ImplementationFrameworkInteractive () {
   let { hash } = useLocation();
   const [tabValue, setTabValue] = useState(hash || "#determinants");
@@ -280,6 +328,11 @@ export default function Services() {
 
   return (
     <>
+      <h1>Temporary: Implementation Framework diagrams</h1>
+      <ImplementationFrameworkDemoPlaceholder />
+      <h1>Manipulating individual SVG components: (click the boxes)</h1>
+      <SVGExperiment />
+
       <h1>SERVICES</h1>
       <p>RESTORE provides services to health systems and patients to enhance access to high quality PTSD treatment and improve health equity.</p>
 
