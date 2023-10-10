@@ -5,7 +5,6 @@ import { useLocation } from 'react-router-dom';
 
 import boardsImg from '../assets/treatments_and_services/boards.gif'
 import determinantsVennImg from '../assets/treatments_and_services/determinants_diagram.jpg'
-import coreFacilitationStrategiesImg from '../assets/treatments_and_services/core_facilitation_strategies.gif'
 import proctorsTaxonomyImg from '../assets/treatments_and_services/proctors_taxonomy_of_outcomes.jpg'
 import recoveryCurveImg from '../assets/treatments_and_services/recovery_curve_graph.png'
 
@@ -28,6 +27,27 @@ import {
 function ImplementationFrameworkInteractive () {
   let { hash } = useLocation();
   const [tabValue, setTabValue] = useState(hash || "#determinants");
+
+  function BlueBox (text) {
+    // Blue boxes for Core Facilitation Strategies diagram.
+    // To get the requested layout (bottom two boxes horizontally centered in the grid)
+    // using grid layout, use a grid of 6*1fr instead of 3*1fr and insert a 1fr spacer box
+    // (see below). With thanks to https://www.billerickson.net/css-grid-center-last-item/
+    return (
+      <Box sx={{
+          color: '#ffffff',
+          bgcolor: '#5b9bd5',
+          padding: '1em',
+          textAlign: 'center',
+          display: 'flex',          // Vertically center text
+          flexDirection: 'column',  // Vertically center text
+          justifyContent: 'center', // Vertically center text
+          gridColumn: 'span 2'      // For centering last two boxes later on
+      }}>
+          <div>{text}</div>
+      </Box>
+    )
+  }
 
   return (
     <>
@@ -63,8 +83,17 @@ function ImplementationFrameworkInteractive () {
         <>
           <h2 id="processes"></h2>
           <p>RESTORE provides facilitation—an interactive problem-solving approach that supports organizations in applying evidence-based practices in routine care.</p>
-          <ProcessesColumnSVG />
-          <img src={ coreFacilitationStrategiesImg } alt="core facilitation strategies diagram" />
+          <Box sx={{ display: 'flex' }}>
+            <ProcessesColumnSVG />
+            <Box sx={{ width: '600px', margin: 'auto 50px', display: 'grid', gap: 2, gridTemplateColumns: 'repeat(6, 1fr)' }}>
+              { BlueBox("Clinical training and case consultation") }
+              { BlueBox("Implementation and evaluation planning") }
+              { BlueBox("Partnering with individuals with lived experience and clinical expertise (advisory boards)") }
+              <Box sx={{ gridColumn: 'span 1'}} /> {/* spacer for centering last two boxes */}
+              { BlueBox("Adapting interventions for diverse settings and populations") }
+              { BlueBox("Administrative and technical assistance") }
+            </Box>
+          </Box>
         </>
       )}
 
