@@ -81,13 +81,15 @@ function ImplementationFrameworkInteractive () {
         </a>
       </svg>
 
-      <Box>
+      <Box sx={{ height: '600px' }}>
       {tabValue === "#determinants" && (
         <>
           <h2 id="determinants"></h2>
           <p>Health Equity Implementation Framework proposes determinants believed to predict successful and equitable implementation.</p>
-          <DeterminantsColumnSVG />
-          <DeterminantsInteractive />
+          <Box sx={{ display: 'flex'}}>
+            <DeterminantsColumnSVG />
+            <DeterminantsInteractive />
+          </Box>
         </>
       )}
 
@@ -163,21 +165,19 @@ function ImplementationFrameworkInteractive () {
 }
 
 function DeterminantsInteractive () {
+  const instructionsText = (
+    <><p>Mouse over the diagram to learn more.</p></>
+  )
 
-  const [anchorEl, setAnchorEl] = useState(null);
-  const [popperText, setPopperText] = useState(null);
+  const [hoverText, setHoverText] = useState(instructionsText);
 
   const handleMouseOver = (ptext) => (event) => {
-    setAnchorEl(event.currentTarget);
-    setPopperText(ptext);
+    setHoverText(ptext);
   }
   const handleMouseOut = (event) => {
-    setAnchorEl(null);
-    setPopperText(null);
+    setHoverText(instructionsText);
   };
 
-  const open = Boolean(anchorEl);
-  const id = open ? 'determinants-diagram-popper' : undefined;
 
   const recipientsProvidersText = (
     <>
@@ -247,43 +247,45 @@ function DeterminantsInteractive () {
       <map name="determinants-venn-map">
         <area
           shape="circle"
-          coords="365,227,100"
+          coords="230,145,70"
           alt="recipient: patient"
           onMouseOver={handleMouseOver(recipientsPatientsText)}
           onMouseOut={handleMouseOut}
         />
         <area
           shape="circle"
-          coords="520,360,100"
+          coords="325,225,70"
           alt="the innovation"
           onMouseOver={handleMouseOver(theInnovationText)}
           onMouseOut={handleMouseOut}
         />
         <area
           shape="circle"
-          coords="365,500,100"
+          coords="230,315,70"
           alt="recipient: provider"
           onMouseOver={handleMouseOver(recipientsProvidersText)}
           onMouseOut={handleMouseOut}
         />
         <area
           shape="circle"
-          coords="360,360,300"
+          coords="225,225,200"
           alt="context"
           onMouseOver={handleMouseOver(contextText)}
           onMouseOut={handleMouseOut}
         />
       </map>
-      <img
-        useMap="#determinants-venn-map"
-        src={ determinantsVennImg }
-        alt="determinants diagram"
-      />
-      <Popper id={id} open={open} anchorEl={anchorEl} placement='right'>
+      <Box sx={{ width: '850px', display: 'flex'}}>
+        <img
+          height="450px"
+          width="450px"
+          useMap="#determinants-venn-map"
+          src={ determinantsVennImg }
+          alt="determinants diagram"
+        />
         <Box sx={{ border: 1, p: 1, bgcolor: 'background.paper' }}>
-          {popperText}
+          {hoverText}
         </Box>
-      </Popper>
+      </Box>
     </>
   )
 }
