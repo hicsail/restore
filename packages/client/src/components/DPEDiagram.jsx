@@ -30,19 +30,19 @@ export function DeterminantsColumn() {
   return (
     <g id="DeterminantsColumn">
       <g stroke="black" strokeWidth="2">
-        <rect x=" 14" y="50" width="260" height="320" rx="12" ry="12" fill="white" />
-        <rect x="  1" y="1" width="258" height="78" rx="40" ry="40" fill="#A888C7" />
-        <circle cx=" 50" cy="160" r="10" fill="#A888C7" />
-        <circle cx=" 50" cy="250" r="10" fill="#A888C7" />
-        <path d="M   1 357 h 258 l 40 32 v 28 l -40 32 h -258 v -8 l 30 -24 v -28 l -30 -24 v -8 z" fill="#A888C7" />
+        <rect x="14" y="50" width="260" height="320" rx="12" ry="12" fill="white" />
+        <rect x="1" y="1" width="258" height="78" rx="40" ry="40" fill="#A888C7" />
+        <circle cx="50" cy="160" r="10" fill="#A888C7" />
+        <circle cx="50" cy="250" r="10" fill="#A888C7" />
+        <path d="M 1 357 h 258 l 40 32 v 28 l -40 32 h -258 v -8 l 30 -24 v -28 l -30 -24 v -8 z" fill="#A888C7" />
       </g>
       <g textAnchor="start" fontFamily="sans-serif" fontSize="20">
-        <text x=" 30" y="50" fontSize="26" fontWeight="bold">Determinants</text>
-        <text x=" 75" y="168">Barriers</text>
-        <text x=" 75" y="258">Facilitators</text>
-        <text x=" 55" y="385">Health Equity</text>
-        <text x=" 55" y="410">Implementation</text>
-        <text x=" 55" y="435">Framework</text>
+        <text x="30" y="50" fontSize="26" fontWeight="bold">Determinants</text>
+        <text x="75" y="168">Barriers</text>
+        <text x="75" y="258">Facilitators</text>
+        <text x="55" y="385">Health Equity</text>
+        <text x="55" y="410">Implementation</text>
+        <text x="55" y="435">Framework</text>
       </g>
     </g>
   )
