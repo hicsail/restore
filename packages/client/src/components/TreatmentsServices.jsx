@@ -5,7 +5,6 @@ import { useLocation } from 'react-router-dom';
 
 import boardsImg from '../assets/treatments_and_services/boards.gif'
 import determinantsVennImg from '../assets/treatments_and_services/determinants_diagram.jpg'
-import proctorsTaxonomyImg from '../assets/treatments_and_services/proctors_taxonomy_of_outcomes.jpg'
 import recoveryCurveImg from '../assets/treatments_and_services/recovery_curve_graph.png'
 
 import { useQuery } from '@apollo/client';
@@ -43,6 +42,19 @@ function ImplementationFrameworkInteractive () {
           flexDirection: 'column',  // Vertically center text
           justifyContent: 'center', // Vertically center text
           gridColumn: 'span 2'      // For centering last two boxes later on
+      }}>
+          <div>{text}</div>
+      </Box>
+    )
+  }
+  function WhiteBox (text) {
+    // White, rounded-border boxes for Taxonomy of Outcomes diagram.
+    return (
+      <Box sx={{
+          borderStyle: 'solid',
+          borderRadius: '40px',
+          padding: '3em 1em',
+          textAlign: 'center',
       }}>
           <div>{text}</div>
       </Box>
@@ -101,8 +113,47 @@ function ImplementationFrameworkInteractive () {
         <>
           <h2 id="evaluation"></h2>
           <p>We assess implementation success and health equity through Proctor’s Taxonomy of Outcomes, Expanded for Health Equity.</p>
-          <EvaluationColumnSVG />
-          <img src={ proctorsTaxonomyImg } alt="Proctor's Taxonomy of Outcomes diagram" />
+          <Box sx={{ display: 'flex' }}>
+            <EvaluationColumnSVG />
+            <Box sx={{ margin: '0 auto', display: 'grid', gap: 2, gridTemplateColumns: 'repeat(3, 1fr)' }}>
+              { WhiteBox(
+                  <>
+                    <u>Implementation Outcomes</u>
+                    <br/>
+                    <br/>Acceptability
+                    <br/>Adoption
+                    <br/>Appropriateness
+                    <br/>Costs
+                    <br/>Feasibility
+                    <br/>Fidelity
+                    <br/>Penetration
+                    <br/>Sustainability
+                  </>
+              ) }
+              { WhiteBox(
+                  <>
+                    <u>Service outcomes*</u>
+                    <br/>
+                    <br/>Efficiency
+                    <br/>Safety
+                    <br/>Effectiveness
+                    <br/>Equity
+                    <br/>Patient-centeredness
+                    <br/>Timeliness
+                  </>
+              ) }
+              { WhiteBox(
+                  <>
+                    <u>Client outcomes</u>
+                    <br/>
+                    <br/>Satisfaction
+                    <br/>Function
+                    <br/>Symptomatology
+                  </>
+              ) }
+            <p><strong>*IOM Standards of Care</strong></p>
+            </Box>
+          </Box>
         </>
       )}
       </Box>
