@@ -5,7 +5,7 @@ import { useLocation } from 'react-router-dom';
 
 import boardsImg from '../assets/treatments_and_services/boards.gif'
 import determinantsVennImg from '../assets/treatments_and_services/determinants_diagram.jpg'
-import recoveryCurveImg from '../assets/treatments_and_services/recovery_curve_graph.png'
+import ptsdCurveImg from '../assets/treatments_and_services/ptsd-curve.svg'
 
 import { useQuery } from '@apollo/client';
 import { GET_UPCOMING_ONGOING } from '../gql.jsx'
@@ -411,7 +411,8 @@ export default function Services() {
 
       <p>Our treatment model uses a variety of service delivery strategies to maximize the reach and effectiveness of our treatments, and to support patient engagement.</p>
       <p>Services help patients to get back on the natural recovery path following trauma.</p>
-      <img src={recoveryCurveImg} />
+      <img src={ptsdCurveImg} height="200px"/>
+      <p>Many people who experience trauma events go on to have natural recovery. Those whose recovery gets interrupted go on to develop PTSD.</p>
       <AllTreatmentsAre />
     </>
   )
