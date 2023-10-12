@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="900" height="450" xmlns="http://www.w3.org/2000/svg">
+  <g stroke="black" stroke-width="2">
+    <!-- Cards -->
+    <rect x="14" y="50" width="260" height="320" rx="12" ry="12" fill="white" />
+    <rect x="314" y="50" width="260" height="320" rx="12" ry="12" fill="white" />
+    <rect x="614" y="50" width="260" height="320" rx="12" ry="12" fill="white" />
+
+    <!-- Title bubbles -->
+    <rect x="1" y="1" width="258" height="78" rx="40" ry="40" fill="#A888C7" />
+    <rect x="301" y="1" width="258" height="78" rx="40" ry="40" fill="#FFD884" />
+    <rect x="601" y="1" width="258" height="78" rx="40" ry="40" fill="#78CEE9" />
+
+    <!-- Bullets -->
+    <circle cx="50" cy="160" r="10" fill="#A888C7" />
+    <circle cx="50" cy="250" r="10" fill="#A888C7" />
+    <circle cx="350" cy="160" r="10" fill="#FFD884" />
+    <circle cx="350" cy="250" r="10" fill="#FFD884" />
+    <circle cx="650" cy="160" r="10" fill="#78CEE9" />
+    <circle cx="650" cy="250" r="10" fill="#78CEE9" />
+
+    <!-- Flags -->
+    <path d="M   1 357 h 258 l 40 32 v 28 l -40 32 h -258 v -8 l 30 -24 v -28 l -30 -24 v -8 z" fill="#A888C7" />
+    <path d="M 301 357 h 258 l 40 32 v 28 l -40 32 h -258 v -8 l 30 -24 v -28 l -30 -24 v -8 z" fill="#FFD884" />
+    <path d="M 601 357 h 258 l 40 32 v 28 l -40 32 h -258 v -8 l 30 -24 v -28 l -30 -24 v -8 z" fill="#78CEE9" />
+  </g>
+
+  <g text-anchor="start" font-family="sans-serif" font-size="20">
+    <!-- Title text -->
+    <g font-size="26" font-weight="bold">
+      <text x="30" y="50">Determinants</text>
+      <text x="330" y="50">Processes</text>
+      <text x="630" y="50">Evaluation</text>
+    </g>
+
+    <!-- Bullet text -->
+    <text x="75" y="168">Barriers</text>
+    <text x="75" y="258">Facilitators</text>
+
+    <text x="375" y="160">Ways to enhance</text>
+    <text x="375" y="185">implementation</text>
+    <text x="375" y="250">Ways to enhance</text>
+    <text x="375" y="275">equity</text>
+
+    <text x="675" y="155">Assessment of</text>
+    <text x="675" y="180">implementation</text>
+    <text x="675" y="205">success</text>
+    <text x="675" y="245">Assessment of</text>
+    <text x="675" y="270">health equity (e.g.,</text>
+    <text x="675" y="295">reach, retention)</text>
+
+    <!-- Flag text -->
+    <text x="55" y="385">Health Equity</text>
+    <text x="55" y="410">Implementation</text>
+    <text x="55" y="435">Framework</text>
+
+    <text x="355" y="395">Implementation</text>
+    <text x="355" y="420">Facilitation</text>
+
+    <text x="655" y="395">Proctor's Taxonomy</text>
+    <text x="655" y="420">of Outcomes</text>
+  </g>
+</svg>

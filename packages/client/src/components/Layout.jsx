@@ -29,6 +29,9 @@ function NavBar() {
               <Button component={NavLink} to="/about" color="inherit">
                   About
               </Button>
+              <Button component={NavLink} to="/treatments-and-services" color="inherit">
+                  Treatments and Services
+              </Button>
               <Button component={NavLink} to="/our-team" color="inherit">
                   Our Team
               </Button>

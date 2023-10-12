@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="82.636948mm"
+   height="28.537226mm"
+   viewBox="0 0 82.636948 28.537226"
+   version="1.1"
+   id="svg5"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs2" />
+  <g
+     id="layer3"
+     style="display:inline"
+     transform="translate(-8.3309494,-6.8372486)">
+    <path
+       style="opacity:1;fill:none;stroke:#9f46f5;stroke-width:0.7;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 13.267556,31.118897 2.052147,2.217108"
+       id="path16114" />
+    <path
+       style="fill:none;stroke:#9f46f5;stroke-width:0.7;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 13.136245,33.259064 2.334671,-2.075947"
+       id="path16116" />
+  </g>
+  <g
+     id="layer2"
+     style="display:inline"
+     transform="translate(-8.3309494,-6.8372486)">
+    <path
+       style="fill:none;stroke:#915cff;stroke-width:0.6;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 14.212436,32.15219 C 37.937246,-0.67640669 41.869601,0.86047831 86.539061,32.364209"
+       id="path948" />
+  </g>
+  <g
+     id="layer4"
+     transform="translate(-8.3309494,-6.8372486)">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:2.11667px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="8.3371506"
+       y="35.344501"
+       id="text28380"><tspan
+         id="tspan28378"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11667px;font-family:sans-serif;-inkscape-font-specification:sans-serif;stroke-width:0.264583"
+         x="8.3371506"
+         y="35.344501">Trauma Event</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:2.11667px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="80.247162"
+       y="8.4082146"
+       id="text37668"><tspan
+         id="tspan37666"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11667px;font-family:sans-serif;-inkscape-font-specification:sans-serif;stroke-width:0.264583"
+         x="80.247162"
+         y="8.4082146">PTSD</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:2.11667px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="81.216537"
+       y="24.614143"
+       id="text38980"><tspan
+         id="tspan38978"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11667px;font-family:sans-serif;-inkscape-font-specification:sans-serif;stroke-width:0.264583"
+         x="81.216537"
+         y="24.614143">Natural</tspan><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11667px;font-family:sans-serif;-inkscape-font-specification:sans-serif;stroke-width:0.264583"
+         x="81.216537"
+         y="27.259981"
+         id="tspan39780">Recovery</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:2.11667px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="-4.3574967"
+       y="29.002918"
+       id="text40460"
+       transform="rotate(-54.024252)"><tspan
+         id="tspan40458"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11667px;font-family:sans-serif;-inkscape-font-specification:sans-serif;stroke-width:0.264583"
+         x="-4.3574967"
+         y="29.002918">Stress</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.395576;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.791152, 0.395576;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 44.004245,7.6334678 79.409848,7.8533269"
+       id="path41467" />
+  </g>
+</svg>
