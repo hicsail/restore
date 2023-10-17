@@ -21,6 +21,7 @@ import {
 } from './DPEDiagram.jsx'
 
 
+import { theme } from '../theme.jsx'
 
 
 function ImplementationFrameworkInteractive () {
@@ -81,13 +82,16 @@ function ImplementationFrameworkInteractive () {
         </a>
       </svg>
 
+      <Button sx={{width: '300px'}} variant='contained' color='purple' onMouseOver={ () => { setTabValue("#determinants") } }>Determinants</Button>
+      <Button sx={{width: '300px'}} variant='contained' color='yellow' onMouseOver={ () => { setTabValue("#processes") } }>Processes</Button>
+      <Button sx={{width: '300px'}} variant='contained' color='blue' onMouseOver={ () => { setTabValue("#evaluation") } }>Evaluation</Button>
+
       <Box sx={{ height: '600px' }}>
       {tabValue === "#determinants" && (
         <>
           <h2 id="determinants"></h2>
           <p>Health Equity Implementation Framework proposes determinants believed to predict successful and equitable implementation.</p>
           <Box sx={{ display: 'flex'}}>
-            <DeterminantsColumnSVG />
             <DeterminantsInteractive />
           </Box>
         </>
@@ -98,7 +102,6 @@ function ImplementationFrameworkInteractive () {
           <h2 id="processes"></h2>
           <p>RESTORE provides facilitation—an interactive problem-solving approach that supports organizations in applying evidence-based practices in routine care.</p>
           <Box sx={{ display: 'flex' }}>
-            <ProcessesColumnSVG />
             <Box sx={{ width: '600px', margin: 'auto 50px', display: 'grid', gap: 2, gridTemplateColumns: 'repeat(6, 1fr)' }}>
               { BlueBox("Clinical training and case consultation") }
               { BlueBox("Implementation and evaluation planning") }
@@ -116,7 +119,6 @@ function ImplementationFrameworkInteractive () {
           <h2 id="evaluation"></h2>
           <p>We assess implementation success and health equity through Proctor’s Taxonomy of Outcomes, Expanded for Health Equity.</p>
           <Box sx={{ display: 'flex' }}>
-            <EvaluationColumnSVG />
             <Box sx={{ margin: '0 auto', display: 'grid', gap: 2, gridTemplateColumns: 'repeat(3, 1fr)' }}>
               { WhiteBox(
                   <>
