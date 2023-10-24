@@ -22,7 +22,7 @@ export const GET_ABOUT_MISSION = gql`
     aboutMission {
       data {
         attributes {
-           Body
+          Body
         }
       }
     }
@@ -62,6 +62,42 @@ export const GET_TEAM_MEMBERS = gql`
     }
   }
 `;
+
+export const GET_TEAM_CATEGORIES_AND_MEMBERS = gql`
+  {
+    teamCategories {
+      data {
+        id
+        attributes {
+          Order
+          TeamCategoryName
+          Description
+          team_members {
+            data {
+              id
+              attributes {
+                Name
+                Photo {
+                  data {
+                    attributes {
+                      url
+                      height
+                      width
+                    }
+                  }
+                }
+                Roles
+                Languages
+                LinkToCV
+                Titles
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
 export const GET_RESEARCH_AND_EVALUATIONS = gql`
   query GetResearchAndEvaluations {
     researchAndEvaluation {
@@ -71,7 +107,7 @@ export const GET_RESEARCH_AND_EVALUATIONS = gql`
         }
       }
     }
-}
+  }
 `;
 export const GET_BLOG_POSTS = gql`
   query GetBlogPosts {

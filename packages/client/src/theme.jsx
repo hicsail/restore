@@ -16,28 +16,35 @@ theme = createTheme(theme, {
     // primary and secondary to refer to these named colors (see below).
     purple: theme.palette.augmentColor({
       color: {
-        main: '#A888C7',
-      },
+        main: '#A888C7'
+      }
     }),
     yellow: theme.palette.augmentColor({
       color: {
-        main: '#FFD884',
-      },
+        main: '#FFD884'
+      }
     }),
     blue: theme.palette.augmentColor({
       color: {
-        main: '#78CEE9',
-      },
-    }),
-  },
+        main: '#78CEE9'
+      }
+    })
+  }
 });
 
 theme = createTheme(theme, {
   palette: {
     primary: theme.palette.purple,
-    secondary: theme.palette.yellow,
+    secondary: theme.palette.yellow
   },
   components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          textTransform: 'none'
+        }
+      }
+    },
     MuiToolbar: {
       styleOverrides: {
         root: {
@@ -47,7 +54,7 @@ theme = createTheme(theme, {
             // override the min-height values for all @media min-width rules;
             // instead let the MuiButtons determine spacing.
             minHeight: '0px',
-            paddingRight: '0px',
+            paddingRight: '0px'
           },
           alignItems: 'stretch', // Make buttons fill vertical space
           '& .MuiButton-root': {
@@ -58,11 +65,11 @@ theme = createTheme(theme, {
               color: theme.palette.purple.main,
               borderBottom: 'solid',
               borderWidth: '0.2em',
-              borderColor: theme.palette.purple.main,
-            },
-          },
-        },
-      },
-    },
-  },
+              borderColor: theme.palette.purple.main
+            }
+          }
+        }
+      }
+    }
+  }
 });
