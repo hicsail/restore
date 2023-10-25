@@ -1,10 +1,10 @@
 import { Card, CardContent, Typography, Chip, Stack, CardActions, Button } from '@mui/material';
 import { TeamMemberPhoto } from './TeamMemberPhoto.jsx';
 
-export const TeamMember = ({ Name, Photo, Titles, Languages, LinkToCV, Roles, index }) => {
+export const TeamMember = ({ Name, Photo, Titles, Languages, LinkToCV, Roles }) => {
   return (
     <Card sx={{ height: '100%' }}>
-      <TeamMemberPhoto Photo={Photo} Name={Name} index={index} />
+      <TeamMemberPhoto Photo={Photo} Name={Name} />
       <CardContent>
         <Typography variant="h5" component="h3" gutterBottom>
           {Name} {Titles}

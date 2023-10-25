@@ -13,9 +13,9 @@ export const TeamCategory = ({ TeamCategoryName, Description, team_members }) =>
         </Typography>
       )}
       <Grid container spacing={2}>
-        {team_members?.data?.map((member, index) => (
+        {team_members?.data?.map((member) => (
           <Grid item xs={6} sm={3} md={3} key={member.id}>
-            <TeamMember index={index} {...member.attributes} />
+            <TeamMember {...member.attributes} />
           </Grid>
         ))}
       </Grid>
