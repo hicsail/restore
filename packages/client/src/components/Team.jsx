@@ -1,25 +1,33 @@
 import { useQuery } from '@apollo/client';
-import { Box, Card, Typography } from '@mui/material';
+import { Box, Stack, Typography } from '@mui/material';
 
-import { GET_TEAM_MEMBERS } from '../gql.jsx'
+import { GET_TEAM_CATEGORIES_AND_MEMBERS } from '../gql.jsx';
+import { TeamCategory } from './TeamCategory';
 
 export default function TeamMemberGrid() {
-  return <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 1 }}><TeamMemberCards /></Box>
-}
-
-function TeamMemberCards() {
-  const { loading, error, data } = useQuery(GET_TEAM_MEMBERS);
+  const { loading, error, data } = useQuery(GET_TEAM_CATEGORIES_AND_MEMBERS);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error : {error.message}</p>;
 
-  return data.teamMembers.data.map(({ id, attributes }) => (
-    <Card key={id} sx={{ backgroundColor: 'blue.main', padding: '1rem', textAlign: 'center' }}>
-      <img src={import.meta.env.VITE_STRAPI_URL + attributes.Photo.data.attributes.url} />
-      <Typography variant="h5">{attributes.Name}</Typography>
-      <Typography>{attributes.Titles}</Typography>
-      <Typography>{attributes.Roles}</Typography>
-      <Typography>{attributes.Languages}</Typography>
-    </Card>
-  ));
+  return (
+    <Stack spacing={10}>
+      <Box>
+        <Typography variant="h3" component="h1" gutterBottom>
+          Meet Our Team
+        </Typography>
+        <Typography>
+          At our hospital, we have assembled a team of highly skilled and compassionate professionals who are dedicated
+          to providing exceptional psychiatric services. With years of experience and a deep understanding of mental
+          health, our team is committed to helping patients on their journey to wellness.
+        </Typography>
+      </Box>
+      {data.teamCategories.data
+        .filter((category) => category.attributes.Order || 0)
+        .sort((a, b) => a.attributes.Order - b.attributes.Order)
+        .map((category) => (
+          <TeamCategory key={category} {...category.attributes} />
+        ))}
+    </Stack>
+  );
 }
