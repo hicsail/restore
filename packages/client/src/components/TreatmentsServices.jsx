@@ -368,17 +368,6 @@ function DeterminantsInteractive() {
 }
 
 function AllTreatmentsAre() {
-  const [anchorEl, setAnchorEl] = useState(null);
-  const [popperText, setPopperText] = useState(null);
-
-  const handleClick = (ptext) => (event) => {
-    setAnchorEl(event.currentTarget === anchorEl ? null : event.currentTarget);
-    setPopperText(event.currentTarget === anchorEl ? null : ptext);
-  };
-
-  const open = Boolean(anchorEl);
-  const id = open ? 'treatment-characteristics-popper' : undefined;
-
   const briefText = (
     <ul>
       <li>Brief treatments focus on building skills to manage PTSD and trauma- related distress</li>
@@ -422,21 +411,29 @@ function AllTreatmentsAre() {
     </ul>
   );
 
+  const [hoverText, setHoverText] = useState(briefText);
+
+  function HoverButton({ buttonText, hoverText }) {
+    return (
+      <Button
+        onMouseOver={() => {
+          setHoverText(hoverText);
+        }}
+        variant="contained"
+        color="yellow"
+      >
+        {buttonText}
+      </Button>
+    );
+  }
+
   return (
     <>
       <p>All treatments are:</p>
-      <Button onClick={handleClick(briefText)} variant="contained" color="yellow">
-        Brief
-      </Button>
-      <Button onClick={handleClick(evidenceBasedText)} variant="contained" color="yellow">
-        Evidence-based
-      </Button>
-      <Button onClick={handleClick(culturallyResponsiveText)} variant="contained" color="yellow">
-        Culturally Responsive
-      </Button>
-      <Popper id={id} open={open} anchorEl={anchorEl} placement="bottom">
-        <Box sx={{ border: 1, p: 1, bgcolor: 'background.paper' }}>{popperText}</Box>
-      </Popper>
+      <HoverButton buttonText="Brief" hoverText={briefText} />
+      <HoverButton buttonText="Evidence-based" hoverText={evidenceBasedText} />
+      <HoverButton buttonText="Culturally Responsive" hoverText={culturallyResponsiveText} />
+      <Box sx={{ border: 1, p: 1, bgcolor: 'background.paper', height: '300px', margin: '0 0 30px' }}>{hoverText}</Box>
     </>
   );
 }
