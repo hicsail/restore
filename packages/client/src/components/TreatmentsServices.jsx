@@ -19,6 +19,7 @@ import {
   ProcessesColumnSVG,
   EvaluationColumnSVG
 } from './DPEDiagram.jsx';
+import { ScopeOfClinicalFocus } from './ScopeOfClinicalFocus.jsx';
 
 function ImplementationFrameworkInteractive() {
   let { hash } = useLocation();
@@ -544,6 +545,7 @@ export default function Services() {
         go on to develop PTSD.
       </p>
       <AllTreatmentsAre />
+      <ScopeOfClinicalFocus />
     </>
   );
 }
