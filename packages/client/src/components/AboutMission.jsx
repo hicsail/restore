@@ -3,7 +3,7 @@ import ReactMarkdown from 'react-markdown';
 
 import { Header } from './Header.jsx';
 
-import { GET_ABOUT_MISSION } from '../gql.jsx'
+import { GET_ABOUT_MISSION } from '../gql.jsx';
 
 export default function AboutMission() {
   const { loading, error, data } = useQuery(GET_ABOUT_MISSION);
@@ -22,5 +22,5 @@ export default function AboutMission() {
       />
       <ReactMarkdown>{data.aboutMission.data.attributes.Body}</ReactMarkdown>
     </>
-  )
+  );
 }

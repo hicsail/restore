@@ -3,7 +3,7 @@ import ReactMarkdown from 'react-markdown';
 
 import { Header } from './Header.jsx';
 
-import { GET_RESEARCH_AND_EVALUATIONS } from '../gql.jsx'
+import { GET_RESEARCH_AND_EVALUATIONS } from '../gql.jsx';
 
 export default function ResearchAndEvals() {
   const { loading, error, data } = useQuery(GET_RESEARCH_AND_EVALUATIONS);
@@ -19,5 +19,5 @@ export default function ResearchAndEvals() {
       />
       <ReactMarkdown>{data.researchAndEvaluation.data.attributes.Body}</ReactMarkdown>
     </>
-  )
+  );
 }
