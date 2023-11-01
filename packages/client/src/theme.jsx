@@ -37,6 +37,17 @@ theme = createTheme(theme, {
     primary: theme.palette.purple,
     secondary: theme.palette.yellow
   },
+  typography: {
+    headerTitle: {
+      fontSize: '3rem',
+      fontWeight: 'bold',
+      color: 'white'
+    },
+    headerSubtitle: {
+      fontSize: '1rem',
+      color: 'white'
+    }
+  },
   components: {
     MuiButton: {
       styleOverrides: {
