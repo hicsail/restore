@@ -1,6 +1,8 @@
 import { useQuery } from '@apollo/client';
 import ReactMarkdown from 'react-markdown';
 
+import { Header } from './Header.jsx';
+
 import { GET_RESEARCH_AND_EVALUATIONS } from '../gql.jsx'
 
 export default function ResearchAndEvals() {
@@ -10,6 +12,12 @@ export default function ResearchAndEvals() {
   if (error) return <p>Error : {error.message}</p>;
 
   return (
-    <ReactMarkdown>{data.researchAndEvaluation.data.attributes.Body}</ReactMarkdown>
+    <>
+      <Header
+        title="Research and Evaluation"
+        subtitle="Explore our research and evaluation efforts to improve psychiatric care."
+      />
+      <ReactMarkdown>{data.researchAndEvaluation.data.attributes.Body}</ReactMarkdown>
+    </>
   )
 }
