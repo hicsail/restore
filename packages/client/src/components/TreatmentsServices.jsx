@@ -65,12 +65,18 @@ function ImplementationFrameworkInteractive() {
 
   return (
     <>
-      <svg width="900" height="450" viewBox="0 0 900 450" xmlns="http://www.w3.org/2000/svg">
+      <svg width="900" height="450" viewBox="-10 -10 910 480" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="shadow">
+            <feDropShadow dx="-4" dy="4" stdDeviation="6" floodOpacity="0.5" />
+          </filter>
+        </defs>
         <a href="#determinants">
           <g
             onMouseOver={() => {
               setTabValue('#determinants');
             }}
+            style={tabValue === '#determinants' ? { filter: 'url(#shadow)' } : {}}
           >
             <DeterminantsColumn />
           </g>
@@ -80,6 +86,7 @@ function ImplementationFrameworkInteractive() {
             onMouseOver={() => {
               setTabValue('#processes');
             }}
+            style={tabValue === '#processes' ? { filter: 'url(#shadow)' } : {}}
           >
             <ProcessesColumn />
           </g>
@@ -89,6 +96,7 @@ function ImplementationFrameworkInteractive() {
             onMouseOver={() => {
               setTabValue('#evaluation');
             }}
+            style={tabValue === '#evaluation' ? { filter: 'url(#shadow)' } : {}}
           >
             <EvaluationColumn />
           </g>
