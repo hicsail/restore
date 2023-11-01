@@ -10,6 +10,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import { theme } from './theme.jsx';
 import CssBaseline from '@mui/material/CssBaseline';
 
+import Home from './pages/Home.jsx';
 import Layout from './pages/Layout.jsx';
 import AboutMission from './pages/AboutMission.jsx';
 import TreatmentsServices from './pages/TreatmentsServices.jsx';
@@ -45,7 +46,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <AboutMission />
+        element: <Home />
       },
       {
         path: 'about',
