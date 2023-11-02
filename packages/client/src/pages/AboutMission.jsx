@@ -1,7 +1,7 @@
 import { useQuery } from '@apollo/client';
 import ReactMarkdown from 'react-markdown';
 
-import { Header } from './Header.jsx';
+import { Header } from '../components/Header.jsx';
 
 import { GET_ABOUT_MISSION } from '../gql.jsx';
 

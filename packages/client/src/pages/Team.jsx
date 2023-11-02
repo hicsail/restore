@@ -2,7 +2,7 @@ import { useQuery } from '@apollo/client';
 import { Box, Stack, Typography } from '@mui/material';
 
 import { GET_TEAM_CATEGORIES_AND_MEMBERS } from '../gql.jsx';
-import { TeamCategory } from './TeamCategory';
+import { TeamCategory } from '../components/TeamCategory';
 
 export default function TeamMemberGrid() {
   const { loading, error, data } = useQuery(GET_TEAM_CATEGORIES_AND_MEMBERS);

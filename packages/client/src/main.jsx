@@ -11,12 +11,12 @@ import { theme } from './theme.jsx'
 import CssBaseline from '@mui/material/CssBaseline';
 
 import Layout from './components/Layout.jsx'
-import AboutMission from './components/AboutMission.jsx'
-import TreatmentsServices from './components/TreatmentsServices.jsx'
-import TeamMemberGrid from './components/Team.jsx'
-import ResearchAndEvals from './components/Research.jsx'
-import BlogPosts from './components/Blog.jsx'
-import UnderConstruction from './components/UnderConstruction.jsx'
+import AboutMission from './pages/AboutMission.jsx'
+import TreatmentsServices from './pages/TreatmentsServices.jsx'
+import TeamMemberGrid from './pages/Team.jsx'
+import ResearchAndEvals from './pages/Research.jsx'
+import BlogPosts from './pages/Blog.jsx'
+import UnderConstruction from './pages/UnderConstruction.jsx'
 
 const httpLink = createHttpLink({
   uri: import.meta.env.VITE_STRAPI_URL + '/graphql',
