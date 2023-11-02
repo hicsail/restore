@@ -1,6 +1,11 @@
 import { Header } from '../components/Header.jsx';
 import { InfoPanelA } from '../components/InfoPanelA.jsx';
 
+// Some random placeholder icon options...
+import GestureIcon from '@mui/icons-material/Gesture';
+import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt';
+import SquareIcon from '@mui/icons-material/Square';
+
 export default function Home() {
   return (
     <>
@@ -16,6 +21,7 @@ export default function Home() {
         title="Explore Our Comprehensive Services To The Health System"
         subtitle="At our hospital, we offer a wide range of psychiatric services designed to meet your unique needs and promote mental well-being. Our team of experienced professionals is dedicated to providing compassionate care and effective treatment options."
         imageUrl="src/assets/imgplaceholder.png"
+        icon={GestureIcon}
       />
       <InfoPanelA
         title="Discover the power of"

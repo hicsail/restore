@@ -1,7 +1,8 @@
 import { Box, Button, Typography } from '@mui/material';
+import SvgIcon from '@mui/material/SvgIcon';
 
 // No idea what to name this. Layout 24 on wireframe.
-export function InfoPanelA({ title, subtitle, imageUrl, iconUrl, buttonText }) {
+export function InfoPanelA({ title, subtitle, imageUrl, icon, buttonText }) {
   return (
     <Box sx={{ display: 'flex', margin: '2rem auto' }}>
       <Box
@@ -14,6 +15,7 @@ export function InfoPanelA({ title, subtitle, imageUrl, iconUrl, buttonText }) {
           padding: '2rem'
         }}
       >
+        <SvgIcon component={icon}></SvgIcon>
         <Typography variant="infoPanelATitle">{title}</Typography>
         <Typography variant="infoPanelASubtitle">{subtitle}</Typography>
         {buttonText && (

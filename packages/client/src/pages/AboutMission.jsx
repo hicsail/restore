@@ -6,6 +6,8 @@ import { InfoPanelA } from '../components/InfoPanelA.jsx';
 
 import { GET_ABOUT_MISSION } from '../gql.jsx';
 
+import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt';
+
 export default function AboutMission() {
   const { loading, error, data } = useQuery(GET_ABOUT_MISSION);
 
@@ -26,6 +28,7 @@ export default function AboutMission() {
         title="Our Mission: Providing Compassionate Psychiatric Care"
         subtitle="The REcovery from Stress and Trauma through Outpatient care, Research and Education (RESTORE) Center aims to improve access to high-quality services for PTSD across the health system and remove barriers to treatment for our patients."
         imageUrl="src/assets/imgplaceholder.png"
+        icon={SentimentSatisfiedAltIcon}
       />
       <ReactMarkdown>{data.aboutMission.data.attributes.Body}</ReactMarkdown>
     </>
