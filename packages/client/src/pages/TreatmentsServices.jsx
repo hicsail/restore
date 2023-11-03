@@ -11,7 +11,7 @@ import { useQuery } from '@apollo/client';
 import { GET_UPCOMING_ONGOING } from '../gql.jsx';
 import ReactMarkdown from 'react-markdown';
 
-import { Header } from './Header.jsx';
+import { Header } from '../components/Header.jsx';
 import {
   DeterminantsColumn,
   ProcessesColumn,
@@ -19,8 +19,8 @@ import {
   DeterminantsColumnSVG,
   ProcessesColumnSVG,
   EvaluationColumnSVG
-} from './DPEDiagram.jsx';
-import { ScopeOfClinicalFocus } from './ScopeOfClinicalFocus.jsx';
+} from '../components/DPEDiagram.jsx';
+import { ScopeOfClinicalFocus } from '../components/ScopeOfClinicalFocus.jsx';
 
 function ImplementationFrameworkInteractive() {
   let { hash } = useLocation();

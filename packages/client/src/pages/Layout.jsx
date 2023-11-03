@@ -4,7 +4,7 @@ import { AppBar, Box, Button, Container, Toolbar } from '@mui/material';
 
 import { useQuery } from '@apollo/client';
 import { GET_LOGO_FULL_SVG } from '../gql.jsx';
-import { Footer } from './Footer.jsx';
+import { Footer } from '../components/Footer.jsx';
 
 function NavBar() {
   const { loading, error, data } = useQuery(GET_LOGO_FULL_SVG);
