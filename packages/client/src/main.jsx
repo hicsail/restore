@@ -10,7 +10,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import { theme } from './theme.jsx';
 import CssBaseline from '@mui/material/CssBaseline';
 
-import Layout from './components/Layout.jsx';
+import Layout from './pages/Layout.jsx';
 import AboutMission from './pages/AboutMission.jsx';
 import TreatmentsServices from './pages/TreatmentsServices.jsx';
 import TeamMemberGrid from './pages/Team.jsx';
