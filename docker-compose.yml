@@ -67,6 +67,22 @@ services:
     networks:
       - strapi
 
+  backup:
+    container_name: backup
+    image: offen/docker-volume-backup:v2.33.0
+    restart: unless-stopped
+    env_file:
+      - ./backup.env # Backup container needs what's in here...
+    # ...plus the relevant subset of what's in Portainer
+    environment:
+      AWS_S3_PATH: ${AWS_S3_PATH}
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+    volumes:
+      - strapi-models:/backup/strapi-models:ro
+      - strapi-uploads:/backup/strapi-uploads:ro
+      - strapi-data:/backup/strapi-data:ro
+
 volumes:
   strapi-models:
   strapi-uploads:
