@@ -10,11 +10,13 @@ import { ThemeProvider } from '@mui/material/styles';
 import { theme } from './theme.jsx';
 import CssBaseline from '@mui/material/CssBaseline';
 
+import Home from './pages/Home.jsx';
 import Layout from './pages/Layout.jsx';
 import AboutMission from './pages/AboutMission.jsx';
 import TreatmentsServices from './pages/TreatmentsServices.jsx';
 import TeamMemberGrid from './pages/Team.jsx';
 import ResearchAndEvals from './pages/Research.jsx';
+import GetInvolved from './pages/GetInvolved.jsx';
 import BlogPosts from './pages/Blog.jsx';
 import UnderConstruction from './pages/UnderConstruction.jsx';
 
@@ -45,7 +47,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <AboutMission />
+        element: <Home />
       },
       {
         path: 'about',
@@ -69,7 +71,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'get-involved',
-        element: <UnderConstruction />
+        element: <GetInvolved />
       },
       {
         path: 'blog',

@@ -46,6 +46,23 @@ theme = createTheme(theme, {
     headerSubtitle: {
       fontSize: '1rem',
       color: 'white'
+    },
+    infoPanelATitle: {
+      fontSize: '2rem',
+      fontWeight: 'bold',
+      padding: '0.2rem 0'
+    },
+    infoPanelASubtitle: {
+      fontSize: '1rem',
+      padding: '1rem 0'
+    },
+    cardGridCardTitle: {
+      fontSize: '1.5rem',
+      fontWeight: 'bold',
+      padding: '1rem 0'
+    },
+    cardGridCardText: {
+      fontSize: '1rem'
     }
   },
   components: {
