@@ -17,6 +17,52 @@ export const GET_LOGO_FULL_SVG = gql`
     }
   }
 `;
+export const GET_HOMEPAGE_CARDGRID = gql`
+  query GetHomePageCardGrid {
+    homePageCardGrids {
+      data {
+        attributes {
+          CardGridCardData {
+            Index
+            Icon {
+              data {
+                attributes {
+                  url
+                  alternativeText
+                }
+              }
+            }
+            Title
+            Text
+          }
+        }
+      }
+    }
+  }
+`;
+export const GET_TREATMENTS_CARDGRID = gql`
+  query GetTreatmentsCardGrid {
+    treatmentsCardGrids {
+      data {
+        attributes {
+          CardGridCardData {
+            Index
+            Icon {
+              data {
+                attributes {
+                  url
+                  alternativeText
+                }
+              }
+            }
+            Title
+            Text
+          }
+        }
+      }
+    }
+  }
+`;
 export const GET_ABOUT_MISSION = gql`
   query GetAboutMission {
     aboutMission {

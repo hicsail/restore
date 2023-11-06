@@ -9,6 +9,7 @@ import ptsdCurveImg from '../assets/treatments_and_services/ptsd-curve.svg';
 
 import { useQuery } from '@apollo/client';
 import { GET_UPCOMING_ONGOING } from '../gql.jsx';
+import { GET_TREATMENTS_CARDGRID } from '../gql.jsx';
 import ReactMarkdown from 'react-markdown';
 
 import { Header } from '../components/Header.jsx';
@@ -21,6 +22,7 @@ import {
   EvaluationColumnSVG
 } from '../components/DPEDiagram.jsx';
 import { ScopeOfClinicalFocus } from '../components/ScopeOfClinicalFocus.jsx';
+import { CardGrid } from '../components/CardGrid.jsx';
 
 function ImplementationFrameworkInteractive() {
   let { hash } = useLocation();
@@ -447,6 +449,14 @@ function AllTreatmentsAre() {
   );
 }
 
+function TreatmentsCardGrid() {
+  const { loading, error, data } = useQuery(GET_TREATMENTS_CARDGRID);
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error : {error.message}</p>;
+
+  return <CardGrid cards={data.treatmentsCardGrids.data} />;
+}
+
 export default function Services() {
   const upcomingOngoing = useQuery(GET_UPCOMING_ONGOING);
   if (upcomingOngoing.loading) return <p>Loading...</p>;
@@ -544,6 +554,7 @@ export default function Services() {
         <h2 id="Services-to-our-patients">Services to our patients</h2>
       </a>
 
+      <TreatmentsCardGrid />
       <p>
         Our treatment model uses a variety of service delivery strategies to maximize the reach and effectiveness of our
         treatments, and to support patient engagement.
