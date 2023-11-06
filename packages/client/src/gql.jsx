@@ -169,3 +169,26 @@ export const GET_BLOG_POSTS = gql`
     }
   }
 `;
+export const GET_GETINVOLVED_CARDGRID = gql`
+  query GetGetInvolvedCardGrid {
+    getInvolvedCardGrids {
+      data {
+        attributes {
+          CardGridCardData {
+            Index
+            Icon {
+              data {
+                attributes {
+                  url
+                  alternativeText
+                }
+              }
+            }
+            Title
+            Text
+          }
+        }
+      }
+    }
+  }
+`;
