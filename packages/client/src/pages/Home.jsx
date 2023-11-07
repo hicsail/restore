@@ -2,12 +2,35 @@ import { InfoPanelA } from '../components/InfoPanelA.jsx';
 import { CardGrid } from '../components/CardGrid.jsx';
 
 import { useQuery } from '@apollo/client';
-import { GET_HOMEPAGE_CARDGRID } from '../gql.jsx';
+import { GET_HOMEPAGE_CARDGRID, GET_HOMEPAGE_INFOPANEL_TOP, GET_HOMEPAGE_INFOPANEL_BOTTOM } from '../gql.jsx';
 
 // Some random placeholder icon options...
 import GestureIcon from '@mui/icons-material/Gesture';
 import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt';
 import SquareIcon from '@mui/icons-material/Square';
+
+function HomepageInfoPanelTop() {
+  const { loading, error, data } = useQuery(GET_HOMEPAGE_INFOPANEL_TOP);
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error : {error.message}</p>;
+
+  const { Title, Subtitle, Image, Icon, ButtonText, ButtonLink } = data.homePageInfoPanelTop.data.attributes.InfoPanelA;
+  const imgUrl = import.meta.env.VITE_STRAPI_URL + Image.data.attributes.url;
+  const imgAlt = Image.data.attributes.alternativeText;
+  const iconUrl = import.meta.env.VITE_STRAPI_URL + Icon.data.attributes.url;
+  const iconAlt = Icon.data.attributes.alternativeText;
+
+  return (
+    <InfoPanelA
+      title={Title}
+      subtitle={Subtitle}
+      imageUrl={imgUrl}
+      imageAlt={imgAlt}
+      iconUrl={iconUrl}
+      iconAlt={iconAlt}
+    />
+  );
+}
 
 function HomepageCardGrid() {
   const { loading, error, data } = useQuery(GET_HOMEPAGE_CARDGRID);
@@ -17,23 +40,34 @@ function HomepageCardGrid() {
   return <CardGrid cards={data.homePageCardGrids.data} />;
 }
 
+function HomepageInfoPanelBottom() {
+  const { loading, error, data } = useQuery(GET_HOMEPAGE_INFOPANEL_BOTTOM);
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error : {error.message}</p>;
+
+  const { Title, Subtitle, Image, Icon, ButtonText, ButtonLink } =
+    data.homePageInfoPanelBottom.data.attributes.InfoPanelA;
+  const imgUrl = import.meta.env.VITE_STRAPI_URL + Image.data.attributes.url;
+  const imgAlt = Image.data.attributes.alternativeText;
+
+  return (
+    <InfoPanelA
+      title={Title}
+      subtitle={Subtitle}
+      imageUrl={imgUrl}
+      imageAlt={imgAlt}
+      buttonText={ButtonText}
+      buttonLink={ButtonLink}
+    />
+  );
+}
+
 export default function Home() {
   return (
     <>
-      {/* As much as possible should become Strapi queries.*/}
-      <InfoPanelA
-        title="Explore Our Comprehensive Services To The Health System"
-        subtitle="At our hospital, we offer a wide range of psychiatric services designed to meet your unique needs and promote mental well-being. Our team of experienced professionals is dedicated to providing compassionate care and effective treatment options."
-        imageUrl="src/assets/imgplaceholder.png"
-        icon={GestureIcon}
-      />
+      <HomepageInfoPanelTop />
       <HomepageCardGrid />
-      <InfoPanelA
-        title="Discover the power of"
-        subtitle="Our psychiatric services provide comprehensive care for mental health conditions."
-        imageUrl="src/assets/imgplaceholder.png"
-        buttonText="Learn More"
-      />
+      <HomepageInfoPanelBottom />
     </>
   );
 }
