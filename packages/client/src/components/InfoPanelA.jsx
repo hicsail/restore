@@ -1,8 +1,9 @@
+import { NavLink } from 'react-router-dom';
 import { Box, Button, Typography } from '@mui/material';
 import SvgIcon from '@mui/material/SvgIcon';
 
 // No idea what to name this. Layout 24 on wireframe.
-export function InfoPanelA({ title, subtitle, imageUrl, icon, buttonText }) {
+export function InfoPanelA({ title, subtitle, imageUrl, icon, buttonText, buttonLink }) {
   return (
     <Box sx={{ display: 'flex', margin: '2rem auto' }}>
       <Box
@@ -19,7 +20,7 @@ export function InfoPanelA({ title, subtitle, imageUrl, icon, buttonText }) {
         <Typography variant="infoPanelATitle">{title}</Typography>
         <Typography variant="infoPanelASubtitle">{subtitle}</Typography>
         {buttonText && (
-          <Button variant="contained" sx={{ color: 'white', bgcolor: 'black' }}>
+          <Button component={NavLink} to={buttonLink} variant="contained" sx={{ color: 'white', bgcolor: 'black' }}>
             {buttonText}
           </Button>
         )}
