@@ -1,5 +1,7 @@
 # restore
 
+For the Guide to Strapi see [here](Guide-to-Strapi.md).
+
 ### Notes
 
 - The Strapi app was set up to use a Postgres database.
