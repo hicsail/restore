@@ -1,4 +1,3 @@
-import { Header } from '../components/Header.jsx';
 import { InfoPanelA } from '../components/InfoPanelA.jsx';
 import { CardGrid } from '../components/CardGrid.jsx';
 
@@ -21,13 +20,6 @@ function HomepageCardGrid() {
 export default function Home() {
   return (
     <>
-      <Header
-        title="Providing high quality services for PTSD across the health system"
-        subtitle="Welcome to our hospital's website, where we offer comprehensive psychiatric services to support mental health."
-        //Leaving as usage example:
-        //imageUrl="https://interactive-examples.mdn.mozilla.net/media/examples/lizard.png"
-        //bgColor="pink"
-      />
       {/* As much as possible should become Strapi queries.*/}
       <InfoPanelA
         title="Explore Our Comprehensive Services To The Health System"
