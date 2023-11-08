@@ -149,30 +149,6 @@ export const GET_UPCOMING_ONGOING = gql`
     }
   }
 `;
-export const GET_TEAM_MEMBERS = gql`
-  query GetTeamMembers {
-    teamMembers {
-      data {
-        id
-        attributes {
-          Name
-          Titles
-          Roles
-          Languages
-          LinkToCV
-          Photo {
-            data {
-              attributes {
-                url
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`;
-
 export const GET_TEAM_CATEGORIES_AND_MEMBERS = gql`
   {
     teamCategories {
@@ -198,8 +174,11 @@ export const GET_TEAM_CATEGORIES_AND_MEMBERS = gql`
                 }
                 Roles
                 Languages
-                LinkToCV
-                Titles
+                Credentials
+                Pronouns
+                EBPs
+                Bio
+                Interests
               }
             }
           }
