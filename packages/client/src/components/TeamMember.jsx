@@ -1,4 +1,4 @@
-import { Card, CardContent, Typography, Chip, Stack, CardActions, Button } from '@mui/material';
+import { Card, CardContent, Chip, Grid, Typography } from '@mui/material';
 import { TeamMemberPhoto } from './TeamMemberPhoto.jsx';
 
 export const TeamMember = ({ Name, Photo, Credentials, Pronouns, Languages, Roles, Bio, Interests, EBPs }) => {
@@ -27,11 +27,13 @@ export const TeamMember = ({ Name, Photo, Credentials, Pronouns, Languages, Role
             <Typography>
               <strong>EBPs for PTSD trained in:</strong>
             </Typography>
-            <Stack direction="row" spacing={2}>
+            <Grid container spacing={1}>
               {EBPs.split(',').map((EBP) => (
-                <Chip sx={{ fontStyle: 'italic', fontWeight: 'bold' }} key={EBP} label={EBP} />
+                <Grid item>
+                  <Chip sx={{ fontStyle: 'italic', fontWeight: 'bold' }} key={EBP} label={EBP} />
+                </Grid>
               ))}
-            </Stack>
+            </Grid>
           </>
         )}
         {Languages && (
@@ -39,11 +41,13 @@ export const TeamMember = ({ Name, Photo, Credentials, Pronouns, Languages, Role
             <Typography>
               <strong>Languages spoken:</strong>
             </Typography>
-            <Stack direction="row" spacing={2}>
+            <Grid container spacing={1}>
               {Languages.split(',').map((language) => (
-                <Chip sx={{ fontStyle: 'italic', fontWeight: 'bold' }} key={language} label={language} />
+                <Grid item>
+                  <Chip sx={{ fontStyle: 'italic', fontWeight: 'bold' }} key={language} label={language} />
+                </Grid>
               ))}
-            </Stack>
+            </Grid>
           </>
         )}
       </CardContent>
