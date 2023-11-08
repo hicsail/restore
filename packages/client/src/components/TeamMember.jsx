@@ -10,18 +10,24 @@ export const TeamMember = ({ Name, Photo, Credentials, Pronouns, Languages, Role
           <strong>{Name}</strong>
           {Credentials && `, ${Credentials}`} {Pronouns && `(${Pronouns})`}
         </Typography>
-        <Typography variant="subtitle1" gutterBottom>
-          <strong>Role/Position: </strong>
-          {Roles}
-        </Typography>
-        <Typography variant="body1" gutterBottom>
-          <strong>Bio: </strong>
-          {Bio}
-        </Typography>
-        <Typography variant="body1" gutterBottom>
-          <strong>Research/Clinical Interests: </strong>
-          {Interests}
-        </Typography>
+        {Roles && (
+          <Typography variant="subtitle1" gutterBottom>
+            <strong>Role/Position: </strong>
+            {Roles}
+          </Typography>
+        )}
+        {Bio && (
+          <Typography variant="body1" gutterBottom>
+            <strong>Bio: </strong>
+            {Bio}
+          </Typography>
+        )}
+        {Interests && (
+          <Typography variant="body1" gutterBottom>
+            <strong>Research/Clinical Interests: </strong>
+            {Interests}
+          </Typography>
+        )}
         {EBPs && (
           <>
             <Typography>
