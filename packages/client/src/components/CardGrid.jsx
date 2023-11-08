@@ -7,7 +7,7 @@ export function CardGrid({ cards }) {
         .filter(() => true)
         .sort((a, b) => a.attributes.CardGridCardData.Index - b.attributes.CardGridCardData.Index)
         .map((a) => (
-          <CardGridCard key={a.attributes.CardGridCardData.Index} {...a.attributes.CardGridCardData} />
+          <CardGridCard key={a.attributes.CardGridCardData.id} {...a.attributes.CardGridCardData} />
         ))}
     </Box>
   );
