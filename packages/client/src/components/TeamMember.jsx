@@ -1,26 +1,62 @@
-import { Card, CardContent, Typography, Chip, Stack, CardActions, Button } from '@mui/material';
+import { Card, CardContent, Chip, Grid, Typography } from '@mui/material';
 import { TeamMemberPhoto } from './TeamMemberPhoto.jsx';
 
-export const TeamMember = ({ Name, Photo, Titles, Languages, LinkToCV, Roles }) => {
+export const TeamMember = ({ Name, Photo, Credentials, Pronouns, Languages, Roles, Bio, Interests, EBPs }) => {
   return (
     <Card sx={{ height: '100%' }}>
       <TeamMemberPhoto Photo={Photo} Name={Name} />
       <CardContent>
         <Typography variant="h5" component="h3" gutterBottom>
-          {Name} {Titles}
+          <strong>{Name}</strong>
+          {Credentials && `, ${Credentials}`} {Pronouns && `(${Pronouns})`}
         </Typography>
-        <Typography variant="subtitle1" gutterBottom>
-          {Roles}
-        </Typography>
+        {Roles && (
+          <Typography variant="subtitle1" gutterBottom>
+            <strong>Role/Position: </strong>
+            {Roles}
+          </Typography>
+        )}
+        {Bio && (
+          <Typography variant="body1" gutterBottom>
+            <strong>Bio: </strong>
+            {Bio}
+          </Typography>
+        )}
+        {Interests && (
+          <Typography variant="body1" gutterBottom>
+            <strong>Research/Clinical Interests: </strong>
+            {Interests}
+          </Typography>
+        )}
+        {EBPs && (
+          <>
+            <Typography>
+              <strong>EBPs for PTSD trained in:</strong>
+            </Typography>
+            <Grid container spacing={1}>
+              {EBPs.split(',').map((EBP) => (
+                <Grid item>
+                  <Chip sx={{ fontStyle: 'italic', fontWeight: 'bold' }} key={EBP} label={EBP} />
+                </Grid>
+              ))}
+            </Grid>
+          </>
+        )}
         {Languages && (
-          <Stack direction="row" spacing={2}>
-            {Languages.split(',').map((language) => (
-              <Chip sx={{ fontStyle: 'italic', fontWeight: 'bold' }} key={language} label={language} />
-            ))}
-          </Stack>
+          <>
+            <Typography>
+              <strong>Languages spoken:</strong>
+            </Typography>
+            <Grid container spacing={1}>
+              {Languages.split(',').map((language) => (
+                <Grid item>
+                  <Chip sx={{ fontStyle: 'italic', fontWeight: 'bold' }} key={language} label={language} />
+                </Grid>
+              ))}
+            </Grid>
+          </>
         )}
       </CardContent>
-      <CardActions>{LinkToCV && <Button size="small">View CV</Button>}</CardActions>
     </Card>
   );
 };
