@@ -40,6 +40,70 @@ export const GET_HOMEPAGE_CARDGRID = gql`
     }
   }
 `;
+export const GET_HOMEPAGE_INFOPANEL_TOP = gql`
+  query GetHomePageInfoPanelTop {
+    homePageInfoPanelTop {
+      data {
+        attributes {
+          InfoPanelA {
+            Title
+            Subtitle
+            Image {
+              data {
+                attributes {
+                  url
+                  alternativeText
+                }
+              }
+            }
+            Icon {
+              data {
+                attributes {
+                  url
+                  alternativeText
+                }
+              }
+            }
+            ButtonText
+            ButtonLink
+          }
+        }
+      }
+    }
+  }
+`;
+export const GET_HOMEPAGE_INFOPANEL_BOTTOM = gql`
+  query GetHomePageInfoPanelBottom {
+    homePageInfoPanelBottom {
+      data {
+        attributes {
+          InfoPanelA {
+            Title
+            Subtitle
+            Image {
+              data {
+                attributes {
+                  url
+                  alternativeText
+                }
+              }
+            }
+            Icon {
+              data {
+                attributes {
+                  url
+                  alternativeText
+                }
+              }
+            }
+            ButtonText
+            ButtonLink
+          }
+        }
+      }
+    }
+  }
+`;
 export const GET_TREATMENTS_CARDGRID = gql`
   query GetTreatmentsCardGrid {
     treatmentsCardGrids {

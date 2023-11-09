@@ -1,7 +1,6 @@
 import { useQuery } from '@apollo/client';
 import ReactMarkdown from 'react-markdown';
 
-import { Header } from '../components/Header.jsx';
 import { InfoPanelA } from '../components/InfoPanelA.jsx';
 
 import { GET_ABOUT_MISSION } from '../gql.jsx';
@@ -16,13 +15,6 @@ export default function AboutMission() {
 
   return (
     <>
-      <Header
-        title="Providing high quality services for PTSD across the health system"
-        subtitle="Welcome to our hospital's website, where we offer comprehensive psychiatric services to support mental health."
-        //Leaving as usage example:
-        //imageUrl="https://interactive-examples.mdn.mozilla.net/media/examples/lizard.png"
-        //bgColor="pink"
-      />
       {/* As much as possible should become Strapi queries.*/}
       <InfoPanelA
         title="Our Mission: Providing Compassionate Psychiatric Care"

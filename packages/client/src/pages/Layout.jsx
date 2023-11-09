@@ -4,6 +4,7 @@ import { AppBar, Box, Button, Container, Toolbar } from '@mui/material';
 
 import { useQuery } from '@apollo/client';
 import { GET_LOGO_FULL_SVG } from '../gql.jsx';
+import { UniversalHeader } from '../components/Header.jsx';
 import { Footer } from '../components/Footer.jsx';
 
 function NavBar() {
@@ -14,7 +15,7 @@ function NavBar() {
 
   return (
     // Elevation prop is just there to silence warning
-    <AppBar position="static" color="transparent" variant="outlined" elevation={0} sx={{ margin: '0 0 4rem' }}>
+    <AppBar position="static" color="transparent" variant="outlined" elevation={0}>
       <Toolbar>
         <NavLink to="/" style={{ lineHeight: 0 }}>
           <img
@@ -53,6 +54,7 @@ function Layout() {
   return (
     <>
       <NavBar />
+      <UniversalHeader />
       <Container sx={{ margin: '1rem auto' }}>
         <Outlet />
       </Container>

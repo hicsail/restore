@@ -12,7 +12,6 @@ import { GET_UPCOMING_ONGOING } from '../gql.jsx';
 import { GET_TREATMENTS_CARDGRID } from '../gql.jsx';
 import ReactMarkdown from 'react-markdown';
 
-import { Header } from '../components/Header.jsx';
 import {
   DeterminantsColumn,
   ProcessesColumn,
@@ -464,10 +463,6 @@ export default function Services() {
 
   return (
     <>
-      <Header
-        title="Providing high quality services for PTSD across the health system"
-        subtitle="Welcome to our hospital's website, where we offer comprehensive psychiatric services to support mental health."
-      />
       <h1>SERVICES</h1>
       <p>
         RESTORE provides services to health systems and patients to enhance access to high quality PTSD treatment and
