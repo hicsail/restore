@@ -13,12 +13,12 @@ import { Link, useParams } from 'react-router-dom';
 export default function BlogPost() {
   const { id, blogTitle } = useParams();
   const { loading: postLoading, error: postErr, data: post } = useQuery(GET_BLOG_POST, { variables: { id } });
-  const { loading: relatedLoading, error: relatedErr, data: related } = useQuery(GET_BLOG_POSTS);
+  const { loading: recentLoading, error: recentErr, data: recent } = useQuery(GET_BLOG_POSTS);
 
   const [expanded, setExpanded] = useState(false);
 
-  if (postLoading || relatedLoading) return <p>Loading...</p>;
-  if (postErr || relatedErr) return <p>Error : {error.message}</p>;
+  if (postLoading || recentLoading) return <p>Loading...</p>;
+  if (postErr || recentErr) return <p>Error : {error.message}</p>;
 
   const handleExpand = (panel) => (_event) => {
     setExpanded(panel);
@@ -27,8 +27,6 @@ export default function BlogPost() {
   const handleCollapse = () => {
     setExpanded(false);
   };
-
-  console.log(related.blogPosts.data);
 
   return (
     <>
@@ -58,7 +56,7 @@ export default function BlogPost() {
             Recent Posts
           </Typography>
           <hr />
-          {related.blogPosts.data.map(({ id, attributes }) => (
+          {recent.blogPosts.data.map(({ id, attributes }) => (
             <Accordion
               key={id}
               disableGutters
