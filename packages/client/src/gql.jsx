@@ -157,13 +157,74 @@ export const GET_RESEARCH_AND_EVALUATIONS = gql`
 `;
 export const GET_BLOG_POSTS = gql`
   query GetBlogPosts {
-    blogPosts {
+    blogPosts(pagination: { page: 1, pageSize: 5 }, sort: "DatetimePublished:desc") {
       data {
         id
         attributes {
           Title
           DatetimePublished
           Body
+          Category
+          CoverImage {
+            data {
+              attributes {
+                url
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+export const GET_BLOG_POSTS_BY_CATEGORY = gql`
+  query GetBlogPostsByCategory($category: String!, $page: Int!, $pageSize: Int!) {
+    blogPosts(
+      filters: { Category: { contains: $category } }
+      pagination: { page: $page, pageSize: $pageSize }
+      sort: "DatetimePublished:desc"
+    ) {
+      data {
+        id
+        attributes {
+          Title
+          DatetimePublished
+          Body
+          Category
+          CoverImage {
+            data {
+              attributes {
+                url
+              }
+            }
+          }
+        }
+      }
+      meta {
+        pagination {
+          total
+          pageSize
+        }
+      }
+    }
+  }
+`;
+export const GET_BLOG_POST = gql`
+  query getBlogPost($id: ID!) {
+    blogPost(id: $id) {
+      data {
+        attributes {
+          Title
+          DatetimePublished
+          Body
+          Category
+          CoverImage {
+            data {
+              attributes {
+                url
+              }
+            }
+          }
         }
       }
     }
