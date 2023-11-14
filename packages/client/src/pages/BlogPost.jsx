@@ -24,6 +24,7 @@ export default function BlogPost() {
   if (postLoading || recentLoading) return <p>Loading...</p>;
   if (postErr || recentErr) return <p>Error : {error.message}</p>;
 
+  // TODO: Remove this if we confirms that we do not need description
   const handleExpand = (panel) => (_event) => {
     setExpanded(panel);
   };
@@ -65,6 +66,7 @@ export default function BlogPost() {
               key={id}
               disableGutters
               expanded={expanded === id}
+              // TODO: Remove it if we confirms that we do not need description
               // onMouseEnter={handleExpand(id)}
               // onMouseLeave={handleCollapse}
             >
@@ -80,6 +82,7 @@ export default function BlogPost() {
                   <Typography variant="subtitle2">{new Date(attributes.DatetimePublished).toDateString()}</Typography>
                 </Box>
               </AccordionSummary>
+              {/* TODO: Remove it if we confirms that we do not need description */}
               <AccordionDetails>
                 <Typography variant="body1"></Typography>
               </AccordionDetails>
