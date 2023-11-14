@@ -69,7 +69,7 @@ export default function Blog() {
               tag={post.attributes.Category}
               title={post.attributes.Title}
               imgSource={post.attributes.CoverImage.data?.attributes.url}
-              author={'author'}
+              author={post.attributes.Author}
               date={post.attributes.DatetimePublished}
             />
           </Grid>

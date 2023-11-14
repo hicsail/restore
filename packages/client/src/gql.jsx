@@ -169,6 +169,7 @@ export const GET_RECENT_BLOG_POSTS_EXCEPT = gql`
           DatetimePublished
           Body
           Category
+          Author
           CoverImage {
             data {
               attributes {
@@ -195,6 +196,7 @@ export const GET_BLOG_POSTS_BY_CATEGORY = gql`
           DatetimePublished
           Body
           Category
+          Author
           CoverImage {
             data {
               attributes {
@@ -222,6 +224,7 @@ export const GET_BLOG_POST = gql`
           DatetimePublished
           Body
           Category
+          Author
           CoverImage {
             data {
               attributes {
