@@ -4,7 +4,7 @@ import { useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 
 import { prependStrapiURL, processMarkdownImageUri } from '../utils.jsx';
-import { GET_BLOG_POST, GET_BLOG_POSTS } from '../gql.jsx';
+import { GET_BLOG_POST, GET_RECENT_BLOG_POSTS_EXCEPT } from '../gql.jsx';
 import { Accordion, AccordionDetails, AccordionSummary, Box, Button, Grid, Typography } from '@mui/material';
 
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
@@ -13,7 +13,11 @@ import { Link, useParams } from 'react-router-dom';
 export default function BlogPost() {
   const { id, blogTitle } = useParams();
   const { loading: postLoading, error: postErr, data: post } = useQuery(GET_BLOG_POST, { variables: { id } });
-  const { loading: recentLoading, error: recentErr, data: recent } = useQuery(GET_BLOG_POSTS);
+  const {
+    loading: recentLoading,
+    error: recentErr,
+    data: recent
+  } = useQuery(GET_RECENT_BLOG_POSTS_EXCEPT, { variables: { id, pageSize: 5 } });
 
   const [expanded, setExpanded] = useState(false);
 

@@ -155,9 +155,13 @@ export const GET_RESEARCH_AND_EVALUATIONS = gql`
     }
   }
 `;
-export const GET_BLOG_POSTS = gql`
-  query GetBlogPosts {
-    blogPosts(pagination: { page: 1, pageSize: 5 }, sort: "DatetimePublished:desc") {
+export const GET_RECENT_BLOG_POSTS_EXCEPT = gql`
+  query GetBlogPosts($id: ID!, $pageSize: Int!) {
+    blogPosts(
+      filters: { id: { ne: $id } }
+      pagination: { page: 1, pageSize: $pageSize }
+      sort: "DatetimePublished:desc"
+    ) {
       data {
         id
         attributes {
