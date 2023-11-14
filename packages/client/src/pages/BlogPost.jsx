@@ -5,7 +5,7 @@ import ReactMarkdown from 'react-markdown';
 
 import { generateBlogPostPath, prependStrapiURL, processMarkdownImageUri } from '../utils.jsx';
 import { GET_BLOG_POST, GET_RECENT_BLOG_POSTS_EXCEPT } from '../gql.jsx';
-import { Accordion, AccordionDetails, AccordionSummary, Box, Button, Grid, Typography } from '@mui/material';
+import { Accordion, AccordionSummary, Box, Button, Grid, Typography } from '@mui/material';
 
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { Link, useParams } from 'react-router-dom';
@@ -23,15 +23,6 @@ export default function BlogPost() {
 
   if (postLoading || recentLoading) return <p>Loading...</p>;
   if (postErr || recentErr) return <p>Error : {error.message}</p>;
-
-  // TODO: Remove this if we confirms that we do not need description
-  const handleExpand = (panel) => (_event) => {
-    setExpanded(panel);
-  };
-
-  const handleCollapse = () => {
-    setExpanded(false);
-  };
 
   return (
     <>
@@ -62,14 +53,7 @@ export default function BlogPost() {
           </Typography>
           <hr />
           {recent.blogPosts.data.map(({ id, attributes }) => (
-            <Accordion
-              key={id}
-              disableGutters
-              expanded={expanded === id}
-              // TODO: Remove it if we confirms that we do not need description
-              // onMouseEnter={handleExpand(id)}
-              // onMouseLeave={handleCollapse}
-            >
+            <Accordion key={id} disableGutters expanded={expanded === id}>
               <AccordionSummary>
                 <Box
                   component={Link}
@@ -82,10 +66,6 @@ export default function BlogPost() {
                   <Typography variant="subtitle2">{new Date(attributes.DatetimePublished).toDateString()}</Typography>
                 </Box>
               </AccordionSummary>
-              {/* TODO: Remove it if we confirms that we do not need description */}
-              <AccordionDetails>
-                <Typography variant="body1"></Typography>
-              </AccordionDetails>
             </Accordion>
           ))}
         </Grid>

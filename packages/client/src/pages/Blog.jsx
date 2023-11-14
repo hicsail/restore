@@ -68,7 +68,6 @@ export default function Blog() {
               id={post.id}
               tag={post.attributes.Category}
               title={post.attributes.Title}
-              description={'description'}
               imgSource={post.attributes.CoverImage.data?.attributes.url}
               author={'author'}
               date={post.attributes.DatetimePublished}

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { Box, Card, CardActionArea, CardActions, CardContent, CardMedia, Typography } from '@mui/material';
 import { generateBlogPostPath, prependStrapiURL } from '../utils';
 
-export function BlogCard({ id, tag, title, description, imgSource, author, date }) {
+export function BlogCard({ id, tag, title, imgSource, author, date }) {
   return (
     <Card
       variant="outlined"
@@ -22,7 +22,6 @@ export function BlogCard({ id, tag, title, description, imgSource, author, date 
           <Typography variant="h6" sx={{ fontWeight: 'bold', lineHeight: 1.2 }} gutterBottom>
             {title}
           </Typography>
-          <Typography variant="body1">{description}</Typography>
         </CardContent>
       </CardActionArea>
       <CardActions sx={{ padding: 2 }}>
