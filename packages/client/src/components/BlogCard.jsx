@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Box, Card, CardActionArea, CardActions, CardContent, CardMedia, Typography } from '@mui/material';
-import { prependStrapiURL } from '../utils';
+import { generateBlogPostPath, prependStrapiURL } from '../utils';
 
 export function BlogCard({ id, tag, title, description, imgSource, author, date }) {
   return (
@@ -8,11 +8,7 @@ export function BlogCard({ id, tag, title, description, imgSource, author, date 
       variant="outlined"
       sx={{ display: 'flex', flexDirection: 'column', height: '100%', maxWidth: 380, border: 0, borderRadius: 0 }}
     >
-      <CardActionArea
-        component={Link}
-        to={`${id}/${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
-        sx={{ padding: 2, marginBottom: 'auto' }}
-      >
+      <CardActionArea component={Link} to={generateBlogPostPath(id, title)} sx={{ padding: 2, marginBottom: 'auto' }}>
         <CardMedia
           component="img"
           height={220}

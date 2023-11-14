@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/client';
 import { useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 
-import { prependStrapiURL, processMarkdownImageUri } from '../utils.jsx';
+import { generateBlogPostPath, prependStrapiURL, processMarkdownImageUri } from '../utils.jsx';
 import { GET_BLOG_POST, GET_RECENT_BLOG_POSTS_EXCEPT } from '../gql.jsx';
 import { Accordion, AccordionDetails, AccordionSummary, Box, Button, Grid, Typography } from '@mui/material';
 
@@ -73,7 +73,7 @@ export default function BlogPost() {
               <AccordionSummary>
                 <Box
                   component={Link}
-                  to={`/blog/${id}/${attributes.Title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
+                  to={generateBlogPostPath(id, attributes.Title)}
                   sx={{ textDecoration: 'none', color: 'inherit' }}
                 >
                   <Typography variant="h6" lineHeight={1.2} marginBottom={1}>
