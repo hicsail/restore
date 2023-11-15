@@ -40,7 +40,8 @@ theme = createTheme(theme, {
   typography: {
     headerTitle: {
       fontSize: '3rem',
-      fontWeight: 'bold'
+      fontWeight: 'bold',
+      color: 'white'
     },
     headerSubtitle: {
       fontSize: '1rem',
