@@ -74,8 +74,6 @@ export function ScopeOfClinicalFocus() {
     <Box>
       <Box sx={{ display: 'flex', justifyContent: 'center' }}>
         <svg width="900" height="450" xmlns="http://www.w3.org/2000/svg">
-          <rect x="0" y="0" width="900" height="450" fill="transparent" stroke="black" />
-
           <ellipse cx="300" cy="161" rx="270" ry="160" fill="#78cee944" stroke="#00556f" strokeWidth="1" />
           <ellipse cx="600" cy="161" rx="270" ry="160" fill="#78cee944" stroke="#00556f" strokeWidth="1" />
 
