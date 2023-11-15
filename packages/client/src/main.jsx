@@ -17,8 +17,9 @@ import TreatmentsServices from './pages/TreatmentsServices.jsx';
 import TeamMemberGrid from './pages/Team.jsx';
 import ResearchAndEvals from './pages/Research.jsx';
 import GetInvolved from './pages/GetInvolved.jsx';
-import BlogPosts from './pages/Blog.jsx';
+import BlogPost from './pages/BlogPost.jsx';
 import UnderConstruction from './pages/UnderConstruction.jsx';
+import Blog from './pages/Blog.jsx';
 
 const httpLink = createHttpLink({
   uri: import.meta.env.VITE_STRAPI_URL + '/graphql'
@@ -75,7 +76,11 @@ const router = createBrowserRouter([
       },
       {
         path: 'blog',
-        element: <BlogPosts />
+        element: <Blog />
+      },
+      {
+        path: 'blog/:id/:blogTitle',
+        element: <BlogPost />
       }
     ]
   }

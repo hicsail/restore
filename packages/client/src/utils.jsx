@@ -14,3 +14,9 @@ export function prependStrapiURL(url) {
 export function processMarkdownImageUri(url) {
   return prependStrapiURL(uriTransformer(url));
 }
+
+// This function is for generating the path for a blog post.
+// It takes in the id and title of the blog post, and returns a string that can be used in a Link component.
+export function generateBlogPostPath(id, title) {
+  return `/blog/${id}/${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+}
