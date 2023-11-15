@@ -3,7 +3,7 @@ import { TeamMemberPhoto } from './TeamMemberPhoto.jsx';
 
 export const TeamMember = ({ Name, Photo, Credentials, Pronouns, Languages, Roles, Bio, Interests, EBPs }) => {
   return (
-    <Card sx={{ height: '100%' }}>
+    <Card variant="outlined" sx={{ height: '100%', border: 1, borderRadius: '0 20px 20px 20px' }}>
       <TeamMemberPhoto Photo={Photo} Name={Name} />
       <CardContent>
         <Typography variant="h5" component="h3" gutterBottom>
