@@ -2,8 +2,7 @@ import { useQuery } from '@apollo/client';
 
 import { GET_BLOG_POSTS_BY_CATEGORY } from '../gql.jsx';
 import { useState } from 'react';
-import { Box, Grid, IconButton, InputBase, Pagination, Paper, Tab, Tabs } from '@mui/material';
-import SearchIcon from '@mui/icons-material/Search';
+import { Box, Grid, Pagination, Tab, Tabs } from '@mui/material';
 import { BlogCard } from '../components/BlogCard.jsx';
 
 export default function Blog() {
@@ -11,7 +10,6 @@ export default function Blog() {
     variables: { category: '', page: 1, pageSize: 9 }
   });
   const [tabValue, setTabValue] = useState(0);
-  const [searchValue, setSearchValue] = useState('');
   const blogCategories = {
     all: 'All',
     depression: 'Depression',
@@ -29,10 +27,6 @@ export default function Blog() {
     refetch({ category: newCategory === 'All' ? '' : newCategory });
   };
 
-  const handleChangeSearch = (event) => {
-    setSearchValue(event.target.value);
-  };
-
   const handlePageChange = (_event, page) => {
     refetch({ page });
   };
@@ -45,16 +39,6 @@ export default function Blog() {
             <Tab key={category} label={blogCategories[category]} />
           ))}
         </Tabs>
-        <Paper
-          component="form"
-          onChange={handleChangeSearch}
-          sx={{ p: '2px 4px', alignItems: 'center', display: 'flex', marginLeft: 'auto' }}
-        >
-          <IconButton sx={{ p: '10px' }}>
-            <SearchIcon />
-          </IconButton>
-          <InputBase placeholder="Search Blogs" value={searchValue} sx={{ ml: 1, flex: 1, width: 260 }} />
-        </Paper>
       </Box>
       <Box sx={{ my: 5, mx: 2 }}>
         <span style={{ fontWeight: 'bold' }}>Latest</span>
