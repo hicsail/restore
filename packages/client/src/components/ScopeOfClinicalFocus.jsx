@@ -1,6 +1,70 @@
-import { Box } from '@mui/material';
+import { useEffect, useRef, useState } from 'react';
+import { Box, Paper, Popper } from '@mui/material';
 
 export function ScopeOfClinicalFocus() {
+  // The interactive venn diagram as currently designed/requested
+  // does not make it very obvious that one can hover over the diagram text
+  // to get more info. So this "initial Anchor" logic makes it so that
+  // when the user first sees the diagram, the popper is already visible.
+  const initialAnchorElRef = useRef(null);
+  const [showedInitialPopper, setShowedInitialPopper] = useState(false);
+
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [popperText, setPopperText] = useState(null);
+
+  useEffect(() => {
+    if (!anchorEl && !showedInitialPopper) {
+      setAnchorEl(initialAnchorElRef.current);
+      setPopperText(ptsdSignsSymptomsText);
+      setShowedInitialPopper(true);
+    }
+  });
+
+  const handleMouseOver = (text) => (event) => {
+    setPopperText(text);
+    setAnchorEl(event.currentTarget);
+  };
+  const handleMouseOut = () => {
+    setAnchorEl(null);
+  };
+
+  const ptsdSignsSymptomsText = (
+    <ul>
+      <li>Re-experiencing of the trauma event</li>
+      <li>Avoidance of trauma memory, reminders, and emotions</li>
+      <li>Depressive symptoms</li>
+      <li>Feeling isolated or disconnected from others</li>
+      <li>Feeling on guard and easily startles</li>
+    </ul>
+  );
+  const ptsdTechniquesText = (
+    <ul>
+      <li>Relaxation</li>
+      <li>Cognitive Reappraisal</li>
+      <li>Emotional Processing (Exposures)</li>
+      <li>Approach coping Skills Training</li>
+    </ul>
+  );
+  const obsSignsSymptomsText = (
+    <ul>
+      <li>Uncontrollable stress....</li>
+    </ul>
+  );
+  const obsTechniquesText = (
+    <ul>
+      <li>Validation</li>
+      <li>Psychoeducation</li>
+      <li>Consciousness Raising</li>
+      <li>Emotional Processing</li>
+      <li>Committing to action</li>
+      <li>Storytelling</li>
+      <li>Self Esteem</li>
+      <li>Celebrating Cultural and Familial History</li>
+      <li>Resistance through Joy</li>
+      <li>Coping Skills Training</li>
+    </ul>
+  );
+
   return (
     <Box>
       <Box sx={{ display: 'flex', justifyContent: 'center' }}>
@@ -17,10 +81,25 @@ export function ScopeOfClinicalFocus() {
             (PTSD)
           </text>
 
-          <text textAnchor="middle" x="200" y="160" fontSize="16">
+          <text
+            ref={initialAnchorElRef}
+            onMouseOver={handleMouseOver(ptsdSignsSymptomsText)}
+            onMouseOut={handleMouseOut}
+            textAnchor="middle"
+            x="200"
+            y="160"
+            fontSize="16"
+          >
             Signs and Symptoms
           </text>
-          <text textAnchor="middle" x="200" y="200" fontSize="16">
+          <text
+            onMouseOver={handleMouseOver(ptsdTechniquesText)}
+            onMouseOut={handleMouseOut}
+            textAnchor="middle"
+            x="200"
+            y="200"
+            fontSize="16"
+          >
             Techniques
           </text>
 
@@ -35,10 +114,24 @@ export function ScopeOfClinicalFocus() {
             (OBS)
           </text>
 
-          <text textAnchor="middle" x="660" y="160" fontSize="16">
+          <text
+            onMouseOver={handleMouseOver(obsSignsSymptomsText)}
+            onMouseOut={handleMouseOut}
+            textAnchor="middle"
+            x="660"
+            y="160"
+            fontSize="16"
+          >
             Signs and Symptoms
           </text>
-          <text textAnchor="middle" x="660" y="200" fontSize="16">
+          <text
+            onMouseOver={handleMouseOver(obsTechniquesText)}
+            onMouseOut={handleMouseOut}
+            textAnchor="middle"
+            x="660"
+            y="200"
+            fontSize="16"
+          >
             Techniques
           </text>
 
@@ -67,6 +160,9 @@ export function ScopeOfClinicalFocus() {
             Emergent Supports
           </text>
         </svg>
+        <Popper id="venn-popper" open={Boolean(anchorEl)} anchorEl={anchorEl}>
+          <Paper>{popperText}</Paper>
+        </Popper>
       </Box>
     </Box>
   );
