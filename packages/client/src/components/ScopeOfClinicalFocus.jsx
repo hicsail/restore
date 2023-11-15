@@ -4,17 +4,22 @@ import { Box, Paper, Popper } from '@mui/material';
 export function ScopeOfClinicalFocus() {
   // The interactive venn diagram as currently designed/requested
   // does not make it very obvious that one can hover over the diagram text
-  // to get more info. So this "initial Anchor" logic makes it so that
-  // when the user first sees the diagram, the popper is already visible.
-  const initialAnchorElRef = useRef(null);
+  // to get more info. So this "initial Popper" logic makes it so that
+  // when the user first sees the diagram, the popper is already open
+  // on one of the four locations.
   const [showedInitialPopper, setShowedInitialPopper] = useState(false);
 
   const [anchorEl, setAnchorEl] = useState(null);
   const [popperText, setPopperText] = useState(null);
 
+  const ptsdSignsSymptomsRef = useRef(null);
+  const ptsdTechniquesRef = useRef(null);
+  const obsSignsSymptomsRef = useRef(null);
+  const obsTechniquesRef = useRef(null);
+
   useEffect(() => {
-    if (!anchorEl && !showedInitialPopper) {
-      setAnchorEl(initialAnchorElRef.current);
+    if (!showedInitialPopper) {
+      setAnchorEl(ptsdSignsSymptomsRef.current);
       setPopperText(ptsdSignsSymptomsText);
       setShowedInitialPopper(true);
     }
@@ -74,31 +79,32 @@ export function ScopeOfClinicalFocus() {
           <ellipse cx="300" cy="161" rx="270" ry="160" fill="#78cee944" stroke="#00556f" strokeWidth="1" />
           <ellipse cx="600" cy="161" rx="270" ry="160" fill="#78cee944" stroke="#00556f" strokeWidth="1" />
 
-          <text textAnchor="middle" x="220" y="80" fontSize="16">
+          <text textAnchor="middle" x="220" y="80" fontSize="18" fontWeight="bold">
             Posttraumatic Stress Disorder
           </text>
-          <text textAnchor="middle" x="220" y="100" fontSize="16">
+          <text textAnchor="middle" x="220" y="100" fontSize="18" fontWeight="bold">
             (PTSD)
           </text>
 
           <text
-            ref={initialAnchorElRef}
+            ref={ptsdSignsSymptomsRef}
             onMouseOver={handleMouseOver(ptsdSignsSymptomsText)}
             onMouseOut={handleMouseOut}
             textAnchor="middle"
             x="200"
             y="160"
-            fontSize="16"
+            fontSize={anchorEl == ptsdSignsSymptomsRef.current ? 22 : 16}
           >
             Signs and Symptoms
           </text>
           <text
+            ref={ptsdTechniquesRef}
             onMouseOver={handleMouseOver(ptsdTechniquesText)}
             onMouseOut={handleMouseOut}
             textAnchor="middle"
             x="200"
             y="200"
-            fontSize="16"
+            fontSize={anchorEl == ptsdTechniquesRef.current ? 22 : 16}
           >
             Techniques
           </text>
@@ -107,30 +113,32 @@ export function ScopeOfClinicalFocus() {
             Dual Focus
           </text>
 
-          <text textAnchor="middle" x="660" y="80" fontSize="16">
+          <text textAnchor="middle" x="660" y="80" fontSize="18" fontWeight="bold">
             Oppression-based Stress
           </text>
-          <text textAnchor="middle" x="660" y="100" fontSize="16">
+          <text textAnchor="middle" x="660" y="100" fontSize="18" fontWeight="bold">
             (OBS)
           </text>
 
           <text
+            ref={obsSignsSymptomsRef}
             onMouseOver={handleMouseOver(obsSignsSymptomsText)}
             onMouseOut={handleMouseOut}
             textAnchor="middle"
-            x="660"
+            x="700"
             y="160"
-            fontSize="16"
+            fontSize={anchorEl == obsSignsSymptomsRef.current ? 22 : 16}
           >
             Signs and Symptoms
           </text>
           <text
+            ref={obsTechniquesRef}
             onMouseOver={handleMouseOver(obsTechniquesText)}
             onMouseOut={handleMouseOut}
             textAnchor="middle"
-            x="660"
+            x="700"
             y="200"
-            fontSize="16"
+            fontSize={anchorEl == obsTechniquesRef.current ? 22 : 16}
           >
             Techniques
           </text>
