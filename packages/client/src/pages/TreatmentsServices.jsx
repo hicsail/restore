@@ -480,6 +480,39 @@ function TreatmentsCardGrid() {
   return <CardGrid cards={data.treatmentsCardGrids.data} />;
 }
 
+function MeasurementBasedCare() {
+  return (
+    <Paper sx={{ display: 'flex', margin: '1rem 0', padding: '2em' }}>
+      <Box sx={{ width: '60%', display: 'flex', flexDirection: 'column', padding: '0 2em 0 0' }}>
+        <Typography variant="infoPanelBTitle">Measurement-based care</Typography>
+        <Typography variant="infoPanelBBody">
+          We use measurement-based care to develop individualized treatment plans and understand best practices for
+          stepping and sequencing treatments.
+        </Typography>
+        <Box sx={{ display: 'flex' }}>
+          <p>
+            Clients complete questionnaires at their intake and every 6 months to measure progress through treatment
+          </p>
+          <p>Responses are used by clinicians to understand if a treatment is working</p>
+          <p>Clinicians use this information to offer additional treatment or engagement support to patients</p>
+          <p>Patients can opt out of these questionnaires at any time</p>
+        </Box>
+        <Typography variant="infoPanelBBody">
+          We know that engagement in PTSD treatment can be challenging, so RESTORE provides additional supports.
+        </Typography>
+        <Box sx={{ display: 'flex' }}>
+          <p>Community health workers to provide outreach and skills training </p>
+          <p>Clinic data monitoring to understand engagement and retention in treatment in the practice</p>
+          <p>Guidance from our patient advisory board on maintaining patient-centered care</p>
+        </Box>
+      </Box>
+      <Box sx={{ width: '40%' }}>
+        <img width="100%" src={prependStrapiURL('/uploads/measurementbasedcare_19e723be73.png')} />
+      </Box>
+    </Paper>
+  );
+}
+
 export default function Services() {
   const upcomingOngoing = useQuery(GET_UPCOMING_ONGOING);
   if (upcomingOngoing.loading) return <p>Loading...</p>;
@@ -537,6 +570,7 @@ export default function Services() {
       </p>
       <p>All treatments are:</p>
       <TreatmentsCardGrid />
+      <MeasurementBasedCare />
       <br />
       <ScopeOfClinicalFocus />
     </>
