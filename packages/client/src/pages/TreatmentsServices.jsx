@@ -377,77 +377,6 @@ function DeterminantsInteractive() {
   );
 }
 
-function AllTreatmentsAre() {
-  const briefText = (
-    <ul>
-      <li>Brief treatments focus on building skills to manage PTSD and trauma- related distress</li>
-      <li>We use a brief treatment model to increase access to care</li>
-      <li>These treatments can normally be completed over 3-6 months</li>
-      <li>
-        Some patients find relief from a single course BRIEF treatment alone and others will find relief from sequencing
-        a series of these treatments from low to high intensity
-      </li>
-    </ul>
-  );
-  const evidenceBasedText = (
-    <ul>
-      <li>Treatments for PTSD that have been researched and shown to be effective</li>
-      <li>
-        Our clinicians are highly trained in a range of evidence-based treatments for PTSD, and receive consultation
-        from lead experts in the field
-      </li>
-      <li>We utilize brief and culturally responsive evidence-based treatments</li>
-    </ul>
-  );
-  const culturallyResponsiveText = (
-    <ul>
-      <li>
-        Culturally responsive care is an approach to fully see and value all aspects of a patients’ identity,
-        background, and experiences.
-      </li>
-      <li>
-        RESTORE treatments have undergone a systematic process of adaptation, to ensure that the treatments meet the
-        needs of our healthcare system and the patients we serve. This includes adaptations to delivery modality,
-        service setting, language, literacy, and cultural
-      </li>
-      <li>
-        Treatment manuals and materials are available in English, Spanish, and Haitian Creole (more coming soon)—and
-        services can be provided in any language through the use of BMC interpreter services
-      </li>
-      <li>
-        RESTORE utilizes a patient advisory board to support the ongoing improvement of our treatments and service
-        delivery strategies to ensure that we are providing the highest quality of culturally responsive PTSD treatment.
-      </li>
-    </ul>
-  );
-
-  const [hoverText, setHoverText] = useState(briefText);
-
-  function HoverButton({ buttonText, hoverText }) {
-    return (
-      <Button
-        onMouseOver={() => {
-          setHoverText(hoverText);
-        }}
-        variant="contained"
-        color="yellow"
-      >
-        {buttonText}
-      </Button>
-    );
-  }
-
-  return (
-    <>
-      <p>All treatments are:</p>
-      <HoverButton buttonText="Brief" hoverText={briefText} />
-      <HoverButton buttonText="Evidence-based" hoverText={evidenceBasedText} />
-      <HoverButton buttonText="Culturally Responsive" hoverText={culturallyResponsiveText} />
-      <Box sx={{ border: 1, p: 1, bgcolor: 'background.paper', height: '300px', margin: '0 0 30px' }}>{hoverText}</Box>
-    </>
-  );
-}
-
 function TreatmentsCardGrid() {
   const { loading, error, data } = useQuery(GET_TREATMENTS_CARDGRID);
   if (loading) return <p>Loading...</p>;
@@ -549,7 +478,6 @@ export default function Services() {
         <h2 id="Services-to-our-patients">Services to our patients</h2>
       </a>
 
-      <TreatmentsCardGrid />
       <p>
         Our treatment model uses a variety of service delivery strategies to maximize the reach and effectiveness of our
         treatments, and to support patient engagement.
@@ -560,7 +488,9 @@ export default function Services() {
         Many people who experience trauma events go on to have natural recovery. Those whose recovery gets interrupted
         go on to develop PTSD.
       </p>
-      <AllTreatmentsAre />
+      <p>All treatments are:</p>
+      <TreatmentsCardGrid />
+      <br />
       <ScopeOfClinicalFocus />
     </>
   );
