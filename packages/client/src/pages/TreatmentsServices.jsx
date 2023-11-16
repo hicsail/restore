@@ -437,6 +437,37 @@ function ImplementationFrameworks() {
   );
 }
 
+function ScopeOfServicesToSystem() {
+  return (
+    <Box sx={{ display: 'flex', flexDirection: 'column', padding: '0 10em' }}>
+      <Typography variant="infoPanelBTitle" sx={{ textAlign: 'center' }}>
+        Scope of Services to the System
+      </Typography>
+      <Typography variant="infoPanelBBody">
+        RESTORE provides facilitation—an interactive problem-solving approach that supports organizations in applying
+        evidence-based practices in routine care.
+        <br />
+        RESTORE’s selected facilitation strategies:
+      </Typography>
+      <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '0 2em' }}>
+        <p>Training and consultation initiatives</p>
+        <p>Consultation to clinical and community partners on implementation planning</p>
+        <p>Organize local change agents in leadership and clinician expertise</p>
+        <p>
+          Build reciprocal and participatory relationship with clinician teams to foster a shared vision and priorities
+        </p>
+        <p>
+          Promote structural change to support implementation with screening, identification, and referral pathways
+          across the system
+        </p>
+        <p>Convene community, patient, provider, and external advisory boards on PTSD and oppression-based stress</p>
+        <p>Support data-driven intervention adaptation, including cultural adaptation</p>
+        <p>Administrative and technical support through imbedded online flowsheets and templates</p>
+      </Box>
+    </Box>
+  );
+}
+
 function TreatmentsCardGrid() {
   const { loading, error, data } = useQuery(GET_TREATMENTS_CARDGRID);
   if (loading) return <p>Loading...</p>;
@@ -479,27 +510,7 @@ export default function Services() {
       <ImplementationFrameworks />
       <ImplementationFrameworkInteractive />
 
-      <h2>Scope of services to the system</h2>
-      <p>
-        RESTORE provides facilitation—an interactive problem-solving approach that supports organizations in applying
-        evidence-based practices in routine care.
-      </p>
-      <p>RESTORE’s selected facilitation strategies:</p>
-      <ul>
-        <li>Training and consultation initiatives</li>
-        <li>Consultation to clinical and community partners on implementation planning</li>
-        <li>Organize local change agents in leadership and clinician expertise</li>
-        <li>
-          Build reciprocal and participatory relationship with clinician teams to foster a shared vision and priorities
-        </li>
-        <li>
-          Promote structural change to support implementation with screening, identification, and referral pathways
-          across the system
-        </li>
-        <li>Convene community, patient, provider, and external advisory boards on PTSD and oppression-based stress</li>
-        <li>Support data-driven intervention adaptation, including cultural adaptation</li>
-        <li>Administrative and technical support through imbedded online flowsheets and templates</li>
-      </ul>
+      <ScopeOfServicesToSystem />
 
       <p>
         RESTORE provides ongoing clinical training and case consultation to clinicians utilizing any of our selected
