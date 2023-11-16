@@ -513,6 +513,54 @@ function MeasurementBasedCare() {
   );
 }
 
+function TreatmentsAndServices() {
+  return (
+    <Paper sx={{ margin: '1rem 0', padding: '2em' }}>
+      <Typography variant="infoPanelBTitle">Treatments and Services</Typography>
+      <Typography variant="infoPanelBBody">
+        <p>
+          RESTORE provides evidence-based treatments for posttraumatic stress disorder (PTSD) as well as programs
+          focused on resisting oppression-based stress and trauma.
+        </p>
+        <p>
+          Decisions about ending treatment are based on patient progress, symptom reduction, and clinician expertise.
+        </p>
+        <p>
+          Patients will work with their provider to select the treatment option that best fits their needs. This may
+          include selecting low-intensity, high-intensity, or a series of PTSD treatments.
+        </p>
+        <ul>
+          <li>
+            <strong>Trauma Systems Therapy for Refugees (TST-R, Ages 10-18, CAP).</strong> TST-R is a trauma-based
+            therapy. TST-R helps individuals and families learn skills in self-regulation, increasing their social
+            support networks, minimizing stress related to cultural changes, and fostering trust between the helping
+            community and the family. Treatment length varies.
+          </li>
+          <li>
+            <strong>Trauma-Focused Cognitive Behavioral Therapy (TF-CBT, Ages 3-18, CAP).</strong> TF-CBT is a
+            cognitive-based intervention for children, adolescents and their caregivers. TF-CBT utilizes a multitude of
+            different skills such as psychoeducation, fostering parenting skill acquisition and efficacy, relaxation
+            techniques, affective modulation skills, cognitive coping around thoughts, feelings, and behaviors,
+            processing of the trauma narrative, and increase the occurrence of safety practices. Sessions can be done
+            individually as well as in conjunction with individual and family sessions; treatment ranges between 12-25
+            sessions.
+          </li>
+          <li>
+            <strong>
+              Primary Care Intervention for PTSD (Ages 6-11, 11-17) and Other Evidence Based Approaches to Trauma
+              Treatment.
+            </strong>{' '}
+            PCIP integrates PTSD treatment in a Primary Care setting. PCIP focuses on four main ideas: developing
+            breathing retraining, coping skills, psychoeducation for the child/adolescent and their family around trauma
+            symptoms and reactions, and administers homework for furthered skill development outside of and in between
+            sessions. PCIP is delivered in three sessions over the course of three weeks.
+          </li>
+        </ul>
+      </Typography>
+    </Paper>
+  );
+}
+
 export default function Services() {
   const upcomingOngoing = useQuery(GET_UPCOMING_ONGOING);
   if (upcomingOngoing.loading) return <p>Loading...</p>;
@@ -571,6 +619,7 @@ export default function Services() {
       <p>All treatments are:</p>
       <TreatmentsCardGrid />
       <MeasurementBasedCare />
+      <TreatmentsAndServices />
       <br />
       <ScopeOfClinicalFocus />
     </>
