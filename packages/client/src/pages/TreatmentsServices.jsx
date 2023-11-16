@@ -390,7 +390,7 @@ function OurImplementationModel() {
     );
   }
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Paper sx={{ display: 'flex', padding: '2em' }}>
       <Box sx={{ width: '60%', display: 'flex', flexDirection: 'column' }}>
         <Typography variant="infoPanelBTitle">Our Implementation Model</Typography>
         <Typography variant="infoPanelBBody">
@@ -407,13 +407,13 @@ function OurImplementationModel() {
       <Box sx={{ width: '40%' }}>
         <img width="100%" src={prependStrapiURL('/uploads/implementationmodel_9f598b7a2d.png')} />
       </Box>
-    </Box>
+    </Paper>
   );
 }
 
 function ImplementationFrameworks() {
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Paper sx={{ display: 'flex', padding: '2em' }}>
       <Box sx={{ width: '40%' }}>
         <img width="100%" src={prependStrapiURL('/uploads/implementationframeworks_8afd8c3f2c.png')} />
       </Box>
@@ -433,7 +433,7 @@ function ImplementationFrameworks() {
           </ol>
         </Typography>
       </Box>
-    </Box>
+    </Paper>
   );
 }
 
