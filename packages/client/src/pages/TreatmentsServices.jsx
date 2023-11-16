@@ -411,6 +411,32 @@ function OurImplementationModel() {
   );
 }
 
+function ImplementationFrameworks() {
+  return (
+    <Box sx={{ display: 'flex' }}>
+      <Box sx={{ width: '40%' }}>
+        <img width="100%" src={prependStrapiURL('/uploads/implementationframeworks_8afd8c3f2c.png')} />
+      </Box>
+      <Box sx={{ width: '60%', display: 'flex', flexDirection: 'column', padding: '0 0 0 2em' }}>
+        <Typography variant="infoPanelBTitle" sx={{ margin: '0 0 0.8em 0' }}>
+          Implementation Frameworks
+        </Typography>
+        <Typography variant="infoPanelBBody" sx={{ lineHeight: '1.8em' }}>
+          We use the following Implementation Science frameworks to:
+          <ol>
+            <li>
+              Understand determinants (barriers and facilitators) of PTSD treatment implementation in usual care
+              settings
+            </li>
+            <li>Apply strategies to address determinants</li>
+            <li>Evaluate the effect of our strategies in achieving implementation success and health equity</li>
+          </ol>
+        </Typography>
+      </Box>
+    </Box>
+  );
+}
+
 function TreatmentsCardGrid() {
   const { loading, error, data } = useQuery(GET_TREATMENTS_CARDGRID);
   if (loading) return <p>Loading...</p>;
@@ -449,15 +475,8 @@ export default function Services() {
       <p>
         <i>Interested in getting involved on one of our boards?</i>
       </p>
-      <p>We use the following Implementation Science frameworks to:</p>
-      <ol>
-        <li>
-          Understand determinants (barriers and facilitators) of PTSD treatment implementation in usual care settings
-        </li>
-        <li>Apply strategies to address determinants</li>
-        <li>Evaluate the effect of our strategies in achieving implementation success and health equity</li>
-      </ol>
 
+      <ImplementationFrameworks />
       <ImplementationFrameworkInteractive />
 
       <h2>Scope of services to the system</h2>
