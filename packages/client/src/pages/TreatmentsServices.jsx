@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Box, Button, Popper } from '@mui/material';
+import { Box, Button, Popper, Typography } from '@mui/material';
 
 import { useLocation } from 'react-router-dom';
 
@@ -11,6 +11,7 @@ import { useQuery } from '@apollo/client';
 import { GET_UPCOMING_ONGOING } from '../gql.jsx';
 import { GET_TREATMENTS_CARDGRID } from '../gql.jsx';
 import ReactMarkdown from 'react-markdown';
+import { prependStrapiURL } from '../utils.jsx';
 
 import {
   DeterminantsColumn,
@@ -377,6 +378,39 @@ function DeterminantsInteractive() {
   );
 }
 
+function OurImplementationModel() {
+  function PrincipleBox(text) {
+    return (
+      <Box sx={{ display: 'flex', alignItems: 'center' }}>
+        <img src={prependStrapiURL('/uploads/info_section_icon_36975df2d1.svg')} />
+        <Typography variant="infoPanelBBody" sx={{ padding: '1em' }}>
+          {text}
+        </Typography>
+      </Box>
+    );
+  }
+  return (
+    <Box sx={{ display: 'flex' }}>
+      <Box sx={{ width: '60%', display: 'flex', flexDirection: 'column' }}>
+        <Typography variant="infoPanelBTitle">Our Implementation Model</Typography>
+        <Typography variant="infoPanelBBody">
+          We believe that access to high quality and culturally responsive care is a fundamental part of achieving
+          health equity. Four implementation science principles guide our work in advancing health equity.
+        </Typography>
+        <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)' }}>
+          {PrincipleBox('1. Racism is a fundamental driver of health inequities')}
+          {PrincipleBox('2. Equitable healthcare requires active engagement of community members ')}
+          {PrincipleBox('3. Equitable healthcare requires multisector partnerships')}
+          {PrincipleBox('4. Context is central to healthcare equity')}
+        </Box>
+      </Box>
+      <Box sx={{ width: '40%' }}>
+        <img width="100%" src={prependStrapiURL('/uploads/implementationmodel_9f598b7a2d.png')} />
+      </Box>
+    </Box>
+  );
+}
+
 function TreatmentsCardGrid() {
   const { loading, error, data } = useQuery(GET_TREATMENTS_CARDGRID);
   if (loading) return <p>Loading...</p>;
@@ -408,18 +442,7 @@ export default function Services() {
       <a href="#Services-to-the-health-system">
         <h2 id="Services-to-the-health-system">Services to the health system</h2>
       </a>
-      <u>Our Implementation Model</u>
-      <p>
-        We believe that access to high quality and culturally responsive care is a fundamental part of achieving health
-        equity.
-      </p>
-      <p>Four implementation science principles guide our work in advancing health equity.</p>
-      <ol>
-        <li>Racism is a fundamental driver of health inequities</li>
-        <li>Equitable healthcare requires active engagement of community members </li>
-        <li>Equitable healthcare requires multisector partnerships</li>
-        <li>Context is central to healthcare equity</li>
-      </ol>
+      <OurImplementationModel />
       <p>RESTORE is overseen by advisory boards that help us center the community in our health equity mission.</p>
       <p>Our boards include:</p>
       <img src={boardsImg} alt="boards info" />

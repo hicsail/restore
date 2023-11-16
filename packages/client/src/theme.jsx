@@ -56,6 +56,16 @@ theme = createTheme(theme, {
       fontSize: '1rem',
       padding: '1rem 0'
     },
+    // Unlike with infoPanelA, there is no actual reusable component called
+    // infoPanelB; it's just what I'm calling the various similarly-styled
+    // purple-header panels used in the treatments/services page.
+    infoPanelBTitle: {
+      fontSize: '2rem',
+      fontWeight: 'bold',
+      padding: '0.2rem 0',
+      color: theme.palette.purple.main
+    },
+    infoPanelBBody: {},
     cardGridCardTitle: {
       fontSize: '1.5rem',
       fontWeight: 'bold',
