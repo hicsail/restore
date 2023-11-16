@@ -516,20 +516,10 @@ export default function Services() {
 
       <ScopeOfServicesToSystem />
 
-      <p>
-        RESTORE provides ongoing clinical training and case consultation to clinicians utilizing any of our selected
-        evidence-based treatments.
-      </p>
-
-      <div
-        style={{
-          padding: '1rem',
-          border: 'solid',
-          borderRadius: '0.5em'
-        }}
-      >
+      <Typography variant="h4">Discover our comprehensive range of psychiatric services at our hospital</Typography>
+      <Paper sx={{ padding: '1rem', border: 'solid', borderRadius: '0.5em' }}>
         <ReactMarkdown>{upcomingOngoing.data.aboutUpcomingOngoing.data.attributes.Body}</ReactMarkdown>
-      </div>
+      </Paper>
 
       <a href="#Services-to-our-patients">
         <h2 id="Services-to-our-patients">Services to our patients</h2>
