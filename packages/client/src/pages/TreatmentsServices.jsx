@@ -390,7 +390,7 @@ function OurImplementationModel() {
     );
   }
   return (
-    <Paper sx={{ display: 'flex', padding: '2em' }}>
+    <Paper sx={{ display: 'flex', margin: '1rem 0', padding: '2em' }}>
       <Box sx={{ width: '60%', display: 'flex', flexDirection: 'column' }}>
         <Typography variant="infoPanelBTitle">Our Implementation Model</Typography>
         <Typography variant="infoPanelBBody">
@@ -413,7 +413,7 @@ function OurImplementationModel() {
 
 function ImplementationFrameworks() {
   return (
-    <Paper sx={{ display: 'flex', padding: '2em' }}>
+    <Paper sx={{ display: 'flex', margin: '1rem 0', padding: '2em' }}>
       <Box sx={{ width: '40%' }}>
         <img width="100%" src={prependStrapiURL('/uploads/implementationframeworks_8afd8c3f2c.png')} />
       </Box>
@@ -439,7 +439,7 @@ function ImplementationFrameworks() {
 
 function ScopeOfServicesToSystem() {
   return (
-    <Paper sx={{ display: 'flex', flexDirection: 'column', padding: '2em 10em' }}>
+    <Paper sx={{ display: 'flex', flexDirection: 'column', margin: '1rem 0', padding: '2em 10em' }}>
       <Typography variant="infoPanelBTitle" sx={{ textAlign: 'center' }}>
         Scope of Services to the System
       </Typography>
@@ -517,7 +517,7 @@ export default function Services() {
       <ScopeOfServicesToSystem />
 
       <Typography variant="h4">Discover our comprehensive range of psychiatric services at our hospital</Typography>
-      <Paper sx={{ padding: '1rem', border: 'solid', borderRadius: '0.5em' }}>
+      <Paper sx={{ margin: '1rem 0', padding: '1rem', border: 'solid', borderRadius: '0.5em' }}>
         <ReactMarkdown>{upcomingOngoing.data.aboutUpcomingOngoing.data.attributes.Body}</ReactMarkdown>
       </Paper>
 
