@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import { Box, Button, Paper, Popper, Typography } from '@mui/material';
 
-import { useLocation } from 'react-router-dom';
-
 import boardsImg from '../assets/treatments_and_services/boards.gif';
 import determinantsVennImg from '../assets/treatments_and_services/determinants_diagram.jpg';
 import ptsdCurveImg from '../assets/treatments_and_services/ptsd-curve.svg';
@@ -25,8 +23,7 @@ import { ScopeOfClinicalFocus } from '../components/ScopeOfClinicalFocus.jsx';
 import { CardGrid } from '../components/CardGrid.jsx';
 
 function ImplementationFrameworkInteractive() {
-  let { hash } = useLocation();
-  const [tabValue, setTabValue] = useState(hash || '#determinants');
+  const [tabValue, setTabValue] = useState('determinants');
 
   function BlueBox(text) {
     // Blue boxes for Core Facilitation Strategies diagram.
@@ -74,42 +71,35 @@ function ImplementationFrameworkInteractive() {
             <feDropShadow dx="-4" dy="4" stdDeviation="6" floodOpacity="0.5" />
           </filter>
         </defs>
-        <a href="#determinants">
-          <g
-            onMouseOver={() => {
-              setTabValue('#determinants');
-            }}
-            style={tabValue === '#determinants' ? { filter: 'url(#shadow)' } : {}}
-          >
-            <DeterminantsColumn />
-          </g>
-        </a>
-        <a href="#processes">
-          <g
-            onMouseOver={() => {
-              setTabValue('#processes');
-            }}
-            style={tabValue === '#processes' ? { filter: 'url(#shadow)' } : {}}
-          >
-            <ProcessesColumn />
-          </g>
-        </a>
-        <a href="#evaluation">
-          <g
-            onMouseOver={() => {
-              setTabValue('#evaluation');
-            }}
-            style={tabValue === '#evaluation' ? { filter: 'url(#shadow)' } : {}}
-          >
-            <EvaluationColumn />
-          </g>
-        </a>
+        <g
+          onMouseOver={() => {
+            setTabValue('determinants');
+          }}
+          style={tabValue === 'determinants' ? { filter: 'url(#shadow)' } : {}}
+        >
+          <DeterminantsColumn />
+        </g>
+        <g
+          onMouseOver={() => {
+            setTabValue('processes');
+          }}
+          style={tabValue === 'processes' ? { filter: 'url(#shadow)' } : {}}
+        >
+          <ProcessesColumn />
+        </g>
+        <g
+          onMouseOver={() => {
+            setTabValue('evaluation');
+          }}
+          style={tabValue === 'evaluation' ? { filter: 'url(#shadow)' } : {}}
+        >
+          <EvaluationColumn />
+        </g>
       </svg>
 
       <Box sx={{ height: '600px' }}>
-        {tabValue === '#determinants' && (
+        {tabValue === 'determinants' && (
           <>
-            <h2 id="determinants"></h2>
             <p>
               Health Equity Implementation Framework proposes determinants believed to predict successful and equitable
               implementation.
@@ -121,9 +111,8 @@ function ImplementationFrameworkInteractive() {
           </>
         )}
 
-        {tabValue === '#processes' && (
+        {tabValue === 'processes' && (
           <>
-            <h2 id="processes"></h2>
             <p>
               RESTORE provides facilitation—an interactive problem-solving approach that supports organizations in
               applying evidence-based practices in routine care.
@@ -150,9 +139,8 @@ function ImplementationFrameworkInteractive() {
           </>
         )}
 
-        {tabValue === '#evaluation' && (
+        {tabValue === 'evaluation' && (
           <>
-            <h2 id="evaluation"></h2>
             <p>
               We assess implementation success and health equity through Proctor’s Taxonomy of Outcomes, Expanded for
               Health Equity.
