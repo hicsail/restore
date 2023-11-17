@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Box, Button, Paper, Popper, Typography } from '@mui/material';
 
+import { NavLink, useLocation } from 'react-router-dom';
+
 import boardsImg from '../assets/treatments_and_services/boards.gif';
 import determinantsVennImg from '../assets/treatments_and_services/determinants_diagram.jpg';
 import ptsdCurveImg from '../assets/treatments_and_services/ptsd-curve.svg';
@@ -565,58 +567,88 @@ function TreatmentsAndServices() {
 }
 
 export default function Services() {
+  const { hash } = useLocation();
+  const [tabValue, setTabValue] = useState(hash || '#Services-to-the-health-system');
+
   return (
     <>
-      <h1>SERVICES</h1>
+      <Typography variant="h3">Our Services</Typography>
       <p>
         RESTORE provides services to health systems and patients to enhance access to high quality PTSD treatment and
         improve health equity.
       </p>
 
-      <a href="#Services-to-the-health-system">
-        <Button variant="contained">Services to the health system</Button>
-      </a>
-      <a href="#Services-to-our-patients">
-        <Button variant="contained">Services to our patients</Button>
-      </a>
+      <Box sx={{ display: 'flex' }}>
+        <Button
+          component={NavLink}
+          to="#Services-to-the-health-system"
+          onClick={() => setTabValue('#Services-to-the-health-system')}
+          sx={{
+            padding: '1rem',
+            borderRadius: '0',
+            border: 'solid',
+            ...(tabValue === '#Services-to-the-health-system'
+              ? { borderBottomColor: 'transparent' }
+              : { borderColor: 'transparent', borderBottom: 'solid', borderRightStyle: 'none' })
+          }}
+        >
+          <Typography variant="h4">Services to the health system</Typography>
+        </Button>
+        <Button
+          component={NavLink}
+          to="#Services-to-our-patients"
+          onClick={() => setTabValue('#Services-to-our-patients')}
+          sx={{
+            padding: '1rem',
+            borderRadius: '0',
+            border: 'solid',
+            ...(tabValue === '#Services-to-our-patients'
+              ? { borderBottomColor: 'transparent' }
+              : { borderColor: 'transparent', borderBottom: 'solid', borderLeftStyle: 'none' })
+          }}
+        >
+          <Typography variant="h4">Services to our patients</Typography>
+        </Button>
+      </Box>
 
-      <a href="#Services-to-the-health-system">
-        <h2 id="Services-to-the-health-system">Services to the health system</h2>
-      </a>
-      <OurImplementationModel />
-      <p>RESTORE is overseen by advisory boards that help us center the community in our health equity mission.</p>
-      <p>Our boards include:</p>
-      <img src={boardsImg} alt="boards info" />
-      <p>
-        <i>Interested in getting involved on one of our boards?</i>
-      </p>
+      {tabValue == '#Services-to-the-health-system' && (
+        <>
+          <OurImplementationModel />
+          <p>RESTORE is overseen by advisory boards that help us center the community in our health equity mission.</p>
+          <p>Our boards include:</p>
+          <img src={boardsImg} alt="boards info" />
+          <p>
+            <i>Interested in getting involved on one of our boards?</i>
+          </p>
 
-      <ImplementationFrameworks />
-      <ImplementationFrameworkInteractive />
+          <ImplementationFrameworks />
+          <ImplementationFrameworkInteractive />
 
-      <ScopeOfServicesToSystem />
-      <UpcomingOngoing />
+          <ScopeOfServicesToSystem />
+          <UpcomingOngoing />
+        </>
+      )}
 
-      <a href="#Services-to-our-patients">
-        <h2 id="Services-to-our-patients">Services to our patients</h2>
-      </a>
-
-      <p>
-        Our treatment model uses a variety of service delivery strategies to maximize the reach and effectiveness of our
-        treatments, and to support patient engagement.
-      </p>
-      <p>Services help patients to get back on the natural recovery path following trauma.</p>
-      <img src={ptsdCurveImg} height="200px" />
-      <p>
-        Many people who experience trauma events go on to have natural recovery. Those whose recovery gets interrupted
-        go on to develop PTSD.
-      </p>
-      <p>All treatments are:</p>
-      <TreatmentsCardGrid />
-      <MeasurementBasedCare />
-      <TreatmentsAndServices />
-      <br />
-      <ScopeOfClinicalFocus />
+      {tabValue == '#Services-to-our-patients' && (
+        <>
+          <p>
+            Our treatment model uses a variety of service delivery strategies to maximize the reach and effectiveness of
+            our treatments, and to support patient engagement.
+          </p>
+          <p>Services help patients to get back on the natural recovery path following trauma.</p>
+          <img src={ptsdCurveImg} height="200px" />
+          <p>
+            Many people who experience trauma events go on to have natural recovery. Those whose recovery gets
+            interrupted go on to develop PTSD.
+          </p>
+          <p>All treatments are:</p>
+          <TreatmentsCardGrid />
+          <MeasurementBasedCare />
+          <TreatmentsAndServices />
+          <br />
+          <ScopeOfClinicalFocus />
+        </>
+      )}
     </>
   );
 }
