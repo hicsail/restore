@@ -1,4 +1,5 @@
 import { Box, Card, Typography } from '@mui/material';
+import ReactMarkdown from 'react-markdown';
 
 export function CardGrid({ cards }) {
   return (
@@ -22,7 +23,9 @@ function CardGridCard({ Index, Icon, Title, Text }) {
     >
       <img width="30 em" height="30 em" src={imgUrl} alt={imgAlt} />
       <Typography variant="cardGridCardTitle">{Title}</Typography>
-      <Typography variant="cardGridCardText">{Text}</Typography>
+      <Typography variant="cardGridCardText">
+        <ReactMarkdown>{Text}</ReactMarkdown>
+      </Typography>
     </Card>
   );
 }

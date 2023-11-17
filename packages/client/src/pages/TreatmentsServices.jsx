@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Box, Button, Popper } from '@mui/material';
+import { Box, Button, Paper, Popper, Typography } from '@mui/material';
 
 import { useLocation } from 'react-router-dom';
 
@@ -11,6 +11,7 @@ import { useQuery } from '@apollo/client';
 import { GET_UPCOMING_ONGOING } from '../gql.jsx';
 import { GET_TREATMENTS_CARDGRID } from '../gql.jsx';
 import ReactMarkdown from 'react-markdown';
+import { prependStrapiURL } from '../utils.jsx';
 
 import {
   DeterminantsColumn,
@@ -377,74 +378,97 @@ function DeterminantsInteractive() {
   );
 }
 
-function AllTreatmentsAre() {
-  const briefText = (
-    <ul>
-      <li>Brief treatments focus on building skills to manage PTSD and trauma- related distress</li>
-      <li>We use a brief treatment model to increase access to care</li>
-      <li>These treatments can normally be completed over 3-6 months</li>
-      <li>
-        Some patients find relief from a single course BRIEF treatment alone and others will find relief from sequencing
-        a series of these treatments from low to high intensity
-      </li>
-    </ul>
-  );
-  const evidenceBasedText = (
-    <ul>
-      <li>Treatments for PTSD that have been researched and shown to be effective</li>
-      <li>
-        Our clinicians are highly trained in a range of evidence-based treatments for PTSD, and receive consultation
-        from lead experts in the field
-      </li>
-      <li>We utilize brief and culturally responsive evidence-based treatments</li>
-    </ul>
-  );
-  const culturallyResponsiveText = (
-    <ul>
-      <li>
-        Culturally responsive care is an approach to fully see and value all aspects of a patients’ identity,
-        background, and experiences.
-      </li>
-      <li>
-        RESTORE treatments have undergone a systematic process of adaptation, to ensure that the treatments meet the
-        needs of our healthcare system and the patients we serve. This includes adaptations to delivery modality,
-        service setting, language, literacy, and cultural
-      </li>
-      <li>
-        Treatment manuals and materials are available in English, Spanish, and Haitian Creole (more coming soon)—and
-        services can be provided in any language through the use of BMC interpreter services
-      </li>
-      <li>
-        RESTORE utilizes a patient advisory board to support the ongoing improvement of our treatments and service
-        delivery strategies to ensure that we are providing the highest quality of culturally responsive PTSD treatment.
-      </li>
-    </ul>
-  );
-
-  const [hoverText, setHoverText] = useState(briefText);
-
-  function HoverButton({ buttonText, hoverText }) {
+function OurImplementationModel() {
+  function PrincipleBox(text) {
     return (
-      <Button
-        onMouseOver={() => {
-          setHoverText(hoverText);
-        }}
-        variant="contained"
-        color="yellow"
-      >
-        {buttonText}
-      </Button>
+      <Box sx={{ display: 'flex', alignItems: 'center' }}>
+        <img src={prependStrapiURL('/uploads/info_section_icon_36975df2d1.svg')} />
+        <Typography variant="infoPanelBBody" sx={{ padding: '1em' }}>
+          {text}
+        </Typography>
+      </Box>
     );
   }
-
   return (
-    <>
-      <p>All treatments are:</p>
-      <HoverButton buttonText="Brief" hoverText={briefText} />
-      <HoverButton buttonText="Evidence-based" hoverText={evidenceBasedText} />
-      <HoverButton buttonText="Culturally Responsive" hoverText={culturallyResponsiveText} />
-      <Box sx={{ border: 1, p: 1, bgcolor: 'background.paper', height: '300px', margin: '0 0 30px' }}>{hoverText}</Box>
-    </>
+    <Paper sx={{ display: 'flex', margin: '1rem 0', padding: '2em' }}>
+      <Box sx={{ width: '60%', display: 'flex', flexDirection: 'column' }}>
+        <Typography variant="infoPanelBTitle">Our Implementation Model</Typography>
+        <Typography variant="infoPanelBBody">
+          We believe that access to high quality and culturally responsive care is a fundamental part of achieving
+          health equity. Four implementation science principles guide our work in advancing health equity.
+        </Typography>
+        <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)' }}>
+          {PrincipleBox('1. Racism is a fundamental driver of health inequities')}
+          {PrincipleBox('2. Equitable healthcare requires active engagement of community members ')}
+          {PrincipleBox('3. Equitable healthcare requires multisector partnerships')}
+          {PrincipleBox('4. Context is central to healthcare equity')}
+        </Box>
+      </Box>
+      <Box sx={{ width: '40%' }}>
+        <img width="100%" src={prependStrapiURL('/uploads/implementationmodel_9f598b7a2d.png')} />
+      </Box>
+    </Paper>
+  );
+}
+
+function ImplementationFrameworks() {
+  return (
+    <Paper sx={{ display: 'flex', margin: '1rem 0', padding: '2em' }}>
+      <Box sx={{ width: '40%' }}>
+        <img width="100%" src={prependStrapiURL('/uploads/implementationframeworks_8afd8c3f2c.png')} />
+      </Box>
+      <Box sx={{ width: '60%', display: 'flex', flexDirection: 'column', padding: '0 0 0 2em' }}>
+        <Typography variant="infoPanelBTitle" sx={{ margin: '0 0 0.8em 0' }}>
+          Implementation Frameworks
+        </Typography>
+        <Typography variant="infoPanelBBody" sx={{ lineHeight: '1.8em' }}>
+          We use the following Implementation Science frameworks to:
+          <ol>
+            <li>
+              Understand determinants (barriers and facilitators) of PTSD treatment implementation in usual care
+              settings
+            </li>
+            <li>Apply strategies to address determinants</li>
+            <li>Evaluate the effect of our strategies in achieving implementation success and health equity</li>
+          </ol>
+        </Typography>
+      </Box>
+    </Paper>
+  );
+}
+
+function ScopeOfServicesToSystem() {
+  return (
+    <Paper sx={{ display: 'flex', flexDirection: 'column', margin: '1rem 0', padding: '2em 10em' }}>
+      <Typography variant="infoPanelBTitle" sx={{ textAlign: 'center' }}>
+        Scope of Services to the System
+      </Typography>
+      <Typography variant="infoPanelBBody" sx={{ margin: '1em 0' }}>
+        <p>
+          RESTORE provides facilitation—an interactive problem-solving approach that supports organizations in applying
+          evidence-based practices in routine care.
+        </p>
+        <p>RESTORE’s selected facilitation strategies:</p>
+      </Typography>
+      <Typography variant="infoPanelBBody" sx={{ fontWeight: 'bold' }}>
+        <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '0 2em' }}>
+          <p>Training and consultation initiatives</p>
+          <p>Consultation to clinical and community partners on implementation planning</p>
+          <p>Organize local change agents in leadership and clinician expertise</p>
+          <p>
+            Build reciprocal and participatory relationship with clinician teams to foster a shared vision and
+            priorities
+          </p>
+          <p>
+            Promote structural change to support implementation with screening, identification, and referral pathways
+            across the system
+          </p>
+          <p>Convene community, patient, provider, and external advisory boards on PTSD and oppression-based stress</p>
+          <p>Support data-driven intervention adaptation, including cultural adaptation</p>
+          <p>Administrative and technical support through imbedded online flowsheets and templates</p>
+        </Box>
+      </Typography>
+    </Paper>
   );
 }
 
@@ -454,6 +478,87 @@ function TreatmentsCardGrid() {
   if (error) return <p>Error : {error.message}</p>;
 
   return <CardGrid cards={data.treatmentsCardGrids.data} />;
+}
+
+function MeasurementBasedCare() {
+  return (
+    <Paper sx={{ display: 'flex', margin: '1rem 0', padding: '2em' }}>
+      <Box sx={{ width: '60%', display: 'flex', flexDirection: 'column', padding: '0 2em 0 0' }}>
+        <Typography variant="infoPanelBTitle">Measurement-based care</Typography>
+        <Typography variant="infoPanelBBody">
+          We use measurement-based care to develop individualized treatment plans and understand best practices for
+          stepping and sequencing treatments.
+        </Typography>
+        <Box sx={{ display: 'flex' }}>
+          <p>
+            Clients complete questionnaires at their intake and every 6 months to measure progress through treatment
+          </p>
+          <p>Responses are used by clinicians to understand if a treatment is working</p>
+          <p>Clinicians use this information to offer additional treatment or engagement support to patients</p>
+          <p>Patients can opt out of these questionnaires at any time</p>
+        </Box>
+        <Typography variant="infoPanelBBody">
+          We know that engagement in PTSD treatment can be challenging, so RESTORE provides additional supports.
+        </Typography>
+        <Box sx={{ display: 'flex' }}>
+          <p>Community health workers to provide outreach and skills training </p>
+          <p>Clinic data monitoring to understand engagement and retention in treatment in the practice</p>
+          <p>Guidance from our patient advisory board on maintaining patient-centered care</p>
+        </Box>
+      </Box>
+      <Box sx={{ width: '40%' }}>
+        <img width="100%" src={prependStrapiURL('/uploads/measurementbasedcare_19e723be73.png')} />
+      </Box>
+    </Paper>
+  );
+}
+
+function TreatmentsAndServices() {
+  return (
+    <Paper sx={{ margin: '1rem 0', padding: '2em' }}>
+      <Typography variant="infoPanelBTitle">Treatments and Services</Typography>
+      <Typography variant="infoPanelBBody">
+        <p>
+          RESTORE provides evidence-based treatments for posttraumatic stress disorder (PTSD) as well as programs
+          focused on resisting oppression-based stress and trauma.
+        </p>
+        <p>
+          Decisions about ending treatment are based on patient progress, symptom reduction, and clinician expertise.
+        </p>
+        <p>
+          Patients will work with their provider to select the treatment option that best fits their needs. This may
+          include selecting low-intensity, high-intensity, or a series of PTSD treatments.
+        </p>
+        <ul>
+          <li>
+            <strong>Trauma Systems Therapy for Refugees (TST-R, Ages 10-18, CAP).</strong> TST-R is a trauma-based
+            therapy. TST-R helps individuals and families learn skills in self-regulation, increasing their social
+            support networks, minimizing stress related to cultural changes, and fostering trust between the helping
+            community and the family. Treatment length varies.
+          </li>
+          <li>
+            <strong>Trauma-Focused Cognitive Behavioral Therapy (TF-CBT, Ages 3-18, CAP).</strong> TF-CBT is a
+            cognitive-based intervention for children, adolescents and their caregivers. TF-CBT utilizes a multitude of
+            different skills such as psychoeducation, fostering parenting skill acquisition and efficacy, relaxation
+            techniques, affective modulation skills, cognitive coping around thoughts, feelings, and behaviors,
+            processing of the trauma narrative, and increase the occurrence of safety practices. Sessions can be done
+            individually as well as in conjunction with individual and family sessions; treatment ranges between 12-25
+            sessions.
+          </li>
+          <li>
+            <strong>
+              Primary Care Intervention for PTSD (Ages 6-11, 11-17) and Other Evidence Based Approaches to Trauma
+              Treatment.
+            </strong>{' '}
+            PCIP integrates PTSD treatment in a Primary Care setting. PCIP focuses on four main ideas: developing
+            breathing retraining, coping skills, psychoeducation for the child/adolescent and their family around trauma
+            symptoms and reactions, and administers homework for furthered skill development outside of and in between
+            sessions. PCIP is delivered in three sessions over the course of three weeks.
+          </li>
+        </ul>
+      </Typography>
+    </Paper>
+  );
 }
 
 export default function Services() {
@@ -479,77 +584,28 @@ export default function Services() {
       <a href="#Services-to-the-health-system">
         <h2 id="Services-to-the-health-system">Services to the health system</h2>
       </a>
-      <u>Our Implementation Model</u>
-      <p>
-        We believe that access to high quality and culturally responsive care is a fundamental part of achieving health
-        equity.
-      </p>
-      <p>Four implementation science principles guide our work in advancing health equity.</p>
-      <ol>
-        <li>Racism is a fundamental driver of health inequities</li>
-        <li>Equitable healthcare requires active engagement of community members </li>
-        <li>Equitable healthcare requires multisector partnerships</li>
-        <li>Context is central to healthcare equity</li>
-      </ol>
+      <OurImplementationModel />
       <p>RESTORE is overseen by advisory boards that help us center the community in our health equity mission.</p>
       <p>Our boards include:</p>
       <img src={boardsImg} alt="boards info" />
       <p>
         <i>Interested in getting involved on one of our boards?</i>
       </p>
-      <p>We use the following Implementation Science frameworks to:</p>
-      <ol>
-        <li>
-          Understand determinants (barriers and facilitators) of PTSD treatment implementation in usual care settings
-        </li>
-        <li>Apply strategies to address determinants</li>
-        <li>Evaluate the effect of our strategies in achieving implementation success and health equity</li>
-      </ol>
 
+      <ImplementationFrameworks />
       <ImplementationFrameworkInteractive />
 
-      <h2>Scope of services to the system</h2>
-      <p>
-        RESTORE provides facilitation—an interactive problem-solving approach that supports organizations in applying
-        evidence-based practices in routine care.
-      </p>
-      <p>RESTORE’s selected facilitation strategies:</p>
-      <ul>
-        <li>Training and consultation initiatives</li>
-        <li>Consultation to clinical and community partners on implementation planning</li>
-        <li>Organize local change agents in leadership and clinician expertise</li>
-        <li>
-          Build reciprocal and participatory relationship with clinician teams to foster a shared vision and priorities
-        </li>
-        <li>
-          Promote structural change to support implementation with screening, identification, and referral pathways
-          across the system
-        </li>
-        <li>Convene community, patient, provider, and external advisory boards on PTSD and oppression-based stress</li>
-        <li>Support data-driven intervention adaptation, including cultural adaptation</li>
-        <li>Administrative and technical support through imbedded online flowsheets and templates</li>
-      </ul>
+      <ScopeOfServicesToSystem />
 
-      <p>
-        RESTORE provides ongoing clinical training and case consultation to clinicians utilizing any of our selected
-        evidence-based treatments.
-      </p>
-
-      <div
-        style={{
-          padding: '1rem',
-          border: 'solid',
-          borderRadius: '0.5em'
-        }}
-      >
+      <Typography variant="h4">Discover our comprehensive range of psychiatric services at our hospital</Typography>
+      <Paper sx={{ margin: '1rem 0', padding: '1rem', border: 'solid', borderRadius: '0.5em' }}>
         <ReactMarkdown>{upcomingOngoing.data.aboutUpcomingOngoing.data.attributes.Body}</ReactMarkdown>
-      </div>
+      </Paper>
 
       <a href="#Services-to-our-patients">
         <h2 id="Services-to-our-patients">Services to our patients</h2>
       </a>
 
-      <TreatmentsCardGrid />
       <p>
         Our treatment model uses a variety of service delivery strategies to maximize the reach and effectiveness of our
         treatments, and to support patient engagement.
@@ -560,7 +616,11 @@ export default function Services() {
         Many people who experience trauma events go on to have natural recovery. Those whose recovery gets interrupted
         go on to develop PTSD.
       </p>
-      <AllTreatmentsAre />
+      <p>All treatments are:</p>
+      <TreatmentsCardGrid />
+      <MeasurementBasedCare />
+      <TreatmentsAndServices />
+      <br />
       <ScopeOfClinicalFocus />
     </>
   );
