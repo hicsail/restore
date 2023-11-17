@@ -472,6 +472,21 @@ function ScopeOfServicesToSystem() {
   );
 }
 
+function UpcomingOngoing() {
+  const { loading, error, data } = useQuery(GET_UPCOMING_ONGOING);
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error : {error.message}</p>;
+
+  return (
+    <>
+      <Typography variant="h4">Discover our comprehensive range of psychiatric services at our hospital</Typography>
+      <Paper sx={{ margin: '1rem 0', padding: '1rem', border: 'solid', borderRadius: '0.5em' }}>
+        <ReactMarkdown>{data.aboutUpcomingOngoing.data.attributes.Body}</ReactMarkdown>
+      </Paper>
+    </>
+  );
+}
+
 function TreatmentsCardGrid() {
   const { loading, error, data } = useQuery(GET_TREATMENTS_CARDGRID);
   if (loading) return <p>Loading...</p>;
@@ -562,10 +577,6 @@ function TreatmentsAndServices() {
 }
 
 export default function Services() {
-  const upcomingOngoing = useQuery(GET_UPCOMING_ONGOING);
-  if (upcomingOngoing.loading) return <p>Loading...</p>;
-  if (upcomingOngoing.error) return <p>Error : {error.message}</p>;
-
   return (
     <>
       <h1>SERVICES</h1>
@@ -596,11 +607,7 @@ export default function Services() {
       <ImplementationFrameworkInteractive />
 
       <ScopeOfServicesToSystem />
-
-      <Typography variant="h4">Discover our comprehensive range of psychiatric services at our hospital</Typography>
-      <Paper sx={{ margin: '1rem 0', padding: '1rem', border: 'solid', borderRadius: '0.5em' }}>
-        <ReactMarkdown>{upcomingOngoing.data.aboutUpcomingOngoing.data.attributes.Body}</ReactMarkdown>
-      </Paper>
+      <UpcomingOngoing />
 
       <a href="#Services-to-our-patients">
         <h2 id="Services-to-our-patients">Services to our patients</h2>
