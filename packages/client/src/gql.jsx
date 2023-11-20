@@ -189,6 +189,29 @@ export const GET_RESEARCH_AND_EVALUATIONS = gql`
     }
   }
 `;
+export const GET_RECENT_BLOG_POSTS = gql`
+  query GetBlogPosts($pageSize: Int!) {
+    blogPosts(pagination: { page: 1, pageSize: $pageSize }, sort: "DatetimePublished:desc") {
+      data {
+        id
+        attributes {
+          Title
+          DatetimePublished
+          Body
+          Category
+          Author
+          CoverImage {
+            data {
+              attributes {
+                url
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
 export const GET_RECENT_BLOG_POSTS_EXCEPT = gql`
   query GetBlogPosts($id: ID!, $pageSize: Int!) {
     blogPosts(
