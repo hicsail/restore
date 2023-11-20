@@ -129,17 +129,6 @@ export const GET_TREATMENTS_CARDGRID = gql`
     }
   }
 `;
-export const GET_ABOUT_MISSION = gql`
-  query GetAboutMission {
-    aboutMission {
-      data {
-        attributes {
-          Body
-        }
-      }
-    }
-  }
-`;
 export const GET_UPCOMING_ONGOING = gql`
   query GetUpcomingOngoing {
     aboutUpcomingOngoing {

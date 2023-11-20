@@ -1,10 +1,5 @@
-import { useQuery } from '@apollo/client';
-import ReactMarkdown from 'react-markdown';
 import { Box, Typography } from '@mui/material';
-
 import { InfoPanelA } from '../components/InfoPanelA.jsx';
-
-import { GET_ABOUT_MISSION } from '../gql.jsx';
 import { prependStrapiURL } from '../utils.jsx';
 
 function Strategies() {
@@ -40,11 +35,6 @@ function Strategies() {
 }
 
 export default function AboutMission() {
-  const { loading, error, data } = useQuery(GET_ABOUT_MISSION);
-
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error : {error.message}</p>;
-
   return (
     <>
       <InfoPanelA
@@ -60,7 +50,6 @@ export default function AboutMission() {
         imageUrl="src/assets/imgplaceholder.png"
       />
       <Strategies />
-      <ReactMarkdown>{data.aboutMission.data.attributes.Body}</ReactMarkdown>
     </>
   );
 }
