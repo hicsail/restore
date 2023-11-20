@@ -49,7 +49,14 @@ export default function AboutMission() {
     <>
       <InfoPanelA
         title="Our Mission: Providing Compassionate Psychiatric Care"
-        subtitle="The REcovery from Stress and Trauma through Outpatient care, Research and Education (RESTORE) Center aims to improve access to high-quality services for PTSD across the health system and remove barriers to treatment for our patients."
+        subtitle={
+          <p>
+            The <strong>RE</strong>covery from <strong>S</strong>tress and <strong>T</strong>rauma through{' '}
+            <strong>O</strong>utpatient care, <strong>R</strong>esearch and <strong>E</strong>ducation (
+            <strong>RESTORE</strong>) Center aims to <strong>improve access</strong> to high-quality services for PTSD
+            across the health system and <strong>remove barriers</strong> to treatment for our patients.
+          </p>
+        }
         imageUrl="src/assets/imgplaceholder.png"
       />
       <Strategies />
