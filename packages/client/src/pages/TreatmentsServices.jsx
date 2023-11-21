@@ -8,8 +8,7 @@ import determinantsVennImg from '../assets/treatments_and_services/determinants_
 import ptsdCurveImg from '../assets/treatments_and_services/ptsd-curve.svg';
 
 import { useQuery } from '@apollo/client';
-import { GET_UPCOMING_ONGOING } from '../gql.jsx';
-import { GET_TREATMENTS_CARDGRID } from '../gql.jsx';
+import { GET_UPCOMING_ONGOING, GET_HOWTOBECOME, GET_TREATMENTS_CARDGRID } from '../gql.jsx';
 import ReactMarkdown from 'react-markdown';
 import { prependStrapiURL } from '../utils.jsx';
 
@@ -566,6 +565,21 @@ function TreatmentsAndServices() {
   );
 }
 
+function HowToBecomeARestorePatient() {
+  const { loading, error, data } = useQuery(GET_HOWTOBECOME);
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error : {error.message}</p>;
+
+  return (
+    <>
+      <Typography variant="h4">How to Become a Restore Patient</Typography>
+      <Paper sx={{ margin: '1rem 0', padding: '1rem', border: 'solid', borderRadius: '0.5em' }}>
+        <ReactMarkdown>{data.howToBecomeARestorePatient.data.attributes.Body}</ReactMarkdown>
+      </Paper>
+    </>
+  );
+}
+
 export default function Services() {
   const { hash } = useLocation();
   const [tabValue, setTabValue] = useState(hash || '#Services-to-the-health-system');
@@ -647,6 +661,8 @@ export default function Services() {
           <TreatmentsAndServices />
           <br />
           <ScopeOfClinicalFocus />
+          <br />
+          <HowToBecomeARestorePatient />
         </>
       )}
     </>
