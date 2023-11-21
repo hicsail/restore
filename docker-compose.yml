@@ -3,7 +3,7 @@ services:
 
   client:
     container_name: client
-    image: hicsail/restore-client:main
+    image: hicsail/restore-client:staging
     restart: unless-stopped
     environment:
       # Note: To prevent accidentally leaking env variables to the client, Vite
@@ -22,7 +22,7 @@ services:
 
   strapi:
     container_name: strapi
-    image: hicsail/restore-strapi:main
+    image: hicsail/restore-strapi:staging
     restart: unless-stopped
     environment:
       DATABASE_CLIENT: postgres
