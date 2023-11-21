@@ -655,17 +655,13 @@ export default function Services() {
 
       {tabValue == '#Services-to-our-patients' && (
         <>
-          <p>
-            Our treatment model uses a variety of service delivery strategies to maximize the reach and effectiveness of
-            our treatments, and to support patient engagement.
-          </p>
-          <p>Services help patients to get back on the natural recovery path following trauma.</p>
-          <img src={ptsdCurveImg} height="200px" />
-          <p>
-            Many people who experience trauma events go on to have natural recovery. Those whose recovery gets
-            interrupted go on to develop PTSD.
-          </p>
-          <p>All treatments are:</p>
+          <Box sx={{ margin: '4rem', width: '576px', display: 'flex', flexDirection: 'column' }}>
+            <img src={ptsdCurveImg} height="200px" width="576px" />
+            <p>
+              Many people who experience trauma events go on to have natural recovery. Those whose recovery gets
+              interrupted go on to develop PTSD.
+            </p>
+          </Box>
           <TreatmentsCardGrid />
           <MeasurementBasedCare />
           <TreatmentsAndServices />
