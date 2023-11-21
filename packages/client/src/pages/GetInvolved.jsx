@@ -1,3 +1,4 @@
+import { SectionedHeader } from '../components/SectionedHeader.jsx';
 import { CardGrid } from '../components/CardGrid.jsx';
 
 import { useQuery } from '@apollo/client';
@@ -8,7 +9,12 @@ function GetInvolvedCardGrid() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error : {error.message}</p>;
 
-  return <CardGrid cards={data.getInvolvedCardGrids.data} />;
+  return (
+    <>
+      <SectionedHeader title="Get Involved" />
+      <CardGrid cards={data.getInvolvedCardGrids.data} />
+    </>
+  );
 }
 
 export default function GetInvolved() {

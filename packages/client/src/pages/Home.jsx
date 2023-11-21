@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom';
 import { Box, Button, Typography } from '@mui/material';
 
 import { InfoPanelA } from '../components/InfoPanelA.jsx';
+import { SectionedHeader } from '../components/SectionedHeader.jsx';
 import { CardGrid } from '../components/CardGrid.jsx';
 import { BlogCard } from '../components/BlogCard.jsx';
 
@@ -46,7 +47,12 @@ function HomepageCardGrid() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error : {error.message}</p>;
 
-  return <CardGrid cards={data.homePageCardGrids.data} />;
+  return (
+    <>
+      <SectionedHeader title="Our Trusted Treatments" />
+      <CardGrid cards={data.homePageCardGrids.data} />
+    </>
+  );
 }
 
 function HomepageInfoPanelBottom() {

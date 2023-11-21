@@ -22,6 +22,7 @@ import {
 } from '../components/DPEDiagram.jsx';
 import { ScopeOfClinicalFocus } from '../components/ScopeOfClinicalFocus.jsx';
 import { CardGrid } from '../components/CardGrid.jsx';
+import { SectionedHeader } from '../components/SectionedHeader.jsx';
 
 function ImplementationFrameworkInteractive() {
   const [tabValue, setTabValue] = useState('determinants');
@@ -481,7 +482,16 @@ function TreatmentsCardGrid() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error : {error.message}</p>;
 
-  return <CardGrid cards={data.treatmentsCardGrids.data} />;
+  return (
+    <>
+      <SectionedHeader
+        suptitle="Services to our patients"
+        title="Our Treatment Model"
+        text="Our treatment model uses a variety of service delivery strategies to maximize the reach and effectiveness of our treatments, and to support patient engagement. Services help patients to get back on the natural recovery path following trauma. All treatments are:"
+      />
+      <CardGrid cards={data.treatmentsCardGrids.data} />
+    </>
+  );
 }
 
 function MeasurementBasedCare() {
