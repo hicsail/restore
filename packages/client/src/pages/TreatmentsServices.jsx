@@ -572,7 +572,7 @@ function HowToBecomeARestorePatient() {
 
   return (
     <>
-      <Typography variant="h4">How to Become a Restore Patient</Typography>
+      <Typography variant="h4">How to Become a RESTORE Patient</Typography>
       <Paper sx={{ margin: '1rem 0', padding: '1rem', border: 'solid', borderRadius: '0.5em' }}>
         <ReactMarkdown>{data.howToBecomeARestorePatient.data.attributes.Body}</ReactMarkdown>
       </Paper>
