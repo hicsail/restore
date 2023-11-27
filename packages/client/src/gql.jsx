@@ -140,6 +140,17 @@ export const GET_UPCOMING_ONGOING = gql`
     }
   }
 `;
+export const GET_HOWTOBECOME = gql`
+  query GetHowToBecomeARestorePatient {
+    howToBecomeARestorePatient {
+      data {
+        attributes {
+          Body
+        }
+      }
+    }
+  }
+`;
 export const GET_TEAM_CATEGORIES_AND_MEMBERS = gql`
   {
     teamCategories {
