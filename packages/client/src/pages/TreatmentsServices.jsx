@@ -3,7 +3,6 @@ import { Box, Button, Paper, Popper, Typography } from '@mui/material';
 
 import { NavLink, useLocation } from 'react-router-dom';
 
-import boardsImg from '../assets/treatments_and_services/boards.gif';
 import determinantsVennImg from '../assets/treatments_and_services/determinants_diagram.jpg';
 import ptsdCurveImg from '../assets/treatments_and_services/ptsd-curve.svg';
 
@@ -638,12 +637,20 @@ export default function Services() {
       {tabValue == '#Services-to-the-health-system' && (
         <>
           <OurImplementationModel />
-          <p>RESTORE is overseen by advisory boards that help us center the community in our health equity mission.</p>
-          <p>Our boards include:</p>
-          <img src={boardsImg} alt="boards info" />
-          <p>
-            <i>Interested in getting involved on one of our boards?</i>
-          </p>
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <Box sx={{ width: '50%' }}>
+              <p>
+                RESTORE is overseen by advisory boards that help us center the community in our health equity mission.
+              </p>
+              <p>
+                Our boards include: Community Members; Patients; Clinical and Hospital Leadership; Internal Experts;
+                External Experts.
+              </p>
+            </Box>
+            <Box>
+              <img src={prependStrapiURL('/uploads/ourboards_placeholder_1376b51686.png')} />
+            </Box>
+          </Box>
 
           <ImplementationFrameworks />
           <ImplementationFrameworkInteractive />
