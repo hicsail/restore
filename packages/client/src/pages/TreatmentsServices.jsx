@@ -22,6 +22,7 @@ import {
 } from '../components/DPEDiagram.jsx';
 import { ScopeOfClinicalFocus } from '../components/ScopeOfClinicalFocus.jsx';
 import { CardGrid } from '../components/CardGrid.jsx';
+import { SectionedHeader } from '../components/SectionedHeader.jsx';
 
 function ImplementationFrameworkInteractive() {
   const [tabValue, setTabValue] = useState('determinants');
@@ -481,7 +482,16 @@ function TreatmentsCardGrid() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error : {error.message}</p>;
 
-  return <CardGrid cards={data.treatmentsCardGrids.data} />;
+  return (
+    <>
+      <SectionedHeader
+        suptitle="Services to our patients"
+        title="Our Treatment Model"
+        text="Our treatment model uses a variety of service delivery strategies to maximize the reach and effectiveness of our treatments, and to support patient engagement. Services help patients to get back on the natural recovery path following trauma. All treatments are:"
+      />
+      <CardGrid cards={data.treatmentsCardGrids.data} />
+    </>
+  );
 }
 
 function MeasurementBasedCare() {
@@ -645,17 +655,13 @@ export default function Services() {
 
       {tabValue == '#Services-to-our-patients' && (
         <>
-          <p>
-            Our treatment model uses a variety of service delivery strategies to maximize the reach and effectiveness of
-            our treatments, and to support patient engagement.
-          </p>
-          <p>Services help patients to get back on the natural recovery path following trauma.</p>
-          <img src={ptsdCurveImg} height="200px" />
-          <p>
-            Many people who experience trauma events go on to have natural recovery. Those whose recovery gets
-            interrupted go on to develop PTSD.
-          </p>
-          <p>All treatments are:</p>
+          <Box sx={{ margin: '4rem', width: '576px', display: 'flex', flexDirection: 'column' }}>
+            <img src={ptsdCurveImg} height="200px" width="576px" />
+            <p>
+              Many people who experience trauma events go on to have natural recovery. Those whose recovery gets
+              interrupted go on to develop PTSD.
+            </p>
+          </Box>
           <TreatmentsCardGrid />
           <MeasurementBasedCare />
           <TreatmentsAndServices />

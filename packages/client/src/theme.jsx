@@ -47,6 +47,13 @@ theme = createTheme(theme, {
       fontSize: '1rem',
       color: 'white'
     },
+    sectionedHeaderSuptitle: {
+      fontWeight: 'bold'
+    },
+    sectionedHeaderTitle: {
+      fontSize: '3rem'
+    },
+    sectionedHeaderText: {},
     infoPanelATitle: {
       fontSize: '2rem',
       fontWeight: 'bold',
