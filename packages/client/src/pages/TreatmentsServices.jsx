@@ -663,11 +663,11 @@ export default function Services() {
       {tabValue == '#Services-to-our-patients' && (
         <>
           <Box sx={{ margin: '4rem', width: '576px', display: 'flex', flexDirection: 'column' }}>
-            <img src={ptsdCurveImg} height="200px" width="576px" />
-            <p>
+            <Typography sx={{ margin: '0 0 1em 0' }}>
               Many people who experience trauma events go on to have natural recovery. Those whose recovery gets
               interrupted go on to develop PTSD.
-            </p>
+            </Typography>
+            <img src={ptsdCurveImg} height="200px" width="576px" />
           </Box>
           <TreatmentsCardGrid />
           <MeasurementBasedCare />
