@@ -38,7 +38,7 @@ export default function AboutMission() {
   return (
     <>
       <InfoPanelA
-        title="Our Mission: Providing Compassionate Psychiatric Care"
+        title="Our Mission"
         subtitle={
           <p>
             The <strong>RE</strong>covery from <strong>S</strong>tress and <strong>T</strong>rauma through{' '}
