@@ -47,7 +47,7 @@ export default function AboutMission() {
             across the health system and <strong>remove barriers</strong> to treatment for our patients.
           </p>
         }
-        imageUrl="src/assets/imgplaceholder.png"
+        imageUrl={prependStrapiURL('/uploads/ourmission_95ef74d5f3.png')}
       />
       <Strategies />
     </>
