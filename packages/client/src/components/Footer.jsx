@@ -41,6 +41,8 @@ export const Footer = () => {
               <b>Contact:</b>
               <br />
               <Link to="tel:6174142340">(617) 414-2340</Link>
+              <br />
+              <Link to="mailto:restore@bmc.org">restore@bmc.org</Link>
             </Typography>
           </Box>
           <Grid container spacing={1}>
