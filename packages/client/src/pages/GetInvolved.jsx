@@ -1,3 +1,4 @@
+import { Typography } from '@mui/material';
 import { SectionedHeader } from '../components/SectionedHeader.jsx';
 import { CardGrid } from '../components/CardGrid.jsx';
 
@@ -13,6 +14,9 @@ function GetInvolvedCardGrid() {
     <>
       <SectionedHeader title="Get Involved" />
       <CardGrid cards={data.getInvolvedCardGrids.data} />
+      <Typography variant="h5" sx={{ margin: '1rem 0' }}>
+        Contact us at restore@bmc.org if you would like to get involved or to learn more.
+      </Typography>
     </>
   );
 }
