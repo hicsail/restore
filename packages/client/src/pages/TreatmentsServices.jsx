@@ -3,7 +3,6 @@ import { Box, Button, Paper, Popper, Typography } from '@mui/material';
 
 import { NavLink, useLocation } from 'react-router-dom';
 
-import boardsImg from '../assets/treatments_and_services/boards.gif';
 import determinantsVennImg from '../assets/treatments_and_services/determinants_diagram.jpg';
 import ptsdCurveImg from '../assets/treatments_and_services/ptsd-curve.svg';
 
@@ -638,12 +637,20 @@ export default function Services() {
       {tabValue == '#Services-to-the-health-system' && (
         <>
           <OurImplementationModel />
-          <p>RESTORE is overseen by advisory boards that help us center the community in our health equity mission.</p>
-          <p>Our boards include:</p>
-          <img src={boardsImg} alt="boards info" />
-          <p>
-            <i>Interested in getting involved on one of our boards?</i>
-          </p>
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <Box sx={{ width: '50%' }}>
+              <p>
+                RESTORE is overseen by advisory boards that help us center the community in our health equity mission.
+              </p>
+              <p>
+                Our boards include: Community Members; Patients; Clinical and Hospital Leadership; Internal Experts;
+                External Experts.
+              </p>
+            </Box>
+            <Box>
+              <img src={prependStrapiURL('/uploads/ourboards_placeholder_1376b51686.png')} />
+            </Box>
+          </Box>
 
           <ImplementationFrameworks />
           <ImplementationFrameworkInteractive />
@@ -656,11 +663,11 @@ export default function Services() {
       {tabValue == '#Services-to-our-patients' && (
         <>
           <Box sx={{ margin: '4rem', width: '576px', display: 'flex', flexDirection: 'column' }}>
-            <img src={ptsdCurveImg} height="200px" width="576px" />
-            <p>
+            <Typography sx={{ margin: '0 0 1em 0' }}>
               Many people who experience trauma events go on to have natural recovery. Those whose recovery gets
               interrupted go on to develop PTSD.
-            </p>
+            </Typography>
+            <img src={ptsdCurveImg} height="200px" width="576px" />
           </Box>
           <TreatmentsCardGrid />
           <MeasurementBasedCare />
