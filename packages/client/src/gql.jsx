@@ -189,6 +189,28 @@ export const GET_TEAM_CATEGORIES_AND_MEMBERS = gql`
     }
   }
 `;
+export const GET_CURRENT_STUDIES = gql`
+  query GetCurrentStudies {
+    currentStudiess {
+      data {
+        id
+        attributes {
+          Order
+          Image {
+            data {
+              attributes {
+                url
+                alternativeText
+              }
+            }
+          }
+          Title
+          Description
+        }
+      }
+    }
+  }
+`;
 export const GET_RESEARCH_AND_EVALUATIONS = gql`
   query GetResearchAndEvaluations {
     researchAndEvaluation {
