@@ -1,6 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { Box, Paper, Popper } from '@mui/material';
 
+import { theme } from '../theme.jsx';
+import { alpha } from '@mui/material/styles';
+
 export function ScopeOfClinicalFocus() {
   // The interactive venn diagram as currently designed/requested
   // does not make it very obvious that one can hover over the diagram text
@@ -77,8 +80,24 @@ export function ScopeOfClinicalFocus() {
     <Box>
       <Box sx={{ display: 'flex', justifyContent: 'center' }}>
         <svg width="900" height="450" xmlns="http://www.w3.org/2000/svg">
-          <ellipse cx="300" cy="161" rx="270" ry="160" fill="#78cee944" stroke="#00556f" strokeWidth="1" />
-          <ellipse cx="600" cy="161" rx="270" ry="160" fill="#78cee944" stroke="#00556f" strokeWidth="1" />
+          <ellipse
+            cx="300"
+            cy="161"
+            rx="270"
+            ry="160"
+            fill={alpha(theme.palette.blue.main, 0.5)}
+            stroke={theme.palette.blue.main}
+            strokeWidth="1"
+          />
+          <ellipse
+            cx="600"
+            cy="161"
+            rx="270"
+            ry="160"
+            fill={alpha(theme.palette.purple.main, 0.5)}
+            stroke={theme.palette.purple.main}
+            strokeWidth="1"
+          />
 
           <text textAnchor="middle" x="220" y="80" fontSize="18" fontWeight="bold">
             Posttraumatic Stress Disorder
@@ -144,9 +163,21 @@ export function ScopeOfClinicalFocus() {
             Techniques
           </text>
 
-          <path d="M  30 340 h 255 l 50 50 l -50 50 h -255 l 50 -50 l -50 -50 z" fill="#78cee9ff" />
-          <path d="M 300 340 h 255 l 50 50 l -50 50 h -255 l 50 -50 l -50 -50 z" fill="#78cee9ff" />
-          <path d="M 570 340 h 255 l 50 50 l -50 50 h -255 l 50 -50 l -50 -50 z" fill="#78cee9ff" />
+          <path
+            d="M  30 340 h 255 l 50 50 l -50 50 h -255 l 50 -50 l -50 -50 z"
+            fill={alpha(theme.palette.yellow.main, 0.5)}
+            stroke={theme.palette.yellow.main}
+          />
+          <path
+            d="M 300 340 h 255 l 50 50 l -50 50 h -255 l 50 -50 l -50 -50 z"
+            fill={alpha(theme.palette.yellow.main, 0.5)}
+            stroke={theme.palette.yellow.main}
+          />
+          <path
+            d="M 570 340 h 255 l 50 50 l -50 50 h -255 l 50 -50 l -50 -50 z"
+            fill={alpha(theme.palette.yellow.main, 0.5)}
+            stroke={theme.palette.yellow.main}
+          />
 
           <text textAnchor="middle" x="180" y="380" fontSize="18">
             Culturally Responsive
