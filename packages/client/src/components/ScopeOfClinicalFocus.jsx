@@ -69,6 +69,9 @@ export function ScopeOfClinicalFocus() {
       <li>Coping Skills Training</li>
     </ul>
   );
+  const culturallyResponsiveText = <p>Placeholder text for culturally responsive treatments</p>;
+  const culturallyAdaptedText = <p>Placeholder text for culturally adapted treatments</p>;
+  const culturallySpecificText = <p>Placeholder text for culturally specific and emergent supports</p>;
 
   return (
     <Box>
@@ -165,6 +168,27 @@ export function ScopeOfClinicalFocus() {
           <text textAnchor="middle" x="720" y="410" fontSize="18">
             Emergent Supports
           </text>
+
+          {/* For the mouseover/mouseout on the bottom arrows, use transparent overlays,
+              bc otherwise moving cursor over the text triggers a mouseOut*/}
+          <path
+            d="M  30 340 h 255 l 50 50 l -50 50 h -255 l 50 -50 l -50 -50 z"
+            fill="transparent"
+            onMouseOver={handleMouseOver(culturallyResponsiveText)}
+            onMouseOut={handleMouseOut}
+          />
+          <path
+            d="M 300 340 h 255 l 50 50 l -50 50 h -255 l 50 -50 l -50 -50 z"
+            fill="transparent"
+            onMouseOver={handleMouseOver(culturallyAdaptedText)}
+            onMouseOut={handleMouseOut}
+          />
+          <path
+            d="M 570 340 h 255 l 50 50 l -50 50 h -255 l 50 -50 l -50 -50 z"
+            fill="transparent"
+            onMouseOver={handleMouseOver(culturallySpecificText)}
+            onMouseOut={handleMouseOut}
+          />
         </svg>
         <Popper id="venn-popper" open={Boolean(anchorEl)} anchorEl={anchorEl}>
           <Paper>{popperText}</Paper>
