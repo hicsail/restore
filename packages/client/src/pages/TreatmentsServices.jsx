@@ -574,6 +574,20 @@ function TreatmentsAndServices() {
   );
 }
 
+function ScopeOfClinicalFocusPanel() {
+  return (
+    <>
+      <SectionedHeader
+        title="Scope of Clinical Focus"
+        text="We use a combination of the following strategies to support our patients in the continuum of trauma and discrimination related concerns."
+      />
+      <Box sx={{ margin: '3rem 0' }}>
+        <ScopeOfClinicalFocus />
+      </Box>
+    </>
+  );
+}
+
 function HowToBecomeARestorePatient() {
   const { loading, error, data } = useQuery(GET_HOWTOBECOME);
   if (loading) return <p>Loading...</p>;
@@ -673,7 +687,7 @@ export default function Services() {
           <MeasurementBasedCare />
           <TreatmentsAndServices />
           <br />
-          <ScopeOfClinicalFocus />
+          <ScopeOfClinicalFocusPanel />
           <br />
           <HowToBecomeARestorePatient />
         </>
