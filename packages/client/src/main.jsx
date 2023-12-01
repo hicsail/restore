@@ -15,6 +15,7 @@ import Layout from './pages/Layout.jsx';
 import AboutMission from './pages/AboutMission.jsx';
 import TreatmentsServices from './pages/TreatmentsServices.jsx';
 import TeamMemberGrid from './pages/Team.jsx';
+import Testimonials from './pages/Testimonials.jsx';
 import ResearchAndEvals from './pages/Research.jsx';
 import GetInvolved from './pages/GetInvolved.jsx';
 import BlogPost from './pages/BlogPost.jsx';
@@ -64,7 +65,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'testimonials',
-        element: <UnderConstruction />
+        element: <Testimonials />
       },
       {
         path: 'research-and-evaluation',
