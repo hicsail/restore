@@ -105,6 +105,17 @@ export const GET_HOMEPAGE_INFOPANEL_BOTTOM = gql`
     }
   }
 `;
+export const GET_TREATMENTS_AND_SERVICES = gql`
+  query GetTreatmentsAndServices {
+    treatmentsAndServices {
+      data {
+        attributes {
+          Body
+        }
+      }
+    }
+  }
+`;
 export const GET_TREATMENTS_CARDGRID = gql`
   query GetTreatmentsCardGrid {
     treatmentsCardGrids {
