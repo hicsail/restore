@@ -2,26 +2,14 @@ import { theme } from '../theme.jsx';
 import { Box, Typography } from '@mui/material';
 
 export function SpeechBubbleRight({ text }) {
-  return (
-    <Box sx={{ position: 'relative' }}>
-      <svg
-        style={{ position: 'absolute', zIndex: -1 }}
-        width="100%"
-        height="100%"
-        viewBox="0 0 370 170"
-        preserveAspectRatio="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <SpeechBubblePath />
-      </svg>
-      <Typography variant="h5" sx={{ padding: '4em 3em 6em 4em' }}>
-        {text}
-      </Typography>
-    </Box>
-  );
+  return SpeechBubble(false, { text });
 }
 
 export function SpeechBubbleLeft({ text }) {
+  return SpeechBubble(true, { text });
+}
+
+function SpeechBubble(isLeft, { text }) {
   return (
     <Box sx={{ position: 'relative' }}>
       <svg
@@ -32,11 +20,15 @@ export function SpeechBubbleLeft({ text }) {
         preserveAspectRatio="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <g transform="scale(-1, 1) translate(-370,0)">
+        {isLeft ? (
+          <g transform="scale(-1, 1) translate(-370,0)">
+            <SpeechBubblePath />
+          </g>
+        ) : (
           <SpeechBubblePath />
-        </g>
+        )}
       </svg>
-      <Typography variant="h5" sx={{ padding: '4em 4em 6em 3em' }}>
+      <Typography variant="h5" sx={{ padding: '4em 5em 6em 5em' }}>
         {text}
       </Typography>
     </Box>
