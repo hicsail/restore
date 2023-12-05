@@ -1,5 +1,8 @@
 import { createTheme } from '@mui/material/styles';
 
+import '@fontsource/poppins';
+import '@fontsource-variable/work-sans';
+
 // Compose theme in several steps so we can
 //   (1) use augmentColor, and
 //   (2) style components using named colors.
@@ -37,55 +40,86 @@ theme = createTheme(theme, {
     primary: theme.palette.purple,
     secondary: theme.palette.yellow
   },
-  typography: {
-    headerTitle: {
-      fontSize: '3rem',
-      fontWeight: 'bold',
-      color: 'white'
-    },
-    headerSubtitle: {
-      fontSize: '1rem',
-      color: 'white'
-    },
-    sectionedHeaderSuptitle: {
-      fontWeight: 'bold'
-    },
-    sectionedHeaderTitle: {
-      fontSize: '3rem'
-    },
-    sectionedHeaderText: {},
-    infoPanelATitle: {
-      fontSize: '2rem',
-      fontWeight: 'bold',
-      padding: '0.2rem 0'
-    },
-    infoPanelASubtitle: {
-      fontSize: '1rem',
-      padding: '1rem 0'
-    },
-    // Unlike with infoPanelA, there is no actual reusable component called
-    // infoPanelB; it's just what I'm calling the various similarly-styled
-    // purple-header panels used in the treatments/services page.
-    infoPanelBTitle: {
-      fontSize: '2rem',
-      fontWeight: 'bold',
-      padding: '0.2rem 0',
-      color: theme.palette.purple.main
-    },
-    infoPanelBBody: {},
-    cardGridCardTitle: {
-      fontSize: '1.5rem',
-      fontWeight: 'bold',
-      padding: '1rem 0'
-    },
-    cardGridCardText: {
-      fontSize: '1rem'
-    }
-  },
   components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        body: {
+          fontFamily: 'Work Sans Variable',
+          svg: {
+            text: {
+              fontFamily: 'Poppins'
+            }
+          }
+        }
+      }
+    },
+    MuiTypography: {
+      styleOverrides: {
+        root: {
+          fontFamily: 'Work Sans Variable'
+        },
+        headerTitle: {
+          fontFamily: 'Poppins',
+          fontSize: '3rem',
+          fontWeight: 'bold',
+          color: 'white'
+        },
+        headerSubtitle: {
+          fontFamily: 'Poppins',
+          fontSize: '1rem',
+          color: 'white'
+        },
+        sectionedHeaderSuptitle: {
+          fontFamily: 'Poppins',
+          fontWeight: 'bold'
+        },
+        sectionedHeaderTitle: {
+          fontFamily: 'Poppins',
+          fontSize: '3rem'
+        },
+        sectionedHeaderText: {
+          fontFamily: 'Poppins'
+        },
+        infoPanelATitle: {
+          fontFamily: 'Poppins',
+          fontSize: '2rem',
+          fontWeight: 'bold',
+          padding: '0.2rem 0'
+        },
+        infoPanelASubtitle: {
+          fontFamily: 'Poppins',
+          fontSize: '1rem',
+          padding: '1rem 0'
+        },
+        // Unlike with infoPanelA, there is no actual reusable component called
+        // infoPanelB; it's just what I'm calling the various similarly-styled
+        // purple-header panels used in the treatments/services page.
+        infoPanelBTitle: {
+          fontFamily: 'Poppins',
+          fontSize: '2rem',
+          fontWeight: 'bold',
+          padding: '0.2rem 0',
+          color: theme.palette.purple.main
+        },
+        infoPanelBBody: {
+          fontFamily: 'Work Sans Variable'
+        },
+        cardGridCardTitle: {
+          fontFamily: 'Poppins',
+          fontSize: '1.5rem',
+          fontWeight: 'bold',
+          padding: '1rem 0'
+        },
+        cardGridCardText: {
+          fontFamily: 'Work Sans Variable',
+          fontSize: '1rem'
+        }
+      }
+    },
     MuiButton: {
       styleOverrides: {
         root: {
+          fontFamily: 'Work Sans Variable',
           textTransform: 'none'
         }
       }
@@ -93,6 +127,7 @@ theme = createTheme(theme, {
     MuiToolbar: {
       styleOverrides: {
         root: {
+          fontFamily: 'Work Sans Variable',
           // Mimicking the style of MUI Tabs.
           '@media (min-width: 0px)': {
             // To keep the active tab indicator flush to the toolbar's bottom border,
