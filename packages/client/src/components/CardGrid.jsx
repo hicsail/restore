@@ -25,8 +25,8 @@ export function CardGrid({ cards }) {
   );
 }
 function CardGridCard({ Index, Icon, Title, Text, Link }) {
-  const imgUrl = import.meta.env.VITE_STRAPI_URL + Icon.data.attributes.url;
-  const imgAlt = Icon.data.attributes.alternativeText;
+  const imgUrl = Icon.data && import.meta.env.VITE_STRAPI_URL + Icon.data.attributes.url;
+  const imgAlt = Icon.data && Icon.data.attributes.alternativeText;
   return (
     <Card
       variant="outlined"
@@ -38,7 +38,7 @@ function CardGridCard({ Index, Icon, Title, Text, Link }) {
     >
       <CardActionArea disabled={!Link} component={NavLink} to={Link}>
         <CardContent sx={{ display: 'flex', flexDirection: 'column' }}>
-          <img width="30 em" height="30 em" src={imgUrl} alt={imgAlt} />
+          {imgUrl && <img width="30 em" height="30 em" src={imgUrl} alt={imgAlt} />}
           <Typography variant="cardGridCardTitle">{Title}</Typography>
           <Typography variant="cardGridCardText">
             <ReactMarkdown>{Text}</ReactMarkdown>
