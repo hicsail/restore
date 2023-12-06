@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Box, Button, Paper, Popper, Typography } from '@mui/material';
 
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, Outlet, useLocation } from 'react-router-dom';
 
 import determinantsVennImg from '../assets/treatments_and_services/determinants_diagram.jpg';
 import ptsdCurveImg from '../assets/treatments_and_services/ptsd-curve.svg';
@@ -575,9 +575,61 @@ function HowToBecomeARestorePatient() {
   );
 }
 
-export default function Services() {
-  const { hash } = useLocation();
-  const [tabValue, setTabValue] = useState(hash || '#Services-to-the-health-system');
+export function ServicesToTheHealthSystem() {
+  return (
+    <>
+      <OurImplementationModel />
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <Box sx={{ width: '50%' }}>
+          <p>RESTORE is overseen by advisory boards that help us center the community in our health equity mission.</p>
+          <p>
+            Our boards include: Community Members; Patients; Clinical and Hospital Leadership; Internal Experts;
+            External Experts.
+          </p>
+        </Box>
+        <Box>
+          <img src={prependStrapiURL('/uploads/ourboards_placeholder_1376b51686.png')} />
+        </Box>
+      </Box>
+
+      <ImplementationFrameworks />
+      <ImplementationFrameworkInteractive />
+
+      <ScopeOfServicesToSystem />
+      <UpcomingOngoing />
+    </>
+  );
+}
+
+export function ServicesToOurPatients() {
+  return (
+    <>
+      <Box sx={{ margin: '4rem', width: '576px', display: 'flex', flexDirection: 'column' }}>
+        <Typography sx={{ margin: '0 0 1em 0' }}>
+          Many people who experience trauma events go on to have natural recovery. Those whose recovery gets interrupted
+          go on to develop PTSD.
+        </Typography>
+        <img src={ptsdCurveImg} height="200px" width="576px" />
+      </Box>
+      <TreatmentsCardGrid />
+      <MeasurementBasedCare />
+      <TreatmentsAndServices />
+      <br />
+      <ScopeOfClinicalFocusPanel />
+      <br />
+      <HowToBecomeARestorePatient />
+    </>
+  );
+}
+
+export default function TreatmentsServices() {
+  // The first button/navlink's element (services to system) is also the index element.
+  // When the user is on the root route, they will see the index element, and should ideally
+  // see the first button styled as though it were active; but the relevant NavLink will not
+  // in fact be active.
+  // Therefore, stuck using pathname...
+  const { pathname } = useLocation();
+  const onIndexRoute = pathname === '/treatments-and-services';
 
   return (
     <>
@@ -590,80 +642,36 @@ export default function Services() {
       <Box sx={{ display: 'flex' }}>
         <Button
           component={NavLink}
-          to="#Services-to-the-health-system"
-          onClick={() => setTabValue('#Services-to-the-health-system')}
+          to="services-to-the-health-system"
           sx={{
             padding: '1rem',
             borderRadius: '0',
-            border: 'solid',
-            ...(tabValue === '#Services-to-the-health-system'
-              ? { borderBottomColor: 'transparent' }
-              : { borderColor: 'transparent', borderBottom: 'solid', borderRightStyle: 'none' })
+            borderColor: 'transparent',
+            borderBottom: 'solid',
+            borderRightStyle: 'none',
+            '&.active': { border: 'solid', borderBottomColor: 'transparent' },
+            ...(onIndexRoute && { border: 'solid', borderBottomColor: 'transparent' })
           }}
         >
           <Typography variant="h4">Services to the health system</Typography>
         </Button>
         <Button
           component={NavLink}
-          to="#Services-to-our-patients"
-          onClick={() => setTabValue('#Services-to-our-patients')}
+          to="services-to-our-patients"
           sx={{
             padding: '1rem',
             borderRadius: '0',
-            border: 'solid',
-            ...(tabValue === '#Services-to-our-patients'
-              ? { borderBottomColor: 'transparent' }
-              : { borderColor: 'transparent', borderBottom: 'solid', borderLeftStyle: 'none' })
+            borderColor: 'transparent',
+            borderBottom: 'solid',
+            borderRightStyle: 'none',
+            '&.active': { border: 'solid', borderBottomColor: 'transparent' }
           }}
         >
           <Typography variant="h4">Services to our patients</Typography>
         </Button>
       </Box>
 
-      {tabValue == '#Services-to-the-health-system' && (
-        <>
-          <OurImplementationModel />
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <Box sx={{ width: '50%' }}>
-              <p>
-                RESTORE is overseen by advisory boards that help us center the community in our health equity mission.
-              </p>
-              <p>
-                Our boards include: Community Members; Patients; Clinical and Hospital Leadership; Internal Experts;
-                External Experts.
-              </p>
-            </Box>
-            <Box>
-              <img src={prependStrapiURL('/uploads/ourboards_placeholder_1376b51686.png')} />
-            </Box>
-          </Box>
-
-          <ImplementationFrameworks />
-          <ImplementationFrameworkInteractive />
-
-          <ScopeOfServicesToSystem />
-          <UpcomingOngoing />
-        </>
-      )}
-
-      {tabValue == '#Services-to-our-patients' && (
-        <>
-          <Box sx={{ margin: '4rem', width: '576px', display: 'flex', flexDirection: 'column' }}>
-            <Typography sx={{ margin: '0 0 1em 0' }}>
-              Many people who experience trauma events go on to have natural recovery. Those whose recovery gets
-              interrupted go on to develop PTSD.
-            </Typography>
-            <img src={ptsdCurveImg} height="200px" width="576px" />
-          </Box>
-          <TreatmentsCardGrid />
-          <MeasurementBasedCare />
-          <TreatmentsAndServices />
-          <br />
-          <ScopeOfClinicalFocusPanel />
-          <br />
-          <HowToBecomeARestorePatient />
-        </>
-      )}
+      <Outlet />
     </>
   );
 }
