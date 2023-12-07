@@ -15,6 +15,8 @@ import {
 } from '../gql.jsx';
 import ReactMarkdown from 'react-markdown';
 import { prependStrapiURL } from '../utils.jsx';
+import { theme } from '../theme.jsx';
+import { alpha } from '@mui/material/styles';
 
 import {
   DeterminantsColumn,
@@ -649,6 +651,7 @@ export default function TreatmentsServices() {
             borderColor: 'transparent',
             borderBottom: 'solid',
             borderRightStyle: 'none',
+            '&:hover': { backgroundColor: alpha(theme.palette.purple.light, 0.5) },
             '&.active': { border: 'solid', borderBottomColor: 'transparent' },
             ...(onIndexRoute && { border: 'solid', borderBottomColor: 'transparent' })
           }}
@@ -664,6 +667,7 @@ export default function TreatmentsServices() {
             borderColor: 'transparent',
             borderBottom: 'solid',
             borderRightStyle: 'none',
+            '&:hover': { backgroundColor: alpha(theme.palette.purple.light, 0.5) },
             '&.active': { border: 'solid', borderBottomColor: 'transparent' }
           }}
         >
