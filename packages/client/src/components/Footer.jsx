@@ -53,7 +53,7 @@ export const Footer = () => {
             ))}
           </Grid>
         </Box>
-        <Box component="img" src="src/assets/bu_logo.webp" height={80} marginLeft={5} marginTop="auto" />
+        <Box component="img" src="/src/assets/bu_logo.webp" height={80} marginLeft={5} marginTop="auto" />
         <Box display="flex" marginLeft="auto" gap={20}>
           <Typography variant="body2" display="flex" flexDirection="column" gap={1}>
             <Link>Link 1</Link>
