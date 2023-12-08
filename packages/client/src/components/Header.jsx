@@ -15,12 +15,55 @@ export function UniversalHeader() {
 // ...Still, will keep Header function for future flexibility.
 export function Header({ title, subtitle, imageUrl, bgColor }) {
   return (
-    <Box height="500px" sx={{ display: 'flex', backgroundImage: `url(${imageUrl})`, bgcolor: bgColor || 'grey' }}>
-      <Box width="67%" sx={{ display: 'flex', flexDirection: 'column', padding: '2rem' }}>
-        <Box height="80%" sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-end' }}>
-          <Typography variant="headerTitle">{title}</Typography>
+    <Box
+      sx={{
+        height: { xs: '300px', sm: '400px', md: '500px' }, // Responsive height
+        display: 'flex',
+        backgroundImage: `url(${imageUrl})`,
+        bgcolor: bgColor || 'grey',
+        [theme.breakpoints.down('sm')]: {
+          // Adjust styles for small screens
+          flexDirection: 'column'
+        }
+      }}
+    >
+      <Box
+        width={{ xs: '100%', sm: '80%', md: '67%' }} // Responsive width
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          padding: { xs: '1rem', sm: '1.5rem', md: '2rem' } // Responsive padding
+        }}
+      >
+        <Box
+          sx={{
+            flex: 1,
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'flex-end'
+          }}
+        >
+          <Typography
+            variant="headerTitle"
+            sx={{
+              fontSize: {
+                xs: '2rem',
+                sm: '2rem',
+                md: '3rem'
+              }
+            }}
+          >
+            {title}
+          </Typography>
         </Box>
-        <Box height="20%" sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Box
+          sx={{
+            flex: 0.3,
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'flex-start'
+          }}
+        >
           <Typography variant="headerSubtitle">{subtitle}</Typography>
         </Box>
       </Box>
