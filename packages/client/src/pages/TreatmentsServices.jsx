@@ -475,7 +475,9 @@ function UpcomingOngoing() {
 
   return (
     <>
-      <Typography variant="h4">Discover our comprehensive range of psychiatric services at our hospital</Typography>
+      <Typography id="upcoming" variant="h4">
+        Interested in Joining Trainings and Consultations? Find Upcoming Opportunities Below.
+      </Typography>
       <Paper sx={{ margin: '1rem 0', padding: '1rem', border: 'solid', borderRadius: '0.5em' }}>
         <ReactMarkdown>{data.aboutUpcomingOngoing.data.attributes.Body}</ReactMarkdown>
       </Paper>
