@@ -28,7 +28,7 @@ function SpeechBubble(isLeft, { text }) {
           <SpeechBubblePath />
         )}
       </svg>
-      <Typography variant="h5" sx={{ padding: '4em 5em 6em 5em' }}>
+      <Typography variant="h5" sx={{ padding: '4em 5em 6em 5em', fontSize: { xs: '0.8rem', sm: '0.9rem', md: '1rem' } }}>
         {text}
       </Typography>
     </Box>
