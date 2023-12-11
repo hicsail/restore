@@ -11,9 +11,7 @@ import {
   ListItemButton,
   ListItemText,
   Skeleton,
-  Toolbar,
-  useMediaQuery,
-  useTheme
+  Toolbar
 } from '@mui/material';
 import { useQuery } from '@apollo/client';
 import { NavLink, useLocation } from 'react-router-dom';
@@ -31,7 +29,7 @@ const PAGES = [
 ];
 
 export const Logo = (props) => {
-  const { loading, error, data } = useQuery(GET_LOGO_FULL_SVG);
+  const { loading, data } = useQuery(GET_LOGO_FULL_SVG);
   if (loading) {
     return <Skeleton variant="rectangular" width={100} height={48} />;
   }
@@ -59,6 +57,11 @@ export const NavBar = () => {
     <>
       <Drawer anchor="left" open={drawerOpen} onClose={handleDrawerToggle}>
         <List>
+          <ListItem disablePadding>
+            <ListItemButton component={NavLink} to="/" selected={pathname === '/'}>
+              <ListItemText primary="Home" />
+            </ListItemButton>
+          </ListItem>
           {PAGES.map(({ path, name }) => (
             <ListItem key={name} disablePadding>
               <ListItemButton component={NavLink} to={path} selected={pathname === path}>
