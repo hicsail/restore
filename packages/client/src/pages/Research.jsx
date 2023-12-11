@@ -14,7 +14,17 @@ function CurrentStudies() {
   return (
     <>
       <SectionedHeader title="Current Studies" />
-      <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 2 }}>
+      <Box
+        sx={{
+          display: 'grid',
+          gridTemplateColumns: {
+            xs: 'repeat(1, 1fr)',
+            sm: 'repeat(1, 1fr)',
+            md: 'repeat(2, 1fr)'
+          },
+          gap: 2
+        }}
+      >
         {data.currentStudiess.data
           .filter(() => true)
           .sort((a, b) => a.attributes.Order - b.attributes.Order)

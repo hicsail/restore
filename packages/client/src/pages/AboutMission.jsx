@@ -4,8 +4,8 @@ import { prependStrapiURL } from '../utils.jsx';
 
 function Strategies() {
   return (
-    <Box sx={{ display: 'flex' }}>
-      <Box sx={{ width: '60%', display: 'flex', flexDirection: 'column' }}>
+    <Box sx={{ display: 'flex', flexDirection: { xs: 'column-reverse', md: 'row' }, alignItems: 'center', gap: 2 }}>
+      <Box sx={{ width: { xs: '100%', md: '60%' }, display: 'flex', flexDirection: 'column' }}>
         <Typography variant="infoPanelBTitle" sx={{ textAlign: 'center' }}>
           Our Strategies
         </Typography>
@@ -13,7 +13,7 @@ function Strategies() {
           RESTORE uses various strategies to achieve these goals, including:
         </Typography>
         <Typography variant="infoPanelBBody">
-          <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)' }}>
+          <Box sx={{ display: 'grid', gridTemplateColumns: { sm: '1fr', md: 'repeat(2, 1fr)' } }}>
             <p>Clinical training and consultation initiatives</p>
             <p>Expanding the capacity of the mental health workforce</p>
             <p>Offering web-delivered mental health applications</p>
@@ -27,7 +27,7 @@ function Strategies() {
           </Box>
         </Typography>
       </Box>
-      <Box sx={{ width: '40%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+      <Box sx={{ width: { xs: '60%', md: '40%' }, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
         <img width="100%" src={prependStrapiURL('/uploads/ourstrategies_090926ae2a.png')} />
       </Box>
     </Box>

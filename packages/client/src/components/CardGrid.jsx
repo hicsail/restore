@@ -3,7 +3,17 @@ import ReactMarkdown from 'react-markdown';
 
 export function CardGrid({ cards }) {
   return (
-    <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 2 }}>
+    <Box
+      sx={{
+        display: 'grid',
+        gridTemplateColumns: {
+          xs: 'repeat(1, 1fr)',
+          sm: 'repeat(2, 1fr)',
+          md: 'repeat(3, 1fr)'
+        },
+        gap: 2
+      }}
+    >
       {cards
         .filter(() => true)
         .sort((a, b) => a.attributes.CardGridCardData.Index - b.attributes.CardGridCardData.Index)

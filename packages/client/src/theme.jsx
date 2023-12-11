@@ -38,7 +38,11 @@ theme = createTheme(theme, {
 theme = createTheme(theme, {
   palette: {
     primary: theme.palette.purple,
-    secondary: theme.palette.yellow
+    secondary: theme.palette.yellow,
+    action: {
+      selected: theme.palette.purple.dark,
+      selectedOpacity: 0.5
+    }
   },
   components: {
     MuiCssBaseline: {
