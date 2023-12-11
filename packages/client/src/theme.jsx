@@ -154,13 +154,6 @@ theme = createTheme(theme, {
           }
         }
       }
-    },
-    MuiChip: {
-      styleOverrides: {
-        root: {
-          backgroundColor: theme.palette.purple.main
-        }
-      }
     }
   }
 });
