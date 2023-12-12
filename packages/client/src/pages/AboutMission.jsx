@@ -1,6 +1,7 @@
 import { Box, Typography } from '@mui/material';
 import { InfoPanelA } from '../components/InfoPanelA.jsx';
 import { prependStrapiURL } from '../utils.jsx';
+import { theme } from '../theme.jsx';
 
 function Strategies() {
   return (
@@ -44,12 +45,22 @@ export default function AboutMission() {
         id="our-mission"
         title="Our Mission"
         subtitle={
-          <p>
-            The <strong>RE</strong>covery from <strong>S</strong>tress and <strong>T</strong>rauma through{' '}
-            <strong>O</strong>utpatient care, <strong>R</strong>esearch and <strong>E</strong>ducation (
-            <strong>RESTORE</strong>) Center aims to <strong>improve access</strong> to high-quality services for PTSD
-            across the health system and <strong>remove barriers</strong> to treatment for our patients.
-          </p>
+          <>
+            <p>
+              RESTORE stands for: <strong>RE</strong>covery from <strong>S</strong>tress and <strong>T</strong>rauma
+              through <strong>O</strong>utpatient care, <strong>R</strong>esearch and <strong>E</strong>ducation.
+            </p>
+            <p>The RESTORE Center aims to</p>
+            <ul>
+              <li>
+                <span style={{ color: theme.palette.purple.main }}>improve access</span> to high-quality services for
+                PTSD across the health system
+              </li>
+              <li>
+                <span style={{ color: theme.palette.purple.main }}>remove barriers</span> to treatment for our patients.
+              </li>
+            </ul>
+          </>
         }
         imageUrl={prependStrapiURL('/uploads/ourmission_95ef74d5f3.png')}
       />

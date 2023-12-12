@@ -49,7 +49,7 @@ function HomepageCardGrid() {
 
   return (
     <>
-      <SectionedHeader title="Our Trusted Treatments" />
+      <SectionedHeader id="what-we-do" title="What We Do" />
       <CardGrid cards={data.homePageCardGrids.data} />
     </>
   );
