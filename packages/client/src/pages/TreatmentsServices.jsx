@@ -621,12 +621,15 @@ export function ServicesToTheHealthSystem() {
 export function ServicesToOurPatients() {
   return (
     <>
-      <Box id="recovery-curve" sx={{ margin: '4rem', width: '576px', display: 'flex', flexDirection: 'column' }}>
-        <Typography sx={{ margin: '0 0 1em 0' }}>
+      <Box id="recovery-curve-graph" sx={{ margin: '4rem', width: '576px', display: 'flex', flexDirection: 'column' }}>
+        <Typography variant="h5" gutterBottom sx={{ fontWeight: 'bold' }}>
+          Recovery Curve Graph
+        </Typography>
+        <img src={ptsdCurveImg} height="200px" width="576px" />
+        <Typography sx={{ margin: '1em 0 0 0' }}>
           Many people who experience trauma events go on to have natural recovery. Those whose recovery gets interrupted
           go on to develop PTSD.
         </Typography>
-        <img src={ptsdCurveImg} height="200px" width="576px" />
       </Box>
       <TreatmentsCardGrid />
       <MeasurementBasedCare />
