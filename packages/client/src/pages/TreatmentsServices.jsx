@@ -593,8 +593,11 @@ function HowToBecomeARestorePatient() {
 
   return (
     <>
-      <Typography id="how-to-become-a-restore-patient" variant="h3">
+      <Typography id="how-to-become-a-restore-patient" variant="h3" gutterBottom>
         How to Become a RESTORE Patient
+      </Typography>
+      <Typography variant="h5">
+        Contact us at restore@bmc.org if you would like to get involved or to learn more.
       </Typography>
       <Paper sx={{ margin: '1rem 0', padding: '1rem', border: 'solid', borderRadius: '0.5em' }}>
         <ReactMarkdown>{data.howToBecomeARestorePatient.data.attributes.Body}</ReactMarkdown>
