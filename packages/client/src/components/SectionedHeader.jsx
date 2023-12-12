@@ -1,8 +1,8 @@
 import { Box, Typography } from '@mui/material';
 
-export function SectionedHeader({ title, suptitle, text }) {
+export function SectionedHeader({ id, title, suptitle, text }) {
   return (
-    <Box sx={{ display: 'flex', justifyContent: 'space-between', margin: '0 0 1em 0' }}>
+    <Box id={id} sx={{ display: 'flex', justifyContent: 'space-between', margin: '0 0 1em 0' }}>
       <Box width="50%" sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-end' }}>
         {suptitle && (
           <Typography variant="sectionedHeaderSuptitle" gutterBottom>

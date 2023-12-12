@@ -73,7 +73,13 @@ function ImplementationFrameworkInteractive() {
 
   return (
     <>
-      <svg width="900" height="450" viewBox="-10 -10 910 480" xmlns="http://www.w3.org/2000/svg">
+      <svg
+        id="determinants-processes-evaluation"
+        width="900"
+        height="450"
+        viewBox="-10 -10 910 480"
+        xmlns="http://www.w3.org/2000/svg"
+      >
         <defs>
           <filter id="shadow">
             <feDropShadow dx="-4" dy="4" stdDeviation="6" floodOpacity="0.5" />
@@ -386,7 +392,7 @@ function OurImplementationModel() {
     );
   }
   return (
-    <Paper sx={{ display: 'flex', margin: '1rem 0', padding: '2em' }}>
+    <Paper id="our-implementation-model" sx={{ display: 'flex', margin: '1rem 0', padding: '2em' }}>
       <Box sx={{ width: '60%', display: 'flex', flexDirection: 'column' }}>
         <Typography variant="infoPanelBTitle">Our Implementation Model</Typography>
         <Typography variant="infoPanelBBody">
@@ -409,7 +415,7 @@ function OurImplementationModel() {
 
 function ImplementationFrameworks() {
   return (
-    <Paper sx={{ display: 'flex', margin: '1rem 0', padding: '2em' }}>
+    <Paper id="implementation-frameworks" sx={{ display: 'flex', margin: '1rem 0', padding: '2em' }}>
       <Box sx={{ width: '40%' }}>
         <img width="100%" src={prependStrapiURL('/uploads/implementationframeworks_8afd8c3f2c.png')} />
       </Box>
@@ -435,7 +441,10 @@ function ImplementationFrameworks() {
 
 function ScopeOfServicesToSystem() {
   return (
-    <Paper sx={{ display: 'flex', flexDirection: 'column', margin: '1rem 0', padding: '2em 10em' }}>
+    <Paper
+      id="scope-of-services"
+      sx={{ display: 'flex', flexDirection: 'column', margin: '1rem 0', padding: '2em 10em' }}
+    >
       <Typography variant="infoPanelBTitle" sx={{ textAlign: 'center' }}>
         Scope of Services to the System
       </Typography>
@@ -493,6 +502,7 @@ function TreatmentsCardGrid() {
   return (
     <>
       <SectionedHeader
+        id="our-treatment-model"
         suptitle="Services to our patients"
         title="Our Treatment Model"
         text="Our treatment model uses a variety of service delivery strategies to maximize the reach and effectiveness of our treatments, and to support patient engagement. Services help patients to get back on the natural recovery path following trauma. All treatments are:"
@@ -504,7 +514,7 @@ function TreatmentsCardGrid() {
 
 function MeasurementBasedCare() {
   return (
-    <Paper sx={{ display: 'flex', margin: '1rem 0', padding: '2em' }}>
+    <Paper id="measurement-based-care" sx={{ display: 'flex', margin: '1rem 0', padding: '2em' }}>
       <Box sx={{ width: '60%', display: 'flex', flexDirection: 'column', padding: '0 2em 0 0' }}>
         <Typography variant="infoPanelBTitle">Measurement-based care</Typography>
         <Typography variant="infoPanelBBody">
@@ -541,7 +551,7 @@ function TreatmentsAndServices() {
   if (error) return <p>Error : {error.message}</p>;
 
   return (
-    <Paper sx={{ margin: '1rem 0', padding: '2em' }}>
+    <Paper id="treatments-and-services" sx={{ margin: '1rem 0', padding: '2em' }}>
       <Typography variant="infoPanelBTitle">Treatments and Services</Typography>
       <Typography variant="infoPanelBBody">
         <ReactMarkdown>{data.treatmentsAndServices.data.attributes.Body}</ReactMarkdown>
@@ -554,6 +564,7 @@ function ScopeOfClinicalFocusPanel() {
   return (
     <>
       <SectionedHeader
+        id="scope-of-clinical-focus"
         title="Scope of Clinical Focus"
         text="We use a combination of the following strategies to support our patients in the continuum of trauma and discrimination related concerns."
       />
@@ -571,7 +582,9 @@ function HowToBecomeARestorePatient() {
 
   return (
     <>
-      <Typography variant="h3">How to Become a RESTORE Patient</Typography>
+      <Typography id="how-to-become-a-restore-patient" variant="h3">
+        How to Become a RESTORE Patient
+      </Typography>
       <Paper sx={{ margin: '1rem 0', padding: '1rem', border: 'solid', borderRadius: '0.5em' }}>
         <ReactMarkdown>{data.howToBecomeARestorePatient.data.attributes.Body}</ReactMarkdown>
       </Paper>
@@ -583,7 +596,7 @@ export function ServicesToTheHealthSystem() {
   return (
     <>
       <OurImplementationModel />
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <Box id="boards" sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <Box sx={{ width: '50%' }}>
           <p>RESTORE is overseen by advisory boards that help us center the community in our health equity mission.</p>
           <p>
@@ -608,7 +621,7 @@ export function ServicesToTheHealthSystem() {
 export function ServicesToOurPatients() {
   return (
     <>
-      <Box sx={{ margin: '4rem', width: '576px', display: 'flex', flexDirection: 'column' }}>
+      <Box id="recovery-curve" sx={{ margin: '4rem', width: '576px', display: 'flex', flexDirection: 'column' }}>
         <Typography sx={{ margin: '0 0 1em 0' }}>
           Many people who experience trauma events go on to have natural recovery. Those whose recovery gets interrupted
           go on to develop PTSD.

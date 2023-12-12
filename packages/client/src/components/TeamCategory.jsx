@@ -1,10 +1,11 @@
 import { Box, Grid, Typography } from '@mui/material';
 import { TeamMember } from './TeamMember.jsx';
+import { spacesToDashes } from '../utils.jsx';
 
 export const TeamCategory = ({ TeamCategoryName, Description, team_members }) => {
   return (
     <Box>
-      <Typography variant="h4" component="h2" gutterBottom>
+      <Typography id={spacesToDashes(TeamCategoryName)} variant="h4" component="h2" gutterBottom>
         {TeamCategoryName}
       </Typography>
       {Description && (
