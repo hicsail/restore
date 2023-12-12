@@ -600,9 +600,14 @@ export function ServicesToTheHealthSystem() {
         <Box sx={{ width: '50%' }}>
           <p>RESTORE is overseen by advisory boards that help us center the community in our health equity mission.</p>
           <p>
-            Our boards include: Community Members; Patients; Clinical and Hospital Leadership; Internal Experts;
-            External Experts.
+            <a href="/get-involved">Our boards include:</a>
           </p>
+          <ul>
+            <li>RESTORE Patient Advisory Board,</li>
+            <li>RESTORE Community Advisory Board (Church),</li>
+            <li>RESTORE Implementation Advisory Board,</li>
+            <li>RESTORE Internal Clinician Expert Panel.</li>
+          </ul>
         </Box>
         <Box>
           <img src={prependStrapiURL('/uploads/ourboards_placeholder_1376b51686.png')} />
