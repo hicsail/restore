@@ -69,7 +69,8 @@ theme = createTheme(theme, {
         },
         headerSubtitle: {
           fontFamily: 'Poppins',
-          fontSize: '1rem',
+          fontSize: '1.5rem',
+          fontWeight: 'bold',
           color: 'white'
         },
         sectionedHeaderSuptitle: {
