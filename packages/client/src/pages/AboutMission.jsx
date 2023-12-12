@@ -53,11 +53,16 @@ export default function AboutMission() {
             <p>The RESTORE Center aims to</p>
             <ul>
               <li>
-                <span style={{ color: theme.palette.purple.main }}>improve access</span> to high-quality services for
-                PTSD across the health system
+                <span style={{ color: theme.palette.purple.dark }}>
+                  <strong>improve access</strong>
+                </span>{' '}
+                to high-quality services for PTSD across the health system
               </li>
               <li>
-                <span style={{ color: theme.palette.purple.main }}>remove barriers</span> to treatment for our patients.
+                <span style={{ color: theme.palette.purple.dark }}>
+                  <strong>remove barriers</strong>
+                </span>{' '}
+                to treatment for our patients.
               </li>
             </ul>
           </>
