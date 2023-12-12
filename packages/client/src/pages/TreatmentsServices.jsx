@@ -514,8 +514,11 @@ function TreatmentsCardGrid() {
 
 function MeasurementBasedCare() {
   return (
-    <Paper id="measurement-based-care" sx={{ display: 'flex', margin: '1rem 0', padding: '2em' }}>
-      <Box sx={{ width: '60%', display: 'flex', flexDirection: 'column', padding: '0 2em 0 0' }}>
+    <Paper
+      id="measurement-based-care"
+      sx={{ display: 'flex', flexDirection: { xs: 'column-reverse', md: 'row' }, margin: '1rem 0', padding: '2em' }}
+    >
+      <Box sx={{ width: { xs: '100%', md: '60%' }, padding: '0 2em 0 0' }}>
         <Typography variant="infoPanelBTitle">Measurement-based care</Typography>
         <Typography variant="infoPanelBBody">
           <p>
@@ -538,7 +541,15 @@ function MeasurementBasedCare() {
           </ul>
         </Typography>
       </Box>
-      <Box sx={{ width: '40%' }}>
+      <Box
+        sx={{
+          width: { xs: '100%', md: '40%' },
+          // this padding is a hack to make the image less absurdly large (tall) on an xs screen.
+          // NB: It will break if this image is replaced with an SVG with preserveAspectRatio none.
+          // Would rather set responsive img width below, but can't??
+          padding: { xs: '5% 30%', md: '0%' }
+        }}
+      >
         <img width="100%" src={prependStrapiURL('/uploads/measurementbasedcare_19e723be73.png')} />
       </Box>
     </Paper>
