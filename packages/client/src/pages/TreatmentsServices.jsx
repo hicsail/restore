@@ -443,7 +443,7 @@ function ScopeOfServicesToSystem() {
   return (
     <Paper
       id="scope-of-services"
-      sx={{ display: 'flex', flexDirection: 'column', margin: '1rem 0', padding: '2em 10em' }}
+      sx={{ display: 'flex', flexDirection: 'column', margin: '1rem 0', padding: { xs: '2em 1em', md: '2em 8em' } }}
     >
       <Typography variant="infoPanelBTitle" sx={{ textAlign: 'center' }}>
         Scope of Services to the System
