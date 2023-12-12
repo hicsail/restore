@@ -518,25 +518,25 @@ function MeasurementBasedCare() {
       <Box sx={{ width: '60%', display: 'flex', flexDirection: 'column', padding: '0 2em 0 0' }}>
         <Typography variant="infoPanelBTitle">Measurement-based care</Typography>
         <Typography variant="infoPanelBBody">
-          We use measurement-based care to develop individualized treatment plans and understand best practices for
-          stepping and sequencing treatments.
-        </Typography>
-        <Box sx={{ display: 'flex' }}>
           <p>
-            Clients complete questionnaires at their intake and every 6 months to measure progress through treatment
+            We use measurement-based care to develop individualized treatment plans and understand best practices for
+            stepping and sequencing treatments.
           </p>
-          <p>Responses are used by clinicians to understand if a treatment is working</p>
-          <p>Clinicians use this information to offer additional treatment or engagement support to patients</p>
-          <p>Patients can opt out of these questionnaires at any time</p>
-        </Box>
-        <Typography variant="infoPanelBBody">
-          We know that engagement in PTSD treatment can be challenging, so RESTORE provides additional supports.
+          <ul>
+            <li>
+              Clients complete questionnaires at their intake and every 6 months to measure progress through treatment
+            </li>
+            <li>Responses are used by clinicians to understand if a treatment is working</li>
+            <li>Clinicians use this information to offer additional treatment or engagement support to patients</li>
+            <li>Patients can opt out of these questionnaires at any time</li>
+          </ul>
+          <p>We know that engagement in PTSD treatment can be challenging, so RESTORE provides additional supports.</p>
+          <ul>
+            <li>Community health workers to provide outreach and skills training</li>
+            <li>Clinic data monitoring to understand engagement and retention in treatment in the practice</li>
+            <li>Guidance from our patient advisory board on maintaining patient-centered care</li>
+          </ul>
         </Typography>
-        <Box sx={{ display: 'flex' }}>
-          <p>Community health workers to provide outreach and skills training </p>
-          <p>Clinic data monitoring to understand engagement and retention in treatment in the practice</p>
-          <p>Guidance from our patient advisory board on maintaining patient-centered care</p>
-        </Box>
       </Box>
       <Box sx={{ width: '40%' }}>
         <img width="100%" src={prependStrapiURL('/uploads/measurementbasedcare_19e723be73.png')} />
