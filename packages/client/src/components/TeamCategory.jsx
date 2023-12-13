@@ -13,11 +13,14 @@ export const TeamCategory = ({ TeamCategoryName, Description, team_members }) =>
         </Typography>
       )}
       <Grid container spacing={2}>
-        {team_members?.data?.map((member) => (
-          <Grid item xs={12} sm={6} md={4} key={member.id}>
-            <TeamMember {...member.attributes} />
-          </Grid>
-        ))}
+        {team_members?.data
+          ?.filter(() => true)
+          .sort((a, b) => a.attributes.Order - b.attributes.Order)
+          .map((member) => (
+            <Grid item xs={12} sm={6} md={4} key={member.id}>
+              <TeamMember {...member.attributes} />
+            </Grid>
+          ))}
       </Grid>
     </Box>
   );
