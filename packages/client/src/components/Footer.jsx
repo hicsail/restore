@@ -70,7 +70,7 @@ export const Footer = () => {
 
   return (
     <Box>
-      <Carousel logos={logos} displayCount={displayedLogos} />
+      <Carousel logos={logos} displayCount={displayedLogos > 0 ? displayedLogos : 1} />
       <Container sx={{ marginX: 'auto', display: 'flex' }} ref={componentRef}>
         <Box>
           <Box
