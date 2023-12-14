@@ -3,7 +3,6 @@
 FROM node:18
 # Installing dependencies for Sharp compatibility
 RUN apt-get update && apt-get install -y build-essential libvips
-ENV NODE_ENV=${NODE_ENV}
 
 WORKDIR /opt/
 COPY package.json package-lock.json ./
