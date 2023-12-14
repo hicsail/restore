@@ -14,7 +14,7 @@ export const Footer = () => {
   const { loading, error, data } = useQuery(GET_LOGO_FULL_SVG);
   const componentRef = useRef(null);
   const [componentWidth, setComponentWidth] = useState(0);
-  const [displayedLogos, setDisplayedLogos] = useState(Math.floor((componentWidth - 100) / (200 + 20)));
+  const [displayedLogos, setDisplayedLogos] = useState(Math.floor((componentWidth - 120) / (200 + 40)));
 
   const socialLinks = [
     { name: 'Facebook', icon: <FacebookIcon />, url: 'https://www.facebook.com/' },
@@ -62,7 +62,7 @@ export const Footer = () => {
   }, [data]);
 
   useEffect(() => {
-    setDisplayedLogos(Math.floor((componentWidth - 100) / (200 + 20)));
+    setDisplayedLogos(Math.floor((componentWidth - 120) / (200 + 40)));
   }, [componentWidth]);
 
   if (loading) return <p>RESTORE</p>;

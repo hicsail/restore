@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 export const Carousel = ({ logos, displayCount }) => {
   const logoWidth = 200;
   const logoMargin = 20;
-  const initialOffset = -logoMargin;
+  const initialOffset = 0;
   const totalWidth = logos.length * (logoWidth + logoMargin * 2);
   const maxMarginLeft = -(totalWidth - displayCount * (logoWidth + logoMargin * 2));
 
