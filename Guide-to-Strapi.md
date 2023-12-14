@@ -52,6 +52,8 @@ To make a 'Card Grid' card link to somewhere, add a link to the 'Link' field on 
 
 Each Team Member can belong to one or more Team Categories.
 
+Blog post categories are not currently configurable by RESTORE; contact SAIL to change them.
+
 ### Notes on the Media Library
 
 - When organizing assets in the Media Library, when moving assets into different folders, you will be presented with a dropdown menu of Locations; the dropdown may appear to only contain 'Media Library'; **click the caret** on the right end of this menu item to expand the location list.
