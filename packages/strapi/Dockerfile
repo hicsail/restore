@@ -1,10 +1,8 @@
 # Development Dockerfile
 
-FROM node:18-alpine
-# Installing libvips-dev for Sharp compatibility
-RUN apk update && apk add --no-cache build-base gcc autoconf automake zlib-dev libpng-dev nasm bash vips-dev
-ARG NODE_ENV=development
-ENV NODE_ENV=${NODE_ENV}
+FROM node:18
+# Installing dependencies for Sharp compatibility
+RUN apt-get update && apt-get install -y build-essential libvips
 
 WORKDIR /opt/
 COPY package.json package-lock.json ./
