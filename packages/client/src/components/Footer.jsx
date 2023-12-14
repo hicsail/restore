@@ -71,7 +71,7 @@ export const Footer = () => {
   return (
     <Box>
       <Carousel logos={logos} displayCount={displayedLogos > 0 ? displayedLogos : 1} />
-      <Container sx={{ marginX: 'auto', display: 'flex' }} ref={componentRef}>
+      <Container display="flex" sx={{ marginX: 'auto', paddingX: { sm: 6, xs: 3 } }} ref={componentRef}>
         <Box>
           <Box
             component="img"
@@ -102,11 +102,28 @@ export const Footer = () => {
           </Grid>
         </Box>
       </Container>
-      <Box justifyContent="center" marginBottom={8} paddingX={8}>
-        <Divider sx={{ marginY: 3 }} />
-        <Box display="flex">
-          <Typography variant="body2">© 2023 All rights reserved</Typography>
-          <Typography variant="body2" sx={{ display: 'flex', gap: 5, marginLeft: 'auto' }}>
+      <Box display="flex" flexDirection="column" sx={{ marginBottom: 8 }}>
+        <Divider sx={{ alignSelf: 'center', marginY: 3, width: '90%' }} />
+        <Box
+          display="flex"
+          width="90%"
+          sx={{
+            flexDirection: { sm: 'row', xs: 'column-reverse' },
+            alignSelf: { sm: 'center', xs: 'start' },
+            paddingX: { sm: 0, xs: 3 }
+          }}
+        >
+          <Typography variant="body1">© 2023 All rights reserved</Typography>
+          <Typography
+            variant="body1"
+            display="flex"
+            sx={{
+              flexDirection: { sm: 'row', xs: 'column' },
+              gap: { sm: 5, xs: 2 },
+              marginLeft: { sm: 'auto', xs: 0 },
+              marginBottom: { sm: 0, xs: 2 }
+            }}
+          >
             <Link to="#">Privacy Policy</Link>
             <Link to="#">Terms of Service</Link>
             <Link to="#">Cookies Settings</Link>
