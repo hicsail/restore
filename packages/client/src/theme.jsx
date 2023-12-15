@@ -40,7 +40,6 @@ theme = createTheme(theme, {
     primary: theme.palette.purple,
     secondary: theme.palette.yellow,
     action: {
-      selected: theme.palette.purple.dark,
       selectedOpacity: 0.5
     }
   },
