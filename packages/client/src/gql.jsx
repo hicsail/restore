@@ -177,6 +177,7 @@ export const GET_TEAM_CATEGORIES_AND_MEMBERS = gql`
             data {
               id
               attributes {
+                Order
                 Name
                 Photo {
                   data {
