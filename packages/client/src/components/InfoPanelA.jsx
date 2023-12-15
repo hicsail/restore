@@ -2,9 +2,10 @@ import { NavLink } from 'react-router-dom';
 import { Box, Button, Typography } from '@mui/material';
 
 // No idea what to name this. Layout 24 on wireframe.
-export function InfoPanelA({ title, subtitle, imageUrl, imageAlt, iconUrl, iconAlt, buttonText, buttonLink }) {
+export function InfoPanelA({ id, title, subtitle, imageUrl, imageAlt, iconUrl, iconAlt, buttonText, buttonLink }) {
   return (
     <Box
+      id={id}
       sx={{
         display: 'flex',
         flexDirection: { xs: 'column-reverse', md: 'row' },

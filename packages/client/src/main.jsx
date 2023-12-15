@@ -14,6 +14,7 @@ import Home from './pages/Home.jsx';
 import Layout from './pages/Layout.jsx';
 import AboutMission from './pages/AboutMission.jsx';
 import TreatmentsServices from './pages/TreatmentsServices.jsx';
+import { ServicesToTheHealthSystem, ServicesToOurPatients } from './pages/TreatmentsServices.jsx';
 import TeamMemberGrid from './pages/Team.jsx';
 import Testimonials from './pages/Testimonials.jsx';
 import ResearchAndEvals from './pages/Research.jsx';
@@ -57,7 +58,21 @@ const router = createBrowserRouter([
       },
       {
         path: 'treatments-and-services',
-        element: <TreatmentsServices />
+        element: <TreatmentsServices />,
+        children: [
+          {
+            index: true,
+            element: <ServicesToTheHealthSystem />
+          },
+          {
+            path: 'services-to-the-health-system',
+            element: <ServicesToTheHealthSystem />
+          },
+          {
+            path: 'services-to-our-patients',
+            element: <ServicesToOurPatients />
+          }
+        ]
       },
       {
         path: 'our-team',

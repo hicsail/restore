@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Box, Button, Paper, Popper, Typography } from '@mui/material';
 
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, Outlet, useLocation } from 'react-router-dom';
 
 import determinantsVennImg from '../assets/treatments_and_services/determinants_diagram.jpg';
 import ptsdCurveImg from '../assets/treatments_and_services/ptsd-curve.svg';
@@ -15,6 +15,8 @@ import {
 } from '../gql.jsx';
 import ReactMarkdown from 'react-markdown';
 import { prependStrapiURL } from '../utils.jsx';
+import { theme } from '../theme.jsx';
+import { alpha } from '@mui/material/styles';
 
 import {
   DeterminantsColumn,
@@ -71,7 +73,13 @@ function ImplementationFrameworkInteractive() {
 
   return (
     <>
-      <svg width="900" height="450" viewBox="-10 -10 910 480" xmlns="http://www.w3.org/2000/svg">
+      <svg
+        id="determinants-processes-evaluation"
+        width="900"
+        height="450"
+        viewBox="-10 -10 910 480"
+        xmlns="http://www.w3.org/2000/svg"
+      >
         <defs>
           <filter id="shadow">
             <feDropShadow dx="-4" dy="4" stdDeviation="6" floodOpacity="0.5" />
@@ -384,7 +392,7 @@ function OurImplementationModel() {
     );
   }
   return (
-    <Paper sx={{ display: 'flex', margin: '1rem 0', padding: '2em' }}>
+    <Paper id="our-implementation-model" sx={{ display: 'flex', margin: '1rem 0', padding: '2em' }}>
       <Box sx={{ width: '60%', display: 'flex', flexDirection: 'column' }}>
         <Typography variant="infoPanelBTitle">Our Implementation Model</Typography>
         <Typography variant="infoPanelBBody">
@@ -407,7 +415,7 @@ function OurImplementationModel() {
 
 function ImplementationFrameworks() {
   return (
-    <Paper sx={{ display: 'flex', margin: '1rem 0', padding: '2em' }}>
+    <Paper id="implementation-frameworks" sx={{ display: 'flex', margin: '1rem 0', padding: '2em' }}>
       <Box sx={{ width: '40%' }}>
         <img width="100%" src={prependStrapiURL('/uploads/implementationframeworks_8afd8c3f2c.png')} />
       </Box>
@@ -433,7 +441,10 @@ function ImplementationFrameworks() {
 
 function ScopeOfServicesToSystem() {
   return (
-    <Paper sx={{ display: 'flex', flexDirection: 'column', margin: '1rem 0', padding: '2em 10em' }}>
+    <Paper
+      id="scope-of-services"
+      sx={{ display: 'flex', flexDirection: 'column', margin: '1rem 0', padding: '2em 10em' }}
+    >
       <Typography variant="infoPanelBTitle" sx={{ textAlign: 'center' }}>
         Scope of Services to the System
       </Typography>
@@ -473,7 +484,9 @@ function UpcomingOngoing() {
 
   return (
     <>
-      <Typography variant="h4">Discover our comprehensive range of psychiatric services at our hospital</Typography>
+      <Typography id="upcoming" variant="h4">
+        Interested in Joining Trainings and Consultations? Find Upcoming Opportunities Below.
+      </Typography>
       <Paper sx={{ margin: '1rem 0', padding: '1rem', border: 'solid', borderRadius: '0.5em' }}>
         <ReactMarkdown>{data.aboutUpcomingOngoing.data.attributes.Body}</ReactMarkdown>
       </Paper>
@@ -489,6 +502,7 @@ function TreatmentsCardGrid() {
   return (
     <>
       <SectionedHeader
+        id="our-treatment-model"
         suptitle="Services to our patients"
         title="Our Treatment Model"
         text="Our treatment model uses a variety of service delivery strategies to maximize the reach and effectiveness of our treatments, and to support patient engagement. Services help patients to get back on the natural recovery path following trauma. All treatments are:"
@@ -500,7 +514,7 @@ function TreatmentsCardGrid() {
 
 function MeasurementBasedCare() {
   return (
-    <Paper sx={{ display: 'flex', margin: '1rem 0', padding: '2em' }}>
+    <Paper id="measurement-based-care" sx={{ display: 'flex', margin: '1rem 0', padding: '2em' }}>
       <Box sx={{ width: '60%', display: 'flex', flexDirection: 'column', padding: '0 2em 0 0' }}>
         <Typography variant="infoPanelBTitle">Measurement-based care</Typography>
         <Typography variant="infoPanelBBody">
@@ -537,7 +551,7 @@ function TreatmentsAndServices() {
   if (error) return <p>Error : {error.message}</p>;
 
   return (
-    <Paper sx={{ margin: '1rem 0', padding: '2em' }}>
+    <Paper id="treatments-and-services" sx={{ margin: '1rem 0', padding: '2em' }}>
       <Typography variant="infoPanelBTitle">Treatments and Services</Typography>
       <Typography variant="infoPanelBBody">
         <ReactMarkdown>{data.treatmentsAndServices.data.attributes.Body}</ReactMarkdown>
@@ -550,6 +564,7 @@ function ScopeOfClinicalFocusPanel() {
   return (
     <>
       <SectionedHeader
+        id="scope-of-clinical-focus"
         title="Scope of Clinical Focus"
         text="We use a combination of the following strategies to support our patients in the continuum of trauma and discrimination related concerns."
       />
@@ -567,7 +582,9 @@ function HowToBecomeARestorePatient() {
 
   return (
     <>
-      <Typography variant="h3">How to Become a RESTORE Patient</Typography>
+      <Typography id="how-to-become-a-restore-patient" variant="h3">
+        How to Become a RESTORE Patient
+      </Typography>
       <Paper sx={{ margin: '1rem 0', padding: '1rem', border: 'solid', borderRadius: '0.5em' }}>
         <ReactMarkdown>{data.howToBecomeARestorePatient.data.attributes.Body}</ReactMarkdown>
       </Paper>
@@ -575,9 +592,61 @@ function HowToBecomeARestorePatient() {
   );
 }
 
-export default function Services() {
-  const { hash } = useLocation();
-  const [tabValue, setTabValue] = useState(hash || '#Services-to-the-health-system');
+export function ServicesToTheHealthSystem() {
+  return (
+    <>
+      <OurImplementationModel />
+      <Box id="boards" sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <Box sx={{ width: '50%' }}>
+          <p>RESTORE is overseen by advisory boards that help us center the community in our health equity mission.</p>
+          <p>
+            Our boards include: Community Members; Patients; Clinical and Hospital Leadership; Internal Experts;
+            External Experts.
+          </p>
+        </Box>
+        <Box>
+          <img src={prependStrapiURL('/uploads/ourboards_placeholder_1376b51686.png')} />
+        </Box>
+      </Box>
+
+      <ImplementationFrameworks />
+      <ImplementationFrameworkInteractive />
+
+      <ScopeOfServicesToSystem />
+      <UpcomingOngoing />
+    </>
+  );
+}
+
+export function ServicesToOurPatients() {
+  return (
+    <>
+      <Box id="recovery-curve" sx={{ margin: '4rem', width: '576px', display: 'flex', flexDirection: 'column' }}>
+        <Typography sx={{ margin: '0 0 1em 0' }}>
+          Many people who experience trauma events go on to have natural recovery. Those whose recovery gets interrupted
+          go on to develop PTSD.
+        </Typography>
+        <img src={ptsdCurveImg} height="200px" width="576px" />
+      </Box>
+      <TreatmentsCardGrid />
+      <MeasurementBasedCare />
+      <TreatmentsAndServices />
+      <br />
+      <ScopeOfClinicalFocusPanel />
+      <br />
+      <HowToBecomeARestorePatient />
+    </>
+  );
+}
+
+export default function TreatmentsServices() {
+  // The first button/navlink's element (services to system) is also the index element.
+  // When the user is on the root route, they will see the index element, and should ideally
+  // see the first button styled as though it were active; but the relevant NavLink will not
+  // in fact be active.
+  // Therefore, stuck using pathname...
+  const { pathname } = useLocation();
+  const onIndexRoute = pathname === '/treatments-and-services';
 
   return (
     <>
@@ -590,80 +659,38 @@ export default function Services() {
       <Box sx={{ display: 'flex' }}>
         <Button
           component={NavLink}
-          to="#Services-to-the-health-system"
-          onClick={() => setTabValue('#Services-to-the-health-system')}
+          to="services-to-the-health-system"
           sx={{
             padding: '1rem',
             borderRadius: '0',
-            border: 'solid',
-            ...(tabValue === '#Services-to-the-health-system'
-              ? { borderBottomColor: 'transparent' }
-              : { borderColor: 'transparent', borderBottom: 'solid', borderRightStyle: 'none' })
+            borderColor: 'transparent',
+            borderBottom: 'solid',
+            borderRightStyle: 'none',
+            '&:hover': { backgroundColor: alpha(theme.palette.purple.light, 0.5) },
+            '&.active': { border: 'solid', borderBottomColor: 'transparent' },
+            ...(onIndexRoute && { border: 'solid', borderBottomColor: 'transparent' })
           }}
         >
           <Typography variant="h4">Services to the health system</Typography>
         </Button>
         <Button
           component={NavLink}
-          to="#Services-to-our-patients"
-          onClick={() => setTabValue('#Services-to-our-patients')}
+          to="services-to-our-patients"
           sx={{
             padding: '1rem',
             borderRadius: '0',
-            border: 'solid',
-            ...(tabValue === '#Services-to-our-patients'
-              ? { borderBottomColor: 'transparent' }
-              : { borderColor: 'transparent', borderBottom: 'solid', borderLeftStyle: 'none' })
+            borderColor: 'transparent',
+            borderBottom: 'solid',
+            borderRightStyle: 'none',
+            '&:hover': { backgroundColor: alpha(theme.palette.purple.light, 0.5) },
+            '&.active': { border: 'solid', borderBottomColor: 'transparent' }
           }}
         >
           <Typography variant="h4">Services to our patients</Typography>
         </Button>
       </Box>
 
-      {tabValue == '#Services-to-the-health-system' && (
-        <>
-          <OurImplementationModel />
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <Box sx={{ width: '50%' }}>
-              <p>
-                RESTORE is overseen by advisory boards that help us center the community in our health equity mission.
-              </p>
-              <p>
-                Our boards include: Community Members; Patients; Clinical and Hospital Leadership; Internal Experts;
-                External Experts.
-              </p>
-            </Box>
-            <Box>
-              <img src={prependStrapiURL('/uploads/ourboards_placeholder_1376b51686.png')} />
-            </Box>
-          </Box>
-
-          <ImplementationFrameworks />
-          <ImplementationFrameworkInteractive />
-
-          <ScopeOfServicesToSystem />
-          <UpcomingOngoing />
-        </>
-      )}
-
-      {tabValue == '#Services-to-our-patients' && (
-        <>
-          <Box sx={{ margin: '4rem', width: '576px', display: 'flex', flexDirection: 'column' }}>
-            <Typography sx={{ margin: '0 0 1em 0' }}>
-              Many people who experience trauma events go on to have natural recovery. Those whose recovery gets
-              interrupted go on to develop PTSD.
-            </Typography>
-            <img src={ptsdCurveImg} height="200px" width="576px" />
-          </Box>
-          <TreatmentsCardGrid />
-          <MeasurementBasedCare />
-          <TreatmentsAndServices />
-          <br />
-          <ScopeOfClinicalFocusPanel />
-          <br />
-          <HowToBecomeARestorePatient />
-        </>
-      )}
+      <Outlet />
     </>
   );
 }

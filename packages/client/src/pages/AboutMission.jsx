@@ -4,7 +4,10 @@ import { prependStrapiURL } from '../utils.jsx';
 
 function Strategies() {
   return (
-    <Box sx={{ display: 'flex', flexDirection: { xs: 'column-reverse', md: 'row' }, alignItems: 'center', gap: 2 }}>
+    <Box
+      id="our-strategies"
+      sx={{ display: 'flex', flexDirection: { xs: 'column-reverse', md: 'row' }, alignItems: 'center', gap: 2 }}
+    >
       <Box sx={{ width: { xs: '100%', md: '60%' }, display: 'flex', flexDirection: 'column' }}>
         <Typography variant="infoPanelBTitle" sx={{ textAlign: 'center' }}>
           Our Strategies
@@ -38,6 +41,7 @@ export default function AboutMission() {
   return (
     <>
       <InfoPanelA
+        id="our-mission"
         title="Our Mission"
         subtitle={
           <p>
