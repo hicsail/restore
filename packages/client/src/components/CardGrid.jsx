@@ -1,4 +1,5 @@
-import { Box, Card, Typography } from '@mui/material';
+import { Box, Card, CardActionArea, CardContent, Typography } from '@mui/material';
+import { NavLink } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 
 export function CardGrid({ cards }) {
@@ -23,19 +24,27 @@ export function CardGrid({ cards }) {
     </Box>
   );
 }
-function CardGridCard({ Index, Icon, Title, Text }) {
-  const imgUrl = import.meta.env.VITE_STRAPI_URL + Icon.data.attributes.url;
-  const imgAlt = Icon.data.attributes.alternativeText;
+function CardGridCard({ Index, Icon, Title, Text, Link }) {
+  const imgUrl = Icon.data && import.meta.env.VITE_STRAPI_URL + Icon.data.attributes.url;
+  const imgAlt = Icon.data && Icon.data.attributes.alternativeText;
   return (
     <Card
       variant="outlined"
-      sx={{ border: 1, borderRadius: '0 20px 20px 20px', display: 'flex', flexDirection: 'column', padding: 2 }}
+      sx={{
+        display: 'flex', //so that action area stretches over whole card
+        border: 1,
+        borderRadius: '0 20px 20px 20px'
+      }}
     >
-      <img width="30 em" height="30 em" src={imgUrl} alt={imgAlt} />
-      <Typography variant="cardGridCardTitle">{Title}</Typography>
-      <Typography variant="cardGridCardText">
-        <ReactMarkdown>{Text}</ReactMarkdown>
-      </Typography>
+      <CardActionArea disabled={!Link} component={NavLink} to={Link}>
+        <CardContent sx={{ display: 'flex', flexDirection: 'column' }}>
+          {imgUrl && <img width="30 em" height="30 em" src={imgUrl} alt={imgAlt} />}
+          <Typography variant="cardGridCardTitle">{Title}</Typography>
+          <Typography variant="cardGridCardText">
+            <ReactMarkdown>{Text}</ReactMarkdown>
+          </Typography>
+        </CardContent>
+      </CardActionArea>
     </Card>
   );
 }
