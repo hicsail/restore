@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Box, Button, Paper, Popper, Typography } from '@mui/material';
+import { Box, Button, Paper, Typography } from '@mui/material';
 
 import { NavLink, useLocation } from 'react-router-dom';
 
@@ -384,14 +384,22 @@ function OurImplementationModel() {
     );
   }
   return (
-    <Paper sx={{ display: 'flex', margin: '1rem 0', padding: '2em' }}>
-      <Box sx={{ width: '60%', display: 'flex', flexDirection: 'column' }}>
+    <Paper
+      sx={{
+        display: 'flex',
+        flexDirection: { xs: 'column-reverse', lg: 'row' },
+        margin: '1rem 0',
+        padding: '2em',
+        alignItems: 'center'
+      }}
+    >
+      <Box sx={{ width: { lg: '60%', xs: '100%' }, display: 'flex', flexDirection: 'column' }}>
         <Typography variant="infoPanelBTitle">Our Implementation Model</Typography>
         <Typography variant="infoPanelBBody">
           We believe that access to high quality and culturally responsive care is a fundamental part of achieving
           health equity. Four implementation science principles guide our work in advancing health equity.
         </Typography>
-        <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)' }}>
+        <Box sx={{ display: 'grid', gridTemplateColumns: { lg: 'repeat(2, 1fr)', sm: 'repeat(1, 1fr)' } }}>
           {PrincipleBox('1. Racism is a fundamental driver of health inequities')}
           {PrincipleBox('2. Equitable healthcare requires active engagement of community members ')}
           {PrincipleBox('3. Equitable healthcare requires multisector partnerships')}
@@ -407,11 +415,19 @@ function OurImplementationModel() {
 
 function ImplementationFrameworks() {
   return (
-    <Paper sx={{ display: 'flex', margin: '1rem 0', padding: '2em' }}>
+    <Paper
+      sx={{
+        display: 'flex',
+        flexDirection: { xs: 'column', lg: 'row' },
+        margin: '1rem 0',
+        padding: '2em',
+        alignItems: 'center'
+      }}
+    >
       <Box sx={{ width: '40%' }}>
         <img width="100%" src={prependStrapiURL('/uploads/implementationframeworks_8afd8c3f2c.png')} />
       </Box>
-      <Box sx={{ width: '60%', display: 'flex', flexDirection: 'column', padding: '0 0 0 2em' }}>
+      <Box sx={{ width: { lg: '60%', xs: '100%' }, display: 'flex', flexDirection: 'column', padding: '0 0 0 2em' }}>
         <Typography variant="infoPanelBTitle" sx={{ margin: '0 0 0.8em 0' }}>
           Implementation Frameworks
         </Typography>
@@ -433,7 +449,7 @@ function ImplementationFrameworks() {
 
 function ScopeOfServicesToSystem() {
   return (
-    <Paper sx={{ display: 'flex', flexDirection: 'column', margin: '1rem 0', padding: '2em 10em' }}>
+    <Paper sx={{ display: 'flex', flexDirection: 'column', margin: '1rem 0', padding: '2em' }}>
       <Typography variant="infoPanelBTitle" sx={{ textAlign: 'center' }}>
         Scope of Services to the System
       </Typography>
@@ -445,7 +461,9 @@ function ScopeOfServicesToSystem() {
         <p>RESTORE’s selected facilitation strategies:</p>
       </Typography>
       <Typography variant="infoPanelBBody" sx={{ fontWeight: 'bold' }}>
-        <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '0 2em' }}>
+        <Box
+          sx={{ display: 'grid', gridTemplateColumns: { lg: 'repeat(2, 1fr)', xs: 'repeat(1, 1fr)' }, gap: '0 2em' }}
+        >
           <p>Training and consultation initiatives</p>
           <p>Consultation to clinical and community partners on implementation planning</p>
           <p>Organize local change agents in leadership and clinician expertise</p>
@@ -500,14 +518,22 @@ function TreatmentsCardGrid() {
 
 function MeasurementBasedCare() {
   return (
-    <Paper sx={{ display: 'flex', margin: '1rem 0', padding: '2em' }}>
-      <Box sx={{ width: '60%', display: 'flex', flexDirection: 'column', padding: '0 2em 0 0' }}>
+    <Paper
+      sx={{
+        display: 'flex',
+        flexDirection: { xs: 'column-reverse', lg: 'row' },
+        margin: '1rem 0',
+        padding: '2em',
+        alignItems: 'center'
+      }}
+    >
+      <Box sx={{ width: { lg: '60%', xs: '100%' }, display: 'flex', flexDirection: 'column', padding: '0 2em 0 0' }}>
         <Typography variant="infoPanelBTitle">Measurement-based care</Typography>
         <Typography variant="infoPanelBBody">
           We use measurement-based care to develop individualized treatment plans and understand best practices for
           stepping and sequencing treatments.
         </Typography>
-        <Box sx={{ display: 'flex' }}>
+        <Box sx={{ display: 'flex', flexDirection: { xs: 'column', lg: 'row' } }}>
           <p>
             Clients complete questionnaires at their intake and every 6 months to measure progress through treatment
           </p>
@@ -518,13 +544,13 @@ function MeasurementBasedCare() {
         <Typography variant="infoPanelBBody">
           We know that engagement in PTSD treatment can be challenging, so RESTORE provides additional supports.
         </Typography>
-        <Box sx={{ display: 'flex' }}>
+        <Box sx={{ display: 'flex', flexDirection: { xs: 'column', lg: 'row' } }}>
           <p>Community health workers to provide outreach and skills training </p>
           <p>Clinic data monitoring to understand engagement and retention in treatment in the practice</p>
           <p>Guidance from our patient advisory board on maintaining patient-centered care</p>
         </Box>
       </Box>
-      <Box sx={{ width: '40%' }}>
+      <Box sx={{ width: { lg: '40%', xs: '80%' } }}>
         <img width="100%" src={prependStrapiURL('/uploads/measurementbasedcare_19e723be73.png')} />
       </Box>
     </Paper>
@@ -623,8 +649,15 @@ export default function Services() {
       {tabValue == '#Services-to-the-health-system' && (
         <>
           <OurImplementationModel />
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <Box sx={{ width: '50%' }}>
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: { xs: 'column-reverse', lg: 'row' },
+              justifyContent: 'space-between',
+              alignItems: 'center'
+            }}
+          >
+            <Box sx={{ width: { lg: '50%', xs: '100%' } }}>
               <p>
                 RESTORE is overseen by advisory boards that help us center the community in our health equity mission.
               </p>
@@ -648,12 +681,12 @@ export default function Services() {
 
       {tabValue == '#Services-to-our-patients' && (
         <>
-          <Box sx={{ margin: '4rem', width: '576px', display: 'flex', flexDirection: 'column' }}>
+          <Box sx={{ margin: '4rem', width: 'auto', display: 'flex', flexDirection: 'column' }}>
             <Typography sx={{ margin: '0 0 1em 0' }}>
               Many people who experience trauma events go on to have natural recovery. Those whose recovery gets
               interrupted go on to develop PTSD.
             </Typography>
-            <img src={ptsdCurveImg} height="200px" width="576px" />
+            <img src={ptsdCurveImg} height="200px" width="auto" />
           </Box>
           <TreatmentsCardGrid />
           <MeasurementBasedCare />
