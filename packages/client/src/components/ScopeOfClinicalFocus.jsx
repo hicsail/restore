@@ -55,7 +55,10 @@ export function ScopeOfClinicalFocus() {
   );
   const obsSignsSymptomsText = (
     <ul>
-      <li>Uncontrollable stress....</li>
+      <li>Uncontrollable distress</li>
+      <li>Alienation from others</li>
+      <li>Worry about safety and future</li>
+      <li>On guard</li>
     </ul>
   );
   const obsTechniquesText = (
@@ -72,9 +75,15 @@ export function ScopeOfClinicalFocus() {
       <li>Coping Skills Training</li>
     </ul>
   );
-  const culturallyResponsiveText = <p>Placeholder text for culturally responsive treatments</p>;
-  const culturallyAdaptedText = <p>Placeholder text for culturally adapted treatments</p>;
-  const culturallySpecificText = <p>Placeholder text for culturally specific and emergent supports</p>;
+  const culturallyResponsiveText = (
+    <p>Tailoring evidence-based practices to individual needs and cultural preferences</p>
+  );
+  const culturallyAdaptedText = (
+    <p>Systematically changing evidence-based practices to improve the fit of interventions with specific groups</p>
+  );
+  const culturallySpecificText = (
+    <p>Practices with varied levels of evidence that originate from cultural or community practices</p>
+  );
 
   return (
     <Box>

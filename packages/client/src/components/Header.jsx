@@ -5,8 +5,8 @@ import { theme } from '../theme.jsx';
 export function UniversalHeader() {
   return (
     <Header
-      title="Multi-level interventions to reduce the burden of trauma on the health of communities"
-      subtitle="Improve Equitable Access. Promote Quality and Cultural Responsiveness. Build Trust."
+      title="Multi-Level Interventions to Reduce the Burden of Trauma on the Health of Communities"
+      subtitle="Improve Equitable Access. Promote Quality and Cultural Responsiveness of Care. Build Trust."
       bgColor={theme.palette.purple.dark}
     />
   );

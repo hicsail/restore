@@ -443,35 +443,35 @@ function ScopeOfServicesToSystem() {
   return (
     <Paper
       id="scope-of-services"
-      sx={{ display: 'flex', flexDirection: 'column', margin: '1rem 0', padding: '2em 10em' }}
+      sx={{ display: 'flex', flexDirection: 'column', margin: '1rem 0', padding: { xs: '2em 1em', md: '2em 8em' } }}
     >
       <Typography variant="infoPanelBTitle" sx={{ textAlign: 'center' }}>
         Scope of Services to the System
       </Typography>
-      <Typography variant="infoPanelBBody" sx={{ margin: '1em 0' }}>
+      <Typography variant="infoPanelBBody">
         <p>
           RESTORE provides facilitation—an interactive problem-solving approach that supports organizations in applying
           evidence-based practices in routine care.
         </p>
         <p>RESTORE’s selected facilitation strategies:</p>
-      </Typography>
-      <Typography variant="infoPanelBBody" sx={{ fontWeight: 'bold' }}>
-        <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '0 2em' }}>
-          <p>Training and consultation initiatives</p>
-          <p>Consultation to clinical and community partners on implementation planning</p>
-          <p>Organize local change agents in leadership and clinician expertise</p>
-          <p>
+        <ul>
+          <li>Training and consultation initiatives</li>
+          <li>Consultation to clinical and community partners on implementation planning</li>
+          <li>Organize local change agents in leadership and clinician expertise</li>
+          <li>
             Build reciprocal and participatory relationship with clinician teams to foster a shared vision and
             priorities
-          </p>
-          <p>
+          </li>
+          <li>
             Promote structural change to support implementation with screening, identification, and referral pathways
             across the system
-          </p>
-          <p>Convene community, patient, provider, and external advisory boards on PTSD and oppression-based stress</p>
-          <p>Support data-driven intervention adaptation, including cultural adaptation</p>
-          <p>Administrative and technical support through imbedded online flowsheets and templates</p>
-        </Box>
+          </li>
+          <li>
+            Convene community, patient, provider, and external advisory boards on PTSD and oppression-based stress
+          </li>
+          <li>Support data-driven intervention adaptation, including cultural adaptation</li>
+          <li>Administrative and technical support through imbedded online flowsheets and templates</li>
+        </ul>
       </Typography>
     </Paper>
   );
@@ -514,31 +514,42 @@ function TreatmentsCardGrid() {
 
 function MeasurementBasedCare() {
   return (
-    <Paper id="measurement-based-care" sx={{ display: 'flex', margin: '1rem 0', padding: '2em' }}>
-      <Box sx={{ width: '60%', display: 'flex', flexDirection: 'column', padding: '0 2em 0 0' }}>
+    <Paper
+      id="measurement-based-care"
+      sx={{ display: 'flex', flexDirection: { xs: 'column-reverse', md: 'row' }, margin: '1rem 0', padding: '2em' }}
+    >
+      <Box sx={{ width: { xs: '100%', md: '60%' }, padding: '0 2em 0 0' }}>
         <Typography variant="infoPanelBTitle">Measurement-based care</Typography>
         <Typography variant="infoPanelBBody">
-          We use measurement-based care to develop individualized treatment plans and understand best practices for
-          stepping and sequencing treatments.
-        </Typography>
-        <Box sx={{ display: 'flex' }}>
           <p>
-            Clients complete questionnaires at their intake and every 6 months to measure progress through treatment
+            We use measurement-based care to develop individualized treatment plans and understand best practices for
+            stepping and sequencing treatments.
           </p>
-          <p>Responses are used by clinicians to understand if a treatment is working</p>
-          <p>Clinicians use this information to offer additional treatment or engagement support to patients</p>
-          <p>Patients can opt out of these questionnaires at any time</p>
-        </Box>
-        <Typography variant="infoPanelBBody">
-          We know that engagement in PTSD treatment can be challenging, so RESTORE provides additional supports.
+          <ul>
+            <li>
+              Clients complete questionnaires at their intake and every 6 months to measure progress through treatment
+            </li>
+            <li>Responses are used by clinicians to understand if a treatment is working</li>
+            <li>Clinicians use this information to offer additional treatment or engagement support to patients</li>
+            <li>Patients can opt out of these questionnaires at any time</li>
+          </ul>
+          <p>We know that engagement in PTSD treatment can be challenging, so RESTORE provides additional supports.</p>
+          <ul>
+            <li>Community health workers to provide outreach and skills training</li>
+            <li>Clinic data monitoring to understand engagement and retention in treatment in the practice</li>
+            <li>Guidance from our patient advisory board on maintaining patient-centered care</li>
+          </ul>
         </Typography>
-        <Box sx={{ display: 'flex' }}>
-          <p>Community health workers to provide outreach and skills training </p>
-          <p>Clinic data monitoring to understand engagement and retention in treatment in the practice</p>
-          <p>Guidance from our patient advisory board on maintaining patient-centered care</p>
-        </Box>
       </Box>
-      <Box sx={{ width: '40%' }}>
+      <Box
+        sx={{
+          width: { xs: '100%', md: '40%' },
+          // this padding is a hack to make the image less absurdly large (tall) on an xs screen.
+          // NB: It will break if this image is replaced with an SVG with preserveAspectRatio none.
+          // Would rather set responsive img width below, but can't??
+          padding: { xs: '5% 30%', md: '0%' }
+        }}
+      >
         <img width="100%" src={prependStrapiURL('/uploads/measurementbasedcare_19e723be73.png')} />
       </Box>
     </Paper>
@@ -582,8 +593,11 @@ function HowToBecomeARestorePatient() {
 
   return (
     <>
-      <Typography id="how-to-become-a-restore-patient" variant="h3">
+      <Typography id="how-to-become-a-restore-patient" variant="h3" gutterBottom>
         How to Become a RESTORE Patient
+      </Typography>
+      <Typography variant="h5">
+        Contact us at restore@bmc.org if you would like to get involved or to learn more.
       </Typography>
       <Paper sx={{ margin: '1rem 0', padding: '1rem', border: 'solid', borderRadius: '0.5em' }}>
         <ReactMarkdown>{data.howToBecomeARestorePatient.data.attributes.Body}</ReactMarkdown>
@@ -600,9 +614,14 @@ export function ServicesToTheHealthSystem() {
         <Box sx={{ width: '50%' }}>
           <p>RESTORE is overseen by advisory boards that help us center the community in our health equity mission.</p>
           <p>
-            Our boards include: Community Members; Patients; Clinical and Hospital Leadership; Internal Experts;
-            External Experts.
+            <a href="/get-involved">Our boards include:</a>
           </p>
+          <ul>
+            <li>RESTORE Patient Advisory Board,</li>
+            <li>RESTORE Community Advisory Board (Church),</li>
+            <li>RESTORE Implementation Advisory Board,</li>
+            <li>RESTORE Internal Clinician Expert Panel.</li>
+          </ul>
         </Box>
         <Box>
           <img src={prependStrapiURL('/uploads/ourboards_placeholder_1376b51686.png')} />
@@ -621,12 +640,15 @@ export function ServicesToTheHealthSystem() {
 export function ServicesToOurPatients() {
   return (
     <>
-      <Box id="recovery-curve" sx={{ margin: '4rem', width: '576px', display: 'flex', flexDirection: 'column' }}>
-        <Typography sx={{ margin: '0 0 1em 0' }}>
+      <Box id="recovery-curve-graph" sx={{ margin: '4rem', width: '576px', display: 'flex', flexDirection: 'column' }}>
+        <Typography variant="h5" gutterBottom sx={{ fontWeight: 'bold' }}>
+          Recovery Curve Graph
+        </Typography>
+        <img src={ptsdCurveImg} height="200px" width="576px" />
+        <Typography sx={{ margin: '1em 0 0 0' }}>
           Many people who experience trauma events go on to have natural recovery. Those whose recovery gets interrupted
           go on to develop PTSD.
         </Typography>
-        <img src={ptsdCurveImg} height="200px" width="576px" />
       </Box>
       <TreatmentsCardGrid />
       <MeasurementBasedCare />

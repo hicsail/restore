@@ -15,7 +15,7 @@ export function InfoPanelA({ id, title, subtitle, imageUrl, imageAlt, iconUrl, i
     >
       <Box
         sx={{
-          width: { xs: '100%', md: '60%' },
+          width: { xs: '100%', md: imageUrl ? '60%' : '100%' },
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
@@ -38,16 +38,11 @@ export function InfoPanelA({ id, title, subtitle, imageUrl, imageAlt, iconUrl, i
           </Button>
         )}
       </Box>
-      <Box
-        sx={{
-          width: {
-            xs: '60%',
-            md: '40%'
-          }
-        }}
-      >
-        {imageUrl && <img style={{ width: '100%', height: 'auto' }} src={imageUrl} alt={imageAlt} />}
-      </Box>
+      {imageUrl && (
+        <Box sx={{ width: { xs: '60%', md: '40%' } }}>
+          <img style={{ width: '100%', height: 'auto' }} src={imageUrl} alt={imageAlt} />
+        </Box>
+      )}
     </Box>
   );
 }
