@@ -1,10 +1,11 @@
 import { Box, Grid, Typography } from '@mui/material';
 import { TeamMember } from './TeamMember.jsx';
+import { spacesToDashes } from '../utils.jsx';
 
 export const TeamCategory = ({ TeamCategoryName, Description, team_members }) => {
   return (
     <Box>
-      <Typography variant="h4" component="h2" gutterBottom>
+      <Typography id={spacesToDashes(TeamCategoryName)} variant="h4" component="h2" gutterBottom>
         {TeamCategoryName}
       </Typography>
       {Description && (
@@ -13,11 +14,13 @@ export const TeamCategory = ({ TeamCategoryName, Description, team_members }) =>
         </Typography>
       )}
       <Grid container spacing={2}>
-        {team_members?.data?.map((member) => (
-          <Grid item xs={12} sm={6} md={4} key={member.id}>
-            <TeamMember {...member.attributes} />
-          </Grid>
-        ))}
+        {team_members?.data
+          ?.toSorted((a, b) => a.attributes.Order - b.attributes.Order)
+          .map((member) => (
+            <Grid item xs={12} sm={6} md={4} key={member.id}>
+              <TeamMember {...member.attributes} />
+            </Grid>
+          ))}
       </Grid>
     </Box>
   );

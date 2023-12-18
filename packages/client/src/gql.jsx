@@ -35,6 +35,7 @@ export const GET_HOMEPAGE_CARDGRID = gql`
             }
             Title
             Text
+            Link
           }
         }
       }
@@ -134,6 +135,7 @@ export const GET_TREATMENTS_CARDGRID = gql`
             }
             Title
             Text
+            Link
           }
         }
       }
@@ -175,6 +177,7 @@ export const GET_TEAM_CATEGORIES_AND_MEMBERS = gql`
             data {
               id
               attributes {
+                Order
                 Name
                 Photo {
                   data {
@@ -356,6 +359,7 @@ export const GET_GETINVOLVED_CARDGRID = gql`
             }
             Title
             Text
+            Link
           }
         }
       }

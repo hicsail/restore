@@ -20,3 +20,8 @@ export function processMarkdownImageUri(url) {
 export function generateBlogPostPath(id, title) {
   return `/blog/${id}/${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
 }
+
+// This function replaces spaces with dashes.
+export function spacesToDashes(text) {
+  return text.replace(/ /g, '-');
+}
