@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Box, Button, Paper, Popper, Typography } from '@mui/material';
+import { Box, Button, Paper, Typography } from '@mui/material';
 
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
 
@@ -392,14 +392,23 @@ function OurImplementationModel() {
     );
   }
   return (
-    <Paper id="our-implementation-model" sx={{ display: 'flex', margin: '1rem 0', padding: '2em' }}>
-      <Box sx={{ width: '60%', display: 'flex', flexDirection: 'column' }}>
+    <Paper
+      id="our-implementation-model"
+      sx={{
+        display: 'flex',
+        flexDirection: { xs: 'column-reverse', lg: 'row' },
+        margin: '1rem 0',
+        padding: '2em',
+        alignItems: 'center'
+      }}
+    >
+      <Box sx={{ width: { xs: '100%', lg: '60%' }, display: 'flex', flexDirection: 'column' }}>
         <Typography variant="infoPanelBTitle">Our Implementation Model</Typography>
         <Typography variant="infoPanelBBody">
           We believe that access to high quality and culturally responsive care is a fundamental part of achieving
           health equity. Four implementation science principles guide our work in advancing health equity.
         </Typography>
-        <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)' }}>
+        <Box sx={{ display: 'grid', gridTemplateColumns: { lg: 'repeat(2, 1fr)', sm: 'repeat(1, 1fr)' } }}>
           {PrincipleBox('1. Racism is a fundamental driver of health inequities')}
           {PrincipleBox('2. Equitable healthcare requires active engagement of community members ')}
           {PrincipleBox('3. Equitable healthcare requires multisector partnerships')}
@@ -415,11 +424,19 @@ function OurImplementationModel() {
 
 function ImplementationFrameworks() {
   return (
-    <Paper id="implementation-frameworks" sx={{ display: 'flex', margin: '1rem 0', padding: '2em' }}>
-      <Box sx={{ width: '40%' }}>
+    <Paper
+      id="implementation-frameworks"
+      sx={{
+        display: 'flex',
+        flexDirection: { xs: 'column', lg: 'row' },
+        margin: '1rem 0',
+        padding: { lg: '2em', xs: '1rem' }
+      }}
+    >
+      <Box sx={{ width: { lg: '40%', xs: '100%' } }}>
         <img width="100%" src={prependStrapiURL('/uploads/implementationframeworks_8afd8c3f2c.png')} />
       </Box>
-      <Box sx={{ width: '60%', display: 'flex', flexDirection: 'column', padding: '0 0 0 2em' }}>
+      <Box sx={{ width: { lg: '60%', xs: '100%' }, display: 'flex', flexDirection: 'column', padding: '0 0 0 2em' }}>
         <Typography variant="infoPanelBTitle" sx={{ margin: '0 0 0.8em 0' }}>
           Implementation Frameworks
         </Typography>
@@ -443,7 +460,7 @@ function ScopeOfServicesToSystem() {
   return (
     <Paper
       id="scope-of-services"
-      sx={{ display: 'flex', flexDirection: 'column', margin: '1rem 0', padding: { xs: '2em 1em', md: '2em 8em' } }}
+      sx={{ display: 'flex', flexDirection: 'column', margin: '1rem 0', padding: { xs: '2em 1em', md: '2em' } }}
     >
       <Typography variant="infoPanelBTitle" sx={{ textAlign: 'center' }}>
         Scope of Services to the System
@@ -542,16 +559,14 @@ function MeasurementBasedCare() {
         </Typography>
       </Box>
       <Box
+        component="img"
         sx={{
-          width: { xs: '100%', md: '40%' },
-          // this padding is a hack to make the image less absurdly large (tall) on an xs screen.
-          // NB: It will break if this image is replaced with an SVG with preserveAspectRatio none.
-          // Would rather set responsive img width below, but can't??
-          padding: { xs: '5% 30%', md: '0%' }
+          display: 'block',
+          margin: '0 auto',
+          width: { xs: '70%', md: '40%' }
         }}
-      >
-        <img width="100%" src={prependStrapiURL('/uploads/measurementbasedcare_19e723be73.png')} />
-      </Box>
+        src={prependStrapiURL('/uploads/measurementbasedcare_19e723be73.png')}
+      />
     </Paper>
   );
 }
@@ -610,8 +625,16 @@ export function ServicesToTheHealthSystem() {
   return (
     <>
       <OurImplementationModel />
-      <Box id="boards" sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <Box sx={{ width: '50%' }}>
+      <Box
+        id="boards"
+        sx={{
+          display: 'flex',
+          flexDirection: { xs: 'column-reverse', lg: 'row' },
+          justifyContent: 'space-between',
+          alignItems: 'center'
+        }}
+      >
+        <Box sx={{ width: { lg: '50%', xs: '100%' } }}>
           <p>RESTORE is overseen by advisory boards that help us center the community in our health equity mission.</p>
           <p>
             <a href="/get-involved">Our boards include:</a>
@@ -640,11 +663,11 @@ export function ServicesToTheHealthSystem() {
 export function ServicesToOurPatients() {
   return (
     <>
-      <Box id="recovery-curve-graph" sx={{ margin: '4rem', width: '576px', display: 'flex', flexDirection: 'column' }}>
+      <Box id="recovery-curve-graph" sx={{ margin: '4rem', width: 'auto', display: 'flex', flexDirection: 'column' }}>
         <Typography variant="h5" gutterBottom sx={{ fontWeight: 'bold' }}>
           Recovery Curve Graph
         </Typography>
-        <img src={ptsdCurveImg} height="200px" width="576px" />
+        <img src={ptsdCurveImg} height="200px" width="auto" />
         <Typography sx={{ margin: '1em 0 0 0' }}>
           Many people who experience trauma events go on to have natural recovery. Those whose recovery gets interrupted
           go on to develop PTSD.
