@@ -433,9 +433,11 @@ function ImplementationFrameworks() {
         padding: { lg: '2em', xs: '1rem' }
       }}
     >
-      <Box sx={{ width: { lg: '40%', xs: '100%' } }}>
-        <img width="100%" src={prependStrapiURL('/uploads/implementationframeworks_8afd8c3f2c.png')} />
-      </Box>
+      <Box
+        component="img"
+        sx={{ width: { lg: '40%', xs: '50%' }, display: 'block', margin: '0 auto' }}
+        src={prependStrapiURL('/uploads/implementationframeworks_8afd8c3f2c.png')}
+      />
       <Box sx={{ width: { lg: '60%', xs: '100%' }, display: 'flex', flexDirection: 'column', padding: '0 0 0 2em' }}>
         <Typography variant="infoPanelBTitle" sx={{ margin: '0 0 0.8em 0' }}>
           Implementation Frameworks
