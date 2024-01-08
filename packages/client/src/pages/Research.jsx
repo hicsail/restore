@@ -1,10 +1,12 @@
 import { useQuery } from '@apollo/client';
 import ReactMarkdown from 'react-markdown';
-import { Box, Card, CardContent, CardMedia, Typography } from '@mui/material';
+import { Box, Card, CardContent, CardMedia, Container, Typography } from '@mui/material';
+import { Header } from '../components/Header.jsx';
 import { SectionedHeader } from '../components/SectionedHeader.jsx';
 
 import { GET_CURRENT_STUDIES, GET_RESEARCH_AND_EVALUATIONS } from '../gql.jsx';
 import { prependStrapiURL } from '../utils';
+import { theme } from '../theme.jsx';
 
 function CurrentStudies() {
   const { loading, error, data } = useQuery(GET_CURRENT_STUDIES);
@@ -53,6 +55,16 @@ function CurrentStudies() {
   );
 }
 
+function ResearchAndEvaluationHeader() {
+  return (
+    <Header
+      title="Multi-Level Interventions to Reduce the Burden of Trauma on the Health of Communities"
+      subtitle="Improve Equitable Access. Promote Quality and Cultural Responsiveness of Care. Build Trust."
+      bgColor={theme.palette.purple.dark}
+    />
+  );
+}
+
 export default function ResearchAndEvals() {
   const { loading, error, data } = useQuery(GET_RESEARCH_AND_EVALUATIONS);
 
@@ -61,8 +73,11 @@ export default function ResearchAndEvals() {
 
   return (
     <>
-      <CurrentStudies />
-      <ReactMarkdown>{data.researchAndEvaluation.data.attributes.Body}</ReactMarkdown>
+      <ResearchAndEvaluationHeader />
+      <Container sx={{ margin: '1rem auto' }}>
+        <CurrentStudies />
+        <ReactMarkdown>{data.researchAndEvaluation.data.attributes.Body}</ReactMarkdown>
+      </Container>
     </>
   );
 }

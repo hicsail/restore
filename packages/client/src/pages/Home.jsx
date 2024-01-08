@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Button, Container, Typography } from '@mui/material';
 
+import { Header } from '../components/Header.jsx';
 import { InfoPanelA } from '../components/InfoPanelA.jsx';
 import { SectionedHeader } from '../components/SectionedHeader.jsx';
 import { CardGrid } from '../components/CardGrid.jsx';
@@ -14,10 +15,7 @@ import {
   GET_RECENT_BLOG_POSTS
 } from '../gql.jsx';
 
-// Some random placeholder icon options...
-import GestureIcon from '@mui/icons-material/Gesture';
-import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt';
-import SquareIcon from '@mui/icons-material/Square';
+import { theme } from '../theme.jsx';
 
 function HomepageInfoPanelTop() {
   const { loading, error, data } = useQuery(GET_HOMEPAGE_INFOPANEL_TOP);
@@ -107,13 +105,26 @@ function HomepageBlogPreview() {
   );
 }
 
+function HomeHeader() {
+  return (
+    <Header
+      title="Multi-Level Interventions to Reduce the Burden of Trauma on the Health of Communities"
+      subtitle="Improve Equitable Access. Promote Quality and Cultural Responsiveness of Care. Build Trust."
+      bgColor={theme.palette.purple.dark}
+    />
+  );
+}
+
 export default function Home() {
   return (
     <>
-      <HomepageInfoPanelTop />
-      <HomepageCardGrid />
-      <HomepageInfoPanelBottom />
-      <HomepageBlogPreview />
+      <HomeHeader />
+      <Container sx={{ margin: '1rem auto' }}>
+        <HomepageInfoPanelTop />
+        <HomepageCardGrid />
+        <HomepageInfoPanelBottom />
+        <HomepageBlogPreview />
+      </Container>
     </>
   );
 }

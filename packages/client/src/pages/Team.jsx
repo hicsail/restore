@@ -1,10 +1,14 @@
 import { useQuery } from '@apollo/client';
-import { Box, Stack, Typography } from '@mui/material';
+import { Box, Container, Stack, Typography } from '@mui/material';
 
-import { GET_TEAM_CATEGORIES_AND_MEMBERS } from '../gql.jsx';
+import { Header } from '../components/Header.jsx';
 import { TeamCategory } from '../components/TeamCategory';
 
-export default function TeamMemberGrid() {
+import { GET_TEAM_CATEGORIES_AND_MEMBERS } from '../gql.jsx';
+
+import { theme } from '../theme.jsx';
+
+function TeamMemberGrid() {
   const { loading, error, data } = useQuery(GET_TEAM_CATEGORIES_AND_MEMBERS);
 
   if (loading) return <p>Loading...</p>;
@@ -29,5 +33,26 @@ export default function TeamMemberGrid() {
           <TeamCategory key={category} {...category.attributes} />
         ))}
     </Stack>
+  );
+}
+
+function TeamHeader() {
+  return (
+    <Header
+      title="Multi-Level Interventions to Reduce the Burden of Trauma on the Health of Communities"
+      subtitle="Improve Equitable Access. Promote Quality and Cultural Responsiveness of Care. Build Trust."
+      bgColor={theme.palette.purple.dark}
+    />
+  );
+}
+
+export default function Team() {
+  return (
+    <>
+      <TeamHeader />
+      <Container sx={{ margin: '1rem auto' }}>
+        <TeamMemberGrid />
+      </Container>
+    </>
   );
 }

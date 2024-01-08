@@ -2,10 +2,13 @@ import { useQuery } from '@apollo/client';
 
 import { GET_BLOG_POSTS_BY_CATEGORY } from '../gql.jsx';
 import { useState } from 'react';
-import { Box, Grid, Pagination, Tab, Tabs } from '@mui/material';
+import { Box, Container, Grid, Pagination, Tab, Tabs } from '@mui/material';
+import { Header } from '../components/Header.jsx';
 import { BlogCard } from '../components/BlogCard.jsx';
 
-export default function Blog() {
+import { theme } from '../theme.jsx';
+
+function BlogBrowser() {
   const { loading, error, data, refetch } = useQuery(GET_BLOG_POSTS_BY_CATEGORY, {
     variables: { category: '', page: 1, pageSize: 9 }
   });
@@ -65,6 +68,27 @@ export default function Blog() {
           onChange={handlePageChange}
         />
       </Box>
+    </>
+  );
+}
+
+function BlogHeader() {
+  return (
+    <Header
+      title="Multi-Level Interventions to Reduce the Burden of Trauma on the Health of Communities"
+      subtitle="Improve Equitable Access. Promote Quality and Cultural Responsiveness of Care. Build Trust."
+      bgColor={theme.palette.purple.dark}
+    />
+  );
+}
+
+export default function Blog() {
+  return (
+    <>
+      <BlogHeader />
+      <Container sx={{ margin: '1rem auto' }}>
+        <BlogBrowser />
+      </Container>
     </>
   );
 }

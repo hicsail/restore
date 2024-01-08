@@ -1,4 +1,5 @@
-import { Box, Typography } from '@mui/material';
+import { Box, Container, Typography } from '@mui/material';
+import { Header } from '../components/Header.jsx';
 import { InfoPanelA } from '../components/InfoPanelA.jsx';
 import { prependStrapiURL } from '../utils.jsx';
 import { theme } from '../theme.jsx';
@@ -87,12 +88,25 @@ function WhyOurWorkIsImportant() {
   );
 }
 
+function AboutHeader() {
+  return (
+    <Header
+      title="Multi-Level Interventions to Reduce the Burden of Trauma on the Health of Communities"
+      subtitle="Improve Equitable Access. Promote Quality and Cultural Responsiveness of Care. Build Trust."
+      bgColor={theme.palette.purple.dark}
+    />
+  );
+}
+
 export default function About() {
   return (
     <>
-      <Mission />
-      <WhyOurWorkIsImportant />
-      <Strategies />
+      <AboutHeader />
+      <Container sx={{ margin: '1rem auto' }}>
+        <Mission />
+        <WhyOurWorkIsImportant />
+        <Strategies />
+      </Container>
     </>
   );
 }

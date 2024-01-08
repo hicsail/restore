@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Box, Button, Paper, Typography } from '@mui/material';
+import { Box, Container, Button, Paper, Typography } from '@mui/material';
 
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
 
@@ -18,6 +18,7 @@ import { prependStrapiURL } from '../utils.jsx';
 import { theme } from '../theme.jsx';
 import { alpha } from '@mui/material/styles';
 
+import { Header } from '../components/Header.jsx';
 import {
   DeterminantsColumn,
   ProcessesColumn,
@@ -686,6 +687,16 @@ export function ServicesToOurPatients() {
   );
 }
 
+function TreatmentsAndServicesHeader() {
+  return (
+    <Header
+      title="Multi-Level Interventions to Reduce the Burden of Trauma on the Health of Communities"
+      subtitle="Improve Equitable Access. Promote Quality and Cultural Responsiveness of Care. Build Trust."
+      bgColor={theme.palette.purple.dark}
+    />
+  );
+}
+
 export default function TreatmentsServices() {
   // The first button/navlink's element (services to system) is also the index element.
   // When the user is on the root route, they will see the index element, and should ideally
@@ -697,47 +708,50 @@ export default function TreatmentsServices() {
 
   return (
     <>
-      <Typography variant="h3">Our Services</Typography>
-      <p>
-        RESTORE provides services to health systems and patients to enhance access to high quality PTSD treatment and
-        improve health equity.
-      </p>
+      <TreatmentsAndServicesHeader />
+      <Container sx={{ margin: '1rem auto' }}>
+        <Typography variant="h3">Our Services</Typography>
+        <p>
+          RESTORE provides services to health systems and patients to enhance access to high quality PTSD treatment and
+          improve health equity.
+        </p>
 
-      <Box sx={{ display: 'flex' }}>
-        <Button
-          component={NavLink}
-          to="services-to-the-health-system"
-          sx={{
-            padding: '1rem',
-            borderRadius: '0',
-            borderColor: 'transparent',
-            borderBottom: 'solid',
-            borderRightStyle: 'none',
-            '&:hover': { backgroundColor: alpha(theme.palette.purple.light, 0.5) },
-            '&.active': { border: 'solid', borderBottomColor: 'transparent' },
-            ...(onIndexRoute && { border: 'solid', borderBottomColor: 'transparent' })
-          }}
-        >
-          <Typography variant="h4">Services to the health system</Typography>
-        </Button>
-        <Button
-          component={NavLink}
-          to="services-to-our-patients"
-          sx={{
-            padding: '1rem',
-            borderRadius: '0',
-            borderColor: 'transparent',
-            borderBottom: 'solid',
-            borderRightStyle: 'none',
-            '&:hover': { backgroundColor: alpha(theme.palette.purple.light, 0.5) },
-            '&.active': { border: 'solid', borderBottomColor: 'transparent' }
-          }}
-        >
-          <Typography variant="h4">Services to our patients</Typography>
-        </Button>
-      </Box>
+        <Box sx={{ display: 'flex' }}>
+          <Button
+            component={NavLink}
+            to="services-to-the-health-system"
+            sx={{
+              padding: '1rem',
+              borderRadius: '0',
+              borderColor: 'transparent',
+              borderBottom: 'solid',
+              borderRightStyle: 'none',
+              '&:hover': { backgroundColor: alpha(theme.palette.purple.light, 0.5) },
+              '&.active': { border: 'solid', borderBottomColor: 'transparent' },
+              ...(onIndexRoute && { border: 'solid', borderBottomColor: 'transparent' })
+            }}
+          >
+            <Typography variant="h4">Services to the health system</Typography>
+          </Button>
+          <Button
+            component={NavLink}
+            to="services-to-our-patients"
+            sx={{
+              padding: '1rem',
+              borderRadius: '0',
+              borderColor: 'transparent',
+              borderBottom: 'solid',
+              borderRightStyle: 'none',
+              '&:hover': { backgroundColor: alpha(theme.palette.purple.light, 0.5) },
+              '&.active': { border: 'solid', borderBottomColor: 'transparent' }
+            }}
+          >
+            <Typography variant="h4">Services to our patients</Typography>
+          </Button>
+        </Box>
 
-      <Outlet />
+        <Outlet />
+      </Container>
     </>
   );
 }
