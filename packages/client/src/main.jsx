@@ -12,7 +12,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 
 import Home from './pages/Home.jsx';
 import Layout from './pages/Layout.jsx';
-import AboutMission from './pages/AboutMission.jsx';
+import About from './pages/About.jsx';
 import TreatmentsServices from './pages/TreatmentsServices.jsx';
 import { ServicesToTheHealthSystem, ServicesToOurPatients } from './pages/TreatmentsServices.jsx';
 import TeamMemberGrid from './pages/Team.jsx';
@@ -54,7 +54,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'about',
-        element: <AboutMission />
+        element: <About />
       },
       {
         path: 'treatments-and-services',

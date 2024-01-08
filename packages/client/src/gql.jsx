@@ -106,6 +106,24 @@ export const GET_HOMEPAGE_INFOPANEL_BOTTOM = gql`
     }
   }
 `;
+export const GET_WHYOURWORK_IMG = gql`
+  query GetWhyOurWorkIsImportantImage {
+    whyOurWorkIsImportant {
+      data {
+        attributes {
+          Image {
+            data {
+              attributes {
+                alternativeText
+                url
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
 export const GET_TREATMENTS_AND_SERVICES = gql`
   query GetTreatmentsAndServices {
     treatmentsAndServices {
