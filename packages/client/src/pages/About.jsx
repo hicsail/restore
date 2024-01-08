@@ -2,6 +2,8 @@ import { Box, Typography } from '@mui/material';
 import { InfoPanelA } from '../components/InfoPanelA.jsx';
 import { prependStrapiURL } from '../utils.jsx';
 import { theme } from '../theme.jsx';
+import { useQuery } from '@apollo/client';
+import { GET_WHYOURWORK_IMG } from '../gql.jsx';
 
 function Mission() {
   return (
@@ -66,10 +68,30 @@ function Strategies() {
   );
 }
 
+function WhyOurWorkIsImportant() {
+  const { loading, error, data } = useQuery(GET_WHYOURWORK_IMG);
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
+
+  const imgdata = data.whyOurWorkIsImportant.data.attributes.Image.data;
+
+  return (
+    imgdata && (
+      <Box
+        component="img"
+        alt={imgdata.attributes.alternativeText}
+        src={prependStrapiURL(imgdata.attributes.url)}
+        sx={{ display: 'block', margin: '2em auto' }}
+      />
+    )
+  );
+}
+
 export default function About() {
   return (
     <>
       <Mission />
+      <WhyOurWorkIsImportant />
       <Strategies />
     </>
   );
