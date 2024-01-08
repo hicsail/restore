@@ -66,7 +66,7 @@ function Strategies() {
   );
 }
 
-export default function AboutMission() {
+export default function About() {
   return (
     <>
       <Mission />
