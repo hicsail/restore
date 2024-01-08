@@ -3,6 +3,41 @@ import { InfoPanelA } from '../components/InfoPanelA.jsx';
 import { prependStrapiURL } from '../utils.jsx';
 import { theme } from '../theme.jsx';
 
+function Mission() {
+  return (
+    <InfoPanelA
+      id="our-mission"
+      title="Our Mission"
+      subtitle={
+        <>
+          <p>
+            RESTORE stands for: <strong>RE</strong>covery from <strong>S</strong>tress and <strong>T</strong>rauma
+            through <strong>O</strong>utpatient care, <strong>R</strong>esearch and <strong>E</strong>ducation.
+          </p>
+          <p>The RESTORE Center aims to</p>
+          {/* Override InfoPanelA's responsive textAlign styling in the specific case of <ul>;
+                otherwise the center-aligned bullet list looks pretty awful */}
+          <ul style={{ textAlign: 'left' }}>
+            <li>
+              <span style={{ color: theme.palette.purple.dark }}>
+                <strong>improve access</strong>
+              </span>{' '}
+              to high-quality services for PTSD across the health system
+            </li>
+            <li>
+              <span style={{ color: theme.palette.purple.dark }}>
+                <strong>remove barriers</strong>
+              </span>{' '}
+              to treatment for our patients.
+            </li>
+          </ul>
+        </>
+      }
+      imageUrl={prependStrapiURL('/uploads/ourmission_95ef74d5f3.png')}
+    />
+  );
+}
+
 function Strategies() {
   return (
     <InfoPanelA
@@ -34,36 +69,7 @@ function Strategies() {
 export default function AboutMission() {
   return (
     <>
-      <InfoPanelA
-        id="our-mission"
-        title="Our Mission"
-        subtitle={
-          <>
-            <p>
-              RESTORE stands for: <strong>RE</strong>covery from <strong>S</strong>tress and <strong>T</strong>rauma
-              through <strong>O</strong>utpatient care, <strong>R</strong>esearch and <strong>E</strong>ducation.
-            </p>
-            <p>The RESTORE Center aims to</p>
-            {/* Override InfoPanelA's responsive textAlign styling in the specific case of <ul>;
-                otherwise the center-aligned bullet list looks pretty awful */}
-            <ul style={{ textAlign: 'left' }}>
-              <li>
-                <span style={{ color: theme.palette.purple.dark }}>
-                  <strong>improve access</strong>
-                </span>{' '}
-                to high-quality services for PTSD across the health system
-              </li>
-              <li>
-                <span style={{ color: theme.palette.purple.dark }}>
-                  <strong>remove barriers</strong>
-                </span>{' '}
-                to treatment for our patients.
-              </li>
-            </ul>
-          </>
-        }
-        imageUrl={prependStrapiURL('/uploads/ourmission_95ef74d5f3.png')}
-      />
+      <Mission />
       <Strategies />
     </>
   );
