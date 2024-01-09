@@ -1,26 +1,15 @@
 import { Box, Typography } from '@mui/material';
 import { theme } from '../theme.jsx';
 
-// Turns out we want the same header across pages...
-export function UniversalHeader() {
-  return (
-    <Header
-      title="Multi-Level Interventions to Reduce the Burden of Trauma on the Health of Communities"
-      subtitle="Improve Equitable Access. Promote Quality and Cultural Responsiveness of Care. Build Trust."
-      bgColor={theme.palette.purple.dark}
-    />
-  );
-}
-
-// ...Still, will keep Header function for future flexibility.
 export function Header({ title, subtitle, imageUrl, bgColor }) {
   return (
     <Box
       sx={{
-        height: { xs: '300px', sm: '400px', md: '500px' }, // Responsive height
+        minHeight: { md: '500px' },
         display: 'flex',
         backgroundImage: `url(${imageUrl})`,
-        bgcolor: bgColor || 'grey',
+        backgroundSize: 'cover',
+        bgcolor: bgColor || theme.palette.purple.dark,
         [theme.breakpoints.down('sm')]: {
           // Adjust styles for small screens
           flexDirection: 'column'

@@ -15,7 +15,7 @@ import Layout from './pages/Layout.jsx';
 import About from './pages/About.jsx';
 import TreatmentsServices from './pages/TreatmentsServices.jsx';
 import { ServicesToTheHealthSystem, ServicesToOurPatients } from './pages/TreatmentsServices.jsx';
-import TeamMemberGrid from './pages/Team.jsx';
+import Team from './pages/Team.jsx';
 import Testimonials from './pages/Testimonials.jsx';
 import ResearchAndEvals from './pages/Research.jsx';
 import GetInvolved from './pages/GetInvolved.jsx';
@@ -76,7 +76,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'our-team',
-        element: <TeamMemberGrid />
+        element: <Team />
       },
       {
         path: 'testimonials',

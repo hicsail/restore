@@ -1,9 +1,10 @@
 import { useQuery } from '@apollo/client';
 import ReactMarkdown from 'react-markdown';
-import { Box, Card, CardContent, CardMedia, Typography } from '@mui/material';
+import { Box, Card, CardContent, CardMedia, Container, Typography } from '@mui/material';
+import { Header } from '../components/Header.jsx';
 import { SectionedHeader } from '../components/SectionedHeader.jsx';
 
-import { GET_CURRENT_STUDIES, GET_RESEARCH_AND_EVALUATIONS } from '../gql.jsx';
+import { GET_RESEARCHANDEVALUATIONPAGE_HEADER, GET_CURRENT_STUDIES, GET_RESEARCH_AND_EVALUATIONS } from '../gql.jsx';
 import { prependStrapiURL } from '../utils';
 
 function CurrentStudies() {
@@ -53,6 +54,22 @@ function CurrentStudies() {
   );
 }
 
+function ResearchAndEvaluationHeader() {
+  const { data } = useQuery(GET_RESEARCHANDEVALUATIONPAGE_HEADER);
+  if (!data?.researchAndEvaluationPageHeader.data?.attributes.Header) return;
+  const { Title, Subtitle, BackgroundColorHexCode, BackgroundImage } =
+    data.researchAndEvaluationPageHeader.data.attributes.Header;
+
+  return (
+    <Header
+      title={Title}
+      subtitle={Subtitle}
+      imageUrl={BackgroundImage.data && prependStrapiURL(BackgroundImage.data.attributes.url)}
+      bgColor={BackgroundColorHexCode}
+    />
+  );
+}
+
 export default function ResearchAndEvals() {
   const { loading, error, data } = useQuery(GET_RESEARCH_AND_EVALUATIONS);
 
@@ -61,8 +78,11 @@ export default function ResearchAndEvals() {
 
   return (
     <>
-      <CurrentStudies />
-      <ReactMarkdown>{data.researchAndEvaluation.data.attributes.Body}</ReactMarkdown>
+      <ResearchAndEvaluationHeader />
+      <Container sx={{ margin: '1rem auto' }}>
+        <CurrentStudies />
+        <ReactMarkdown>{data.researchAndEvaluation.data.attributes.Body}</ReactMarkdown>
+      </Container>
     </>
   );
 }

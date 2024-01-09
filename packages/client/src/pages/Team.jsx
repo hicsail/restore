@@ -1,10 +1,13 @@
 import { useQuery } from '@apollo/client';
-import { Box, Stack, Typography } from '@mui/material';
+import { Box, Container, Stack, Typography } from '@mui/material';
 
-import { GET_TEAM_CATEGORIES_AND_MEMBERS } from '../gql.jsx';
+import { Header } from '../components/Header.jsx';
 import { TeamCategory } from '../components/TeamCategory';
 
-export default function TeamMemberGrid() {
+import { GET_TEAMPAGE_HEADER, GET_TEAM_CATEGORIES_AND_MEMBERS } from '../gql.jsx';
+import { prependStrapiURL } from '../utils.jsx';
+
+function TeamMemberGrid() {
   const { loading, error, data } = useQuery(GET_TEAM_CATEGORIES_AND_MEMBERS);
 
   if (loading) return <p>Loading...</p>;
@@ -29,5 +32,31 @@ export default function TeamMemberGrid() {
           <TeamCategory key={category} {...category.attributes} />
         ))}
     </Stack>
+  );
+}
+
+function TeamHeader() {
+  const { data } = useQuery(GET_TEAMPAGE_HEADER);
+  if (!data?.teamPageHeader.data?.attributes.Header) return;
+  const { Title, Subtitle, BackgroundColorHexCode, BackgroundImage } = data.teamPageHeader.data.attributes.Header;
+
+  return (
+    <Header
+      title={Title}
+      subtitle={Subtitle}
+      imageUrl={BackgroundImage.data && prependStrapiURL(BackgroundImage.data.attributes.url)}
+      bgColor={BackgroundColorHexCode}
+    />
+  );
+}
+
+export default function Team() {
+  return (
+    <>
+      <TeamHeader />
+      <Container sx={{ margin: '1rem auto' }}>
+        <TeamMemberGrid />
+      </Container>
+    </>
   );
 }

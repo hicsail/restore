@@ -1,9 +1,10 @@
-import { Box, Typography } from '@mui/material';
+import { Box, Container, Typography } from '@mui/material';
+import { Header } from '../components/Header.jsx';
 import { InfoPanelA } from '../components/InfoPanelA.jsx';
 import { prependStrapiURL } from '../utils.jsx';
 import { theme } from '../theme.jsx';
 import { useQuery } from '@apollo/client';
-import { GET_WHYOURWORK_IMG } from '../gql.jsx';
+import { GET_ABOUTPAGE_HEADER, GET_WHYOURWORK_IMG } from '../gql.jsx';
 
 function Mission() {
   return (
@@ -87,12 +88,30 @@ function WhyOurWorkIsImportant() {
   );
 }
 
+function AboutHeader() {
+  const { data } = useQuery(GET_ABOUTPAGE_HEADER);
+  if (!data?.aboutPageHeader.data?.attributes.Header) return;
+  const { Title, Subtitle, BackgroundColorHexCode, BackgroundImage } = data.aboutPageHeader.data.attributes.Header;
+
+  return (
+    <Header
+      title={Title}
+      subtitle={Subtitle}
+      imageUrl={BackgroundImage.data && prependStrapiURL(BackgroundImage.data.attributes.url)}
+      bgColor={BackgroundColorHexCode}
+    />
+  );
+}
+
 export default function About() {
   return (
     <>
-      <Mission />
-      <WhyOurWorkIsImportant />
-      <Strategies />
+      <AboutHeader />
+      <Container sx={{ margin: '1rem auto' }}>
+        <Mission />
+        <WhyOurWorkIsImportant />
+        <Strategies />
+      </Container>
     </>
   );
 }

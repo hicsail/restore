@@ -1,11 +1,12 @@
 import { useQuery } from '@apollo/client';
 
-import { GET_BLOG_POSTS_BY_CATEGORY } from '../gql.jsx';
+import { GET_BLOGPAGE_HEADER, GET_BLOG_POSTS_BY_CATEGORY } from '../gql.jsx';
 import { useState } from 'react';
-import { Box, Grid, Pagination, Tab, Tabs } from '@mui/material';
+import { Box, Container, Grid, Pagination, Tab, Tabs } from '@mui/material';
+import { Header } from '../components/Header.jsx';
 import { BlogCard } from '../components/BlogCard.jsx';
 
-export default function Blog() {
+function BlogBrowser() {
   const { loading, error, data, refetch } = useQuery(GET_BLOG_POSTS_BY_CATEGORY, {
     variables: { category: '', page: 1, pageSize: 9 }
   });
@@ -65,6 +66,32 @@ export default function Blog() {
           onChange={handlePageChange}
         />
       </Box>
+    </>
+  );
+}
+
+function BlogHeader() {
+  const { data } = useQuery(GET_BLOGPAGE_HEADER);
+  if (!data?.blogPageHeader.data?.attributes.Header) return;
+  const { Title, Subtitle, BackgroundColorHexCode, BackgroundImage } = data.blogPageHeader.data.attributes.Header;
+
+  return (
+    <Header
+      title={Title}
+      subtitle={Subtitle}
+      imageUrl={BackgroundImage.data && prependStrapiURL(BackgroundImage.data.attributes.url)}
+      bgColor={BackgroundColorHexCode}
+    />
+  );
+}
+
+export default function Blog() {
+  return (
+    <>
+      <BlogHeader />
+      <Container sx={{ margin: '1rem auto' }}>
+        <BlogBrowser />
+      </Container>
     </>
   );
 }

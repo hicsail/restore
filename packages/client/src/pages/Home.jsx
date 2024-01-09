@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Button, Container, Typography } from '@mui/material';
 
+import { Header } from '../components/Header.jsx';
 import { InfoPanelA } from '../components/InfoPanelA.jsx';
 import { SectionedHeader } from '../components/SectionedHeader.jsx';
 import { CardGrid } from '../components/CardGrid.jsx';
@@ -8,16 +9,15 @@ import { BlogCard } from '../components/BlogCard.jsx';
 
 import { useQuery } from '@apollo/client';
 import {
+  GET_HOMEPAGE_HEADER,
   GET_HOMEPAGE_CARDGRID,
   GET_HOMEPAGE_INFOPANEL_TOP,
   GET_HOMEPAGE_INFOPANEL_BOTTOM,
   GET_RECENT_BLOG_POSTS
 } from '../gql.jsx';
+import { prependStrapiURL } from '../utils.jsx';
 
-// Some random placeholder icon options...
-import GestureIcon from '@mui/icons-material/Gesture';
-import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt';
-import SquareIcon from '@mui/icons-material/Square';
+import { theme } from '../theme.jsx';
 
 function HomepageInfoPanelTop() {
   const { loading, error, data } = useQuery(GET_HOMEPAGE_INFOPANEL_TOP);
@@ -107,13 +107,31 @@ function HomepageBlogPreview() {
   );
 }
 
+function HomeHeader() {
+  const { data } = useQuery(GET_HOMEPAGE_HEADER);
+  if (!data?.homePageHeader.data?.attributes.Header) return;
+  const { Title, Subtitle, BackgroundColorHexCode, BackgroundImage } = data.homePageHeader.data.attributes.Header;
+
+  return (
+    <Header
+      title={Title}
+      subtitle={Subtitle}
+      imageUrl={BackgroundImage.data && prependStrapiURL(BackgroundImage.data.attributes.url)}
+      bgColor={BackgroundColorHexCode}
+    />
+  );
+}
+
 export default function Home() {
   return (
     <>
-      <HomepageInfoPanelTop />
-      <HomepageCardGrid />
-      <HomepageInfoPanelBottom />
-      <HomepageBlogPreview />
+      <HomeHeader />
+      <Container sx={{ margin: '1rem auto' }}>
+        <HomepageInfoPanelTop />
+        <HomepageCardGrid />
+        <HomepageInfoPanelBottom />
+        <HomepageBlogPreview />
+      </Container>
     </>
   );
 }

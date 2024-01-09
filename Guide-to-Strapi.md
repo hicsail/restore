@@ -54,6 +54,8 @@ Each Team Member can belong to one or more Team Categories.
 
 Blog post categories are not currently configurable by RESTORE; contact SAIL to change them.
 
+Headers: Each page of the website has a header, and each header has a corresponding Single Type on strapi where you can configure it. You can set the Title, Subtitle, Background Color Hex Code, and Background Image. The background image is drawn _on top_ of the background color. The background color defaults to RESTORE purple (dark shade). If you set a background color, make sure to prefix your hex code with a `#`, e.g. `#755f8b`. To remove a page's header entirely, go to that page's Single Type and click the trash can icon on the top right of the Header field/box.
+
 ### Notes on the Media Library
 
 - When organizing assets in the Media Library, when moving assets into different folders, you will be presented with a dropdown menu of Locations; the dropdown may appear to only contain 'Media Library'; **click the caret** on the right end of this menu item to expand the location list.
