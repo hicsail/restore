@@ -5,7 +5,7 @@ export function Header({ title, subtitle, imageUrl, bgColor }) {
   return (
     <Box
       sx={{
-        height: { xs: '300px', sm: '400px', md: '500px' }, // Responsive height
+        minHeight: { md: '500px' },
         display: 'flex',
         backgroundImage: `url(${imageUrl})`,
         backgroundSize: 'cover',
