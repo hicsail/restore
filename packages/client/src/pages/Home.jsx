@@ -9,11 +9,13 @@ import { BlogCard } from '../components/BlogCard.jsx';
 
 import { useQuery } from '@apollo/client';
 import {
+  GET_HOMEPAGE_HEADER,
   GET_HOMEPAGE_CARDGRID,
   GET_HOMEPAGE_INFOPANEL_TOP,
   GET_HOMEPAGE_INFOPANEL_BOTTOM,
   GET_RECENT_BLOG_POSTS
 } from '../gql.jsx';
+import { prependStrapiURL } from '../utils.jsx';
 
 import { theme } from '../theme.jsx';
 
@@ -106,11 +108,16 @@ function HomepageBlogPreview() {
 }
 
 function HomeHeader() {
+  const { data } = useQuery(GET_HOMEPAGE_HEADER);
+  if (!data?.homePageHeader.data?.attributes.Header) return;
+  const { Title, Subtitle, BackgroundColorHexCode, BackgroundImage } = data.homePageHeader.data.attributes.Header;
+
   return (
     <Header
-      title="Multi-Level Interventions to Reduce the Burden of Trauma on the Health of Communities"
-      subtitle="Improve Equitable Access. Promote Quality and Cultural Responsiveness of Care. Build Trust."
-      bgColor={theme.palette.purple.dark}
+      title={Title}
+      subtitle={Subtitle}
+      imageUrl={BackgroundImage.data && prependStrapiURL(BackgroundImage.data.attributes.url)}
+      bgColor={BackgroundColorHexCode}
     />
   );
 }

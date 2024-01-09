@@ -4,9 +4,8 @@ import { Box, Container, Stack, Typography } from '@mui/material';
 import { Header } from '../components/Header.jsx';
 import { TeamCategory } from '../components/TeamCategory';
 
-import { GET_TEAM_CATEGORIES_AND_MEMBERS } from '../gql.jsx';
-
-import { theme } from '../theme.jsx';
+import { GET_TEAMPAGE_HEADER, GET_TEAM_CATEGORIES_AND_MEMBERS } from '../gql.jsx';
+import { prependStrapiURL } from '../utils.jsx';
 
 function TeamMemberGrid() {
   const { loading, error, data } = useQuery(GET_TEAM_CATEGORIES_AND_MEMBERS);
@@ -37,11 +36,16 @@ function TeamMemberGrid() {
 }
 
 function TeamHeader() {
+  const { data } = useQuery(GET_TEAMPAGE_HEADER);
+  if (!data?.teamPageHeader.data?.attributes.Header) return;
+  const { Title, Subtitle, BackgroundColorHexCode, BackgroundImage } = data.teamPageHeader.data.attributes.Header;
+
   return (
     <Header
-      title="Multi-Level Interventions to Reduce the Burden of Trauma on the Health of Communities"
-      subtitle="Improve Equitable Access. Promote Quality and Cultural Responsiveness of Care. Build Trust."
-      bgColor={theme.palette.purple.dark}
+      title={Title}
+      subtitle={Subtitle}
+      imageUrl={BackgroundImage.data && prependStrapiURL(BackgroundImage.data.attributes.url)}
+      bgColor={BackgroundColorHexCode}
     />
   );
 }

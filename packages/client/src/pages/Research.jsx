@@ -4,9 +4,8 @@ import { Box, Card, CardContent, CardMedia, Container, Typography } from '@mui/m
 import { Header } from '../components/Header.jsx';
 import { SectionedHeader } from '../components/SectionedHeader.jsx';
 
-import { GET_CURRENT_STUDIES, GET_RESEARCH_AND_EVALUATIONS } from '../gql.jsx';
+import { GET_RESEARCHANDEVALUATIONPAGE_HEADER, GET_CURRENT_STUDIES, GET_RESEARCH_AND_EVALUATIONS } from '../gql.jsx';
 import { prependStrapiURL } from '../utils';
-import { theme } from '../theme.jsx';
 
 function CurrentStudies() {
   const { loading, error, data } = useQuery(GET_CURRENT_STUDIES);
@@ -56,11 +55,17 @@ function CurrentStudies() {
 }
 
 function ResearchAndEvaluationHeader() {
+  const { data } = useQuery(GET_RESEARCHANDEVALUATIONPAGE_HEADER);
+  if (!data?.researchAndEvaluationPageHeader.data?.attributes.Header) return;
+  const { Title, Subtitle, BackgroundColorHexCode, BackgroundImage } =
+    data.researchAndEvaluationPageHeader.data.attributes.Header;
+
   return (
     <Header
-      title="Multi-Level Interventions to Reduce the Burden of Trauma on the Health of Communities"
-      subtitle="Improve Equitable Access. Promote Quality and Cultural Responsiveness of Care. Build Trust."
-      bgColor={theme.palette.purple.dark}
+      title={Title}
+      subtitle={Subtitle}
+      imageUrl={BackgroundImage.data && prependStrapiURL(BackgroundImage.data.attributes.url)}
+      bgColor={BackgroundColorHexCode}
     />
   );
 }

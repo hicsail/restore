@@ -8,6 +8,7 @@ import ptsdCurveImg from '../assets/treatments_and_services/ptsd-curve.svg';
 
 import { useQuery } from '@apollo/client';
 import {
+  GET_TREATMENTSANDSERVICESPAGE_HEADER,
   GET_UPCOMING_ONGOING,
   GET_HOWTOBECOME,
   GET_TREATMENTS_CARDGRID,
@@ -688,11 +689,17 @@ export function ServicesToOurPatients() {
 }
 
 function TreatmentsAndServicesHeader() {
+  const { data } = useQuery(GET_TREATMENTSANDSERVICESPAGE_HEADER);
+  if (!data?.treatmentsAndServicesPageHeader.data?.attributes.Header) return;
+  const { Title, Subtitle, BackgroundColorHexCode, BackgroundImage } =
+    data.treatmentsAndServicesPageHeader.data.attributes.Header;
+
   return (
     <Header
-      title="Multi-Level Interventions to Reduce the Burden of Trauma on the Health of Communities"
-      subtitle="Improve Equitable Access. Promote Quality and Cultural Responsiveness of Care. Build Trust."
-      bgColor={theme.palette.purple.dark}
+      title={Title}
+      subtitle={Subtitle}
+      imageUrl={BackgroundImage.data && prependStrapiURL(BackgroundImage.data.attributes.url)}
+      bgColor={BackgroundColorHexCode}
     />
   );
 }

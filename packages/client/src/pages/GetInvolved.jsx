@@ -3,10 +3,8 @@ import { Header } from '../components/Header.jsx';
 import { SectionedHeader } from '../components/SectionedHeader.jsx';
 import { CardGrid } from '../components/CardGrid.jsx';
 
-import { theme } from '../theme.jsx';
-
 import { useQuery } from '@apollo/client';
-import { GET_GETINVOLVED_CARDGRID } from '../gql.jsx';
+import { GET_GETINVOLVEDPAGE_HEADER, GET_GETINVOLVED_CARDGRID } from '../gql.jsx';
 
 function GetInvolvedCardGrid() {
   const { loading, error, data } = useQuery(GET_GETINVOLVED_CARDGRID);
@@ -25,11 +23,17 @@ function GetInvolvedCardGrid() {
 }
 
 function GetInvolvedHeader() {
+  const { data } = useQuery(GET_GETINVOLVEDPAGE_HEADER);
+  if (!data?.getInvolvedPageHeader.data?.attributes.Header) return;
+  const { Title, Subtitle, BackgroundColorHexCode, BackgroundImage } =
+    data.getInvolvedPageHeader.data.attributes.Header;
+
   return (
     <Header
-      title="Multi-Level Interventions to Reduce the Burden of Trauma on the Health of Communities"
-      subtitle="Improve Equitable Access. Promote Quality and Cultural Responsiveness of Care. Build Trust."
-      bgColor={theme.palette.purple.dark}
+      title={Title}
+      subtitle={Subtitle}
+      imageUrl={BackgroundImage.data && prependStrapiURL(BackgroundImage.data.attributes.url)}
+      bgColor={BackgroundColorHexCode}
     />
   );
 }

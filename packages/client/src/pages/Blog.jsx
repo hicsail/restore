@@ -1,12 +1,10 @@
 import { useQuery } from '@apollo/client';
 
-import { GET_BLOG_POSTS_BY_CATEGORY } from '../gql.jsx';
+import { GET_BLOGPAGE_HEADER, GET_BLOG_POSTS_BY_CATEGORY } from '../gql.jsx';
 import { useState } from 'react';
 import { Box, Container, Grid, Pagination, Tab, Tabs } from '@mui/material';
 import { Header } from '../components/Header.jsx';
 import { BlogCard } from '../components/BlogCard.jsx';
-
-import { theme } from '../theme.jsx';
 
 function BlogBrowser() {
   const { loading, error, data, refetch } = useQuery(GET_BLOG_POSTS_BY_CATEGORY, {
@@ -73,11 +71,16 @@ function BlogBrowser() {
 }
 
 function BlogHeader() {
+  const { data } = useQuery(GET_BLOGPAGE_HEADER);
+  if (!data?.blogPageHeader.data?.attributes.Header) return;
+  const { Title, Subtitle, BackgroundColorHexCode, BackgroundImage } = data.blogPageHeader.data.attributes.Header;
+
   return (
     <Header
-      title="Multi-Level Interventions to Reduce the Burden of Trauma on the Health of Communities"
-      subtitle="Improve Equitable Access. Promote Quality and Cultural Responsiveness of Care. Build Trust."
-      bgColor={theme.palette.purple.dark}
+      title={Title}
+      subtitle={Subtitle}
+      imageUrl={BackgroundImage.data && prependStrapiURL(BackgroundImage.data.attributes.url)}
+      bgColor={BackgroundColorHexCode}
     />
   );
 }

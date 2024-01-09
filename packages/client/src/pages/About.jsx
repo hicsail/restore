@@ -4,7 +4,7 @@ import { InfoPanelA } from '../components/InfoPanelA.jsx';
 import { prependStrapiURL } from '../utils.jsx';
 import { theme } from '../theme.jsx';
 import { useQuery } from '@apollo/client';
-import { GET_WHYOURWORK_IMG } from '../gql.jsx';
+import { GET_ABOUTPAGE_HEADER, GET_WHYOURWORK_IMG } from '../gql.jsx';
 
 function Mission() {
   return (
@@ -89,11 +89,16 @@ function WhyOurWorkIsImportant() {
 }
 
 function AboutHeader() {
+  const { data } = useQuery(GET_ABOUTPAGE_HEADER);
+  if (!data?.aboutPageHeader.data?.attributes.Header) return;
+  const { Title, Subtitle, BackgroundColorHexCode, BackgroundImage } = data.aboutPageHeader.data.attributes.Header;
+
   return (
     <Header
-      title="Multi-Level Interventions to Reduce the Burden of Trauma on the Health of Communities"
-      subtitle="Improve Equitable Access. Promote Quality and Cultural Responsiveness of Care. Build Trust."
-      bgColor={theme.palette.purple.dark}
+      title={Title}
+      subtitle={Subtitle}
+      imageUrl={BackgroundImage.data && prependStrapiURL(BackgroundImage.data.attributes.url)}
+      bgColor={BackgroundColorHexCode}
     />
   );
 }
