@@ -384,7 +384,7 @@ function OurImplementationModel() {
   function PrincipleBox(text) {
     return (
       <Box sx={{ display: 'flex', alignItems: 'center' }}>
-        <img src={prependStrapiURL('/uploads/info_section_icon_36975df2d1.svg')} />
+        <img width="60px" height="60px" src={prependStrapiURL('/uploads/check_mark_min_d0adc0ed04.svg')} />
         <Typography variant="infoPanelBBody" sx={{ padding: '1em' }}>
           {text}
         </Typography>
