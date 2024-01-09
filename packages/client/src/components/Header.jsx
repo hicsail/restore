@@ -9,7 +9,7 @@ export function Header({ title, subtitle, imageUrl, bgColor }) {
         display: 'flex',
         backgroundImage: `url(${imageUrl})`,
         backgroundSize: 'cover',
-        bgcolor: bgColor || 'grey',
+        bgcolor: bgColor || theme.palette.purple.dark,
         [theme.breakpoints.down('sm')]: {
           // Adjust styles for small screens
           flexDirection: 'column'
