@@ -8,6 +8,7 @@ export function Header({ title, subtitle, imageUrl, bgColor }) {
         height: { xs: '300px', sm: '400px', md: '500px' }, // Responsive height
         display: 'flex',
         backgroundImage: `url(${imageUrl})`,
+        backgroundSize: 'cover',
         bgcolor: bgColor || 'grey',
         [theme.breakpoints.down('sm')]: {
           // Adjust styles for small screens
