@@ -25,10 +25,10 @@ function HomepageInfoPanelTop() {
   if (error) return <p>Error : {error.message}</p>;
 
   const { Title, Subtitle, Image, Icon, ButtonText, ButtonLink } = data.homePageInfoPanelTop.data.attributes.InfoPanelA;
-  const imgUrl = import.meta.env.VITE_STRAPI_URL + Image.data.attributes.url;
-  const imgAlt = Image.data.attributes.alternativeText;
-  const iconUrl = import.meta.env.VITE_STRAPI_URL + Icon.data.attributes.url;
-  const iconAlt = Icon.data.attributes.alternativeText;
+  const imgUrl = import.meta.env.VITE_STRAPI_URL + Image.data?.attributes.url;
+  const imgAlt = Image.data?.attributes.alternativeText;
+  const iconUrl = import.meta.env.VITE_STRAPI_URL + Icon.data?.attributes.url;
+  const iconAlt = Icon.data?.attributes.alternativeText;
 
   return (
     <InfoPanelA
