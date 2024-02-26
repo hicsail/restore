@@ -456,7 +456,5 @@ export const GET_NAV_ITEMS = gql`
   fragment Link on ComponentNavigationLinks {
     Name
     URL
-    Style
-    Target
   }
 `;
