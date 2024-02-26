@@ -9,7 +9,9 @@ import { WebComponents } from '../components/WebComponents.jsx';
 export const StrapiPage = () => {
   const { getPageId, init } = useNav();
   const { pathname } = useLocation();
-  const [getPageInfo, { data, loading, error }] = useLazyQuery(GET_PAGE);
+  const [getPageInfo, { data, loading, error }] = useLazyQuery(GET_PAGE, {
+    fetchPolicy: 'cache-and-network'
+  });
 
   useEffect(() => {
     const pageId = getPageId(pathname);

@@ -29,11 +29,10 @@ const authLink = setContext((_, { headers }) => {
 });
 
 const cache = new InMemoryCache();
-import.meta.env.PROD &&
-  persistCache({
-    cache,
-    storage: new LocalStorageWrapper(window.localStorage)
-  });
+persistCache({
+  cache,
+  storage: new LocalStorageWrapper(window.localStorage)
+});
 
 const apolloclient = new ApolloClient({
   link: authLink.concat(httpLink),

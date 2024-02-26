@@ -9,7 +9,9 @@ export const NavigationProvider = ({ children }) => {
   const [navItems, setNavItems] = React.useState([]);
   const [pages, setPages] = React.useState([]);
   const [init, setInit] = React.useState(false);
-  const { data } = useQuery(GET_NAV_ITEMS);
+  const { data } = useQuery(GET_NAV_ITEMS, {
+    fetchPolicy: 'cache-and-network'
+  });
 
   const getPageId = (slug) => {
     const page = pages.find((p) => p.attributes.slug === slug);
