@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Box, Container, Button, Paper, Typography } from '@mui/material';
+import { Box, Button, Container, Paper, Typography } from '@mui/material';
 
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
 
@@ -8,11 +8,11 @@ import ptsdCurveImg from '../assets/treatments_and_services/ptsd-curve.svg';
 
 import { useQuery } from '@apollo/client';
 import {
-  GET_TREATMENTSANDSERVICESPAGE_HEADER,
-  GET_UPCOMING_ONGOING,
   GET_HOWTOBECOME,
+  GET_TREATMENTS_AND_SERVICES,
   GET_TREATMENTS_CARDGRID,
-  GET_TREATMENTS_AND_SERVICES
+  GET_TREATMENTSANDSERVICESPAGE_HEADER,
+  GET_UPCOMING_ONGOING
 } from '../gql.jsx';
 import ReactMarkdown from 'react-markdown';
 import { prependStrapiURL } from '../utils.jsx';
@@ -22,11 +22,11 @@ import { alpha } from '@mui/material/styles';
 import { Header } from '../components/Header.jsx';
 import {
   DeterminantsColumn,
-  ProcessesColumn,
-  EvaluationColumn,
   DeterminantsColumnSVG,
-  ProcessesColumnSVG,
-  EvaluationColumnSVG
+  EvaluationColumn,
+  EvaluationColumnSVG,
+  ProcessesColumn,
+  ProcessesColumnSVG
 } from '../components/DPEDiagram.jsx';
 import { ScopeOfClinicalFocus } from '../components/ScopeOfClinicalFocus.jsx';
 import { CardGrid } from '../components/CardGrid.jsx';
@@ -698,7 +698,7 @@ function TreatmentsAndServicesHeader() {
     <Header
       title={Title}
       subtitle={Subtitle}
-      imageUrl={BackgroundImage.data && prependStrapiURL(BackgroundImage.data.attributes.url)}
+      imageUrl={BackgroundImage.data && BackgroundImage.data.attributes.url}
       bgColor={BackgroundColorHexCode}
     />
   );

@@ -1,6 +1,6 @@
 import { useQuery } from '@apollo/client';
 
-import { GET_BLOGPAGE_HEADER, GET_BLOG_POSTS_BY_CATEGORY } from '../gql.jsx';
+import { GET_BLOG_POSTS_BY_CATEGORY, GET_BLOGPAGE_HEADER } from '../gql.jsx';
 import { useState } from 'react';
 import { Box, Container, Grid, Pagination, Tab, Tabs } from '@mui/material';
 import { Header } from '../components/Header.jsx';
@@ -79,7 +79,7 @@ function BlogHeader() {
     <Header
       title={Title}
       subtitle={Subtitle}
-      imageUrl={BackgroundImage.data && prependStrapiURL(BackgroundImage.data.attributes.url)}
+      imageUrl={BackgroundImage.data && BackgroundImage.data.attributes.url}
       bgColor={BackgroundColorHexCode}
     />
   );

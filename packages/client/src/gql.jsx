@@ -451,10 +451,86 @@ export const GET_NAV_ITEMS = gql`
         }
       }
     }
+    pages {
+      data {
+        id
+        attributes {
+          slug
+        }
+      }
+    }
   }
 
   fragment Link on ComponentNavigationLinks {
     Name
     URL
+  }
+`;
+
+export const GET_PAGE = gql`
+  query getPage($id: ID!) {
+    page(id: $id) {
+      data {
+        attributes {
+          slug
+          Name
+          content {
+            ...Header
+            ...Team
+            __typename
+          }
+        }
+      }
+    }
+  }
+
+  fragment Team on ComponentWebTeam {
+    team_category {
+      data {
+        id
+        attributes {
+          Order
+          TeamCategoryName
+          Description
+          team_members {
+            data {
+              id
+              attributes {
+                Order
+                Name
+                Photo {
+                  data {
+                    attributes {
+                      url
+                      height
+                      width
+                    }
+                  }
+                }
+                Roles
+                Languages
+                Credentials
+                Pronouns
+                EBPs
+                Bio
+                Interests
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  fragment Header on ComponentHeaderHeader {
+    Title
+    Subtitle
+    BackgroundColorHexCode
+    BackgroundImage {
+      data {
+        attributes {
+          url
+        }
+      }
+    }
   }
 `;

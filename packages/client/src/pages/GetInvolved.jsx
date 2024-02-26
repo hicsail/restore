@@ -4,7 +4,7 @@ import { SectionedHeader } from '../components/SectionedHeader.jsx';
 import { CardGrid } from '../components/CardGrid.jsx';
 
 import { useQuery } from '@apollo/client';
-import { GET_GETINVOLVEDPAGE_HEADER, GET_GETINVOLVED_CARDGRID } from '../gql.jsx';
+import { GET_GETINVOLVED_CARDGRID, GET_GETINVOLVEDPAGE_HEADER } from '../gql.jsx';
 
 function GetInvolvedCardGrid() {
   const { loading, error, data } = useQuery(GET_GETINVOLVED_CARDGRID);
@@ -32,7 +32,7 @@ function GetInvolvedHeader() {
     <Header
       title={Title}
       subtitle={Subtitle}
-      imageUrl={BackgroundImage.data && prependStrapiURL(BackgroundImage.data.attributes.url)}
+      imageUrl={BackgroundImage.data && BackgroundImage.data.attributes.url}
       bgColor={BackgroundColorHexCode}
     />
   );

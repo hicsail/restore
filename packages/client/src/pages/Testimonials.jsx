@@ -3,7 +3,6 @@ import { Header } from '../components/Header.jsx';
 import { SpeechBubbleLeft, SpeechBubbleRight } from '../components/SpeechBubble.jsx';
 import { useQuery } from '@apollo/client';
 import { GET_TESTIMONIALSPAGE_HEADER } from '../gql.jsx';
-import { prependStrapiURL } from '../utils.jsx';
 
 function TestimonialsHeader() {
   const { data } = useQuery(GET_TESTIMONIALSPAGE_HEADER);
@@ -15,7 +14,7 @@ function TestimonialsHeader() {
     <Header
       title={Title}
       subtitle={Subtitle}
-      imageUrl={BackgroundImage.data && prependStrapiURL(BackgroundImage.data.attributes.url)}
+      imageUrl={BackgroundImage.data && BackgroundImage.data.attributes.url}
       bgColor={BackgroundColorHexCode}
     />
   );
