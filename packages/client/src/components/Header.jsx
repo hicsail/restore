@@ -1,5 +1,6 @@
 import { Box, Typography } from '@mui/material';
 import { theme } from '../theme.jsx';
+import { useNav } from '../context/navigation.context.jsx';
 
 export function Header({ title, subtitle, imageUrl, bgColor }) {
   return (

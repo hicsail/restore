@@ -435,9 +435,10 @@ export const GET_NAV_ITEMS = gql`
       data {
         id
         attributes {
-          nav_item {
+          nav_items {
             data {
               attributes {
+                Order
                 Link {
                   ...Link
                 }

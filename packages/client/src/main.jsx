@@ -24,6 +24,7 @@ import GetInvolved from './pages/GetInvolved.jsx';
 import BlogPost from './pages/BlogPost.jsx';
 import Blog from './pages/Blog.jsx';
 import { NavigationProvider } from './context/navigation.context.jsx';
+import NotFound from './pages/404.jsx';
 
 const httpLink = createHttpLink({
   uri: import.meta.env.VITE_STRAPI_URL + '/graphql'
@@ -101,6 +102,10 @@ const router = createBrowserRouter([
       {
         path: 'blog/:id/:blogTitle',
         element: <BlogPost />
+      },
+      {
+        path: '*',
+        element: <NotFound />
       }
     ]
   }
