@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 
 import { ApolloClient, createHttpLink, InMemoryCache, ApolloProvider } from '@apollo/client';
+import { persistCache, LocalStorageWrapper } from 'apollo3-cache-persist';
+
 import { setContext } from '@apollo/client/link/context';
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
@@ -20,8 +22,8 @@ import Testimonials from './pages/Testimonials.jsx';
 import ResearchAndEvals from './pages/Research.jsx';
 import GetInvolved from './pages/GetInvolved.jsx';
 import BlogPost from './pages/BlogPost.jsx';
-import UnderConstruction from './pages/UnderConstruction.jsx';
 import Blog from './pages/Blog.jsx';
+import { NavigationProvider } from './context/navigation.context.jsx';
 
 const httpLink = createHttpLink({
   uri: import.meta.env.VITE_STRAPI_URL + '/graphql'
@@ -38,9 +40,11 @@ const authLink = setContext((_, { headers }) => {
   };
 });
 
+const cache = new InMemoryCache();
+
 const apolloclient = new ApolloClient({
   link: authLink.concat(httpLink),
-  cache: new InMemoryCache()
+  cache
 });
 
 const router = createBrowserRouter([
@@ -105,10 +109,12 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ApolloProvider client={apolloclient}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <RouterProvider router={router} />
-      </ThemeProvider>
+      <NavigationProvider>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <RouterProvider router={router} />
+        </ThemeProvider>
+      </NavigationProvider>
     </ApolloProvider>
   </React.StrictMode>
 );

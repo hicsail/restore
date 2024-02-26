@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prettier": "prettier -l .",
+    "prettier:fix": "prettier -lw ."
   },
   "dependencies": {
     "@apollo/client": "^3.7.17",
@@ -17,6 +19,7 @@
     "@fontsource/poppins": "^5.0.8",
     "@mui/icons-material": "^5.14.16",
     "@mui/material": "^5.13.7",
+    "apollo3-cache-persist": "^0.14.1",
     "graphql": "^16.7.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

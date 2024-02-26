@@ -7,24 +7,36 @@
  * sometimes the individual columns will need to have event listeners attached.
  */
 
-
 export function DPEDiagramSVG() {
-    return (
-        <svg width="900" height="450" viewBox="0 0 900 450" xmlns="http://www.w3.org/2000/svg">
-          <DeterminantsColumn /><ProcessesColumn /><EvaluationColumn />
-        </svg>
-    )
+  return (
+    <svg width="900" height="450" viewBox="0 0 900 450" xmlns="http://www.w3.org/2000/svg">
+      <DeterminantsColumn />
+      <ProcessesColumn />
+      <EvaluationColumn />
+    </svg>
+  );
 }
 export function DeterminantsColumnSVG() {
-    return (<svg width="300" height="450" viewBox="0 0 300 450" xmlns="http://www.w3.org/2000/svg"><DeterminantsColumn /></svg>)
+  return (
+    <svg width="300" height="450" viewBox="0 0 300 450" xmlns="http://www.w3.org/2000/svg">
+      <DeterminantsColumn />
+    </svg>
+  );
 }
 export function ProcessesColumnSVG() {
-    return (<svg width="300" height="450" viewBox="300 0 300 450" xmlns="http://www.w3.org/2000/svg"><ProcessesColumn /></svg>)
+  return (
+    <svg width="300" height="450" viewBox="300 0 300 450" xmlns="http://www.w3.org/2000/svg">
+      <ProcessesColumn />
+    </svg>
+  );
 }
 export function EvaluationColumnSVG() {
-    return (<svg width="300" height="450" viewBox="600 0 300 450" xmlns="http://www.w3.org/2000/svg"><EvaluationColumn /></svg>)
+  return (
+    <svg width="300" height="450" viewBox="600 0 300 450" xmlns="http://www.w3.org/2000/svg">
+      <EvaluationColumn />
+    </svg>
+  );
 }
-
 
 export function DeterminantsColumn() {
   return (
@@ -37,15 +49,27 @@ export function DeterminantsColumn() {
         <path d="M 1 357 h 258 l 40 32 v 28 l -40 32 h -258 v -8 l 30 -24 v -28 l -30 -24 v -8 z" fill="#A888C7" />
       </g>
       <g textAnchor="start" fontFamily="sans-serif" fontSize="20">
-        <text x="30" y="50" fontSize="26" fontWeight="bold">Determinants</text>
-        <text x="75" y="168">Barriers</text>
-        <text x="75" y="258">Facilitators</text>
-        <text x="55" y="385">Health Equity</text>
-        <text x="55" y="410">Implementation</text>
-        <text x="55" y="435">Framework</text>
+        <text x="30" y="50" fontSize="26" fontWeight="bold">
+          Determinants
+        </text>
+        <text x="75" y="168">
+          Barriers
+        </text>
+        <text x="75" y="258">
+          Facilitators
+        </text>
+        <text x="55" y="385">
+          Health Equity
+        </text>
+        <text x="55" y="410">
+          Implementation
+        </text>
+        <text x="55" y="435">
+          Framework
+        </text>
       </g>
     </g>
-  )
+  );
 }
 export function ProcessesColumn() {
   return (
@@ -58,16 +82,30 @@ export function ProcessesColumn() {
         <path d="M 301 357 h 258 l 40 32 v 28 l -40 32 h -258 v -8 l 30 -24 v -28 l -30 -24 v -8 z" fill="#FFD884" />
       </g>
       <g textAnchor="start" fontFamily="sans-serif" fontSize="20">
-        <text x="330" y="50" fontSize="26" fontWeight="bold">Processes</text>
-        <text x="375" y="160">Ways to enhance</text>
-        <text x="375" y="185">implementation</text>
-        <text x="375" y="250">Ways to enhance</text>
-        <text x="375" y="275">equity</text>
-        <text x="355" y="395">Implementation</text>
-        <text x="355" y="420">Facilitation</text>
+        <text x="330" y="50" fontSize="26" fontWeight="bold">
+          Processes
+        </text>
+        <text x="375" y="160">
+          Ways to enhance
+        </text>
+        <text x="375" y="185">
+          implementation
+        </text>
+        <text x="375" y="250">
+          Ways to enhance
+        </text>
+        <text x="375" y="275">
+          equity
+        </text>
+        <text x="355" y="395">
+          Implementation
+        </text>
+        <text x="355" y="420">
+          Facilitation
+        </text>
       </g>
     </g>
-  )
+  );
 }
 export function EvaluationColumn() {
   return (
@@ -80,16 +118,34 @@ export function EvaluationColumn() {
         <path d="M 601 357 h 258 l 40 32 v 28 l -40 32 h -258 v -8 l 30 -24 v -28 l -30 -24 v -8 z" fill="#78CEE9" />
       </g>
       <g textAnchor="start" fontFamily="sans-serif" fontSize="20">
-        <text x="630" y="50" fontSize="26" fontWeight="bold">Evaluation</text>
-        <text x="675" y="155">Assessment of</text>
-        <text x="675" y="180">implementation</text>
-        <text x="675" y="205">success</text>
-        <text x="675" y="245">Assessment of</text>
-        <text x="675" y="270">health equity (e.g.,</text>
-        <text x="675" y="295">reach, retention)</text>
-        <text x="655" y="395">Proctor's Taxonomy</text>
-        <text x="655" y="420">of Outcomes</text>
+        <text x="630" y="50" fontSize="26" fontWeight="bold">
+          Evaluation
+        </text>
+        <text x="675" y="155">
+          Assessment of
+        </text>
+        <text x="675" y="180">
+          implementation
+        </text>
+        <text x="675" y="205">
+          success
+        </text>
+        <text x="675" y="245">
+          Assessment of
+        </text>
+        <text x="675" y="270">
+          health equity (e.g.,
+        </text>
+        <text x="675" y="295">
+          reach, retention)
+        </text>
+        <text x="655" y="395">
+          Proctor's Taxonomy
+        </text>
+        <text x="655" y="420">
+          of Outcomes
+        </text>
       </g>
     </g>
-  )
+  );
 }

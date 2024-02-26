@@ -428,3 +428,34 @@ export const GET_GETINVOLVED_CARDGRID = gql`
     }
   }
 `;
+
+export const GET_NAV_ITEMS = gql`
+  query navItems {
+    navigation(id: 1) {
+      data {
+        id
+        attributes {
+          nav_item {
+            data {
+              attributes {
+                Link {
+                  ...Link
+                }
+                Subpages {
+                  ...Link
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  fragment Link on ComponentNavigationLinks {
+    Name
+    URL
+    Style
+    Target
+  }
+`;
