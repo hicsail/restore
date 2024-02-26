@@ -477,6 +477,7 @@ export const GET_PAGE = gql`
           content {
             ...Header
             ...Team
+            ...Text
             __typename
           }
         }
@@ -521,7 +522,7 @@ export const GET_PAGE = gql`
       }
     }
   }
-  fragment Header on ComponentHeaderHeader {
+  fragment Header on ComponentWebHeader {
     Title
     Subtitle
     BackgroundColorHexCode
@@ -532,5 +533,9 @@ export const GET_PAGE = gql`
         }
       }
     }
+  }
+
+  fragment Text on ComponentWebText {
+    Body
   }
 `;

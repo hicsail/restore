@@ -47,10 +47,6 @@ export const Router = ({ children }) => {
           ]
         },
         {
-          path: 'our-team-old',
-          element: <Team />
-        },
-        {
           path: 'testimonials',
           element: <Testimonials />
         },
@@ -59,7 +55,7 @@ export const Router = ({ children }) => {
           element: <ResearchAndEvals />
         },
         {
-          path: 'get-involved',
+          path: 'get-involved-old',
           element: <GetInvolved />
         },
         {
