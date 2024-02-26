@@ -1,5 +1,15 @@
-import { Card, CardContent, Chip, Grid, Typography } from '@mui/material';
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Card,
+  CardContent,
+  Chip,
+  Grid,
+  Typography
+} from '@mui/material';
 import { TeamMemberPhoto } from './TeamMemberPhoto.jsx';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 export const TeamMember = ({ Name, Photo, Credentials, Pronouns, Languages, Roles, Bio, Interests, EBPs }) => {
   return (
@@ -17,10 +27,21 @@ export const TeamMember = ({ Name, Photo, Credentials, Pronouns, Languages, Role
           </Typography>
         )}
         {Bio && (
-          <Typography variant="body1" gutterBottom>
-            <strong>Bio: </strong>
-            {Bio}
-          </Typography>
+          <Accordion disableGutters elevation={0} square>
+            <AccordionSummary
+              sx={{ padding: 0 }}
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel1-content"
+              id="panel1-header"
+            >
+              <strong>Bio: </strong>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Typography variant="body1" gutterBottom>
+                {Bio}
+              </Typography>
+            </AccordionDetails>
+          </Accordion>
         )}
         {Interests && (
           <Typography variant="body1" gutterBottom>

@@ -23,7 +23,7 @@ export const Footer = () => {
     { name: 'LinkedIn', icon: <LinkedInIcon />, url: 'https://www.linkedin.com/' },
     { name: 'YouTube', icon: <YouTubeIcon />, url: 'https://www.youtube.com/' }
   ];
-  const logos = [
+  const staticLogos = [
     {
       src: 'src/assets/bu-logo.webp',
       url: 'https://www.bu.edu/'
@@ -31,7 +31,9 @@ export const Footer = () => {
     {
       src: 'src/assets/bmc-logo.png',
       url: 'https://www.bmc.org/'
-    },
+    }
+  ];
+  const rotatingLogos = [
     {
       src: 'src/assets/nimh-logo.png',
       url: 'https://www.nimh.nih.gov/'
@@ -70,37 +72,45 @@ export const Footer = () => {
 
   return (
     <Box>
-      <Carousel logos={logos} displayCount={displayedLogos > 0 ? displayedLogos : 1} />
+      <Carousel logos={rotatingLogos} displayCount={displayedLogos > 0 ? displayedLogos : 1} />
       <Container display="flex" sx={{ marginX: 'auto', paddingX: { sm: 6, xs: 3 } }} ref={componentRef}>
-        <Box>
-          <Box
-            component="img"
-            src={import.meta.env.VITE_STRAPI_URL + data.logoFullSvg.data.attributes.LogoFullSVG.data.attributes.url}
-            sx={{ height: 48, marginBottom: 2 }}
-          />
-          <Box marginBottom={2}>
-            <Typography variant="body2">
-              <b>Address:</b>
-              <br />
-              One Boston Medical Center Place
-              <br />
-              Boston, MA 02118
-              <br />
-              <b>Contact:</b>
-              <br />
-              <Link to="tel:6174142340">(617) 414-2340</Link>
-              <br />
-              <Link to="mailto:restore@bmc.org">restore@bmc.org</Link>
-            </Typography>
-          </Box>
-          <Grid container spacing={1}>
-            {socialLinks.map((socialLink) => (
-              <Grid item key={socialLink.name}>
-                <Link to={socialLink.url}>{socialLink.icon}</Link>
-              </Grid>
-            ))}
+        <Grid container>
+          <Grid item md={4}>
+            <Box
+              component="img"
+              src={import.meta.env.VITE_STRAPI_URL + data.logoFullSvg.data.attributes.LogoFullSVG.data.attributes.url}
+              sx={{ height: 48, marginBottom: 2 }}
+            />
+            <Box marginBottom={2}>
+              <Typography variant="body2">
+                <b>Address:</b>
+                <br />
+                One Boston Medical Center Place
+                <br />
+                Boston, MA 02118
+                <br />
+                <b>Contact:</b>
+                <br />
+                <Link to="tel:6174142340">(617) 414-2340</Link>
+                <br />
+                <Link to="mailto:restore@bmc.org">restore@bmc.org</Link>
+              </Typography>
+            </Box>
           </Grid>
-        </Box>
+          <Grid item md={4} display="flex" alignItems="center">
+            <img src={staticLogos[0].src} style={{ height: 80, marginBottom: 2 }} />
+          </Grid>
+          <Grid item md={4} display="flex" alignItems="center">
+            <img src={staticLogos[1].src} style={{ height: 80, marginBottom: 2 }} />
+          </Grid>
+        </Grid>
+        <Grid container spacing={1}>
+          {socialLinks.map((socialLink) => (
+            <Grid item key={socialLink.name}>
+              <Link to={socialLink.url}>{socialLink.icon}</Link>
+            </Grid>
+          ))}
+        </Grid>
       </Container>
       <Box display="flex" flexDirection="column" sx={{ marginBottom: 8 }}>
         <Divider sx={{ alignSelf: 'center', marginY: 3, width: '90%' }} />
@@ -113,7 +123,7 @@ export const Footer = () => {
             paddingX: { sm: 0, xs: 3 }
           }}
         >
-          <Typography variant="body1">© 2023 All rights reserved</Typography>
+          <Typography variant="body1">© {new Date().getFullYear()} All rights reserved</Typography>
           <Typography
             variant="body1"
             display="flex"
