@@ -124,7 +124,8 @@ theme = createTheme(theme, {
       styleOverrides: {
         root: {
           fontFamily: 'Work Sans Variable',
-          textTransform: 'none'
+          textTransform: 'none',
+          borderRadius: '15px'
         }
       }
     },

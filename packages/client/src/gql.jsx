@@ -475,6 +475,7 @@ export const GET_PAGE = gql`
           slug
           Name
           content {
+            ...CardGrid
             ...Header
             ...Team
             ...Text
@@ -482,6 +483,22 @@ export const GET_PAGE = gql`
           }
         }
       }
+    }
+  }
+
+  fragment CardGrid on ComponentWebCardGrid {
+    items {
+      Title
+      Text
+      Icon {
+        data {
+          attributes {
+            url
+          }
+        }
+      }
+      Link
+      LinkText
     }
   }
 
