@@ -19,7 +19,7 @@ export const WebComponents = ({ type, data }) => {
         <Header
           title={data.Title}
           subtitle={data.Subtitle}
-          imageUrl={data.BackgroundImage.data.attributes.url}
+          imageUrl={data.BackgroundImage.data?.attributes.url}
           bgColor={data.BackgroundColorHexCode}
         />
       );

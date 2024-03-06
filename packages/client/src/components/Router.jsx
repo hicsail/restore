@@ -25,7 +25,7 @@ export const Router = ({ children }) => {
           element: <Home />
         },
         {
-          path: 'about',
+          path: 'about-old',
           element: <About />
         },
         {
