@@ -1,5 +1,6 @@
 import { Box, Typography } from '@mui/material';
 import { theme } from '../theme.jsx';
+import { prependStrapiURL } from '../utils.jsx';
 
 export function Header({ title, subtitle, imageUrl, bgColor }) {
   return (
@@ -7,7 +8,7 @@ export function Header({ title, subtitle, imageUrl, bgColor }) {
       sx={{
         minHeight: { md: '500px' },
         display: 'flex',
-        backgroundImage: `url(${imageUrl})`,
+        backgroundImage: `url(${prependStrapiURL(imageUrl)})`,
         backgroundSize: 'cover',
         bgcolor: bgColor || theme.palette.purple.dark,
         [theme.breakpoints.down('sm')]: {

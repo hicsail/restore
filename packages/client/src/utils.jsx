@@ -5,7 +5,7 @@ import { uriTransformer } from 'react-markdown';
 // It is meant to be composed with react-markdown's default uriTransformer,
 // so it assumes that the url is already cleaned.
 export function prependStrapiURL(url) {
-  const first = url.charAt(0);
+  const first = url?.charAt(0);
   if (first === '/') {
     return import.meta.env.VITE_STRAPI_URL + url;
   }

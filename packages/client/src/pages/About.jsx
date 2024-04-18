@@ -97,7 +97,7 @@ function AboutHeader() {
     <Header
       title={Title}
       subtitle={Subtitle}
-      imageUrl={BackgroundImage.data && prependStrapiURL(BackgroundImage.data.attributes.url)}
+      imageUrl={BackgroundImage.data && BackgroundImage.data.attributes.url}
       bgColor={BackgroundColorHexCode}
     />
   );

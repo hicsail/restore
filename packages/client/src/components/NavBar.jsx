@@ -10,6 +10,8 @@ import {
   ListItem,
   ListItemButton,
   ListItemText,
+  Menu,
+  MenuItem,
   Skeleton,
   Toolbar
 } from '@mui/material';
@@ -17,16 +19,9 @@ import { useQuery } from '@apollo/client';
 import { NavLink, useLocation } from 'react-router-dom';
 import { GET_LOGO_FULL_SVG } from '../gql.jsx';
 import MenuIcon from '@mui/icons-material/Menu';
-
-const PAGES = [
-  { name: 'About', path: '/about' },
-  { name: 'Treatments and Services', path: '/treatments-and-services' },
-  { name: 'Our Team', path: '/our-team' },
-  { name: 'Testimonials', path: '/testimonials' },
-  { name: 'Research and Evaluation', path: '/research-and-evaluation' },
-  { name: 'Get Involved', path: '/get-involved' },
-  { name: 'Blog', path: '/blog' }
-];
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import { useNav } from '../context/navigation.context.jsx';
+import PopupState, { bindMenu, bindTrigger } from 'material-ui-popup-state';
 
 export const Logo = (props) => {
   const { loading, data } = useQuery(GET_LOGO_FULL_SVG);
@@ -46,9 +41,9 @@ export const Logo = (props) => {
 };
 
 export const NavBar = () => {
+  const { navItems } = useNav();
   const [drawerOpen, setDrawerOpen] = useState(false);
   const { pathname } = useLocation();
-
   const handleDrawerToggle = () => {
     setDrawerOpen(!drawerOpen);
   };
@@ -62,12 +57,28 @@ export const NavBar = () => {
               <ListItemText primary="Home" />
             </ListItemButton>
           </ListItem>
-          {PAGES.map(({ path, name }) => (
-            <ListItem key={name} disablePadding>
-              <ListItemButton component={NavLink} to={path} selected={pathname === path}>
-                <ListItemText primary={name} />
-              </ListItemButton>
-            </ListItem>
+          {navItems.map((item) => (
+            <>
+              <ListItem key={item.id} disablePadding>
+                <ListItemButton
+                  component={NavLink}
+                  to={item.URL}
+                  selected={pathname === item.URL}
+                  target={item.Link.URL?.startsWith('http') ? '_blank' : null}
+                >
+                  <ListItemText primary={item.Link.Name} />
+                </ListItemButton>
+              </ListItem>
+              {item.Subpages &&
+                item.Subpages.length > 0 &&
+                item.Subpages.map((subitem) => (
+                  <ListItem key={subitem.id} disablePadding sx={{ ml: 2 }}>
+                    <ListItemButton component={NavLink} to={subitem.URL} selected={pathname === subitem.URL}>
+                      <ListItemText secondary={subitem.Name} />
+                    </ListItemButton>
+                  </ListItem>
+                ))}
+            </>
           ))}
         </List>
       </Drawer>
@@ -89,10 +100,33 @@ export const NavBar = () => {
             <Logo sx={{ mr: 1 }} />
             <Box sx={{ flexGrow: 1 }} />
             <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-              {PAGES.map(({ path, name }) => (
-                <Button key={name} component={NavLink} to={path} color="inherit">
-                  {name}
-                </Button>
+              {navItems.map((item) => (
+                <PopupState key={item.id} variant="popover" popupId={item.Link.Name}>
+                  {(popupState) => (
+                    <>
+                      <Button
+                        {...bindTrigger(popupState)}
+                        component={NavLink}
+                        to={item.Link.URL}
+                        color="inherit"
+                        sx={{ textTransform: 'none' }}
+                        target={item.Link.URL?.startsWith('http') ? '_blank' : null}
+                        endIcon={item.Subpages?.length ? <ArrowDropDownIcon /> : null}
+                      >
+                        {item.Link.Name}
+                      </Button>
+                      {item.Subpages && item.Subpages.length > 0 && (
+                        <Menu {...bindMenu(popupState)}>
+                          {item.Subpages.map((subitem) => (
+                            <MenuItem key={subitem.id} component={NavLink} to={subitem.URL} onClick={popupState.close}>
+                              {subitem.Name}
+                            </MenuItem>
+                          ))}
+                        </Menu>
+                      )}
+                    </>
+                  )}
+                </PopupState>
               ))}
             </Box>
           </Toolbar>

@@ -4,7 +4,7 @@ import { Box, Card, CardContent, CardMedia, Container, Typography } from '@mui/m
 import { Header } from '../components/Header.jsx';
 import { SectionedHeader } from '../components/SectionedHeader.jsx';
 
-import { GET_RESEARCHANDEVALUATIONPAGE_HEADER, GET_CURRENT_STUDIES, GET_RESEARCH_AND_EVALUATIONS } from '../gql.jsx';
+import { GET_CURRENT_STUDIES, GET_RESEARCH_AND_EVALUATIONS, GET_RESEARCHANDEVALUATIONPAGE_HEADER } from '../gql.jsx';
 import { prependStrapiURL } from '../utils';
 
 function CurrentStudies() {
@@ -64,7 +64,7 @@ function ResearchAndEvaluationHeader() {
     <Header
       title={Title}
       subtitle={Subtitle}
-      imageUrl={BackgroundImage.data && prependStrapiURL(BackgroundImage.data.attributes.url)}
+      imageUrl={BackgroundImage.data && BackgroundImage.data.attributes.url}
       bgColor={BackgroundColorHexCode}
     />
   );
