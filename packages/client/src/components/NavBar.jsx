@@ -63,7 +63,7 @@ export const NavBar = () => {
                 <ListItemButton
                   component={NavLink}
                   to={item.URL}
-                  selected={pathname === item.URL}
+                  selected={!item.Link.URL ? false : pathname === item.Link.URL}
                   target={item.Link.URL?.startsWith('http') ? '_blank' : null}
                 >
                   <ListItemText primary={item.Link.Name} />
@@ -73,7 +73,7 @@ export const NavBar = () => {
                 item.Subpages.length > 0 &&
                 item.Subpages.map((subitem) => (
                   <ListItem key={subitem.id} disablePadding sx={{ ml: 2 }}>
-                    <ListItemButton component={NavLink} to={subitem.URL} selected={pathname === subitem.URL}>
+                    <ListItemButton component={NavLink} to={subitem.URL}>
                       <ListItemText secondary={subitem.Name} />
                     </ListItemButton>
                   </ListItem>

@@ -56,7 +56,7 @@ export const TeamMember = ({ Name, Photo, Credentials, Pronouns, Languages, Role
             </Typography>
             <Grid container spacing={1}>
               {EBPs.split(',').map((EBP) => (
-                <Grid item>
+                <Grid item key={EBP}>
                   <Chip sx={{ fontStyle: 'italic', fontWeight: 'bold' }} key={EBP} label={EBP} />
                 </Grid>
               ))}

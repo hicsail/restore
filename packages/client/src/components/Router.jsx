@@ -25,7 +25,7 @@ export const Router = ({ children }) => {
           element: <Home />
         },
         {
-          path: 'about-old',
+          path: 'about',
           element: <About />
         },
         {
@@ -33,7 +33,7 @@ export const Router = ({ children }) => {
           element: <TreatmentsServices />,
           children: [
             {
-              index: true,
+              index: 'services-to-the-health-system',
               element: <ServicesToTheHealthSystem />
             },
             {
@@ -47,15 +47,11 @@ export const Router = ({ children }) => {
           ]
         },
         {
-          path: 'testimonials',
-          element: <Testimonials />
-        },
-        {
           path: 'research-and-evaluation',
           element: <ResearchAndEvals />
         },
         {
-          path: 'get-involved-old',
+          path: 'get-involved',
           element: <GetInvolved />
         },
         {

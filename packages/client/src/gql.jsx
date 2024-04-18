@@ -68,7 +68,6 @@ export const GET_HOMEPAGE_CARDGRID = gql`
         attributes {
           CardGridCardData {
             id
-            Index
             Icon {
               data {
                 attributes {
@@ -186,7 +185,6 @@ export const GET_TREATMENTS_CARDGRID = gql`
         attributes {
           CardGridCardData {
             id
-            Index
             Icon {
               data {
                 attributes {
@@ -410,7 +408,6 @@ export const GET_GETINVOLVED_CARDGRID = gql`
         attributes {
           CardGridCardData {
             id
-            Index
             Icon {
               data {
                 attributes {
