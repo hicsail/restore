@@ -32,31 +32,31 @@ import { ScopeOfClinicalFocus } from '../components/ScopeOfClinicalFocus.jsx';
 import { CardGrid } from '../components/CardGrid.jsx';
 import { SectionedHeader } from '../components/SectionedHeader.jsx';
 
-function ImplementationFrameworkInteractive() {
-  const [tabValue, setTabValue] = useState('determinants');
+export function BlueBox(text) {
+  // Blue boxes for Core Facilitation Strategies diagram.
+  // To get the requested layout (bottom two boxes horizontally centered in the grid)
+  // using grid layout, use a grid of 6*1fr instead of 3*1fr and insert a 1fr spacer box
+  // (see below). With thanks to https://www.billerickson.net/css-grid-center-last-item/
+  return (
+    <Box
+      sx={{
+        color: '#ffffff',
+        bgcolor: '#5b9bd5',
+        padding: '1em',
+        textAlign: 'center',
+        display: 'flex', // Vertically center text
+        flexDirection: 'column', // Vertically center text
+        justifyContent: 'center', // Vertically center text
+        gridColumn: 'span 2' // For centering last two boxes later on
+      }}
+    >
+      <div>{text}</div>
+    </Box>
+  );
+}
 
-  function BlueBox(text) {
-    // Blue boxes for Core Facilitation Strategies diagram.
-    // To get the requested layout (bottom two boxes horizontally centered in the grid)
-    // using grid layout, use a grid of 6*1fr instead of 3*1fr and insert a 1fr spacer box
-    // (see below). With thanks to https://www.billerickson.net/css-grid-center-last-item/
-    return (
-      <Box
-        sx={{
-          color: '#ffffff',
-          bgcolor: '#5b9bd5',
-          padding: '1em',
-          textAlign: 'center',
-          display: 'flex', // Vertically center text
-          flexDirection: 'column', // Vertically center text
-          justifyContent: 'center', // Vertically center text
-          gridColumn: 'span 2' // For centering last two boxes later on
-        }}
-      >
-        <div>{text}</div>
-      </Box>
-    );
-  }
+export function ImplementationFrameworkInteractive() {
+  const [tabValue, setTabValue] = useState('determinants');
 
   function WhiteBox(text) {
     // White, rounded-border boxes for Taxonomy of Outcomes diagram.
@@ -229,7 +229,7 @@ function ImplementationFrameworkInteractive() {
   );
 }
 
-function DeterminantsInteractive() {
+export function DeterminantsInteractive() {
   const instructionsText = (
     <>
       <p>Mouse over the diagram to learn more.</p>
@@ -426,7 +426,7 @@ function OurImplementationModel() {
   );
 }
 
-function ImplementationFrameworks() {
+export function ImplementationFrameworks() {
   return (
     <Paper
       id="implementation-frameworks"
