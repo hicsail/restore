@@ -11,6 +11,9 @@ import GetInvolved from '../pages/GetInvolved.jsx';
 import Blog from '../pages/Blog.jsx';
 import BlogPost from '../pages/BlogPost.jsx';
 import { StrapiPage } from '../pages/Strapi-Page.jsx';
+import { Patients } from '../pages/treatment-services/patients.jsx';
+import { Providers } from '../pages/treatment-services/providers.jsx';
+import { HealthSystems } from '../pages/treatment-services/health-systems.jsx';
 
 export const Router = ({ children }) => {
   const { pages } = useNav();
@@ -29,22 +32,16 @@ export const Router = ({ children }) => {
           element: <About />
         },
         {
-          path: 'treatments-and-services',
-          element: <TreatmentsServices />,
-          children: [
-            {
-              index: 'services-to-the-health-system',
-              element: <ServicesToTheHealthSystem />
-            },
-            {
-              path: 'services-to-the-health-system',
-              element: <ServicesToTheHealthSystem />
-            },
-            {
-              path: 'services-to-our-patients',
-              element: <ServicesToOurPatients />
-            }
-          ]
+          path: 'patients',
+          element: <Patients />
+        },
+        {
+          path: 'providers',
+          element: <Providers />
+        },
+        {
+          path: 'health-systems',
+          element: <HealthSystems />
         },
         {
           path: 'research-and-evaluation',

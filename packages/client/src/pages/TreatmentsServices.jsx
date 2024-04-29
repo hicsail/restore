@@ -469,36 +469,11 @@ function ScopeOfServicesToSystem() {
       <Typography variant="infoPanelBTitle" sx={{ textAlign: 'center' }}>
         Scope of Services to the System
       </Typography>
-      <Typography variant="infoPanelBBody">
-        <p>
-          RESTORE provides facilitation—an interactive problem-solving approach that supports organizations in applying
-          evidence-based practices in routine care.
-        </p>
-        <p>RESTORE’s selected facilitation strategies:</p>
-        <ul>
-          <li>Training and consultation initiatives</li>
-          <li>Consultation to clinical and community partners on implementation planning</li>
-          <li>Organize local change agents in leadership and clinician expertise</li>
-          <li>
-            Build reciprocal and participatory relationship with clinician teams to foster a shared vision and
-            priorities
-          </li>
-          <li>
-            Promote structural change to support implementation with screening, identification, and referral pathways
-            across the system
-          </li>
-          <li>
-            Convene community, patient, provider, and external advisory boards on PTSD and oppression-based stress
-          </li>
-          <li>Support data-driven intervention adaptation, including cultural adaptation</li>
-          <li>Administrative and technical support through imbedded online flowsheets and templates</li>
-        </ul>
-      </Typography>
     </Paper>
   );
 }
 
-function UpcomingOngoing() {
+export function UpcomingOngoing() {
   const { loading, error, data } = useQuery(GET_UPCOMING_ONGOING);
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error : {error.message}</p>;
