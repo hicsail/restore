@@ -104,7 +104,8 @@ export default function About() {
               sx={{
                 display: 'flex', //so that action area stretches over whole card
                 border: 1,
-                borderRadius: '0 20px 20px 20px'
+                borderRadius: '0 20px 20px 20px',
+                height: '100%'
               }}
             >
               <CardContent>
@@ -124,7 +125,8 @@ export default function About() {
               sx={{
                 display: 'flex', //so that action area stretches over whole card
                 border: 1,
-                borderRadius: '0 20px 20px 20px'
+                borderRadius: '0 20px 20px 20px',
+                height: '100%'
               }}
             >
               <CardContent>
@@ -144,7 +146,8 @@ export default function About() {
               sx={{
                 display: 'flex', //so that action area stretches over whole card
                 border: 1,
-                borderRadius: '0 20px 20px 20px'
+                borderRadius: '0 20px 20px 20px',
+                height: '100%'
               }}
             >
               <CardContent>
@@ -163,7 +166,8 @@ export default function About() {
               sx={{
                 display: 'flex', //so that action area stretches over whole card
                 border: 1,
-                borderRadius: '0 20px 20px 20px'
+                borderRadius: '0 20px 20px 20px',
+                height: '100%'
               }}
             >
               <CardContent>
