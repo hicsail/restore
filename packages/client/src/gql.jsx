@@ -233,7 +233,7 @@ export const GET_TEAM_CATEGORIES_AND_MEMBERS = gql`
           Order
           TeamCategoryName
           Description
-          team_members {
+          team_members(pagination: { page: 1, pageSize: 100 }, sort: "Order:asc") {
             data {
               id
               attributes {
@@ -507,7 +507,7 @@ export const GET_PAGE = gql`
           Order
           TeamCategoryName
           Description
-          team_members {
+          team_members(pagination: { page: 1, pageSize: 100 }, sort: "Order:asc") {
             data {
               id
               attributes {
