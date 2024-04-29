@@ -2,7 +2,7 @@ import { Container, Stack, Typography } from '@mui/material';
 import { UpcomingOngoing } from '../TreatmentsServices.jsx';
 
 export const Providers = () => (
-  <Container>
+  <Container sx={{ mt: 3 }}>
     <Typography variant="h3">Treatment & Services</Typography>
     <Typography variant="h4" color="primary">
       For Providers

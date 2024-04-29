@@ -510,7 +510,7 @@ function TreatmentsCardGrid() {
   );
 }
 
-function MeasurementBasedCare() {
+export function MeasurementBasedCare() {
   return (
     <Paper
       id="measurement-based-care"
@@ -582,7 +582,7 @@ function ScopeOfClinicalFocusPanel() {
   );
 }
 
-function HowToBecomeARestorePatient() {
+export function HowToBecomeARestorePatient() {
   const { loading, error, data } = useQuery(GET_HOWTOBECOME);
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error : {error.message}</p>;
