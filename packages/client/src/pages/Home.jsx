@@ -9,15 +9,13 @@ import { BlogCard } from '../components/BlogCard.jsx';
 
 import { useQuery } from '@apollo/client';
 import {
-  GET_HOMEPAGE_HEADER,
   GET_HOMEPAGE_CARDGRID,
-  GET_HOMEPAGE_INFOPANEL_TOP,
+  GET_HOMEPAGE_HEADER,
   GET_HOMEPAGE_INFOPANEL_BOTTOM,
+  GET_HOMEPAGE_INFOPANEL_TOP,
   GET_RECENT_BLOG_POSTS
 } from '../gql.jsx';
 import { prependStrapiURL } from '../utils.jsx';
-
-import { theme } from '../theme.jsx';
 
 function HomepageInfoPanelTop() {
   const { loading, error, data } = useQuery(GET_HOMEPAGE_INFOPANEL_TOP);

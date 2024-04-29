@@ -16,6 +16,7 @@ export function DPEDiagramSVG() {
     </svg>
   );
 }
+
 export function DeterminantsColumnSVG() {
   return (
     <svg width="300" height="450" viewBox="0 0 300 450" xmlns="http://www.w3.org/2000/svg">
@@ -23,6 +24,7 @@ export function DeterminantsColumnSVG() {
     </svg>
   );
 }
+
 export function ProcessesColumnSVG() {
   return (
     <svg width="300" height="450" viewBox="300 0 300 450" xmlns="http://www.w3.org/2000/svg">
@@ -30,6 +32,7 @@ export function ProcessesColumnSVG() {
     </svg>
   );
 }
+
 export function EvaluationColumnSVG() {
   return (
     <svg width="300" height="450" viewBox="600 0 300 450" xmlns="http://www.w3.org/2000/svg">
@@ -71,6 +74,7 @@ export function DeterminantsColumn() {
     </g>
   );
 }
+
 export function ProcessesColumn() {
   return (
     <g id="ProcessesColumn">
@@ -107,6 +111,7 @@ export function ProcessesColumn() {
     </g>
   );
 }
+
 export function EvaluationColumn() {
   return (
     <g id="EvaluationColumn">

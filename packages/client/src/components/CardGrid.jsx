@@ -24,6 +24,7 @@ export function CardGrid({ cards }) {
     </Box>
   );
 }
+
 function CardGridCard({ Index, Icon, Title, Text, Link }) {
   const imgUrl = Icon.data && import.meta.env.VITE_STRAPI_URL + Icon.data.attributes.url;
   const imgAlt = Icon.data && Icon.data.attributes.alternativeText;

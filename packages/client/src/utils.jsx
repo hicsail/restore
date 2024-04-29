@@ -11,6 +11,7 @@ export function prependStrapiURL(url) {
   }
   return url;
 }
+
 export function processMarkdownImageUri(url) {
   return prependStrapiURL(uriTransformer(url));
 }

@@ -57,6 +57,7 @@ function ImplementationFrameworkInteractive() {
       </Box>
     );
   }
+
   function WhiteBox(text) {
     // White, rounded-border boxes for Taxonomy of Outcomes diagram.
     return (
@@ -393,6 +394,7 @@ function OurImplementationModel() {
       </Box>
     );
   }
+
   return (
     <Paper
       id="our-implementation-model"

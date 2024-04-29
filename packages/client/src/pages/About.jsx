@@ -1,12 +1,10 @@
-import { Card, CardActionArea, CardContent, CardHeader, Container, Grid, Typography } from '@mui/material';
+import { Card, CardContent, Container, Grid, Typography } from '@mui/material';
 import { Header } from '../components/Header.jsx';
 import { InfoPanelA } from '../components/InfoPanelA.jsx';
 import { prependStrapiURL } from '../utils.jsx';
 import { theme } from '../theme.jsx';
 import { useQuery } from '@apollo/client';
-import { GET_ABOUTPAGE_HEADER, GET_WHYOURWORK_IMG } from '../gql.jsx';
-import { NavLink } from 'react-router-dom';
-import ReactMarkdown from 'react-markdown';
+import { GET_ABOUTPAGE_HEADER } from '../gql.jsx';
 
 function Mission() {
   return (

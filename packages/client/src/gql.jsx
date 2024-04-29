@@ -38,28 +38,28 @@ const headerdata = gql`
   }
 `;
 export const GET_HOMEPAGE_HEADER = gql`
-  query GetHomePageHeader { homePageHeader ${headerdata} }
+    query GetHomePageHeader { homePageHeader ${headerdata} }
 `;
 export const GET_ABOUTPAGE_HEADER = gql`
-  query GetAboutPageHeader { aboutPageHeader ${headerdata} }
+    query GetAboutPageHeader { aboutPageHeader ${headerdata} }
 `;
 export const GET_TREATMENTSANDSERVICESPAGE_HEADER = gql`
-  query GetTreatmentsAndServicesPageHeader { treatmentsAndServicesPageHeader ${headerdata} }
+    query GetTreatmentsAndServicesPageHeader { treatmentsAndServicesPageHeader ${headerdata} }
 `;
 export const GET_TEAMPAGE_HEADER = gql`
-  query GetTeamPageHeader { teamPageHeader ${headerdata} }
+    query GetTeamPageHeader { teamPageHeader ${headerdata} }
 `;
 export const GET_TESTIMONIALSPAGE_HEADER = gql`
-  query GetTestimonialsPageHeader { testimonialsPageHeader ${headerdata} }
+    query GetTestimonialsPageHeader { testimonialsPageHeader ${headerdata} }
 `;
 export const GET_RESEARCHANDEVALUATIONPAGE_HEADER = gql`
-  query GetResearchAndEvaluationPageHeader { researchAndEvaluationPageHeader ${headerdata} }
+    query GetResearchAndEvaluationPageHeader { researchAndEvaluationPageHeader ${headerdata} }
 `;
 export const GET_GETINVOLVEDPAGE_HEADER = gql`
-  query GetGetInvolvedPageHeader { getInvolvedPageHeader ${headerdata} }
+    query GetGetInvolvedPageHeader { getInvolvedPageHeader ${headerdata} }
 `;
 export const GET_BLOGPAGE_HEADER = gql`
-  query GetBlogPageHeader { blogPageHeader ${headerdata} }
+    query GetBlogPageHeader { blogPageHeader ${headerdata} }
 `;
 export const GET_HOMEPAGE_CARDGRID = gql`
   query GetHomePageCardGrid {

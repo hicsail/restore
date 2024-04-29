@@ -20,7 +20,6 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { GET_LOGO_FULL_SVG } from '../gql.jsx';
 import MenuIcon from '@mui/icons-material/Menu';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import { useNav } from '../context/navigation.context.jsx';
 import PopupState, { bindMenu, bindTrigger } from 'material-ui-popup-state';
 
 export const Logo = (props) => {

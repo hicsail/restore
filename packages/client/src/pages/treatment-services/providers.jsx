@@ -24,7 +24,7 @@ export const Providers = () => (
           Promote structural change to support implementation with screening, identification, and referral pathways
           across the system
         </li>
-        <li>Convene community, patient, provider, and external advisory boards on PTSD and oppression-based stress</li>
+        <li>Convene community, patient, provider, and external advisory boards on PTSD and oppression-based stress</li>
         <li>Support data-driven intervention adaptation, including cultural adaptation</li>
         <li>Administrative and technical support through imbedded online flowsheets and templates</li>
       </ul>
