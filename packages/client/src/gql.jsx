@@ -473,9 +473,9 @@ export const GET_PAGE = gql`
           Name
           content {
             ...CardGrid
-            ...Editor
             ...Header
             ...Team
+            ...Markdown
             __typename
           }
         }
@@ -549,7 +549,7 @@ export const GET_PAGE = gql`
     }
   }
 
-  fragment Editor on ComponentWebEditor {
+  fragment Markdown on ComponentWebTest {
     Body
   }
 `;

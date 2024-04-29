@@ -40,8 +40,83 @@ export const Logo = (props) => {
   );
 };
 
+const SITEMAP = [
+  {
+    id: '1',
+    Link: {
+      Name: 'About',
+      URL: '/about'
+    },
+    Subpages: [
+      {
+        id: '1-1',
+        Name: 'Our Team',
+        URL: '/team'
+      }
+    ]
+  },
+  {
+    id: '2',
+    Link: {
+      Name: 'Treatment & Services'
+    },
+    Subpages: [
+      {
+        id: '2-1',
+        Name: 'For Patients',
+        URL: '/patients'
+      },
+      {
+        id: '2-2',
+        Name: 'For Providers',
+        URL: '/providers'
+      },
+      {
+        id: '2-3',
+        Name: 'For Health Systems',
+        URL: '/health-systems'
+      }
+    ]
+  },
+  {
+    id: '3',
+    Link: {
+      URL: '/community',
+      Name: 'Community Engagement'
+    },
+    Subpages: [
+      {
+        id: '3-1',
+        Name: 'Advisory Board',
+        URL: '/advisory-board'
+      }
+    ]
+  },
+  {
+    id: '4',
+    Link: {
+      Name: 'Research & Evaluation',
+      URL: '/research-and-evaluation'
+    }
+  },
+  {
+    id: '5',
+    Link: {
+      Name: 'Get Involved',
+      URL: '/get-involved'
+    }
+  },
+  {
+    id: '6',
+    Link: {
+      Name: 'Blog',
+      URL: '/blog'
+    }
+  }
+];
+
 export const NavBar = () => {
-  const { navItems } = useNav();
+  const navItems = SITEMAP;
   const [drawerOpen, setDrawerOpen] = useState(false);
   const { pathname } = useLocation();
   const handleDrawerToggle = () => {
@@ -60,14 +135,17 @@ export const NavBar = () => {
           {navItems.map((item) => (
             <>
               <ListItem key={item.id} disablePadding>
-                <ListItemButton
-                  component={NavLink}
-                  to={item.URL}
-                  selected={!item.Link.URL ? false : pathname === item.Link.URL}
-                  target={item.Link.URL?.startsWith('http') ? '_blank' : null}
-                >
-                  <ListItemText primary={item.Link.Name} />
-                </ListItemButton>
+                {item.Link.URL && (
+                  <ListItemButton
+                    component={item.Link.URL ? NavLink : 'div'}
+                    to={item.URL}
+                    selected={item.Link.URL ? pathname === item.Link.URL : false}
+                    target={item.Link.URL?.startsWith('http') ? '_blank' : null}
+                  >
+                    <ListItemText primary={item.Link.Name} />
+                  </ListItemButton>
+                )}
+                {!item.Link.URL && <ListItemText primary={item.Link.Name} />}
               </ListItem>
               {item.Subpages &&
                 item.Subpages.length > 0 &&
@@ -106,9 +184,8 @@ export const NavBar = () => {
                     <>
                       <Button
                         {...bindTrigger(popupState)}
-                        component={NavLink}
+                        component={item.Link.URL ? NavLink : 'div'}
                         to={item.Link.URL}
-                        color="inherit"
                         sx={{ textTransform: 'none' }}
                         target={item.Link.URL?.startsWith('http') ? '_blank' : null}
                         endIcon={item.Subpages?.length ? <ArrowDropDownIcon /> : null}
