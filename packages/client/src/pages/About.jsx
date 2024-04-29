@@ -1,10 +1,12 @@
-import { Box, Container, Typography } from '@mui/material';
+import { Card, CardActionArea, CardContent, CardHeader, Container, Grid, Typography } from '@mui/material';
 import { Header } from '../components/Header.jsx';
 import { InfoPanelA } from '../components/InfoPanelA.jsx';
 import { prependStrapiURL } from '../utils.jsx';
 import { theme } from '../theme.jsx';
 import { useQuery } from '@apollo/client';
 import { GET_ABOUTPAGE_HEADER, GET_WHYOURWORK_IMG } from '../gql.jsx';
+import { NavLink } from 'react-router-dom';
+import ReactMarkdown from 'react-markdown';
 
 function Mission() {
   return (
@@ -69,25 +71,6 @@ function Strategies() {
   );
 }
 
-function WhyOurWorkIsImportant() {
-  const { loading, error, data } = useQuery(GET_WHYOURWORK_IMG);
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
-
-  const imgdata = data.whyOurWorkIsImportant.data.attributes.Image.data;
-
-  return (
-    imgdata && (
-      <Box
-        component="img"
-        alt={imgdata.attributes.alternativeText}
-        src={prependStrapiURL(imgdata.attributes.url)}
-        sx={{ display: 'block', margin: '2em auto' }}
-      />
-    )
-  );
-}
-
 function AboutHeader() {
   const { data } = useQuery(GET_ABOUTPAGE_HEADER);
   if (!data?.aboutPageHeader.data?.attributes.Header) return;
@@ -109,7 +92,94 @@ export default function About() {
       <AboutHeader />
       <Container sx={{ margin: '1rem auto' }}>
         <Mission />
-        <WhyOurWorkIsImportant />
+        <Typography variant="h4" sx={{ mt: 4, mb: 2 }}>
+          Why Our Work is Important
+        </Typography>
+        <Typography variant="subtitle1" sx={{ mt: 4, mb: 2 }}>
+          RESTORE has identified several barriers to care for patients with PTSD. Our work is important because we help
+          to solve these various barriers.
+        </Typography>
+        <Grid container spacing={2}>
+          <Grid item sm={6} md={3}>
+            <Card
+              variant="outlined"
+              sx={{
+                display: 'flex', //so that action area stretches over whole card
+                border: 1,
+                borderRadius: '0 20px 20px 20px'
+              }}
+            >
+              <CardContent>
+                <Typography variant="h6">Patient Barriers</Typography>
+                <ul>
+                  <li>Stigma of Mental Illness</li>
+                  <li>Language Barriers</li>
+                  <li>Mistrust of Health Systems</li>
+                  <li>Barriers to transportation or appointments not offered via Telehealth</li>
+                </ul>
+              </CardContent>
+            </Card>
+          </Grid>
+          <Grid item sm={6} md={3}>
+            <Card
+              variant="outlined"
+              sx={{
+                display: 'flex', //so that action area stretches over whole card
+                border: 1,
+                borderRadius: '0 20px 20px 20px'
+              }}
+            >
+              <CardContent>
+                <Typography variant="h6">Provider Barriers</Typography>
+                <ul>
+                  <li>Not having sufficient training in PTDS Treatment</li>
+                  <li>Desire to use CBT as "toolkit"</li>
+                  <li>Personal beliefs about trauma recover treatment and Evidence-based therapies</li>
+                  <li>Mistrust of Research</li>
+                </ul>
+              </CardContent>
+            </Card>
+          </Grid>
+          <Grid item sm={6} md={3}>
+            <Card
+              variant="outlined"
+              sx={{
+                display: 'flex', //so that action area stretches over whole card
+                border: 1,
+                borderRadius: '0 20px 20px 20px'
+              }}
+            >
+              <CardContent>
+                <Typography variant="h6">System</Typography>
+                <ul>
+                  <li>Unrealistic productivity expectations of health-system workers</li>
+                  <li>Insufficient time for Providers to receive training and consultation</li>
+                  <li>Turnover, burnout, and staff shortages</li>
+                </ul>
+              </CardContent>
+            </Card>
+          </Grid>
+          <Grid item sm={6} md={3}>
+            <Card
+              variant="outlined"
+              sx={{
+                display: 'flex', //so that action area stretches over whole card
+                border: 1,
+                borderRadius: '0 20px 20px 20px'
+              }}
+            >
+              <CardContent>
+                <Typography variant="h6">Manual</Typography>
+                <ul>
+                  <li>Therapy training manuals are too complex and "academic"</li>
+                  <li>
+                    Education of Evidence-based Therapies and example cases or scenarios do not resonate with Providers
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+          </Grid>
+        </Grid>
         <Strategies />
       </Container>
     </>

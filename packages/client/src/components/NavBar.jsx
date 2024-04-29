@@ -51,7 +51,7 @@ const SITEMAP = [
       {
         id: '1-1',
         Name: 'Our Team',
-        URL: '/team'
+        URL: '/our-team'
       }
     ]
   },
