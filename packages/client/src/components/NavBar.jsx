@@ -80,7 +80,6 @@ const SITEMAP = [
   {
     id: '3',
     Link: {
-      URL: '/community',
       Name: 'Community Engagement'
     },
     Subpages: [
@@ -101,9 +100,25 @@ const SITEMAP = [
   {
     id: '5',
     Link: {
-      Name: 'Get Involved',
-      URL: '/get-involved'
-    }
+      Name: 'Get Involved'
+    },
+    Subpages: [
+      {
+        id: '5-1',
+        Name: 'Become a Patient',
+        URL: '/patients#how-to-become-a-restore-patient'
+      },
+      {
+        id: '5-3',
+        Name: 'Join Advisory Board',
+        URL: '/advisory-board'
+      },
+      {
+        id: '5-4',
+        Name: 'Participate in a research study',
+        URL: '/research-and-evaluation'
+      }
+    ]
   },
   {
     id: '6',
